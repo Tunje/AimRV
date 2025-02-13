@@ -1,0 +1,27 @@
+.footpage{
+    width: 100%;
+    min-height: 271px;
+    background-color: #232323;
+}
+.footpad{
+    min-height: 122px;
+}
+.footbox{
+    min-height: 51px;
+    min-width: 196px;
+}
+.footpad2{
+    min-height: 25px;
+}
+.footicons{
+    min-height: 25px;
+    min-width: 165px;
+}
+.footicon{
+    min-height: 25px;
+    min-width: 25px;
+    color: white;
+}
+.footicon:hover i {
+    transform: scale(1.2);
+}

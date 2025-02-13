@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Shadows Into Light", cursive;
+  }
+
+.location{
+    border: #c37272;
+    border-width: 3px;
+    border-style: solid;
+}
+.MaxWH{
+    width: 100%;
+    height: 100%;
+}

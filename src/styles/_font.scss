@@ -1,0 +1,23 @@
+
+
+.fonts{
+    font-style: normal;
+    &_large{
+        font-size: 64px;
+    }
+    &_medium {
+        font-size: 26px
+    }
+    &_small {
+        font-size: 18px
+    }
+    &_alt{
+        letter-spacing: 8px;
+    }
+    &_other{
+        font-family: 'Aleo', serif;
+    }
+}
+.deco{
+    text-decoration: none;
+}
