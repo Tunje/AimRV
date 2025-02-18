@@ -5,11 +5,4 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/AimRV/', // This should match the repository name or the subdirectory in GitHub Pages
-  build: {
-    rollupOptions: {
-      input: {
-        main: 'src/App.jsx', // Change this to your custom entry file if needed
-      },
-    },
-  },
 });
