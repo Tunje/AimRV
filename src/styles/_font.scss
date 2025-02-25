@@ -1,23 +1,35 @@
-
-
-.fonts{
+.fonts {
     font-style: normal;
-    &_large{
-        font-size: 64px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &_large {
+        font-size: 64px; // Extra large text
+        font-weight: bold;
+        line-height: 1.2;
     }
+
     &_medium {
-        font-size: 26px
+        font-size: 26px; // Medium-sized text
+        font-weight: normal;
+        line-height: 1.4;
     }
+
     &_small {
-        font-size: 18px
+        font-size: 18px; // Small text
+        font-weight: normal;
+        line-height: 1.5;
     }
-    &_alt{
-        letter-spacing: 8px;
+
+    &_alt {
+        letter-spacing: 8px; // Alternative text spacing
+        font-weight: normal;
     }
-    &_other{
-        font-family: 'Aleo', serif;
+
+    &_other {
+        font-family: 'Aleo', serif; // Alternative font
     }
 }
-.deco{
+
+.deco {
     text-decoration: none;
 }
