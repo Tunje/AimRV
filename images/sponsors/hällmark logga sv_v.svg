@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="226.77333"
+   height="283.46667"
+   viewBox="0 0 226.77333 283.46667"
+   sodipodi:docname="hällmark logga sv_v.ai"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath16">
+      <path
+         d="M 0,212.6 H 170.08 V 0 H 0 Z"
+         id="path14" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="g8"
+     inkscape:groupmode="layer"
+     inkscape:label="hällmark logga sv_v"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,283.46667)">
+    <g
+       id="g10">
+      <g
+         id="g12"
+         clip-path="url(#clipPath16)">
+        <g
+           id="g18"
+           transform="translate(23.5205,88.7314)">
+          <path
+             d="m 0,0 c -11.266,27.098 -3.096,65.228 23.368,80.333 8.733,4.978 17.835,6.862 27.264,9.802 10.942,3.411 17.972,18.51 10.958,28.761 C 79.854,120.923 97.031,87.807 89.42,72.933 85.634,65.53 74.927,65.024 67.765,64.577 47.811,63.324 21.956,60.055 7.391,44.854 1.798,39.019 -1.09,30.995 -1.43,22.945 c 0.164,3.747 7.326,8.849 9.862,11.018 4.747,4.071 9.975,7.381 15.758,9.779 14.351,5.954 29.165,5.734 44.373,5.504 8.233,-0.125 18.5,-0.061 24.875,6.023 6.062,5.788 8.011,16.949 6.2,24.892 0.21,-0.934 3.903,-3.018 4.663,-3.743 C 115.356,65.891 113.05,45.351 101.85,35.87 80.18,17.532 48.167,29.732 24.084,17.107 15.341,12.52 7.702,6.1 0,0"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path20" />
+        </g>
+        <g
+           id="g22"
+           transform="translate(28.6445,75.0547)">
+          <path
+             d="m 0,0 c -1.954,3.954 9.36,11.104 11.88,12.475 12.653,6.92 27.676,9.257 41.955,8.809 22.795,-0.705 51.842,2.387 56.669,29.947 0.147,0.861 1.422,5.926 1.217,6.263 C 123.998,37.489 112.523,4.456 96.559,-9.931 73.784,-30.446 43.338,-32.296 17.14,-17.294 11.324,-13.964 3.072,-6.218 0,0"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path24" />
+        </g>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.97826052,0,0,-1,1,5.1152)"
+           style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36.9788px;font-family:'Baskerville MT Std';-inkscape-font-specification:BaskervilleMTStd-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="text28"><tspan
+             x="0 31.210108 52.029171 63.603535 75.177902 110.60359 131.42265 148.43291"
+             y="0"
+             sodipodi:role="line"
+             id="tspan26">Hällmark</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

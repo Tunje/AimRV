@@ -92,7 +92,44 @@ function App() {
                         <div></div>
                     </div>
                 </section>
-                {/* pages end */}
+                {/* pages end, footer */}
+                <footer className="footer">
+  <div className="container">
+    <div className="footer-grid">
+      <div className="grid-item sponsors">
+        <h3 className="footer-heading">Sponsors</h3>
+        <div className="grid">
+          {Array.from({ length: 20 }, (_, i) => (
+            <div key={i} className="logo-box sponsor-box">
+              Sponsor {i + 1}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="grid-item partners">
+        <h3 className="footer-heading">Partners</h3>
+        <div className="grid">
+          {Array.from({ length: 10 }, (_, i) => (
+            <div key={i} className="logo-box partner-box">
+              Partner {i + 1}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div className="footer-bottom">
+    <p className="trademark">&copy; 2025 Aimchallenge™</p>
+      <div className="social-icons">
+        <span className="icon">Facebook</span>
+        <span className="icon">Instagram</span>
+        <span className="icon">Vinmo</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
             </div>
         );
     }
