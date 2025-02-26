@@ -1,56 +1,70 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/index.js';
+import '../styles/java/scripts.js';
+import '../styles/index.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 const Navbar = () => {
-  const [tavlingarDropdown, setTavlingarDropdown] = useState(false);
-  const [omOssDropdown, setOmOssDropdown] = useState(false);
+    const [dropOpen1, setDropOpen1] = useState(false);
+    const [dropOpen2, setDropOpen2] = useState(false);
 
-  // Toggle dropdown visibility
-  const toggleTavlingarDropdown = () => setTavlingarDropdown(!tavlingarDropdown);
-  const toggleOmOssDropdown = () => setOmOssDropdown(!omOssDropdown);
-
-  return (
-    <header>
-      <div className="navbar-container">
-        <Link to="/" className="logo">
-          <h1>YOUR LOGO</h1>
-        </Link>
-        <nav className="nav-links">
-          {/* Tävlingar Dropdown */}
-          <div className={`nav-dropdown ${tavlingarDropdown ? 'active' : ''}`}>
-            <button className="nav-dropdown-toggle" onClick={toggleTavlingarDropdown}>
-              Tävlingar
-            </button>
-            <div className="nav-dropdown-menu">
-              <Link to="/ulricehamn" className="nav-dropdown-item">Ulricehamn</Link>
-              <Link to="/salen" className="nav-dropdown-item">Sälen</Link>
-              <Link to="/hemsedal" className="nav-dropdown-item">Hemsedal</Link>
-              <Link to="/kolmarden" className="nav-dropdown-item">Kolmården</Link>
-              <Link to="/aim-challenge" className="nav-dropdown-item">Aim Challenge</Link>
-              <Link to="/tripplen" className="nav-dropdown-item">Tripplen</Link>
-              <Link to="/resultat" className="nav-dropdown-item">Resultat</Link>
+    return (
+        <div className="navbar set-03 flex flex_j_SA MaxWH location font_white">
+            <div className="navim MaxWH location">
+                <img src="/AimRV/images/logos/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
             </div>
-          </div>
+            <div className="navbside MaxWH location flex flex_j_SA">
+                {/* Drop Button */}
+                <div className="navbbutton flex flex_j_SA flex_col MaxWH location">
+                    <button className="navbbutton flex flex_j_SA flex_col MaxWH location button font_blue" onClick={() => setDropOpen1(!dropOpen1)}>
+                        Tävlingar
+                    </button>
+                    {dropOpen1 && (
+                        <div className="drop-down">
+                            <Link to="/page1" className="drop-item">TÄVLINGAR</Link>
+                            <Link to="/page2" className="drop-item">ULRICEHAMN</Link>
+                            <Link to="/page3" className="drop-item">SÄLEN</Link>
+                            <Link to="/page3" className="drop-item">HEMSEDAL</Link>
+                            <Link to="/page3" className="drop-item">KOLMÅRDEN</Link>
+                            <Link to="/page3" className="drop-item">PAIM CHALLENGE TRIPPELN</Link>
+                            <Link to="/page3" className="drop-item">RESULTAT</Link>
+                            <Link to="/page3" className="drop-item">GALLERI</Link>
+                        </div>
+                    )}
+                </div>
+                <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <a href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f">Anmälan</a>
+                </div>
+                <div className="navbbutton flex flex_j_SA flex_col MaxWH location">
+                    <button className="navbbutton MaxWH location button font_blue" onClick={() => setDropOpen2(!dropOpen2)}>
+                        Om oss
+                    </button>
+                    {dropOpen2 && (
+                        <div className="drop-down">
+                            <Link to="/page1" className="drop-item">Om oss</Link>
+                            <Link to="/page2" className="drop-item">Regler</Link>
+                            <Link to="/page3" className="drop-item">FAQ</Link>
+                            <Link to="/page3" className="drop-item">Historien om AIM</Link>
+                        </div>
+                    )}
+                </div>
 
-          {/* Om Oss Dropdown */}
-          <div className={`nav-dropdown ${omOssDropdown ? 'active' : ''}`}>
-            <button className="nav-dropdown-toggle" onClick={toggleOmOssDropdown}>
-              Om oss
-            </button>
-            <div className="nav-dropdown-menu">
-              <Link to="/om-oss" className="nav-dropdown-item">Om oss</Link>
-              <Link to="/regler" className="nav-dropdown-item">Regler</Link>
-              <Link to="/faq" className="nav-dropdown-item">FAQ</Link>
-              <Link to="/aim-challenge-historia" className="nav-dropdown-item">Aim Challenge Historia</Link>
+                <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <Link to="#">Sponsorer</Link>
+                </div>
+                <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <Link to="#">Senaste nytt</Link>
+                </div>
+                <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <Link to="#">Kontakta oss</Link>
+                </div>
+                <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <a href="#">SV|NO|EN</a>
+                </div>
             </div>
-          </div>
-
-          {/* Other Links */}
-          <Link to="/contact" className="nav-item">Contact</Link>
-        </nav>
-      </div>
-    </header>
-  );
+        </div>
+    );
 };
 
 export default Navbar;

@@ -1,0 +1,24 @@
+
+  .drop-button {
+    cursor: pointer;
+    color: rgb(56, 76, 135) !important;
+  }
+  
+  .drop-down {
+    background-color: #B0C4DE;
+    min-width: 100px;
+    border-radius: 20px; /* Rounded corners */
+  }
+  
+  .drop-item {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .drop-item:hover {
+    background: #f0f0f0;
+    border-radius: 20px; /* Rounded corners */
+  }
+  

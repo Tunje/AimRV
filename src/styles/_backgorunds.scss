@@ -19,7 +19,7 @@
     background-color: rgb(56, 76, 135);
 }
 .simple-background {
-    background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,4 +31,32 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.ulricehamn-bg {
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.salen-bg {
+    background: url('/images/AIM_Salen_2024_AnkiGrothe_45cm_300dpi_049.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hemsedal-bg {
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.kolmarden-bg {
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

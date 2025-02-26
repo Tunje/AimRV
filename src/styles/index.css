@@ -121,56 +121,54 @@
 
 .grid-item {
   flex: 1;
-  text-align: center; /* Center the content inside each grid item */
+  text-align: center;
 }
 
 .footer-heading {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  text-align: center; /* Ensure the heading is centered */
+  text-align: center;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  width: 100%;
-}
-
-.logo-box {
-  display: flex;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 20px;
   justify-content: center;
-  align-items: center;
+  padding: 20px;
+}
+
+.sponsor-logo,
+.partner-logo {
+  width: 200px;
   height: 100px;
-  background-color: #555;
-  color: white;
-  font-size: 14px;
   border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.2s ease-in-out;
 }
 
-.sponsor-box {
-  background-color: #6a4cff;
-}
-
-.partner-box {
-  background-color: #f39c12;
+.sponsor-logo:hover,
+.partner-logo:hover {
+  transform: scale(1.05);
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #444;
-  padding-top: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: nowrap;
 }
 
 .social-icons {
-  font-size: 1.5rem;
-}
-
-.icon {
-  margin-right: 15px;
-  cursor: pointer;
+  min-width: 200px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .trademark {
@@ -207,41 +205,6 @@
   min-height: 25px;
   min-width: 100px;
   max-width: 100px;
-}
-
-/* Dropdown container, not to interfere with other nav items */
-.nav-dropdown {
-  position: relative; /* This helps position the dropdown menu properly */
-}
-
-/* Initially hide the dropdown menu */
-.nav-dropdown-menu {
-  display: none; /* Hide the menu by default */
-  position: absolute;
-  top: 100%; /* Position the dropdown below the button */
-  left: 0;
-  background-color: white; /* Background color */
-  border: 1px solid #ddd; /* Border for styling */
-  min-width: 200px; /* Width of the dropdown */
-  z-index: 2000; /* Ensure it appears above other content */
-}
-
-/* Show the dropdown when active */
-.nav-dropdown.active .nav-dropdown-menu {
-  display: block; /* Display dropdown when the parent has 'active' class */
-}
-
-/* Basic styling for the items in the dropdown */
-.nav-dropdown-item {
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  display: block;
-}
-
-/* Hover effect for the dropdown items */
-.nav-dropdown-item:hover {
-  background-color: #f0f0f0;
 }
 
 .page_01 {
@@ -304,7 +267,7 @@
 }
 
 .simple-background {
-  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -318,10 +281,37 @@
   background-attachment: fixed;
 }
 
+.ulricehamn-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.salen-bg {
+  background: url("/images/AIM_Salen_2024_AnkiGrothe_45cm_300dpi_049.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hemsedal-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kolmarden-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Base button style */
 .button {
   background-color: #B0C4DE; /* Light grayish blue */
-  color: #fff; /* Text color */
   border: none; /* No border */
   border-radius: 20px; /* Rounded corners */
   font-size: 16px; /* Text size */
@@ -352,6 +342,29 @@
   background-color: #A3B8CC; /* Slightly brighter grayish blue */
 }
 
+.drop-button {
+  cursor: pointer;
+  color: rgb(56, 76, 135) !important;
+}
+
+.drop-down {
+  background-color: #B0C4DE;
+  min-width: 100px;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.drop-item {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.drop-item:hover {
+  background: #f0f0f0;
+  border-radius: 20px; /* Rounded corners */
+}
+
 body {
   width: 100vw;
   margin: 0 auto;
@@ -368,7 +381,7 @@ p {
   padding: 0;
 }
 
-.location-1 {
+.location {
   border: #c37272;
   border-width: 3px;
   border-style: solid;

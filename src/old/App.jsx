@@ -4,33 +4,6 @@ import './styles/java/scripts.js';
 function App() {
         return (
             <div className="flex flex_col MaxWH location">
-                {/* Navbar */}
-                <div className="navbar set-03 flex flex_j_SA MaxWH location">
-                    <div className="navim MaxWH location"></div>
-                    <div className="navbside MaxWH location flex flex_j_SA">
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">tävlingar</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f">Anmälan</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">Om oss</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">Sponsorer</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">Senaste nytt</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">kontakta oss</a>
-                        </div>
-                        <div className="navbbutton flex flex_j_SA MaxWH location">
-                            <a href="#">SV|NO|EN</a>
-                        </div>
-                    </div>
-                </div>
                 {/* Navbar end, pages start */}
                 <section id="page_01" className="page_01 dynamic-background flex flex_col flex_j_E MaxWH location">
                     <div className=" trans-background page_01box flex flex_col flex_j_SA MaxWH">

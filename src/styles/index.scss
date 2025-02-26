@@ -6,7 +6,7 @@
 @import '_pages.scss';
 @import '_backgorunds.scss';
 @import '_buttons.scss';
-
+@import 'dropdown.scss';
 
 body{
     width: 100vw;
@@ -21,7 +21,7 @@ p{
     margin: 0;
     padding: 0;
 }
-.location-1{
+.location{
     border: #c37272;
     border-width: 3px;
     border-style: solid;

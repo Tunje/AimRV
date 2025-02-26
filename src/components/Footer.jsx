@@ -1,93 +1,56 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import './styles/index.js';
-import './styles/java/scripts.js';
+import React from "react";
+import { Link } from "react-router-dom";
+import '../styles/index.js';
+import '../styles/java/scripts.js';
+import '../styles/index.css';
 
-const Home = () => {
-  return (
-    <div className="flex flex_col MaxWH location">
-      <section id="page_01" className="page_01 dynamic-background flex flex_col flex_j_E MaxWH location">
-        <div className="trans-background page_01box flex flex_col flex_j_SA MaxWH">
-          <p className="font_blue fonts_medium">MULTISPORT FÖR ALLA</p>
-          <p className="font_blue fonts_large">MULTISPORT SEDAN 2004</p>
-        </div>
-      </section>
+const Footer = () => {
+    return (
+        <div className="flex flex_col MaxWH location">
+            {/* Import Navbar to be displayed at the top of Footer */}
+            {/* <Navbar /> */}
 
-      <section id="page_02" className="page_02 flex flex_j_E MaxWH location">
-        <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-          <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
-            <p className="font_blue fonts_medium_B">ULRICEHAMN</p>
-            <p className="font_blue fonts_medium">datum insert</p>
-          </div>
-          <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-            <p className="location button-2">Läs mer</p>
-          </div>
-        </div>
-        <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-          <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
-            <p className="font_blue fonts_medium_B">SÄLEN</p>
-            <p className="font_blue fonts_medium">datum insert</p>
-          </div>
-          <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-            <p className="location button-2">Läs mer</p>
-          </div>
-        </div>
-        <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-          <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
-            <p className="font_blue fonts_medium_B">HEMSEDAL</p>
-            <p className="font_blue fonts_medium">datum insert</p>
-          </div>
-          <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-            <p className="location button-2">Läs mer</p>
-          </div>
-        </div>
-        <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-          <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
-            <p className="font_blue fonts_medium_B">KOLMÅRDEN</p>
-            <p className="font_blue fonts_medium">datum insert</p>
-          </div>
-          <div className="page_02top flex flex_col flex_j_SA MaxWH">
-            <p className="location button-2">Läs mer</p>
-          </div>
-        </div>
-      </section>
+            {/* Footer Content */}
+            <footer className="footer set-03">
+                <div className="container">
+                    <div className="footer-grid">
+                        <div className="grid-item sponsors">
+                            <h3 className="footer-heading">Sponsors</h3>
+                            <div className="grid">
+                                <img src="/AimRV/images/sponsors/Artboard 1@4x.png" alt="Artboard" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Camelbak_vit.svg" alt="Camelbak" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Hedghog_vit.svg" alt="Hedghog" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Kona_vit.png" alt="Kona" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Mareld_svart.svg" alt="Mareld" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/ODD_white_RGB.png" alt="ODD" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Oofos.png" alt="Oofos" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Ortovox_svart.svg" alt="Ortovox" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/UD Logo.png" alt="UD" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/Upplev.png" alt="Upplev Norrköping" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/holdut_logo_sort_1.png" alt="Hold ut" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/h%C3%A4llmark logga sv_v.svg" alt="Hällmark" className="sponsor-logo" />
+                                <img src="/AimRV/images/sponsors/injinji_black.svg" alt="Injinji" className="sponsor-logo" />
+                            </div>
+                        </div>
+                        <div className="grid-item partners">
+                            <h3 className="footer-heading">Partners</h3>
+                            <div className="grid">
+                            </div>
+                        </div>
+                    </div>
 
-      <section id="page_03" className="page_02 simple-background dynamic-background flex flex_col flex_j_SA MaxWH location">
-        <div className="page_01box flex flex_col flex_j_SA MaxWH font_white">
-          <p className="font_white fonts_huge">SKISTARSHOP.COM*</p>
-          <p className="font_white fonts_large">OFFICIELL AIM CHALLENGE BUTIK</p>
+                    <div className="footer-bottom">
+                        <p className="trademark">&copy; 2025 Aimchallenge</p>
+                        <div className="social-icons flex flex_j_SA location font_white">
+                            <a href="https://www.facebook.com/aimchallenge/" className="fa fa-facebook font_white"></a>
+                            <a href="https://www.instagram.com/aimchallenge/" className="fa fa-instagram font_white"></a>
+                            <a href="https://vimeo.com/user45220061" className="fa fa-credit-card font_white"></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-      </section>
-
-      <section id="page_04" className="page_02 locked-background flex flex_j_SA MaxWH location">
-        <div className="page_03box flex flex_col trans-background flex flex_j_SA MaxWH">
-          <p className="font_blue fonts_large">VAD ÄR AIM CHALLENGE?</p>
-          <p className="font_blue fonts_medium">
-            AIM Challenge är en multisport tävling som passar för alla. Lag på två personer ska under 6 timmar ta så många
-            kontroller som möjligt utav 60 utplacerade.
-          </p>
-          <p className="button-2">Läs mer</p>
-        </div>
-        <div className="page_03box flex flex_col pad flex_j_SA MaxWH">
-          <div></div>
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
-    </Router>
-  );
-};
-
-export default App;
+export default Footer;
