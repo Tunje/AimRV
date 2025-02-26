@@ -1,27 +1,41 @@
-let retryTimeout;
-let colorInterval;
+document.addEventListener("DOMContentLoaded", function () {
+    let retryTimeout;
+    let imageInterval;
 
-function changeBackgroundColor() {
-    const element = document.querySelector('.dynamic-background');
-    if (!element) {
-        retryTimeout = setTimeout(changeBackgroundColor, 100); // Retry if element is not found
-        return; // Exit if the element is not found
+    function changeBackgroundImage() {
+        const element = document.querySelector('.dynamic-background');
+        if (!element) {
+            retryTimeout = setTimeout(changeBackgroundImage, 100);
+            return;
+        }
+
+        clearTimeout(retryTimeout);
+
+        const images = [
+            "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg",
+            "/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg",
+            "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_113.jpg",
+            "/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
+        ];
+        let index = 0;
+
+        clearInterval(imageInterval);
+
+        imageInterval = setInterval(() => {
+            // Fade out the current background image
+            element.style.transition = "opacity 1s ease-in-out"; // Smooth transition for opacity
+            element.style.opacity = 0;
+
+            // After fade-out finishes, change the image and fade-in the new one
+            setTimeout(() => {
+                element.style.backgroundImage = `url(${images[index]})`;
+                element.style.opacity = 1; // Fade-in the new image
+            }, 1000); // Match the fade-out duration with this timeout
+
+            // Move to the next image
+            index = (index + 1) % images.length;
+        }, 5000); // Change background every 5 seconds
     }
 
-    clearTimeout(retryTimeout);
-
-    const colors = ['#4A6E9D', '#6B8E23', '#A0522D', '#B0B0B0'];
-    let index = 0;
-
-    clearInterval(colorInterval); // Clear any existing interval
-
-    colorInterval = setInterval(() => {
-        element.style.backgroundColor = colors[index];
-        index = (index + 1) % colors.length; // Cycle through colors
-
-        // No need for unlocking logic if you want continuous cycling
-    }, 5000); // Change color every 5 seconds
-}
-
-// Call the function to start the timer
-changeBackgroundColor();
+    changeBackgroundImage();
+});

@@ -1,9 +1,13 @@
-.dynamic-background{
-    background-color: #6B8E23;
-    transition: background-color 0.5s ease;
+.dynamic-background {
+    background-image: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg');
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transition: opacity 1s ease-in-out; /* Smooth fade transition */
+    opacity: 1; /* Fully visible by default */
 }
 .trans-background{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 .set-01{
     background-color: rgb(42, 118, 12);
@@ -12,5 +16,19 @@
     background-color: rgb(20, 164, 56);
 }
 .set-03{
-    background-color: rgb(92, 192, 238);
+    background-color: rgb(56, 76, 135);
+}
+.simple-background {
+    background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.locked-background {
+    background-image: url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

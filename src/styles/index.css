@@ -53,18 +53,36 @@
 
 .fonts {
   font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fonts_huge {
+  font-size: 96px;
+  font-weight: bold;
+  line-height: 1;
 }
 .fonts_large {
   font-size: 64px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 .fonts_medium {
   font-size: 26px;
+  font-weight: normal;
+  line-height: 1.4;
+}
+.fonts_medium_B {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.4;
 }
 .fonts_small {
   font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
 }
 .fonts_alt {
   letter-spacing: 8px;
+  font-weight: normal;
 }
 .fonts_other {
   font-family: "Aleo", serif;
@@ -74,8 +92,15 @@
   text-decoration: none;
 }
 
+.font_white {
+  color: white;
+}
+
+.font_blue {
+  color: rgb(56, 76, 135);
+}
+
 .footer {
-  background-color: #333;
   color: white;
   padding: 20px;
   width: 100%;
@@ -219,12 +244,16 @@
 }
 
 .dynamic-background {
-  background-color: #6B8E23;
-  transition: background-color 0.5s ease;
+  background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg");
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+  opacity: 1; /* Fully visible by default */
 }
 
 .trans-background {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .set-01 {
@@ -236,13 +265,63 @@
 }
 
 .set-03 {
-  background-color: rgb(92, 192, 238);
+  background-color: rgb(56, 76, 135);
+}
+
+.simple-background {
+  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.locked-background {
+  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Base button style */
+.button {
+  background-color: #B0C4DE; /* Light grayish blue */
+  color: #fff; /* Text color */
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #A3B8CC; /* Slightly brighter grayish blue */
+}
+
+/* Base button style */
+.button-2 {
+  background-color: #B0C4DE; /* Light grayish blue */
+  color: rgb(56, 76, 135);
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  padding: 5px 15px; /* Increase padding for a larger button */
+  margin: 10px; /* Add margin to space it out */
+}
+
+/* Hover effect */
+.button-2:hover {
+  background-color: #A3B8CC; /* Slightly brighter grayish blue */
 }
 
 body {
   width: 100vw;
   margin: 0 auto;
   font-family: "Josefin Sans", sans-serif;
+  color: rgb(56, 76, 135);
 }
 
 p {
@@ -254,7 +333,7 @@ p {
   padding: 0;
 }
 
-.location {
+.location-1 {
   border: #c37272;
   border-width: 3px;
   border-style: solid;

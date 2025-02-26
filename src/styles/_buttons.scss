@@ -1,0 +1,32 @@
+/* Base button style */
+.button {
+    background-color: #B0C4DE; /* Light grayish blue */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #A3B8CC; /* Slightly brighter grayish blue */
+}
+/* Base button style */
+.button-2 {
+    background-color: #B0C4DE; /* Light grayish blue */
+    color: rgb(56, 76, 135);
+    border: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    padding: 5px 15px; /* Increase padding for a larger button */
+    margin: 10px; /* Add margin to space it out */
+}
+
+/* Hover effect */
+.button-2:hover {
+    background-color: #A3B8CC; /* Slightly brighter grayish blue */
+}
