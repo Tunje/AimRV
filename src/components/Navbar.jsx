@@ -12,7 +12,9 @@ const Navbar = () => {
     return (
         <div className="navbar set-03 flex flex_j_SA MaxWH location font_white">
             <div className="navim MaxWH location">
-                <img src="/AimRV/images/logos/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
+                <Link to="/">
+                    <img src="/AimRV/images/logos/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
+                </Link>
             </div>
             <div className="navbside MaxWH location flex flex_j_SA">
                 {/* Drop Button */}
@@ -22,7 +24,7 @@ const Navbar = () => {
                     </button>
                     {dropOpen1 && (
                         <div className="drop-down">
-                            <Link to="/page1" className="drop-item">TÄVLINGAR</Link>
+                            <Link to="/competitions" className="drop-item">TÄVLINGAR</Link>
                             <Link to="/page2" className="drop-item">ULRICEHAMN</Link>
                             <Link to="/page3" className="drop-item">SÄLEN</Link>
                             <Link to="/page3" className="drop-item">HEMSEDAL</Link>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Page = () => {
+const Pages = () => {
     return (
         <div className="flex flex_col MaxWH location">
-            <section id="page_01" className="page_01 simple-background flex flex_col flex_j_E MaxWH location">
+            <section id="page_01" className="page_01 simple-background dynamic-background flex flex_col flex_j_E MaxWH location">
                 <div className="trans-background page_01box flex flex_col flex_j_SA MaxWH">
                     <p className="font_blue fonts_medium">MULTISPORT FÖR ALLA</p>
                     <p className="font_blue fonts_large">MUTLISPORT SEDAN 2004</p>
@@ -70,4 +70,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Pages;
