@@ -8,6 +8,10 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Pages from './components/Pages';
 import Competitions from './components/Competitions';
+import Ulricehamn from './components/Ulricehamn';
+import Salen from './components/Salen';
+import Hemsedal from './components/Hemsedal';
+import Kolmarden from './components/Kolmarden';
 
 const App = () => {
     return (
@@ -17,6 +21,10 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Pages />} />
                     <Route path="/competitions" element={<Competitions />} />
+                    <Route path="/ulricehamn" element={<Ulricehamn />} />
+                    <Route path="/salen" element={<Salen />} />
+                    <Route path="/hemsedal" element={<Hemsedal />} />
+                    <Route path="/kolmarden" element={<Kolmarden />} />
                 </Routes>
                 <Footer />
             </div>

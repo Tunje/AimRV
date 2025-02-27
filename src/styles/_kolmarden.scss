@@ -1,0 +1,74 @@
+.kolmarden-section {
+    height: 90vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.kolmarden-content {
+    max-width: 45.5%;
+    padding: 2rem;
+    z-index: 1;
+    position: relative;
+}
+
+.trans-background {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.kolmarden-spacer {
+    max-width: 50%;
+}
+
+.kolmarden-button {
+    background-color: rgb(56, 76, 135);
+    width: 80%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.kolmarden-button:hover {
+    background-color: rgb(79, 99, 158);
+}
+
+.kolmarden-button-section {
+    height: 6vh;
+    width: 100vw;
+}
+
+.kolmarden-button-align {
+    margin-top: 1rem;
+}
+
+.kolmarden-time-entry {
+    margin-left: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.kolmarden-text-block {
+    margin: 1.5rem 0;
+    
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .fonts_small {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.kolmarden-link {
+    color: rgb(56, 76, 135);
+    text-decoration: none;
+    display: inline-block;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}

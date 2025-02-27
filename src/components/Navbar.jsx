@@ -25,10 +25,10 @@ const Navbar = () => {
                     {dropOpen1 && (
                         <div className="drop-down">
                             <Link to="/competitions" className="drop-item">TÄVLINGAR</Link>
-                            <Link to="/page2" className="drop-item">ULRICEHAMN</Link>
-                            <Link to="/page3" className="drop-item">SÄLEN</Link>
-                            <Link to="/page3" className="drop-item">HEMSEDAL</Link>
-                            <Link to="/page3" className="drop-item">KOLMÅRDEN</Link>
+                            <Link to="/ulricehamn" className="drop-item">ULRICEHAMN</Link>
+                            <Link to="/salen" className="drop-item">SÄLEN</Link>
+                            <Link to="/hemsedal" className="drop-item">HEMSEDAL</Link>
+                            <Link to="/kolmarden" className="drop-item">KOLMÅRDEN</Link>
                             <Link to="/page3" className="drop-item">PAIM CHALLENGE TRIPPELN</Link>
                             <Link to="/page3" className="drop-item">RESULTAT</Link>
                             <Link to="/page3" className="drop-item">GALLERI</Link>

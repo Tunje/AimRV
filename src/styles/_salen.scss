@@ -1,0 +1,59 @@
+.salen-section {
+    height: 90vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.salen-content {
+    max-width: 45.5%;
+    padding: 2rem;
+    z-index: 1;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.salen-spacer {
+    max-width: 50%;
+}
+
+.salen-button {
+    background-color: rgb(56, 76, 135);
+    width: 80%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.salen-button:hover {
+    background-color: rgb(79, 99, 158);
+}
+
+.salen-button-section {
+    height: 6vh;
+    width: 100vw;
+}
+
+.salen-button-align {
+    margin-top: 1rem;
+}
+
+.salen-time-entry {
+    margin-left: 1rem;
+    display: block;
+}
+
+.salen-text-block {
+    margin: 1.5rem 0;
+}
+
+.salen-link {
+    color: rgb(56, 76, 135);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    display: inline-block;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}

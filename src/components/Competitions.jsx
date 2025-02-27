@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Competitions = () => {
     return (
@@ -11,7 +12,7 @@ const Competitions = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/ulricehamn" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
                 <div className="comp_card simple-background flex flex_col flex_j_SB MaxWH location" style={{ width: '50%', height: '100%' }}>
@@ -20,7 +21,7 @@ const Competitions = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/salen" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@ const Competitions = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/hemsedal" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
                 <div className="comp_card simple-background flex flex_col flex_j_SB MaxWH location" style={{ width: '50%', height: '100%' }}>
@@ -40,7 +41,7 @@ const Competitions = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/kolmarden" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
             </div>

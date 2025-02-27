@@ -100,6 +100,441 @@
   color: rgb(56, 76, 135);
 }
 
+.navbar {
+  max-width: 1400px;
+  max-height: 100px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 1000;
+}
+
+.navim {
+  max-height: 100px;
+  min-height: 100px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.navbside {
+  max-height: 76px;
+  min-height: 76px;
+  min-width: 800px;
+  max-width: 800px;
+}
+
+.navbbutton {
+  max-height: 25px;
+  min-height: 25px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+/* Base button style */
+.button {
+  background-color: #B0C4DE; /* Light grayish blue */
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #A3B8CC; /* Slightly brighter grayish blue */
+}
+
+/* Base button style */
+.button-2 {
+  background-color: #B0C4DE; /* Light grayish blue */
+  color: rgb(56, 76, 135);
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  padding: 5px 15px; /* Increase padding for a larger button */
+  margin: 10px; /* Add margin to space it out */
+}
+
+/* Hover effect */
+.button-2:hover {
+  background-color: #A3B8CC; /* Slightly brighter grayish blue */
+}
+
+.drop-button {
+  cursor: pointer;
+  color: rgb(56, 76, 135) !important;
+}
+
+.drop-down {
+  background-color: #B0C4DE;
+  min-width: 100px;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.drop-item {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.drop-item:hover {
+  background: #f0f0f0;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.dynamic-background {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 90vh;
+  width: 100vw;
+}
+
+.trans-background {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.set-01 {
+  background-color: rgb(42, 118, 12);
+}
+
+.set-02 {
+  background-color: rgb(20, 164, 56);
+}
+
+.set-03 {
+  background-color: rgb(56, 76, 135);
+}
+
+.ulric-button-section-bg {
+  background: rgb(56, 76, 135);
+  width: 100vw;
+}
+
+.set-04 {
+  background-color: rgb(56, 76, 135);
+}
+
+.simple-background {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.locked-background {
+  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: sticky;
+  background-attachment: fixed;
+}
+
+.ulricehamn-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.salen-bg {
+  background: url("/images/AIM_Salen_2024_AnkiGrothe_45cm_300dpi_049.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hemsedal-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kolmarden-bg {
+  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ulric-bg-1 {
+  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ulric-bg-2 {
+  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ulric-bg-3 {
+  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.salen-bg-1 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.salen-bg-2 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.salen-bg-3 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.salen-button-section-bg {
+  background: rgb(56, 76, 135);
+  width: 100vw;
+}
+
+.hemsedal-bg-1 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hemsedal-bg-2 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hemsedal-bg-3 {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hemsedal-button-section-bg {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.page_01box {
+  padding: 2rem;
+}
+
+.ulric-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.ulric-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.ulric-spacer {
+  max-width: 50%;
+}
+
+.ulric-button {
+  background-color: rgb(56, 76, 135);
+  width: 80%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.ulric-button:hover {
+  background-color: rgb(79, 99, 158);
+}
+
+.ulric-button-section {
+  height: 6vh;
+}
+
+.ulric-button-align {
+  margin-top: 1rem;
+}
+
+.ulric-time-entry {
+  margin-left: 1rem;
+  display: block;
+}
+
+.ulric-text-block {
+  margin: 1.5rem 0;
+}
+
+.ulric-link {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+.ulric-link:hover {
+  text-decoration: underline;
+}
+
+.salen-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.salen-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.salen-spacer {
+  max-width: 50%;
+}
+
+.salen-button {
+  background-color: rgb(56, 76, 135);
+  width: 80%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.salen-button:hover {
+  background-color: rgb(79, 99, 158);
+}
+
+.salen-button-section {
+  height: 6vh;
+  width: 100vw;
+}
+
+.salen-button-align {
+  margin-top: 1rem;
+}
+
+.salen-time-entry {
+  margin-left: 1rem;
+  display: block;
+}
+
+.salen-text-block {
+  margin: 1.5rem 0;
+}
+
+.salen-link {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+.salen-link:hover {
+  text-decoration: underline;
+}
+
+.hemsedal-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.hemsedal-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.hemsedal-spacer {
+  max-width: 50%;
+}
+
+.hemsedal-button {
+  background-color: rgb(56, 76, 135);
+  width: 80%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.hemsedal-button:hover {
+  background-color: rgb(79, 99, 158);
+}
+
+.hemsedal-button-section {
+  height: 6vh;
+  width: 100vw;
+}
+
+.hemsedal-button-align {
+  margin-top: 1rem;
+}
+
+.hemsedal-time-entry {
+  margin-left: 1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hemsedal-text-block {
+  margin: 1.5rem 0;
+}
+
+.hemsedal-text-block p.fonts_small {
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hemsedal-link {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  display: inline-block;
+}
+.hemsedal-link:hover {
+  text-decoration: underline;
+}
+
 .footer {
   color: white;
   padding: 20px;
@@ -175,38 +610,6 @@
   font-size: 0.9rem;
 }
 
-.navbar {
-  max-width: 1400px;
-  max-height: 100px;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  z-index: 1000;
-}
-
-.navim {
-  max-height: 100px;
-  min-height: 100px;
-  min-width: 150px;
-  max-width: 150px;
-}
-
-.navbside {
-  max-height: 76px;
-  min-height: 76px;
-  min-width: 800px;
-  max-width: 800px;
-}
-
-.navbbutton {
-  max-height: 25px;
-  min-height: 25px;
-  min-width: 100px;
-  max-width: 100px;
-}
-
 .page_01 {
   width: 100%;
   min-height: 700px;
@@ -241,105 +644,60 @@
   min-height: 500px;
 }
 
-.dynamic-background {
-  background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg");
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: opacity 1s ease-in-out; /* Smooth fade transition */
-  opacity: 1; /* Fully visible by default */
+.ulric-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
 }
 
-.trans-background {
-  background-color: rgba(255, 255, 255, 0.7);
+.ulric-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
 }
 
-.set-01 {
-  background-color: rgb(42, 118, 12);
+.ulric-spacer {
+  max-width: 50%;
 }
 
-.set-02 {
-  background-color: rgb(20, 164, 56);
-}
-
-.set-03 {
+.ulric-button {
   background-color: rgb(56, 76, 135);
+  width: 80%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
 }
 
-.simple-background {
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.ulric-button:hover {
+  background-color: rgb(79, 99, 158);
 }
 
-.locked-background {
-  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.ulric-button-section {
+  height: 6vh;
 }
 
-.ulricehamn-bg {
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.ulric-button-align {
+  margin-top: 1rem;
 }
 
-.salen-bg {
-  background: url("/images/AIM_Salen_2024_AnkiGrothe_45cm_300dpi_049.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.ulric-time-entry {
+  margin-left: 1rem;
+  display: block;
 }
 
-.hemsedal-bg {
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.ulric-text-block {
+  margin: 1.5rem 0;
 }
 
-.kolmarden-bg {
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Base button style */
-.button {
-  background-color: #B0C4DE; /* Light grayish blue */
-  border: none; /* No border */
-  border-radius: 20px; /* Rounded corners */
-  font-size: 16px; /* Text size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-/* Hover effect */
-.button:hover {
-  background-color: #A3B8CC; /* Slightly brighter grayish blue */
-}
-
-/* Base button style */
-.button-2 {
-  background-color: #B0C4DE; /* Light grayish blue */
+.ulric-link {
   color: rgb(56, 76, 135);
-  border: none; /* No border */
-  border-radius: 20px; /* Rounded corners */
-  font-size: 16px; /* Text size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-  padding: 5px 15px; /* Increase padding for a larger button */
-  margin: 10px; /* Add margin to space it out */
+  text-decoration: none;
+  margin-top: 0.5rem;
+  display: inline-block;
 }
-
-/* Hover effect */
-.button-2:hover {
-  background-color: #A3B8CC; /* Slightly brighter grayish blue */
+.ulric-link:hover {
+  text-decoration: underline;
 }
 
 .drop-button {
@@ -381,7 +739,7 @@ p {
   padding: 0;
 }
 
-.location {
+.location-1 {
   border: #c37272;
   border-width: 3px;
   border-style: solid;

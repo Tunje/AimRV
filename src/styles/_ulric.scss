@@ -1,0 +1,55 @@
+.ulric-section {
+    height: 90vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.ulric-content {
+    max-width: 45.5%;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.ulric-spacer {
+    max-width: 50%;
+}
+
+.ulric-button {
+    background-color: rgb(56, 76, 135);
+    width: 80%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+.ulric-button:hover {
+    background-color: rgb(79, 99, 158);
+}
+
+.ulric-button-section {
+    height: 6vh;
+}
+
+.ulric-button-align {
+    margin-top: 1rem;
+}
+
+.ulric-time-entry {
+    margin-left: 1rem;
+    display: block;
+}
+
+.ulric-text-block {
+    margin: 1.5rem 0;
+}
+
+.ulric-link {
+    color: rgb(56, 76, 135);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    display: inline-block;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}

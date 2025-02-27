@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Pages = () => {
     return (
@@ -17,7 +18,7 @@ const Pages = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/ulricehamn" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
                 <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
@@ -26,7 +27,7 @@ const Pages = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/salen" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
                 <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
@@ -35,7 +36,7 @@ const Pages = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/hemsedal" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
                 <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
@@ -44,7 +45,7 @@ const Pages = () => {
                         <p className="font_blue fonts_medium">datum insert</p>
                     </div>
                     <div className="page_02top flex flex_col flex_j_SA MaxWH">
-                        <p className="location button-2">Läs mer</p>
+                        <Link to="/kolmarden" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
             </section>
@@ -60,7 +61,7 @@ const Pages = () => {
                 <div className="page_03box flex flex_col trans-background flex flex_j_SA MaxWH">
                     <p className="font_blue fonts_large">VAD ÄR AIM CHALLENGE?</p>
                     <p className="font_blue fonts_medium">AIM Challenge är en multisport tävling som passar för alla. Lag på två personer ska under 6 timmar ta så många kontroller som möjligt utav 60 utplacerade.</p>
-                    <p className="button-2">Läs mer</p>
+                    <Link to="/aim-challenge" className="button-2">Läs mer</Link>
                 </div>
                 <div className="page_03box flex flex_col pad flex_j_SA MaxWH">
                     <div></div>
