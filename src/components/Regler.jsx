@@ -4,8 +4,8 @@ import '../styles/index.css';
 const Regler = () => {
     return (
         <div className="flex flex_col regler-container">
-            {/* Header Section - with locked background instead of dynamic */}
-            <section className="page_01 locked-background flex flex_col flex_j_E regler-header">
+            {/* Header Section - exactly like OmOss */}
+            <section className="page_01 dynamic-background flex flex_col flex_j_E">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <div className="om-oss-title flex flex_j_C flex_a_C">
                         <p className="font_blue fonts_huge font_white">REGLER</p>
@@ -179,9 +179,9 @@ const Regler = () => {
                 </div>
             </section>
 
-            {/* Background Image Section - Using locked-background */}
-            <div className="locked-background" style={{ height: '50vh', width: '100%' }}>
-            </div>
+            {/* Background Image Section - Duplicating the top section from OmOss */}
+            <section className="page_01 dynamic-background flex flex_col flex_j_E">
+            </section>
         </div>
     );
 };
