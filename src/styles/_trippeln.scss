@@ -1,0 +1,26 @@
+.trippeln-section {
+    min-height: 1000vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.trippeln-content {
+    max-width: 45.5%;
+    padding: 2rem;
+    z-index: 1;
+    margin-top: 90vh;
+    margin-bottom: 50vh;
+}
+
+.trippeln-spacer {
+    max-width: 50%;
+}
+
+.trippeln-text-block {
+    margin: 1.5rem 0;
+}
+
+.trippeln-text-block p {
+    margin-bottom: 1rem;
+}

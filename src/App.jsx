@@ -12,6 +12,12 @@ import Ulricehamn from './components/Ulricehamn';
 import Salen from './components/Salen';
 import Hemsedal from './components/Hemsedal';
 import Kolmarden from './components/Kolmarden';
+import Trippeln from './components/Trippeln';
+import TrippelnResults from './components/TrippelnResults';
+import Gallery from './components/Gallery';
+import VideoCarousel from './components/VideoCarousel';
+import OmOss from './components/OmOss';
+import Regler from './components/Regler';
 
 const App = () => {
     return (
@@ -25,6 +31,16 @@ const App = () => {
                     <Route path="/salen" element={<Salen />} />
                     <Route path="/hemsedal" element={<Hemsedal />} />
                     <Route path="/kolmarden" element={<Kolmarden />} />
+                    <Route path="/trippeln" element={<Trippeln />} />
+                    <Route path="/trippeln-results" element={<TrippelnResults />} />
+                    <Route path="/gallery" element={
+                        <>
+                            <Gallery />
+                            <VideoCarousel />
+                        </>
+                    } />
+                    <Route path="/om-oss" element={<OmOss />} />
+                    <Route path="/page2" element={<Regler />} />
                 </Routes>
                 <Footer />
             </div>

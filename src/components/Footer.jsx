@@ -15,7 +15,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="footer-grid">
                         <div className="grid-item sponsors">
-                            <h3 className="footer-heading">Sponsors</h3>
+                            <h3 className="footer-heading" id="sponsors-section">Sponsors</h3>
                             <div className="grid">
                                 <img src="/AimRV/images/sponsors/Artboard 1@4x.png" alt="Artboard" className="sponsor-logo" />
                                 <img src="/AimRV/images/sponsors/Camelbak_vit.svg" alt="Camelbak" className="sponsor-logo" />

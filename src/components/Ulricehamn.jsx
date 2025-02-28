@@ -8,7 +8,7 @@ const Ulricehamn = () => {
                     <p className="font_blue fonts_huge">AIM CHALLENGE ULRICEHAMN</p>
                 </div>
             </section>
-            <section className="ulric-button-section ulric-button-section-bg flex flex_j_C flex_a_C">
+            <section className="ulric-button-section-bg flex flex_j_C flex_a_C">
                 <a href="https://raceid.com/sv/races/12846/about" target="_blank" rel="noopener noreferrer" className="ulric-button trans-background flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>

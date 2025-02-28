@@ -6,19 +6,22 @@ import '../styles/index.css';
 const Kolmarden = () => {
     return (
         <div className="MaxWH location">
-            <section className="page_01 dynamic-background flex flex_col flex_j_E">
+            <div className="set-03" style={{ height: '120px' }}></div>
+            <section className="page_01 kolmarden-bg-1 flex flex_col flex_j_E set-03">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <p className="font_blue fonts_huge">AIM CHALLENGE KOLMÅRDEN</p>
+                    <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 flex flex_s">ANMÄL DIG HÄR</a>
                 </div>
             </section>
-            <section className="kolmarden-button-section kolmarden-button-section-bg flex flex_j_C flex_a_C">
-                <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="kolmarden-button trans-background flex flex_j_C flex_a_C">
+
+            <section className="ulric-button-section-bg flex flex_j_C flex_a_C set-03">
+                <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="ulric-button trans-background flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>
             </section>
 
             {/* Program Section */}
-            <section className="kolmarden-section kolmarden-bg-1 flex flex_j_C flex_a_C">
+            <section className="kolmarden-section kolmarden-bg-2 flex flex_j_C flex_a_C set-03">
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
                     <p className="font_blue fonts_large">PROGRAM</p>
                     <p className="font_blue fonts_medium">PRELIMINÄRT PROGRAM:</p>
@@ -42,7 +45,7 @@ const Kolmarden = () => {
             </section>
 
             {/* Pris Section */}
-            <section className="kolmarden-section kolmarden-bg-2 flex flex_j_C flex_a_C">
+            <section className="kolmarden-section kolmarden-bg-3 flex flex_j_C flex_a_C set-03">
                 <div className="kolmarden-spacer MaxWH"></div>
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
                     <p className="font_blue fonts_large">PRIS</p>
@@ -67,7 +70,7 @@ const Kolmarden = () => {
             </section>
 
             {/* Övernattning och Mat Section */}
-            <section className="kolmarden-section kolmarden-bg-3 flex flex_j_C flex_a_C">
+            <section className="kolmarden-section kolmarden-bg-4 flex flex_j_C flex_a_C set-03">
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
                     <p className="font_blue fonts_large">ÖVERNATTNING OCH MAT</p>
                     <div className="font_blue kolmarden-text-block">

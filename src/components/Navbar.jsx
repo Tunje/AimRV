@@ -9,10 +9,21 @@ const Navbar = () => {
     const [dropOpen1, setDropOpen1] = useState(false);
     const [dropOpen2, setDropOpen2] = useState(false);
 
+    const closeDropdown1 = () => {
+        setDropOpen1(false);
+    };
+
+    const closeDropdown2 = () => {
+        setDropOpen2(false);
+    };
+
     return (
         <div className="navbar set-03 flex flex_j_SA MaxWH location font_white">
             <div className="navim MaxWH location">
-                <Link to="/">
+                <Link to="/" onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = '#/';
+                }}>
                     <img src="/AimRV/images/logos/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
                 </Link>
             </div>
@@ -24,14 +35,14 @@ const Navbar = () => {
                     </button>
                     {dropOpen1 && (
                         <div className="drop-down">
-                            <Link to="/competitions" className="drop-item">TÄVLINGAR</Link>
-                            <Link to="/ulricehamn" className="drop-item">ULRICEHAMN</Link>
-                            <Link to="/salen" className="drop-item">SÄLEN</Link>
-                            <Link to="/hemsedal" className="drop-item">HEMSEDAL</Link>
-                            <Link to="/kolmarden" className="drop-item">KOLMÅRDEN</Link>
-                            <Link to="/page3" className="drop-item">PAIM CHALLENGE TRIPPELN</Link>
-                            <Link to="/page3" className="drop-item">RESULTAT</Link>
-                            <Link to="/page3" className="drop-item">GALLERI</Link>
+                            <Link to="/competitions" onClick={closeDropdown1} className="drop-item">TÄVLINGAR</Link>
+                            <Link to="/ulricehamn" onClick={closeDropdown1} className="drop-item">ULRICEHAMN</Link>
+                            <Link to="/salen" onClick={closeDropdown1} className="drop-item">SÄLEN</Link>
+                            <Link to="/hemsedal" onClick={closeDropdown1} className="drop-item">HEMSEDAL</Link>
+                            <Link to="/kolmarden" onClick={closeDropdown1} className="drop-item">KOLMÅRDEN</Link>
+                            <Link to="/trippeln" onClick={closeDropdown1} className="drop-item">AIM CHALLENGE TRIPPELN</Link>
+                            <Link to="/trippeln-results" onClick={closeDropdown1} className="drop-item">RESULTAT</Link>
+                            <Link to="/gallery" onClick={closeDropdown1} className="drop-item">GALLERI</Link>
                         </div>
                     )}
                 </div>
@@ -44,16 +55,27 @@ const Navbar = () => {
                     </button>
                     {dropOpen2 && (
                         <div className="drop-down">
-                            <Link to="/page1" className="drop-item">Om oss</Link>
-                            <Link to="/page2" className="drop-item">Regler</Link>
-                            <Link to="/page3" className="drop-item">FAQ</Link>
-                            <Link to="/page3" className="drop-item">Historien om AIM</Link>
+                            <Link to="/om-oss" onClick={closeDropdown2} className="drop-item">Om oss</Link>
+                            <Link to="/page2" onClick={closeDropdown2} className="drop-item">Regler</Link>
+                            <Link to="/page3" onClick={closeDropdown2} className="drop-item">FAQ</Link>
+                            <Link to="/page3" onClick={closeDropdown2} className="drop-item">Historien om AIM</Link>
                         </div>
                     )}
                 </div>
 
                 <div className="navbbutton flex flex_j_SA MaxWH location button">
-                    <Link to="#">Sponsorer</Link>
+                    <a href="#sponsors-section" onClick={(e) => {
+                        // Prevent default navigation
+                        e.preventDefault();
+                        
+                        // Find the sponsors section
+                        const sponsorsSection = document.getElementById('sponsors-section');
+                        
+                        // If found, scroll to it
+                        if (sponsorsSection) {
+                            sponsorsSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}>Sponsorer</a>
                 </div>
                 <div className="navbbutton flex flex_j_SA MaxWH location button">
                     <Link to="#">Senaste nytt</Link>

@@ -11,8 +11,8 @@ const Hemsedal = () => {
                     <p className="font_blue fonts_huge">AIM CHALLENGE HEMSEDAL</p>
                 </div>
             </section>
-            <section className="hemsedal-button-section hemsedal-button-section-bg flex flex_j_C flex_a_C">
-                <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="hemsedal-button trans-background flex flex_j_C flex_a_C">
+            <section className="ulric-button-section-bg flex flex_j_C flex_a_C">
+                <a href="https://raceid.com/sv/races/13015/about" target="_blank" rel="noopener noreferrer" className="ulric-button trans-background flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>
             </section>

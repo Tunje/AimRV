@@ -260,15 +260,51 @@
   background-repeat: no-repeat;
 }
 
-.kolmarden-bg {
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+.kolmarden-bg-1 {
+  background: url("/images/Kolmarden_1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+.kolmarden-bg-2 {
+  background: url("/images/Kolmarden_2.jpg") center center/cover no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.kolmarden-bg-3 {
+  background: url("/images/Kolmarden_3.jpg") center center/cover no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.kolmarden-bg-4 {
+  background: url("/images/Kolmarden_4.jpg") center center/cover no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.kolmarden-button-section-bg {
+  background: url("/images/Kolmarden_5.jpg") center center/cover no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .ulric-bg-1 {
-  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -276,7 +312,7 @@
 }
 
 .ulric-bg-2 {
-  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -284,7 +320,7 @@
 }
 
 .ulric-bg-3 {
-  background: url("/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -352,6 +388,12 @@
   background-attachment: fixed;
 }
 
+.trippeln-bg {
+  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 .page_01box {
   padding: 2rem;
 }
@@ -376,9 +418,15 @@
 .ulric-button {
   background-color: rgb(56, 76, 135);
   width: 80%;
-  height: 100%;
+  height: 6vh;
   border: none;
   cursor: pointer;
+}
+
+.ulric-button p {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .ulric-button:hover {
@@ -445,7 +493,6 @@
 
 .salen-button-section {
   height: 6vh;
-  width: 100vw;
 }
 
 .salen-button-align {
@@ -504,7 +551,6 @@
 
 .hemsedal-button-section {
   height: 6vh;
-  width: 100vw;
 }
 
 .hemsedal-button-align {
@@ -533,6 +579,102 @@
 }
 .hemsedal-link:hover {
   text-decoration: underline;
+}
+
+.kolmarden-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.kolmarden-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.trans-background {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.kolmarden-spacer {
+  max-width: 50%;
+}
+
+.kolmarden-button {
+  background-color: rgb(56, 76, 135);
+  width: 80%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.kolmarden-button:hover {
+  background-color: rgb(79, 99, 158);
+}
+
+.kolmarden-button-section {
+  height: 6vh;
+}
+
+.kolmarden-button-align {
+  margin-top: 1rem;
+}
+
+.kolmarden-time-entry {
+  margin-left: 1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.kolmarden-text-block {
+  margin: 1.5rem 0;
+}
+.kolmarden-text-block p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.kolmarden-text-block .fonts_small {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.kolmarden-link {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  display: inline-block;
+}
+.kolmarden-link:hover {
+  text-decoration: underline;
+}
+
+.trippeln-section {
+  height: 90vh;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.trippeln-content {
+  max-width: 45.5%;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.trippeln-spacer {
+  max-width: 50%;
+}
+
+.trippeln-text-block {
+  margin: 1.5rem 0;
+}
+
+.trippeln-text-block p {
+  margin-bottom: 1rem;
 }
 
 .footer {
@@ -664,9 +806,15 @@
 .ulric-button {
   background-color: rgb(56, 76, 135);
   width: 80%;
-  height: 100%;
+  height: 6vh;
   border: none;
   cursor: pointer;
+}
+
+.ulric-button p {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .ulric-button:hover {
