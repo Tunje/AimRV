@@ -1,13 +1,8 @@
 // src/main.js
-// Import React from CDN
-import React from 'https://esm.sh/react@18.2.0';
-import ReactDOM from 'https://esm.sh/react-dom@18.2.0/client';
-
-// Import styles directly with relative path
-import './styles/index.css';
-
-// Import App component
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+import './styles/index.css';
 
 // Handle GitHub Pages redirect for SPA
 // This script checks if we've been redirected to /?/path
@@ -21,9 +16,8 @@ import App from './App.jsx';
 
 const root = document.getElementById('root');
 
-// Use React and ReactDOM
 ReactDOM.createRoot(root).render(
-  React.createElement(React.StrictMode, null, 
-    React.createElement(App)
-  )
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );

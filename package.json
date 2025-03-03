@@ -6,7 +6,7 @@
   "homepage": "https://tunje.github.io/AimRV/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp dist/index.html dist/404.html",
+    "build": "vite build && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html'); require('fs').writeFileSync('dist/.nojekyll', '');\"",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
