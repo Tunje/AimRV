@@ -24,7 +24,7 @@ export const auth = getAuth(app);
 // Initialize Firestore and get a reference to the service
 export const db = getFirestore(app);
 
-// Initialize Firebase Storage
+// Initialize Firebase Storage with CORS settings
 export const storage = getStorage(app);
 
 export default app;

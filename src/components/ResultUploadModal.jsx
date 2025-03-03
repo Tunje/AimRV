@@ -46,9 +46,11 @@ const ResultUploadModal = ({
       const metadata = { 
         contentType: file.type,
         customMetadata: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type'
+          'year': yearState,
+          'category': category,
+          'duration': duration,
+          'location': location,
+          'cors-origin': window.location.origin
         }
       };
       
@@ -58,10 +60,12 @@ const ResultUploadModal = ({
       }
       
       // Upload the file and metadata
-      await uploadBytes(storageRef, file, metadata);
+      const uploadResult = await uploadBytes(storageRef, file, metadata);
+      console.log('Upload successful:', uploadResult);
       
       // Get the download URL
       const downloadURL = await getDownloadURL(storageRef);
+      console.log('Download URL:', downloadURL);
       
       // Create result object
       const resultData = {
@@ -91,7 +95,26 @@ const ResultUploadModal = ({
       
     } catch (error) {
       console.error('Error uploading result:', error);
-      setError(`Upload failed: ${error.message}`);
+      
+      // More detailed error logging
+      if (error.code) {
+        console.error('Error code:', error.code);
+      }
+      
+      if (error.serverResponse) {
+        console.error('Server response:', error.serverResponse);
+      }
+      
+      // Provide more specific error messages based on error type
+      if (error.code === 'storage/unauthorized') {
+        setError('Authentication error: You are not authorized to upload files. Please log in again.');
+      } else if (error.code === 'storage/cors-error') {
+        setError('CORS error: The server rejected the request. Please contact the administrator.');
+      } else if (error.code === 'storage/quota-exceeded') {
+        setError('Storage quota exceeded. Please contact the administrator.');
+      } else {
+        setError(`Upload failed: ${error.message}`);
+      }
     } finally {
       setIsUploading(false);
     }
