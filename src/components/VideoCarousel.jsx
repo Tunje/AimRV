@@ -159,7 +159,7 @@ const VideoCarousel = () => {
                                 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
                                     <video
                                         ref={el => videoRefs.current[index] = el}
-                                        src={video.src}
+                                        src={video.src.replace('/AimRV/', '/videos/')}
                                         style={{
                                             position: 'absolute',
                                             top: 0,
