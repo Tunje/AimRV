@@ -5,7 +5,15 @@
 [build.environment]
   VITE_BASE_PATH = "/"
 
+# Handle SPA routing - this ensures that direct URLs like /login work
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
+
+# Ensure assets are served correctly
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

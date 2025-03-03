@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './styles/java/scripts.js';
 import 'font-awesome/css/font-awesome.min.css';
 import Navbar from './components/Navbar';

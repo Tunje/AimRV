@@ -1,0 +1,6 @@
+# Redirect all routes to index.html for SPA
+/* /index.html 200
+
+# Ensure image paths work
+/images/* /images/:splat 200
+/videos/* /videos/:splat 200
