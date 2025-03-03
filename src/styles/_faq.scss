@@ -1,0 +1,161 @@
+.faq-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.faq-section {
+  width: 100%;
+  padding: 50px 0;
+}
+
+.faq-content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-content {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.faq-heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.faq-question {
+  background-color: rgb(56, 76, 135);
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgb(79, 99, 158);
+  }
+  
+  .question-text {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+  }
+  
+  &.active .icon {
+    transform: rotate(180deg);
+  }
+}
+
+.faq-answer {
+  background-color: rgba(255, 255, 255, 0.05);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 20px;
+  
+  &.open {
+    max-height: 500px;
+    padding: 20px;
+  }
+  
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.faq-category {
+  margin-bottom: 40px;
+}
+
+.faq-category-title {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.faq-contact-text {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+  display: block;
+  
+  a {
+    color: inherit;
+    text-decoration: underline;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Dark and light section styles */
+.faq-dark-section {
+  background-color: rgb(56, 76, 135);
+  color: white;
+  
+  .faq-question {
+    background-color: rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .faq-answer {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.faq-light-section {
+  background-color: white;
+  color: rgb(56, 76, 135);
+  
+  .faq-question {
+    background-color: rgb(56, 76, 135);
+    color: white;
+    
+    &:hover {
+      background-color: rgb(79, 99, 158);
+    }
+  }
+  
+  .faq-answer {
+    background-color: rgba(56, 76, 135, 0.05);
+    color: #333;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faq-content {
+    padding: 0 15px;
+  }
+  
+  .faq-heading {
+    font-size: 1.8rem;
+  }
+  
+  .faq-question .question-text {
+    font-size: 1rem;
+  }
+}

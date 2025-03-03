@@ -10,7 +10,6 @@
     padding: 2rem;
     z-index: 1;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .salen-spacer {
@@ -33,6 +32,12 @@
     height: 6vh;
 }
 
+.salen-button-section-bg {
+    background-color: rgb(56, 76, 135);
+    width: 100vw;
+    height: 10vh;
+}
+
 .salen-button-align {
     margin-top: 1rem;
 }
@@ -44,6 +49,15 @@
 
 .salen-text-block {
     margin: 1.5rem 0;
+    
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .fonts_small {
+        margin-top: 0.5rem;
+    }
 }
 
 .salen-link {

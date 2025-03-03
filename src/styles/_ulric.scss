@@ -18,7 +18,7 @@
 .ulric-button {
     background-color: rgb(56, 76, 135);
     width: 80%;
-    height: 6vh;
+    height: 100%;
     border: none;
     cursor: pointer;
 }
@@ -31,6 +31,12 @@
 
 .ulric-button:hover {
     background-color: rgb(79, 99, 158);
+}
+
+.ulric-button-section-bg {
+    background-color: rgb(56, 76, 135);
+    width: 100vw;
+    height: 10vh;
 }
 
 .ulric-button-section {
@@ -59,4 +65,39 @@
     &:hover {
         text-decoration: underline;
     }
+}
+
+.ulricehamn-top-spacer {
+    height: 120px;
+}
+
+.ulricehamn-section {
+    height: 90vh;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.ulricehamn-content {
+    max-width: 45.5%;
+    padding: 2rem;
+    z-index: 1;
+    position: relative;
+}
+
+.ulricehamn-text-block {
+    margin: 1.5rem 0;
+    
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .fonts_small {
+        margin-top: 0.5rem;
+    }
+}
+
+.ulricehamn-spacer {
+    max-width: 50%;
 }

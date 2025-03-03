@@ -2,7 +2,7 @@
 .button {
     background-color: #B0C4DE; /* Light grayish blue */
     border: none; /* No border */
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 25px; /* Rounded corners */
     font-size: 16px; /* Text size */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
@@ -14,18 +14,55 @@
 }
 /* Base button style */
 .button-2 {
-    background-color: #B0C4DE; /* Light grayish blue */
-    color: rgb(56, 76, 135);
+    background-color: rgb(56, 76, 135); /* Dark blue per user preference */
+    color: white;
     border: none; /* No border */
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 25px; /* Rounded corners */
     font-size: 16px; /* Text size */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    padding: 5px 15px; /* Increase padding for a larger button */
+    padding: 10px 20px; /* Increased padding for a larger button */
     margin: 10px; /* Add margin to space it out */
+    z-index: 20;
+    position: relative;
+    min-width: 120px;
+    min-height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Hover effect */
 .button-2:hover {
-    background-color: #A3B8CC; /* Slightly brighter grayish blue */
+    background-color: rgb(79, 99, 158); /* Light blue per user preference */
+}
+
+/* Global button styles to ensure all buttons have rounded corners */
+button, 
+.btn,
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+a.button,
+a.btn {
+    border-radius: 25px; /* Enforce rounded corners on all button elements */
+    overflow: hidden; /* Ensure content respects the border radius */
+}
+
+/* Override any global styles that might be affecting buttons */
+a.button-2,
+.button-2,
+.location.button-2 {
+    border-radius: 25px;
+    clip-path: none;
+}
+
+// Ensure booking buttons are left-aligned
+.booking-button, 
+.kolmarden-button, 
+.salen-button, 
+.ulricehamn-button, 
+.hemsedal-button,
+[data-textkey*="boka"] {
+  text-align: left !important;
 }

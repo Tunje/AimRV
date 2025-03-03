@@ -1,0 +1,245 @@
+// Editable Text Component Styles
+.editable-text-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  
+  &.admin-mode {
+    // This will make the wrapper position context for the frame
+    position: relative;
+  }
+}
+
+// Frame that appears behind text but in front of background images
+.edit-frame {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dashed rgba(56, 76, 135, 0.7);
+  border-radius: 4px;
+  pointer-events: none; // Allow clicks to pass through
+  z-index: 5; // Above background images but below text
+  background-color: rgba(255, 255, 255, 0.1); // Very subtle white overlay
+}
+
+.editable-text {
+  position: relative;
+  z-index: 20;
+  color: inherit;
+  
+  // Apply centering to large text classes
+  &.fonts_huge, &.fonts_large, &.fonts_big {
+    text-align: center;
+    display: block;
+  }
+  
+  // Center date elements
+  &[data-textkey*="date"], &[data-textkey*="datum"] {
+    text-align: center;
+    display: block;
+  }
+  
+  // Keep small text and action buttons left-aligned
+  &.fonts_small, &.fonts_tiny {
+    text-align: left;
+  }
+  
+  &--non-admin {
+    cursor: default;
+  }
+  
+  &__container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  &__edit-icon {
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: #00a6fb;
+    cursor: pointer;
+  }
+}
+
+.edit-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  z-index: 100;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.edit-button-primary {
+  background-color: rgb(56, 76, 135);
+  color: white;
+}
+
+.edit-button-primary:hover {
+  background-color: rgb(79, 99, 158);
+}
+
+// Modal button styles - IMPORTANT: These are the buttons inside the modal
+.modal-button {
+  display: inline-block !important;
+  position: static !important; /* Not absolute */
+  padding: 8px 16px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  margin: 5px !important;
+  z-index: 10001 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.modal-button-primary {
+  background-color: rgb(56, 76, 135) !important;
+  color: white !important;
+}
+
+.modal-button-primary:hover {
+  background-color: rgb(79, 99, 158) !important;
+}
+
+.modal-button-primary:disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed !important;
+}
+
+.modal-button-secondary {
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.modal-button-secondary:hover {
+  background-color: #e0e0e0 !important;
+}
+
+// Modal styles
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  &__content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10000;
+  }
+
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__hint {
+    font-size: 12px;
+    color: #666;
+  }
+
+  &__textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+  }
+
+  &__link-tools {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+
+  &__form-group {
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  &__button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
+
+// Ensure links within editable text have proper styling
+.editable-text a {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    color: rgb(79, 99, 158);
+  }
+}
+
+// Add proper styling for all component links
+.kolmarden-link,
+.salen-link,
+.ulricehamn-link,
+.hemsedal-link,
+.senaste-nytt-link {
+  color: rgb(56, 76, 135);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    color: rgb(79, 99, 158);
+  }
+}

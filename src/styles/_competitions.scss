@@ -1,0 +1,103 @@
+.competitions {
+    &-spacer {
+        height: 120px;
+    }
+
+    &-row {
+        height: 90vh;
+        min-height: 700px;
+        width: 100%;
+        display: flex;
+    }
+
+    &-card {
+        width: 50%;
+        height: 100%;
+        min-height: 700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        &-ulricehamn {
+            background-image: url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg');
+        }
+
+        &-salen {
+            background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+        }
+
+        &-hemsedal {
+            background-image: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg');
+        }
+
+        &-kolmarden {
+            background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
+        }
+    }
+
+    &-header {
+        height: 30%;
+        min-height: 150px;
+        z-index: 10;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    &-title, &-date {
+        z-index: 20;
+        position: relative;
+        text-align: center;
+    }
+
+    &-button-container {
+        z-index: 10;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 50px;
+        min-height: 100px;
+    }
+
+    &-button {
+        z-index: 20;
+        position: relative;
+        text-align: center;
+    }
+}
+
+.competition-date,
+.competition-title,
+.competition-button {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.fonts_medium {
+    text-align: left;
+}
+
+.kolmarden-text-block,
+.salen-text-block,
+.hemsedal-text-block,
+.ulricehamn-text-block {
+    text-align: left;
+    
+    p, .fonts_medium, .fonts_small, .fonts_xsmall {
+        text-align: left;
+    }
+}
+
+[data-textkey$="overnattning-title"],
+[data-textkey$="accommodation-title"] {
+    text-align: center;
+}

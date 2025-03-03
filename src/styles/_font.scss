@@ -40,12 +40,26 @@
     }
 }
 
+// Default text alignment
+* {
+  text-align: left;
+}
+
+// Only center fonts_huge and fonts_large
+.fonts_huge, .fonts_large {
+  text-align: center;
+}
+
 .deco {
     text-decoration: none;
 }
 .font_white{
     color: white;
+    z-index: 20;
+    position: relative;
 }
 .font_blue{
     color: rgb(56, 76, 135);
+    z-index: 20;
+    position: relative;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles/index.js';
 import './styles/java/scripts.js';
+import 'styles/index.css'
 function App() {
         return (
             <div className="flex flex_col MaxWH location">

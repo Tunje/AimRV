@@ -1,0 +1,201 @@
+.senaste-nytt {
+  &-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &-description {
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  &-news-section {
+    padding: 50px 0;
+    background-color: #f5f5f5;
+    width: 100vw;
+  }
+
+  &-container {
+    padding: 0 20px;
+  }
+
+  &-section-title {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &-news-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &-news-card {
+    width: calc(40% - 15px);
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &-news-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &-news-content {
+    padding: 20px;
+  }
+
+  &-news-card-title {
+    margin-bottom: 5px;
+  }
+
+  &-news-date {
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  &-read-more {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    
+    &-text {
+      font-weight: bold;
+    }
+  }
+}
+
+// Add this to center titles in Senaste Nytt component
+.senaste-nytt-title, .news-title {
+    text-align: center;
+}
+
+// Main title with dark blue color that overrides parent styles
+.senaste-nytt-main-title {
+  color: rgb(56, 76, 135) !important;
+}
+
+// Full width background for subscription section (using a specific class)
+.senaste-nytt-subscribe-section {
+  width: 100vw;
+}
+
+// Center the subscription description text
+.senaste-nytt-description {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+// Create post button for admin users
+.senaste-nytt-create-post-button {
+  background-color: rgb(56, 76, 135);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 0 10px 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgb(79, 99, 158);
+  }
+}
+
+.senaste-nytt-reset-posts-button {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 0 10px 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #ef6c00;
+  }
+}
+
+.senaste-nytt-admin-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+// Delete post button
+.senaste-nytt-delete-post-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #b71c1c;
+  }
+}
+
+// Keep news content left-aligned
+.news-content {
+    text-align: left;
+}
+
+// Form styles
+.senaste-nytt-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 30px;
+
+  &-input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-input {
+    padding: 12px 15px;
+    border: none;
+    width: 70%;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  &-button {
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    font-size: 16px;
+    background-color: rgb(56, 76, 135);
+    color: white;
+    
+    &:hover {
+      background-color: rgb(79, 99, 158);
+    }
+  }
+
+  &-success {
+    margin-top: 10px;
+    color: #4CAF50;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/index.js';
-import '../styles/java/scripts.js';
 import '../styles/index.css';
+import '../styles/java/scripts.js';
+import EditableText from './EditableText';
 
 const Kolmarden = () => {
     return (
@@ -9,84 +9,272 @@ const Kolmarden = () => {
             <div className="set-03" style={{ height: '120px' }}></div>
             <section className="page_01 kolmarden-bg-1 flex flex_col flex_j_E set-03">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
-                    <p className="font_blue fonts_huge">AIM CHALLENGE KOLMÅRDEN</p>
-                    <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 flex flex_s">ANMÄL DIG HÄR</a>
+                    <EditableText 
+                        textKey="kolmarden-title" 
+                        defaultText="KOLMÅRDEN" 
+                        tag="p" 
+                        className="font_blue fonts_huge" 
+                    />
+                    <EditableText 
+                        textKey="kolmarden-date" 
+                        defaultText="datum insert" 
+                        tag="p" 
+                        className="font_blue fonts_medium" 
+                    />
                 </div>
             </section>
 
-            <section className="ulric-button-section-bg flex flex_j_C flex_a_C set-03">
-                <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="ulric-button trans-background flex flex_j_C flex_a_C">
+            <section className="kolmarden-button-section-bg flex flex_j_C flex_a_C set-03">
+                <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="kolmarden-button flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>
             </section>
 
             {/* Program Section */}
-            <section className="kolmarden-section kolmarden-bg-2 flex flex_j_C flex_a_C set-03">
+            <section className="kolmarden-section kolmarden-bg-2 flex flex_j_R flex_a_C set-03">
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
-                    <p className="font_blue fonts_large">PROGRAM</p>
-                    <p className="font_blue fonts_medium">PRELIMINÄRT PROGRAM:</p>
+                    <EditableText 
+                        textKey="kolmarden-program-title" 
+                        defaultText="PROGRAM" 
+                        tag="p" 
+                        className="font_blue fonts_large" 
+                    />
+                    <EditableText 
+                        textKey="kolmarden-program-subtitle" 
+                        defaultText="PRELIMINÄRT PROGRAM:" 
+                        tag="p" 
+                        className="font_blue fonts_medium" 
+                    />
                     
                     <div className="font_blue">
-                        <p className="fonts_medium">FREDAG 6 SEPTEMBER</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">17:00 - 20:00 Nummerlappsutdelning och incheckning på Vildmarkshotellet</p>
+                        <EditableText 
+                            textKey="kolmarden-friday-title" 
+                            defaultText="FREDAG 27 SEPTEMBER" 
+                            tag="p" 
+                            className="fonts_small kolmarden-day-title" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-friday-program" 
+                            defaultText="15:00-19:00 Tävlingsexpeditionen öppen, utlämning av nummerlappar och kartor" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
                     </div>
-
+                    
                     <div className="font_blue">
-                        <p className="fonts_medium">LÖRDAG 7 SEPTEMBER</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">08:30-09:00 Nummerlappsutdelning vid starten</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">09:30 Obligatoriskt infomöte vid starten</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">10:00 START! Start/målområde vid Vildmarkshotellet</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">15:30 After AIM på Vildmarkshotellet</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">16:00 Målgång AIM Challenge</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">19:00 Prisutdelning och middag på Vildmarkshotellet</p>
+                        <EditableText 
+                            textKey="kolmarden-saturday-title" 
+                            defaultText="LÖRDAG 28 SEPTEMBER" 
+                            tag="p" 
+                            className="fonts_small kolmarden-day-title" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-saturday-program-1" 
+                            defaultText="07:30-08:30 Tävlingsexpeditionen öppen, utlämning av nummerlappar och kartor" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-saturday-program-2" 
+                            defaultText="08:30 Obligatorisk genomgång vid startområdet" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-saturday-program-3" 
+                            defaultText="09:00 Start" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-saturday-program-4" 
+                            defaultText="15:00 Målet stänger" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-saturday-program-5" 
+                            defaultText="16:00 Prisutdelning" 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-program-entry" 
+                        />
                     </div>
                 </div>
-                <div className="kolmarden-spacer MaxWH"></div>
             </section>
 
-            {/* Pris Section */}
-            <section className="kolmarden-section kolmarden-bg-3 flex flex_j_C flex_a_C set-03">
-                <div className="kolmarden-spacer MaxWH"></div>
+            {/* Anmälan Section */}
+            <section className="kolmarden-section kolmarden-bg-3 flex flex_j_E flex_a_C set-03">
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
-                    <p className="font_blue fonts_large">PRIS</p>
-                    
-                    <div className="font_blue">
-                        <p className="fonts_medium">KOLMÅRDEN 7/9-2024</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">1900 SEK / lag för Early Bird-anmälan innan 1 januari</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">2100 SEK / lag för anmälan mellan 1 januari och 1 april</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">2300 SEK / lag för anmälan mellan 2 april och 18 juli</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">2500 SEK / lag för anmälan från 19 juli och fram till start</p>
+                    <EditableText 
+                        textKey="kolmarden-registration-title" 
+                        defaultText="ANMÄLAN" 
+                        tag="p" 
+                        className="font_blue fonts_large" 
+                    />
+                    <div className="font_blue kolmarden-text-block">
+                        <EditableText 
+                            textKey="kolmarden-registration-text" 
+                            defaultText="Anmälan görs via RaceID. Klicka på knappen nedan för att komma till anmälningssidan." 
+                            tag="p" 
+                        />
                     </div>
-
-                    <div className="font_blue">
-                        <p className="fonts_medium">AIM CHALLENGE TRIPPELN 2025</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">4750 SEK / lag för Early Bird-anmälan innan 1 januari</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">5250 SEK / lag för anmälan mellan 1 januari och 1 februari</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">5750 SEK / lag för anmälan mellan 2 februari och 25 april</p>
-                        <p className="fonts_xsmall kolmarden-time-entry">6250 SEK / lag för anmälan efter den 26 april</p>
+                    <div className="kolmarden-registration-info font_blue">
+                        <div className="kolmarden-registration-column">
+                            <EditableText 
+                                textKey="kolmarden-registration-early-title" 
+                                defaultText="ORDINARIE ANMÄLAN" 
+                                tag="p" 
+                                className="fonts_small kolmarden-fee-title" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-early-dates" 
+                                defaultText="t.o.m. 31 augusti 2024" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-date-entry" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-early-fee" 
+                                defaultText="1 495 kr / lag" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-fee-entry" 
+                            />
+                        </div>
+                        <div className="kolmarden-registration-column">
+                            <EditableText 
+                                textKey="kolmarden-registration-late-title" 
+                                defaultText="SEN ANMÄLAN" 
+                                tag="p" 
+                                className="fonts_small kolmarden-fee-title" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-late-dates" 
+                                defaultText="1 september - 20 september 2024" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-date-entry" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-late-fee" 
+                                defaultText="1 795 kr / lag" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-fee-entry" 
+                            />
+                        </div>
+                        <div className="kolmarden-registration-column">
+                            <EditableText 
+                                textKey="kolmarden-registration-onsite-title" 
+                                defaultText="EFTERANMÄLAN" 
+                                tag="p" 
+                                className="fonts_small kolmarden-fee-title" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-onsite-dates" 
+                                defaultText="21 september - 27 september 2024" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-date-entry" 
+                            />
+                            <EditableText 
+                                textKey="kolmarden-registration-onsite-fee" 
+                                defaultText="1 995 kr / lag" 
+                                tag="p" 
+                                className="fonts_xsmall kolmarden-fee-entry" 
+                            />
+                        </div>
                     </div>
-                    <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 kolmarden-button-align flex flex_s">ANMÄLAN</a>
+                    <div className="kolmarden-text-block font_blue">
+                        <EditableText 
+                            textKey="kolmarden-registration-includes" 
+                            defaultText="I anmälningsavgiften ingår:" 
+                            tag="p" 
+                            className="fonts_small" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-registration-includes-list" 
+                            defaultText="Kartor, nummerlappar, tidtagningschip, vätskekontroller under loppet, enklare mat efter målgång, sjukvård och säkerhet under loppet." 
+                            tag="p" 
+                            className="fonts_xsmall kolmarden-time-entry" 
+                        />
+                    </div>
+                    <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 kolmarden-button-align flex flex_s">
+                        <EditableText 
+                            textKey="kolmarden-anmalan-button2" 
+                            defaultText="ANMÄLAN" 
+                            tag="span" 
+                        />
+                    </a>
                 </div>
             </section>
 
             {/* Övernattning och Mat Section */}
-            <section className="kolmarden-section kolmarden-bg-4 flex flex_j_C flex_a_C set-03">
+            <section className="kolmarden-section kolmarden-bg-4 flex flex_j_R flex_a_C set-03">
                 <div className="kolmarden-content trans-background MaxWH flex flex_col flex_j_C">
-                    <p className="font_blue fonts_large">ÖVERNATTNING OCH MAT</p>
+                    <EditableText 
+                        textKey="kolmarden-accommodation-title" 
+                        defaultText="ÖVERNATTNING OCH MAT" 
+                        tag="p" 
+                        className="font_blue fonts_large" 
+                    />
                     <div className="font_blue kolmarden-text-block">
-                        <p>Under tävlingshelgen bor du smidigt på First Camp Kolmården – Norrköping med krypavstånd från start- och målgången. Som tävlingsdeltagare får du dessutom 25% rabatt på stugor och camping när du bokar online.</p>
-                        <p className="fonts_small">Rabattkod: AIMCHALLENGE25</p>
-                        <p className="fonts_small">23-29 september 2024</p>
-                        <p className="fonts_small">Endast BAS-bokningar</p>
-                        <p className="fonts_small">Boka online på firstcamp.se</p>
+                        <EditableText 
+                            textKey="kolmarden-accommodation-text" 
+                            defaultText="Under tävlingshelgen bor du smidigt på First Camp Kolmården – Norrköping med krypavstånd från start- och målgången. Som tävlingsdeltagare får du dessutom 25% rabatt på stugor och camping när du bokar online." 
+                            tag="p" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-discount-code" 
+                            defaultText="Rabattkod: AIMCHALLENGE25" 
+                            tag="p" 
+                            className="fonts_small" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-discount-dates" 
+                            defaultText="23-29 september 2024" 
+                            tag="p" 
+                            className="fonts_small" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-discount-note1" 
+                            defaultText="Endast BAS-bokningar" 
+                            tag="p" 
+                            className="fonts_small" 
+                        />
+                        <EditableText 
+                            textKey="kolmarden-discount-note2" 
+                            defaultText="Boka online på firstcamp.se" 
+                            tag="p" 
+                            className="fonts_small" 
+                        />
                         <div className="kolmarden-button-align">
-                            <a href="https://firstcamp.se" target="_blank" rel="noopener noreferrer" className="kolmarden-link">Boka här</a>
+                            <a href="https://firstcamp.se" target="_blank" rel="noopener noreferrer" className="kolmarden-link">
+                                <EditableText 
+                                    textKey="kolmarden-book-here" 
+                                    defaultText="Boka här" 
+                                    tag="span" 
+                                />
+                            </a>
                         </div>
                     </div>
                     <div className="font_blue kolmarden-text-block">
-                        <p><a href="#" className="kolmarden-link">Övriga boendealternativ finns att hitta här.</a></p>
-                        <p><a href="#" className="kolmarden-link">Tips på ställen att äta i samband med ditt besök i Norrköping/Kolmården.</a></p>
-                        <p><a href="#" className="kolmarden-link">Här kan du hitta inspiration på övriga saker att se och göra under ditt besök i Norrköping/Kolmården.</a></p>
+                        <p>
+                            <EditableText 
+                                textKey="kolmarden-other-accommodation" 
+                                defaultText="Övriga boendealternativ finns att hitta här." 
+                                tag="span" 
+                            />
+                        </p>
+                        <p>
+                            <EditableText 
+                                textKey="kolmarden-food-tips" 
+                                defaultText="Tips på ställen att äta i samband med ditt besök i Norrköping/Kolmården." 
+                                tag="span" 
+                            />
+                        </p>
+                        <p>
+                            <EditableText 
+                                textKey="kolmarden-other-activities" 
+                                defaultText="Här kan du hitta inspiration på övriga saker att se och göra under ditt besök i Norrköping/Kolmården." 
+                                tag="span" 
+                            />
+                        </p>
                     </div>
                 </div>
                 <div className="kolmarden-spacer MaxWH"></div>

@@ -1,41 +1,115 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let retryTimeout;
-    let imageInterval;
+// Background changer script
+document.addEventListener("DOMContentLoaded", function() {
+    // Default images
+    const defaultImages = [
+        "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg",
+        "/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg",
+        "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_113.jpg",
+        "/AimRV/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg"
+    ];
 
-    function changeBackgroundImage() {
-        const element = document.querySelector('.dynamic-background');
-        if (!element) {
-            retryTimeout = setTimeout(changeBackgroundImage, 100);
+    // Function to initialize background changer
+    function initBackgroundChanger() {
+        const elements = document.querySelectorAll('.dynamic-background');
+        if (elements.length === 0) {
+            // If elements don't exist yet, retry after a short delay
+            setTimeout(initBackgroundChanger, 100);
             return;
         }
 
-        clearTimeout(retryTimeout);
+        // Try to get custom images from localStorage
+        let images = defaultImages;
+        try {
+            const customImages = JSON.parse(localStorage.getItem('aimrv-background-images'));
+            if (customImages && Array.isArray(customImages) && customImages.length > 0) {
+                images = customImages;
+            }
+        } catch (e) {
+            console.error("Error loading custom background images:", e);
+        }
 
-        const images = [
-            "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg",
-            "/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg",
-            "/AimRV/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_113.jpg",
-            "/AimRV/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
-        ];
-        let index = 0;
-
-        clearInterval(imageInterval);
-
-        imageInterval = setInterval(() => {
-            // Fade out the current background image
-            element.style.transition = "opacity 1s ease-in-out"; // Smooth transition for opacity
-            element.style.opacity = 0;
-
-            // After fade-out finishes, change the image and fade-in the new one
-            setTimeout(() => {
-                element.style.backgroundImage = `url(${images[index]})`;
-                element.style.opacity = 1; // Fade-in the new image
-            }, 1000); // Match the fade-out duration with this timeout
-
-            // Move to the next image
-            index = (index + 1) % images.length;
-        }, 5000); // Change background every 5 seconds
+        // Set up each dynamic background element
+        elements.forEach(function(element) {
+            let currentIndex = 0;
+            
+            // Set initial background
+            element.style.backgroundImage = `url(${images[currentIndex]})`;
+            element.style.backgroundSize = 'cover';
+            element.style.backgroundPosition = 'center';
+            element.style.backgroundRepeat = 'no-repeat';
+            
+            // Create overlay for fade effect
+            const overlay = document.createElement('div');
+            overlay.className = 'background-overlay';
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundSize = 'cover';
+            overlay.style.backgroundPosition = 'center';
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 2s ease-in-out';
+            overlay.style.zIndex = '1';
+            
+            // Make sure the parent element has position relative
+            if (getComputedStyle(element).position === 'static') {
+                element.style.position = 'relative';
+            }
+            
+            // Ensure content stays on top of the background
+            Array.from(element.children).forEach(child => {
+                if (child !== overlay && (child.style.zIndex === '' || parseInt(child.style.zIndex) < 10)) {
+                    child.style.position = 'relative';
+                    child.style.zIndex = '10';
+                }
+            });
+            
+            element.appendChild(overlay);
+            
+            // Function to change the background
+            function changeBackground() {
+                // Calculate the next index
+                const nextIndex = (currentIndex + 1) % images.length;
+                
+                // Set the next image on the overlay
+                overlay.style.backgroundImage = `url(${images[nextIndex]})`;
+                
+                // Fade in the overlay
+                overlay.style.opacity = '1';
+                
+                // After the transition completes
+                setTimeout(() => {
+                    // Update the main background
+                    element.style.backgroundImage = `url(${images[nextIndex]})`;
+                    
+                    // Reset the overlay opacity
+                    overlay.style.opacity = '0';
+                    
+                    // Update the current index
+                    currentIndex = nextIndex;
+                }, 2000); // Match the transition duration
+            }
+            
+            // Change background every 5 seconds
+            setInterval(changeBackground, 5000);
+        });
+        
+        // Listen for changes to the background images in localStorage
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'aimrv-background-images') {
+                try {
+                    const newImages = JSON.parse(e.newValue);
+                    if (newImages && Array.isArray(newImages) && newImages.length > 0) {
+                        images = newImages;
+                    }
+                } catch (err) {
+                    console.error("Error updating background images:", err);
+                }
+            }
+        });
     }
-
-    changeBackgroundImage();
+    
+    // Start the background changer
+    initBackgroundChanger();
 });

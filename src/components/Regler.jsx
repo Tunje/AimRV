@@ -14,13 +14,13 @@ const Regler = () => {
             </section>
 
             {/* First Text Section with dark blue background */}
-            <section className="om-oss-section regler-section flex flex_j_C flex_a_C set-03">
+            <section className="om-oss-section regler-section flex flex_j_C flex_a_C set-03" style={{ paddingTop: '50px', paddingBottom: '50px' }}>
                 <div className="om-oss-content MaxWH flex flex_col flex_j_C regler-content-container">
                     <div className="regler-content" style={{ paddingLeft: '150px', paddingRight: '150px', maxWidth: '80%' }}>
                         <h2 className="regler-heading font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>LAGET</h2>
                         <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
                             <li className="fonts_small om-oss-text regler-list-item font_white">
-                                Åldersgräns 15år/18år, läs mer här
+                                Åldersgräns 15år/18år
                             </li>
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Båda deltagarna måste ha olycksförsäkring som täcker olyckor i samband med tävling/idrottsaktiviteter.
@@ -179,9 +179,9 @@ const Regler = () => {
                 </div>
             </section>
 
-            {/* Background Image Section - Duplicating the top section from OmOss */}
-            <section className="page_01 dynamic-background flex flex_col flex_j_E">
-            </section>
+            {/* Background Image Section - Using the exact same structure as OmOss */}
+            <div className="locked-background" style={{ height: '50vh', width: '100%' }}>
+            </div>
         </div>
     );
 };

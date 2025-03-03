@@ -1,17 +1,35 @@
-.dynamic-background {
-    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg');
+.simple-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    border-radius: 0;
+}
+
+.locked-background {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 90vh;
-    width: 100vw;
+    border-radius: 0;
+}
+
+.dynamic-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    position: sticky;
 }
 
 .trans-background{
     background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 0;
 }
-
 .set-01{
     background-color: rgb(42, 118, 12);
 }
@@ -24,11 +42,6 @@
     background-color: rgb(56, 76, 135);
 }
 
-.ulric-button-section-bg {
-    background: rgb(56, 76, 135);
-    width: 100vw;
-}
-
 .set-04{
     background-color: rgb(56, 76, 135);
 }
@@ -38,6 +51,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll;
+    border-radius: 0;
 }
 
 .locked-background {
@@ -45,8 +60,17 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: sticky;
     background-attachment: fixed;
+    position: sticky;
+}
+
+.dynamic-background {
+    background-image: url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    position: sticky;
 }
 
 .ulricehamn-bg {
@@ -57,7 +81,7 @@
 }
 
 .salen-bg {
-    background: url('/images/AIM_Salen_2024_AnkiGrothe_45cm_300dpi_049.jpg');
+    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -82,8 +106,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: -1;
 }
 
 .kolmarden-bg-3 {
@@ -91,8 +114,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: -1;
 }
 
 .kolmarden-bg-4 {
@@ -100,8 +122,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: -1;
 }
 
 .kolmarden-button-section-bg {
@@ -109,8 +130,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: -1;
 }
 
 .ulric-bg-1 {
@@ -138,7 +158,7 @@
 }
 
 .salen-bg-1 {
-    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg');
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -146,7 +166,7 @@
 }
 
 .salen-bg-2 {
-    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg');
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -154,7 +174,7 @@
 }
 
 .salen-bg-3 {
-    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg');
+    background: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_193.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -162,7 +182,7 @@
 }
 
 .salen-button-section-bg {
-    background: rgb(56, 76, 135);
+    background-color: rgb(56, 76, 135);
     width: 100vw;
 }
 
@@ -190,7 +210,36 @@
     background-attachment: fixed;
 }
 
-.hemsedal-button-section-bg {
+.hemsedal-bg-4 {
+    background-color: rgb(56, 76, 135);
+    width: 100vw;
+}
+
+.hemsedal-bg-5 {
+    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hemsedal-bg-6 {
+    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hemsedal-bg-7 {
+    background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hemsedal-bg-8 {
     background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg');
     background-size: cover;
     background-position: center;
@@ -198,11 +247,24 @@
     background-attachment: fixed;
 }
 
-.trippeln-bg {
+.hemsedal-bg-9 {
     background: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.hemsedal-button-section-bg {
+    background-color: rgb(56, 76, 135);
+    background-attachment: fixed;
+    height: 10vh;
+}
+
+.trippeln-bg {
+    background-color: rgb(56, 76, 135);
     background-attachment: fixed;
     width: 100%;
     height: 100%;

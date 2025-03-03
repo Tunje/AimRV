@@ -1,0 +1,54 @@
+.editable {
+    position: relative;
+}
+
+.editable:hover .edit-indicator {
+    opacity: 1 !important;
+}
+
+.editable-image-container {
+    max-width: 100%;
+}
+
+.editable-background {
+    position: relative;
+}
+
+.editable-background:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 166, 251, 0.1);
+    pointer-events: none;
+    border: 2px dashed #00a6fb;
+}
+
+.editable-background:hover .edit-button {
+    display: block !important;
+}
+
+.edit-button {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Make the edit controls responsive */
+@media (max-width: 768px) {
+    .editable-image-container input,
+    .editable-image-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .editable-image-container div[style*="display: flex"] {
+        flex-direction: column;
+    }
+    
+    .editable-background-editor {
+        padding: 10px !important;
+    }
+}

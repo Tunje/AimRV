@@ -33,6 +33,12 @@
     height: 6vh;
 }
 
+.hemsedal-button-section-bg {
+    background-color: rgb(56, 76, 135);
+    background-attachment: fixed;
+    height: 10vh;
+}
+
 .hemsedal-button-align {
     margin-top: 1rem;
 }
@@ -45,11 +51,15 @@
 
 .hemsedal-text-block {
     margin: 1.5rem 0;
-}
-
-.hemsedal-text-block p.fonts_small {
-    margin-top: 1.2rem;
-    margin-bottom: 0.5rem;
+    
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .fonts_small {
+        margin-top: 0.5rem;
+    }
 }
 
 .hemsedal-link {

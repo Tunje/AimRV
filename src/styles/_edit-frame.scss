@@ -1,0 +1,30 @@
+// Background Image Frames for Admin Mode
+// This targets elements with background images when in admin mode
+
+// When admin mode is active, add frames to all background elements
+.admin-editing-mode {
+  // Target all background classes
+  [class*="-bg"],
+  .simple-background,
+  .locked-background,
+  .dynamic-background {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1; // Above background images but below content
+      pointer-events: none; // Allow clicks to pass through
+      border: 8px solid rgb(56, 76, 135);
+      outline: 4px dashed rgba(255, 255, 255, 0.8);
+      outline-offset: -6px;
+      box-shadow: 
+        inset 0 0 30px rgba(56, 76, 135, 0.5),
+        0 0 10px rgba(56, 76, 135, 0.3);
+    }
+  }
+}

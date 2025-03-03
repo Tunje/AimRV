@@ -34,11 +34,6 @@ const VideoCarousel = () => {
         videoRefs.current = videoRefs.current.slice(0, videos.length);
     }, [videos.length]);
 
-    // Log when currentIndex changes for debugging
-    useEffect(() => {
-        console.log('Current index changed to:', currentIndex);
-    }, [currentIndex]);
-
     // Pause all videos except the current one
     const handleVideoPlay = (index) => {
         videoRefs.current.forEach((videoRef, idx) => {
@@ -134,20 +129,6 @@ const VideoCarousel = () => {
                 >
                     &gt;
                 </button>
-                
-                {/* Debug information */}
-                <div style={{ 
-                    position: 'absolute', 
-                    top: '10px', 
-                    right: '10px', 
-                    background: 'rgba(0,0,0,0.5)', 
-                    color: 'white', 
-                    padding: '5px 10px', 
-                    borderRadius: '5px',
-                    zIndex: 100
-                }}>
-                    Current Index: {currentIndex} / {videos.length - 1}
-                </div>
                 
                 {/* Video carousel */}
                 <div style={{

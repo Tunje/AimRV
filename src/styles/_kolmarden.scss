@@ -1,3 +1,7 @@
+.kolmarden-top-spacer {
+    height: 120px;
+}
+
 .kolmarden-section {
     height: 90vh;
     position: relative;
@@ -10,12 +14,24 @@
     padding: 2rem;
     z-index: 1;
     position: relative;
+    text-align: center;
 }
 
 .trans-background {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 10px;
+}
+
+// Center the title and date in the page_01box
+.page_01box {
+    text-align: center;
+    
+    [data-textkey="kolmarden-date"],
+    [data-textkey="kolmarden-title"] {
+        text-align: center;
+        display: block;
+    }
 }
 
 .kolmarden-spacer {
@@ -28,10 +44,17 @@
     height: 100%;
     border: none;
     cursor: pointer;
+    color: white;
 }
 
 .kolmarden-button:hover {
     background-color: rgb(79, 99, 158);
+}
+
+.kolmarden-button-section-bg {
+    background-color: rgb(56, 76, 135);
+    width: 100vw;
+    height: 10vh;
 }
 
 .kolmarden-button-section {
@@ -50,16 +73,33 @@
 
 .kolmarden-text-block {
     margin: 1.5rem 0;
+    text-align: left;
     
     p {
         margin-bottom: 1rem;
         line-height: 1.5;
+        text-align: left;
     }
     
     .fonts_small {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+}
+
+// Ensure all text in the Övernatting och Mat section is left-aligned
+[data-textkey*="kolmarden-accommodation-"] {
+    text-align: left;
+}
+
+// Override any centering for fonts_medium in this section
+.kolmarden-text-block .fonts_medium {
+    text-align: left;
+}
+
+// Keep the main section title centered
+[data-textkey="kolmarden-accommodation-title"] {
+    text-align: center;
 }
 
 .kolmarden-link {

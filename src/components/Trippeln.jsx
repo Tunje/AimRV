@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/index.js';
-import '../styles/java/scripts.js';
 import '../styles/index.css';
+import '../styles/java/scripts.js';
 
 const Trippeln = () => {
     return (
@@ -38,7 +37,7 @@ const Trippeln = () => {
             </section>
 
             <section className="ulric-button-section-bg flex flex_j_C flex_a_C">
-                <a href="https://raceid.com/sv/races/13016/about" target="_blank" rel="noopener noreferrer" className="ulric-button trans-background flex flex_j_C flex_a_C">
+                <a href="https://raceid.com/sv/races/13016/about" target="_blank" rel="noopener noreferrer" className="ulric-button flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>
             </section>

@@ -1,24 +1,28 @@
+.drop-down {
+  background-color: #B0C4DE;
+  min-width: 100px;
+  width: 120px; /* Moderate width */
+  border-radius: 20px; /* Rounded corners */
+  z-index: 1000;
+  position: absolute; /* Need this for proper positioning */
+  top: 25px; /* Position right below the button (25px is the button height) */
+  left: -10px; /* Offset to center the dropdown */
+  overflow: hidden; /* Prevent content from overflowing */
+}
 
-  .drop-button {
-    cursor: pointer;
-    color: rgb(56, 76, 135) !important;
-  }
-  
-  .drop-down {
-    background-color: #B0C4DE;
-    min-width: 100px;
-    border-radius: 20px; /* Rounded corners */
-  }
-  
-  .drop-item {
-    display: block;
-    padding: 5px;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .drop-item:hover {
-    background: #f0f0f0;
-    border-radius: 20px; /* Rounded corners */
-  }
-  
+.drop-item {
+  display: block;
+  padding: 5px 5px; /* Smaller padding */
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  width: 100%; /* Make items fill the dropdown width */
+  box-sizing: border-box; /* Include padding in width calculation */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+}
+
+.drop-item:hover {
+  background: #f0f0f0;
+  border-radius: 20px; /* Rounded corners */
+}

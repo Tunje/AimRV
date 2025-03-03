@@ -5,6 +5,16 @@
     overflow: hidden;
 }
 
+.trippeln-bg {
+    background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 .trippeln-content {
     max-width: 45.5%;
     padding: 2rem;
