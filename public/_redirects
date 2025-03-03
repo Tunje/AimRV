@@ -1,6 +1,10 @@
 # Redirect all routes to index.html for SPA
 /* /index.html 200
 
+# Redirect /AimRV/ paths to the correct location
+/AimRV/images/* /images/:splat 200
+/AimRV/videos/* /videos/:splat 200
+
 # Ensure image paths work
 /images/* /images/:splat 200
 /videos/* /videos/:splat 200
