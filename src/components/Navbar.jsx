@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { useText } from '../context/TextContext';
 import '../styles/index.css';
 import '../styles/java/scripts.js';
-import 'font-awesome/css/font-awesome.min.css';
 
 const Navbar = () => {
     const [dropOpen1, setDropOpen1] = useState(false);

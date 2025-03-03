@@ -17,6 +17,26 @@
   [headers.values]
     Content-Type = "application/javascript; charset=utf-8"
 
+[[headers]]
+  for = "/assets/*.ttf"
+  [headers.values]
+    Content-Type = "font/ttf"
+
+[[headers]]
+  for = "/assets/*.woff"
+  [headers.values]
+    Content-Type = "font/woff"
+
+[[headers]]
+  for = "/assets/*.woff2"
+  [headers.values]
+    Content-Type = "font/woff2"
+
+[[headers]]
+  for = "/assets/*.eot"
+  [headers.values]
+    Content-Type = "application/vnd.ms-fontobject"
+
 # Handle SPA routing
 [[redirects]]
   from = "/*"

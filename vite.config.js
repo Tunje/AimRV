@@ -5,33 +5,26 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Use root path for deployment
   base: '/',
   build: {
+    // Output to dist folder
     outDir: 'dist',
+    // Place all assets in assets folder
     assetsDir: 'assets',
-    sourcemap: false,
-    minify: true,
+    // Generate source maps for easier debugging
+    sourcemap: true,
+    // Ensure proper file types
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-      },
       output: {
-        manualChunks: undefined,
-      },
-    },
-    // Ensure the images directory is copied to the build output
-    assetsInlineLimit: 0,
-  },
-  publicDir: resolve(__dirname, 'public'),
-  // Add a custom configuration to copy the images folder
-  experimental: {
-    renderBuiltUrl(filename, { hostType }) {
-      if (filename.includes('images/')) {
-        return '/' + filename;
+        // Ensure JS files have proper extensions
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
-      return filename;
-    },
+    }
   },
+  // Resolve aliases for imports
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

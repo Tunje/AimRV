@@ -23,6 +23,11 @@ const ResultUploadModal = ({
   const [isUploading, setIsUploading] = useState(false);
   const { currentUser } = useAuth();
 
+  // Debug logs to check authentication and admin status
+  console.log("ResultUploadModal - currentUser:", currentUser);
+  console.log("ResultUploadModal - isAdmin prop:", isAdmin);
+  console.log("ResultUploadModal - currentUser?.role:", currentUser?.role);
+
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -38,10 +43,23 @@ const ResultUploadModal = ({
     }
 
     if (!currentUser) {
+      console.log("Authentication error: No current user found");
       setError('You must be logged in to upload results');
       return;
     }
 
+    // Check if user is admin
+    if (!isAdmin && currentUser?.role !== 'admin') {
+      console.log("Authorization error: User is not an admin");
+      console.log("isAdmin prop:", isAdmin);
+      console.log("currentUser.role:", currentUser?.role);
+      setError('You must be an admin to upload results');
+      return;
+    }
+
+    console.log("Current user:", currentUser);
+    console.log("Authentication status:", !!currentUser);
+    
     setIsUploading(true);
     setError('');
     
@@ -50,11 +68,36 @@ const ResultUploadModal = ({
       const fileName = `${yearState}_${category}_${duration}_${Date.now()}_${file.name}`;
       const storageRef = ref(storage, `results/${fileName}`);
       
-      // Upload file to Firebase Storage
-      await uploadBytes(storageRef, file);
+      console.log("Attempting to upload file:", fileName);
+      console.log("Storage reference:", storageRef);
+      
+      // Upload file to Firebase Storage with metadata to avoid CORS issues
+      const metadata = {
+        contentType: file.type,
+        customMetadata: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      };
+      
+      try {
+        await uploadBytes(storageRef, file, metadata);
+        console.log("File uploaded successfully");
+      } catch (uploadError) {
+        console.error("Error in uploadBytes:", uploadError);
+        throw uploadError;
+      }
       
       // Get the download URL
-      const downloadURL = await getDownloadURL(storageRef);
+      let downloadURL;
+      try {
+        downloadURL = await getDownloadURL(storageRef);
+        console.log("Download URL obtained:", downloadURL);
+      } catch (urlError) {
+        console.error("Error getting download URL:", urlError);
+        throw urlError;
+      }
       
       // Create result object
       const resultData = {
@@ -69,7 +112,13 @@ const ResultUploadModal = ({
       
       // Store metadata in Firestore
       const docRef = doc(collection(db, 'results'));
-      await setDoc(docRef, resultData);
+      try {
+        await setDoc(docRef, resultData);
+        console.log("Result metadata stored successfully");
+      } catch (storeError) {
+        console.error("Error storing result metadata:", storeError);
+        throw storeError;
+      }
       
       // Reset form
       setFile(null);

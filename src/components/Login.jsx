@@ -28,6 +28,8 @@ const Login = () => {
             const result = await login(email, password);
             
             if (result.success) {
+                console.log("Login successful");
+                console.log("Current user after login:", { email, role: 'admin' });
                 // Redirect to home page
                 navigate('/');
             } else {

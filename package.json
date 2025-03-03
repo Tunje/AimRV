@@ -6,7 +6,7 @@
   "homepage": "https://tunje.github.io/AimRV/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp public/_redirects dist/_redirects && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html'); require('fs').writeFileSync('dist/.nojekyll', '');\"",
+    "build": "vite build && node -e \"const fs = require('fs'); const path = require('path'); try { fs.copyFileSync('public/_redirects', 'dist/_redirects'); } catch(e) { console.error(e); } fs.copyFileSync('dist/index.html', 'dist/404.html'); fs.writeFileSync('dist/.nojekyll', ''); const copyDir = (src, dest) => { if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true }); const entries = fs.readdirSync(src, { withFileTypes: true }); for(let entry of entries) { const srcPath = path.join(src, entry.name); const destPath = path.join(dest, entry.name); if (entry.isDirectory()) { copyDir(srcPath, destPath); } else { fs.copyFileSync(srcPath, destPath); } } }; try { copyDir('images', 'dist/images'); console.log('Successfully copied images folder to dist'); } catch(e) { console.error('Error copying images folder:', e); }\"",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
