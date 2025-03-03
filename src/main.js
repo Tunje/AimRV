@@ -1,5 +1,7 @@
 // src/main.js
-// No imports - using global React and ReactDOM from CDN
+// Import React from CDN
+import React from 'https://esm.sh/react@18.2.0';
+import ReactDOM from 'https://esm.sh/react-dom@18.2.0/client';
 
 // Import styles directly with relative path
 import './styles/index.css';
@@ -19,9 +21,9 @@ import App from './App.jsx';
 
 const root = document.getElementById('root');
 
-// Use global React and ReactDOM
-window.ReactDOM.createRoot(root).render(
-  window.React.createElement(window.React.StrictMode, null, 
-    window.React.createElement(App)
+// Use React and ReactDOM
+ReactDOM.createRoot(root).render(
+  React.createElement(React.StrictMode, null, 
+    React.createElement(App)
   )
 );
