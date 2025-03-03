@@ -19,6 +19,18 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
+    // Ensure the images directory is copied to the build output
+    assetsInlineLimit: 0,
+  },
+  publicDir: resolve(__dirname, 'public'),
+  // Add a custom configuration to copy the images folder
+  experimental: {
+    renderBuiltUrl(filename, { hostType }) {
+      if (filename.includes('images/')) {
+        return '/' + filename;
+      }
+      return filename;
+    },
   },
   resolve: {
     alias: {

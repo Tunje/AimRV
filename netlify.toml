@@ -23,7 +23,12 @@
   to = "/assets/:splat"
   status = 200
 
-# Ensure assets are served correctly
+# Handle image paths
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
+
 [[headers]]
   for = "/assets/*.js"
     [headers.values]
