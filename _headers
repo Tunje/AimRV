@@ -11,3 +11,15 @@
 
 /*.svg
   Content-Type: image/svg+xml
+
+/assets/*.ttf
+  Content-Type: font/ttf
+
+/assets/*.woff
+  Content-Type: font/woff
+
+/assets/*.woff2
+  Content-Type: font/woff2
+
+/assets/*.eot
+  Content-Type: application/vnd.ms-fontobject
