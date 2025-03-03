@@ -2,45 +2,20 @@
   command = "npm run build"
   publish = "dist"
 
-[build.environment]
-  VITE_BASE_PATH = "/"
-
-# Handle SPA routing - this ensures that direct URLs like /login work
+# Handle SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
 
-# Handle asset paths
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/AimRV/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-# Handle image paths
-[[redirects]]
-  from = "/images/*"
-  to = "/images/:splat"
-  status = 200
-
-[[headers]]
-  for = "/assets/*.js"
-    [headers.values]
-    Content-Type = "application/javascript"
-
+# Ensure JavaScript files are served with correct MIME type
 [[headers]]
   for = "/*.js"
     [headers.values]
     Content-Type = "application/javascript"
 
 [[headers]]
-  for = "/*.jsx"
+  for = "/assets/*.js"
     [headers.values]
     Content-Type = "application/javascript"
 
@@ -54,12 +29,8 @@
     [headers.values]
     Content-Type = "image/svg+xml"
 
-[[headers]]
-  for = "/images/*.svg"
-    [headers.values]
-    Content-Type = "image/svg+xml"
-
-[[headers]]
-  for = "/*"
-    [headers.values]
-    Access-Control-Allow-Origin = "*"
+# Explicitly handle images folder
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
