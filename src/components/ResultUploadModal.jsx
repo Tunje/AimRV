@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db, storage, auth } from '../firebase/config';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 const ResultUploadModal = ({ 
   onClose, 
@@ -19,6 +19,7 @@ const ResultUploadModal = ({
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
@@ -36,21 +37,21 @@ const ResultUploadModal = ({
     
     setIsUploading(true);
     setError('');
+    setUploadProgress(0);
     
     try {
       // Create a unique file name
       const fileName = `${yearState}_${category}_${duration}_${Date.now()}_${file.name}`;
       const storageRef = ref(storage, `results/${fileName}`);
       
-      // Create file metadata including the content type and CORS settings
+      // Create file metadata including the content type
       const metadata = { 
         contentType: file.type,
         customMetadata: {
           'year': yearState,
           'category': category,
           'duration': duration,
-          'location': location,
-          'cors-origin': window.location.origin
+          'location': location
         }
       };
       
@@ -59,63 +60,74 @@ const ResultUploadModal = ({
         await auth.currentUser.getIdToken(true);
       }
       
-      // Upload the file and metadata
-      const uploadResult = await uploadBytes(storageRef, file, metadata);
-      console.log('Upload successful:', uploadResult);
+      // Use uploadBytesResumable instead of uploadBytes to track progress
+      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
       
-      // Get the download URL
-      const downloadURL = await getDownloadURL(storageRef);
-      console.log('Download URL:', downloadURL);
-      
-      // Create result object
-      const resultData = {
-        year: parseInt(yearState),
-        location,
-        category,
-        duration,
-        fileUrl: downloadURL,
-        fileName: file.name,
-        uploadedAt: new Date().toISOString()
-      };
-      
-      // Store metadata in Firestore
-      const docRef = doc(collection(db, 'results'));
-      await setDoc(docRef, resultData);
-      
-      // Reset form
-      setFile(null);
-      
-      // Notify parent component
-      if (onUploadSuccess) {
-        onUploadSuccess();
-      }
-      
-      // Close modal
-      onClose();
-      
+      // Listen for state changes, errors, and completion of the upload
+      uploadTask.on('state_changed', 
+        (snapshot) => {
+          // Get upload progress
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
+          console.log('Upload is ' + progress + '% done');
+        }, 
+        (error) => {
+          // Handle unsuccessful uploads
+          console.error('Upload error:', error);
+          
+          if (error.code === 'storage/unauthorized') {
+            setError('Authentication error: You are not authorized to upload files. Please log in again.');
+          } else if (error.code === 'storage/cors-error') {
+            setError('CORS error: The server rejected the request. Please contact the administrator.');
+          } else if (error.code === 'storage/quota-exceeded') {
+            setError('Storage quota exceeded. Please contact the administrator.');
+          } else {
+            setError(`Upload failed: ${error.message}`);
+          }
+          
+          setIsUploading(false);
+        }, 
+        async () => {
+          // Handle successful uploads on complete
+          console.log('Upload completed successfully');
+          
+          // Get the download URL
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log('Download URL:', downloadURL);
+          
+          // Create result object
+          const resultData = {
+            year: parseInt(yearState),
+            location,
+            category,
+            duration,
+            fileUrl: downloadURL,
+            fileName: file.name,
+            uploadedAt: new Date().toISOString()
+          };
+          
+          // Store metadata in Firestore
+          const docRef = doc(collection(db, 'results'));
+          await setDoc(docRef, resultData);
+          
+          // Reset form
+          setFile(null);
+          setUploadProgress(0);
+          
+          // Notify parent component
+          if (onUploadSuccess) {
+            onUploadSuccess();
+          }
+          
+          // Close modal
+          onClose();
+          
+          setIsUploading(false);
+        }
+      );
     } catch (error) {
-      console.error('Error uploading result:', error);
-      
-      // More detailed error logging
-      if (error.code) {
-        console.error('Error code:', error.code);
-      }
-      
-      if (error.serverResponse) {
-        console.error('Server response:', error.serverResponse);
-      }
-      
-      // Provide more specific error messages based on error type
-      if (error.code === 'storage/unauthorized') {
-        setError('Authentication error: You are not authorized to upload files. Please log in again.');
-      } else if (error.code === 'storage/cors-error') {
-        setError('CORS error: The server rejected the request. Please contact the administrator.');
-      } else if (error.code === 'storage/quota-exceeded') {
-        setError('Storage quota exceeded. Please contact the administrator.');
-      } else {
-        setError(`Upload failed: ${error.message}`);
-      }
-    } finally {
+      console.error('Error setting up upload:', error);
+      setError(`Upload setup failed: ${error.message}`);
       setIsUploading(false);
     }
   };
@@ -191,6 +203,13 @@ const ResultUploadModal = ({
               />
             </div>
             
+            {isUploading && (
+              <div className="result-upload-modal-progress">
+                <div className="result-upload-modal-progress-bar" style={{ width: `${uploadProgress}%` }}></div>
+                <div className="result-upload-modal-progress-text">{Math.round(uploadProgress)}%</div>
+              </div>
+            )}
+            
             {error && <div className="result-upload-modal-error">{error}</div>}
             
             <div className="result-upload-modal-actions">
@@ -198,13 +217,14 @@ const ResultUploadModal = ({
                 type="button" 
                 className="result-upload-modal-cancel"
                 onClick={onClose}
+                disabled={isUploading}
               >
                 Avbryt
               </button>
               <button 
                 type="submit" 
                 className="result-upload-modal-submit"
-                disabled={isUploading}
+                disabled={isUploading || !file}
               >
                 {isUploading ? 'Laddar upp...' : 'Ladda upp'}
               </button>
