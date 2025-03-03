@@ -38,7 +38,7 @@ const Navbar = () => {
                         e.preventDefault();
                         window.location.href = '#/';
                     }}>
-                        <img src="/images/logos/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
+                        <img src="/images/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
                     </Link>
                 </div>
                 <div className="navbside MaxWH location flex flex_j_SA">
