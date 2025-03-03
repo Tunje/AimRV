@@ -45,6 +45,16 @@
     Content-Type = "text/css"
 
 [[headers]]
+  for = "/*.svg"
+    [headers.values]
+    Content-Type = "image/svg+xml"
+
+[[headers]]
+  for = "/images/*.svg"
+    [headers.values]
+    Content-Type = "image/svg+xml"
+
+[[headers]]
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
