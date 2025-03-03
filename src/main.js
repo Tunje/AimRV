@@ -1,8 +1,11 @@
 // src/main.js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+// No imports - using global React and ReactDOM from CDN
+
+// Import styles directly with relative path
 import './styles/index.css';
+
+// Import App component
+import App from './App.jsx';
 
 // Handle GitHub Pages redirect for SPA
 // This script checks if we've been redirected to /?/path
@@ -16,8 +19,9 @@ import './styles/index.css';
 
 const root = document.getElementById('root');
 
-ReactDOM.createRoot(root).render(
-  React.createElement(React.StrictMode, null, 
-    React.createElement(App)
+// Use global React and ReactDOM
+window.ReactDOM.createRoot(root).render(
+  window.React.createElement(window.React.StrictMode, null, 
+    window.React.createElement(App)
   )
 );
