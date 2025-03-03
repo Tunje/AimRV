@@ -5,7 +5,8 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/AimRV/',
+  // Remove base path for Netlify
+  // base: '/AimRV/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
