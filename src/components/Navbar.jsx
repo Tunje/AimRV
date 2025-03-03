@@ -35,7 +35,7 @@ const Navbar = () => {
             <div className="navbar set-03 flex flex_j_SA MaxWH location font_white" style={{ margin: 0, padding: 0 }}>
                 <div className="navim MaxWH location">
                     <Link to="/">
-                        <img src="/images/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
+                        <img src="./images/Aim_Challenge_logo_white.svg" alt="aim challange logo" className="custom-image navim"></img>
                     </Link>
                 </div>
                 <div className="navbside MaxWH location flex flex_j_SA">
