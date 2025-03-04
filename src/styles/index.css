@@ -112,6 +112,11 @@
   position: relative;
 }
 
+.navbar-container {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
   max-width: 100%;
   width: 100vw;
@@ -122,8 +127,6 @@
   right: 0;
   transform: none;
   z-index: 1000;
-  margin: 0;
-  padding: 0;
   background-color: rgb(56, 76, 135);
   display: flex;
   justify-content: space-around;
@@ -158,7 +161,7 @@ html, body {
   position: relative; /* Make it a positioning context for the dropdown */
 }
 .navbbutton a {
-  color: rgb(56, 76, 135) !important; /* Force dark blue text color */
+  color: white !important; /* Force white text color for navbar buttons */
   text-decoration: none;
   display: block;
   width: 100%;
@@ -176,6 +179,110 @@ html, body {
   line-height: 25px;
 }
 
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none; /* Hidden by default on desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  margin-right: 20px;
+  z-index: 1001;
+}
+.hamburger-menu span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 100px; /* Below the navbar */
+  left: 0;
+  right: 0;
+  background-color: rgb(56, 76, 135);
+  z-index: 999;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: calc(100vh - 100px); /* Limit height to viewport minus navbar */
+  overflow-y: auto; /* Enable scrolling for long menus */
+}
+
+.mobile-menu-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.mobile-menu-header {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-menu-link {
+  color: white !important;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
+
+.mobile-submenu {
+  margin-top: 5px;
+  padding-left: 15px;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-submenu-item {
+  color: white !important;
+  text-decoration: none;
+  display: block;
+  padding: 8px 0;
+  font-size: 0.9em;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .navbside {
+    min-width: 700px;
+    max-width: 700px;
+  }
+  .navbbutton {
+    min-width: 80px;
+    max-width: 80px;
+  }
+}
+@media (max-width: 900px) {
+  .navbside {
+    display: none !important; /* Hide desktop menu */
+  }
+  .hamburger-menu {
+    display: flex; /* Show hamburger menu */
+  }
+  .mobile-menu {
+    display: flex; /* Show mobile menu when active */
+  }
+  .navbar {
+    justify-content: space-between !important;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 480px) {
+  .navim {
+    min-width: 120px;
+    max-width: 120px;
+  }
+}
 /* Base button style */
 .button {
   background-color: #B0C4DE; /* Light grayish blue */
@@ -551,6 +658,22 @@ a.button-2,
 
 .page_01box {
   padding: 2rem;
+}
+
+.historien-om-aim-background-container {
+  width: 100%;
+  height: 400px;
+  background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.senaste-nytt-background-container {
+  width: 100%;
+  height: 400px;
+  background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .ulric-section {
@@ -1825,34 +1948,18 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   opacity: 1 !important;
 }
 
-.editable-image-container {
-  max-width: 100%;
-}
-
-.editable-background {
+.editable-text {
   position: relative;
-}
-
-.editable-background:hover::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 166, 251, 0.1);
-  pointer-events: none;
-  border: 2px dashed #00a6fb;
-}
-
-.editable-background:hover .edit-button {
-  display: block !important;
 }
 
 .edit-button {
   display: block !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+}
+
+.editable-image-container {
+  max-width: 100%;
 }
 
 /* Make the edit controls responsive */
@@ -1864,9 +1971,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   }
   .editable-image-container div[style*="display: flex"] {
     flex-direction: column;
-  }
-  .editable-background-editor {
-    padding: 10px !important;
   }
 }
 .editable-text-wrapper {

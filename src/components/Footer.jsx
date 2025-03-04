@@ -5,10 +5,7 @@ import '../styles/java/scripts.js';
 
 const Footer = () => {
     return (
-        <div className="flex flex_col MaxWH location">
-            {/* Import Navbar to be displayed at the top of Footer */}
-            {/* <Navbar /> */}
-
+        <div className="footer-wrapper">
             {/* Footer Content */}
             <footer className="footer set-03">
                 <div className="container">
@@ -34,13 +31,14 @@ const Footer = () => {
                         <div className="grid-item partners">
                             <h3 className="footer-heading">Partners</h3>
                             <div className="grid">
+                                {/* Partner logos will go here */}
                             </div>
                         </div>
                     </div>
 
                     <div className="footer-bottom">
                         <p className="trademark">&copy; 2025 Aimchallenge</p>
-                        <div className="social-icons flex flex_j_SA location font_white">
+                        <div className="social-icons">
                             <a href="https://www.facebook.com/aimchallenge/" className="fa fa-facebook font_white"></a>
                             <a href="https://www.instagram.com/aimchallenge/" className="fa fa-instagram font_white"></a>
                             <a href="https://vimeo.com/user45220061" className="fa fa-credit-card font_white"></a>
