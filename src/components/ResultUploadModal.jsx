@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { db, storage, auth } from '../firebase/config';
+import { db, storage } from '../firebase/config';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
@@ -40,13 +40,6 @@ const ResultUploadModal = ({
     setUploadProgress(0);
     
     try {
-      // Make sure we have a fresh authentication token before upload
-      if (auth.currentUser) {
-        await auth.currentUser.getIdToken(true);
-      } else {
-        throw new Error('You must be logged in to upload files');
-      }
-      
       // Create a unique file name
       const fileName = `${yearState}_${category}_${duration}_${Date.now()}_${file.name}`;
       const storageRef = ref(storage, `results/${fileName}`);
@@ -76,17 +69,7 @@ const ResultUploadModal = ({
         (error) => {
           // Handle unsuccessful uploads
           console.error('Upload error:', error);
-          
-          if (error.code === 'storage/unauthorized') {
-            setError('Authentication error: You are not authorized to upload files. Please log in again.');
-          } else if (error.code === 'storage/cors-error') {
-            setError('CORS error: The server rejected the request. Please contact the administrator.');
-          } else if (error.code === 'storage/quota-exceeded') {
-            setError('Storage quota exceeded. Please contact the administrator.');
-          } else {
-            setError(`Upload failed: ${error.message}`);
-          }
-          
+          setError(`Upload failed: ${error.message}`);
           setIsUploading(false);
         }, 
         async () => {
