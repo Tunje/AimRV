@@ -2,31 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EditableText from './EditableText';
 import EditableImage from './EditableImage';
-import EditableBackgroundImage from './EditableBackgroundImage';
 
 const OmOss = () => {
     return (
         <div className="om-oss-container">
             {/* Header Section */}
-            <div className="om-oss-header page_01 dynamic-background flex flex_col flex_j_E">
-                <EditableBackgroundImage
-                    backgroundKey="om-oss-header-bg"
-                    defaultSrc="https://via.placeholder.com/1920x600?text=Om+Oss+Header"
-                    className="om-oss-background-image"
-                >
-                    <div className="om-oss-header-content">
-                        <div className="trans-background page_01box flex flex_col flex_j_SA">
-                            <div className="om-oss-title flex flex_j_C flex_a_C">
-                                <EditableText 
-                                    textKey="om-oss-title" 
-                                    defaultText="OM OSS" 
-                                    tag="p" 
-                                    className="font_blue fonts_huge" 
-                                />
-                            </div>
+            <div className="om-oss-header page_01 locked-background flex flex_col flex_j_E">
+                <div className="om-oss-header-content">
+                    <div className="trans-background page_01box flex flex_col flex_j_SA">
+                        <div className="om-oss-title flex flex_j_C flex_a_C">
+                            <EditableText 
+                                textKey="om-oss-title" 
+                                defaultText="OM OSS" 
+                                tag="p" 
+                                className="font_blue fonts_huge" 
+                                style={{ color: 'rgb(56, 76, 135)', fontWeight: 'bold' }}
+                            />
                         </div>
                     </div>
-                </EditableBackgroundImage>
+                </div>
             </div>
 
             {/* First Text Section with dark blue background */}
@@ -93,12 +87,8 @@ const OmOss = () => {
             </section>
 
             {/* Background Image Section */}
-            <div className="om-oss-background-container">
-                <EditableBackgroundImage
-                    backgroundKey="om-oss-background-image"
-                    defaultSrc="https://via.placeholder.com/1920x400?text=Background+Image"
-                    className="om-oss-background-image"
-                />
+            <div className="om-oss-background-container locked-background" style={{ width: '100%', height: '400px', overflow: 'hidden' }}>
+                <div className="om-oss-background-image" style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundImage: 'url(https://via.placeholder.com/1920x400?text=Background+Image)' }} />
             </div>
 
             {/* Second Text Section with dark blue background */}
@@ -147,10 +137,10 @@ const OmOss = () => {
             </section>
 
             {/* Cards Section */}
-            <section id="page_02" className="page_02 simple-background flex flex_j_E MaxWH location">
+            <section className="om-oss-cards-container simple-background">
                 {/* Card 1: Regler */}
-                <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-                    <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
+                <div className="om-oss-card simple-background">
+                    <div className="om-oss-card-content trans-background">
                         <EditableText 
                             textKey="card-1-title" 
                             defaultText="REGLER" 
@@ -164,14 +154,14 @@ const OmOss = () => {
                             className="font_blue fonts_medium" 
                         />
                     </div>
-                    <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
+                    <div className="om-oss-card-button">
                         <Link to="/page2" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
 
                 {/* Card 2: FAQ */}
-                <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-                    <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
+                <div className="om-oss-card simple-background">
+                    <div className="om-oss-card-content trans-background">
                         <EditableText 
                             textKey="card-2-title" 
                             defaultText="FAQ" 
@@ -185,14 +175,14 @@ const OmOss = () => {
                             className="font_blue fonts_medium" 
                         />
                     </div>
-                    <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
+                    <div className="om-oss-card-button">
                         <Link to="/page3" className="location button-2">Läs mer</Link>
                     </div>
                 </div>
 
                 {/* Card 3: Historien om AIM */}
-                <div className="page_02box simple-background flex flex_col flex_j_SB MaxWH location">
-                    <div className="trans-background page_02top flex flex_col flex_j_SA MaxWH">
+                <div className="om-oss-card simple-background">
+                    <div className="om-oss-card-content trans-background">
                         <EditableText 
                             textKey="card-3-title" 
                             defaultText="HISTORIEN OM AIM" 
@@ -206,7 +196,7 @@ const OmOss = () => {
                             className="font_blue fonts_medium" 
                         />
                     </div>
-                    <div className="page_02top flex flex_col flex_j_SA MaxWH Button">
+                    <div className="om-oss-card-button">
                         <Link to="/page3" className="location button-2">Läs mer</Link>
                     </div>
                 </div>

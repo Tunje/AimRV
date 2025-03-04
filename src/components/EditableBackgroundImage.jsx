@@ -3,8 +3,8 @@ import { useText } from '../context/TextContext';
 import { uploadBackgroundImage, updateBackgroundImage, getBackgroundImages } from '../firebase/textContent';
 
 const EditableBackgroundImage = ({ 
-    imageKey, 
-    defaultImage, 
+    backgroundKey, 
+    defaultSrc, 
     className, 
     children, 
     style = {},
@@ -14,7 +14,7 @@ const EditableBackgroundImage = ({
 }) => {
     const { isAdmin } = useText();
     const [isEditing, setIsEditing] = useState(false);
-    const [imageUrl, setImageUrl] = useState(defaultImage);
+    const [imageUrl, setImageUrl] = useState(defaultSrc);
     const [tempUrl, setTempUrl] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -26,11 +26,14 @@ const EditableBackgroundImage = ({
             try {
                 setLoading(true);
                 const images = await getBackgroundImages();
-                if (images && images[imageKey]) {
-                    setImageUrl(images[imageKey]);
+                console.log(`Fetched images for ${backgroundKey}:`, images);
+                if (images && images[backgroundKey]) {
+                    setImageUrl(images[backgroundKey]);
+                    console.log(`Setting image URL for ${backgroundKey} to:`, images[backgroundKey]);
                 } else {
                     // Use default if no saved image
-                    setImageUrl(defaultImage);
+                    setImageUrl(defaultSrc);
+                    console.log(`Using default image for ${backgroundKey}:`, defaultSrc);
                 }
                 setError(null);
             } catch (err) {
@@ -42,17 +45,17 @@ const EditableBackgroundImage = ({
                     const savedImages = localStorage.getItem('backgroundImages');
                     if (savedImages) {
                         const parsedImages = JSON.parse(savedImages);
-                        if (parsedImages[imageKey]) {
-                            setImageUrl(parsedImages[imageKey]);
+                        if (parsedImages[backgroundKey]) {
+                            setImageUrl(parsedImages[backgroundKey]);
                         } else {
-                            setImageUrl(defaultImage);
+                            setImageUrl(defaultSrc);
                         }
                     } else {
-                        setImageUrl(defaultImage);
+                        setImageUrl(defaultSrc);
                     }
                 } catch (localError) {
                     console.error('Error with localStorage fallback:', localError);
-                    setImageUrl(defaultImage);
+                    setImageUrl(defaultSrc);
                 }
             } finally {
                 setLoading(false);
@@ -60,7 +63,7 @@ const EditableBackgroundImage = ({
         };
         
         fetchBackgroundImage();
-    }, [imageKey, defaultImage]);
+    }, [backgroundKey, defaultSrc]);
 
     const handleEditClick = () => {
         setIsEditing(true);
@@ -82,10 +85,10 @@ const EditableBackgroundImage = ({
                 reader.onloadend = async () => {
                     try {
                         // Upload to Firebase Storage
-                        const uploadedUrl = await uploadBackgroundImage(reader.result, `${imageKey}_${Date.now()}`);
+                        const uploadedUrl = await uploadBackgroundImage(reader.result, `${backgroundKey}_${Date.now()}`);
                         
                         // Update Firestore with the new URL
-                        await updateBackgroundImage(imageKey, uploadedUrl);
+                        await updateBackgroundImage(backgroundKey, uploadedUrl);
                         
                         // Update local state
                         setImageUrl(uploadedUrl);
@@ -95,7 +98,7 @@ const EditableBackgroundImage = ({
                         try {
                             const savedImages = localStorage.getItem('backgroundImages') || '{}';
                             const parsedImages = JSON.parse(savedImages);
-                            parsedImages[imageKey] = uploadedUrl;
+                            parsedImages[backgroundKey] = uploadedUrl;
                             localStorage.setItem('backgroundImages', JSON.stringify(parsedImages));
                         } catch (localError) {
                             console.error('Error updating localStorage:', localError);
@@ -129,7 +132,7 @@ const EditableBackgroundImage = ({
             setLoading(true);
             
             // Update Firestore with the new URL
-            await updateBackgroundImage(imageKey, tempUrl);
+            await updateBackgroundImage(backgroundKey, tempUrl);
             
             // Update local state
             setImageUrl(tempUrl);
@@ -138,7 +141,7 @@ const EditableBackgroundImage = ({
             try {
                 const savedImages = localStorage.getItem('backgroundImages') || '{}';
                 const parsedImages = JSON.parse(savedImages);
-                parsedImages[imageKey] = tempUrl;
+                parsedImages[backgroundKey] = tempUrl;
                 localStorage.setItem('backgroundImages', JSON.stringify(parsedImages));
             } catch (localError) {
                 console.error('Error updating localStorage:', localError);
@@ -154,7 +157,7 @@ const EditableBackgroundImage = ({
             try {
                 const savedImages = localStorage.getItem('backgroundImages') || '{}';
                 const parsedImages = JSON.parse(savedImages);
-                parsedImages[imageKey] = tempUrl;
+                parsedImages[backgroundKey] = tempUrl;
                 localStorage.setItem('backgroundImages', JSON.stringify(parsedImages));
                 setImageUrl(tempUrl);
                 setIsEditing(false);
@@ -169,6 +172,35 @@ const EditableBackgroundImage = ({
     const handleCancel = () => {
         setIsEditing(false);
         setTempUrl(imageUrl);
+    };
+
+    const handleResetClick = () => {
+        setLoading(true);
+        
+        // Reset to default image
+        setImageUrl(defaultSrc);
+        
+        // Update Firestore
+        updateBackgroundImage(backgroundKey, defaultSrc)
+            .then(() => {
+                // Update localStorage
+                try {
+                    const savedImages = localStorage.getItem('backgroundImages') || '{}';
+                    const parsedImages = JSON.parse(savedImages);
+                    parsedImages[backgroundKey] = defaultSrc;
+                    localStorage.setItem('backgroundImages', JSON.stringify(parsedImages));
+                } catch (localError) {
+                    console.error('Error updating localStorage:', localError);
+                }
+            })
+            .catch(err => {
+                console.error('Error resetting background image:', err);
+                setError('Failed to reset image.');
+            })
+            .finally(() => {
+                setLoading(false);
+                setIsEditing(false);
+            });
     };
 
     const isValidUrl = (string) => {
@@ -233,6 +265,7 @@ const EditableBackgroundImage = ({
                         <div className="background-editor-actions">
                             <button onClick={handleCancel}>Cancel</button>
                             <button onClick={handleSave} disabled={loading}>Save</button>
+                            <button onClick={handleResetClick} disabled={loading}>Reset</button>
                         </div>
                     </div>
                 </div>
