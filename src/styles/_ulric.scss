@@ -1,14 +1,16 @@
 .ulric-section {
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     position: relative;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    overflow: visible;
 }
 
 .ulric-content {
-    max-width: 45.5%;
+    max-width: 75%;
     padding: 2rem;
     z-index: 1;
+    height: auto;
 }
 
 .ulric-spacer {
@@ -72,17 +74,19 @@
 }
 
 .ulricehamn-section {
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     position: relative;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    overflow: visible;
 }
 
 .ulricehamn-content {
-    max-width: 45.5%;
+    max-width: 75%;
     padding: 2rem;
     z-index: 1;
     position: relative;
+    height: auto;
 }
 
 .ulricehamn-text-block {
@@ -100,4 +104,45 @@
 
 .ulricehamn-spacer {
     max-width: 50%;
+}
+
+@media (max-width: 992px) {
+    .ulric-section, .ulricehamn-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .ulric-content, .ulricehamn-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .ulric-spacer, .ulricehamn-spacer {
+        display: none;
+    }
+    
+    .ulric-text-block, .ulricehamn-text-block {
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .ulric-content, .ulricehamn-content {
+        padding: 1rem;
+    }
+    
+    .ulric-time-entry {
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ulric-content, .ulricehamn-content {
+        padding: 0.75rem;
+    }
+    
+    .ulric-time-entry {
+        margin-left: 0.25rem;
+    }
 }

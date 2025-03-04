@@ -11,7 +11,7 @@ const Trippeln = () => {
                 </div>
             </section>
             
-            <section className="trippeln-section trippeln-bg" style={{ minHeight: '130vh' }}>
+            <section className="trippeln-section trippeln-bg">
                 <div className="trippeln-content trans-background">
                     <div className="font_blue">
                         <p className="fonts_medium">Trippeln är en tävling i tävlingen där de som deltar i minst tre av årets deltävlingar är med och tävlar om den mycket hedervärda titeln Vinnare av AIM Challenge Trippeln!</p>

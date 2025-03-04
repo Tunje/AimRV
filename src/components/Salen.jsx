@@ -217,7 +217,7 @@ const Salen = () => {
                         />
                     </div>
                     <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 salen-button-align flex flex_s">
-                        <p className="font_blue fonts_medium">ANMÄLAN</p>
+                        <p className="font_white fonts_medium">ANMÄLAN</p>
                     </a>
                 </div>
             </section>

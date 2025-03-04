@@ -242,7 +242,7 @@ const Ulricehamn = () => {
                         />
                     </div>
                     <a href="https://raceid.com/sv/races/12846/about" target="_blank" rel="noopener noreferrer" className="button-2 ulric-button-align flex flex_s">
-                        <p className="fonts_small ulric-time-entry ulric-link">ANMÄLAN</p>
+                        <p className="fonts_small ulric-time-entry font_white">ANMÄLAN</p>
                     </a>
                 </div>
             </section>

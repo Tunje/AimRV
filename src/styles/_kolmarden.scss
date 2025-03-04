@@ -3,18 +3,20 @@
 }
 
 .kolmarden-section {
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     position: relative;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    overflow: visible;
 }
 
 .kolmarden-content {
-    max-width: 45.5%;
+    max-width: 75%;
     padding: 2rem;
     z-index: 1;
     position: relative;
     text-align: center;
+    height: auto;
 }
 
 // Center the title and date in the page_01box
@@ -47,8 +49,9 @@
 
 .kolmarden-button-section-bg {
     background-color: rgb(56, 76, 135);
-    width: 100vw;
-    height: 10vh;
+    width: 100%;
+    height: auto;
+    min-height: 10vh;
 }
 
 .kolmarden-button-section {
@@ -103,5 +106,46 @@
     
     &:hover {
         text-decoration: underline;
+    }
+}
+
+@media (max-width: 992px) {
+    .kolmarden-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .kolmarden-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .kolmarden-spacer {
+        display: none;
+    }
+    
+    .kolmarden-text-block {
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .kolmarden-content {
+        padding: 1rem;
+    }
+    
+    .kolmarden-time-entry {
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .kolmarden-content {
+        padding: 0.75rem;
+    }
+    
+    .kolmarden-time-entry {
+        margin-left: 0.25rem;
     }
 }

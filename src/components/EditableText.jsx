@@ -116,7 +116,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         const TagName = tag;
         const contentProps = {
             className: `editable-text ${className}`,
-            style,
+            style: style,
             dangerouslySetInnerHTML: { __html: text || placeholder },
             'data-textkey': textKey.toString() // Ensure this is properly set
         };

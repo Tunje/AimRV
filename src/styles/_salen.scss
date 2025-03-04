@@ -1,15 +1,17 @@
 .salen-section {
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     position: relative;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    overflow: visible;
 }
 
 .salen-content {
-    max-width: 45.5%;
+    max-width: 75%;
     padding: 2rem;
     z-index: 1;
     position: relative;
+    height: auto;
 }
 
 .salen-spacer {
@@ -68,5 +70,46 @@
     
     &:hover {
         text-decoration: underline;
+    }
+}
+
+@media (max-width: 992px) {
+    .salen-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .salen-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .salen-spacer {
+        display: none;
+    }
+    
+    .salen-text-block {
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .salen-content {
+        padding: 1rem;
+    }
+    
+    .salen-time-entry {
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .salen-content {
+        padding: 0.75rem;
+    }
+    
+    .salen-time-entry {
+        margin-left: 0.25rem;
     }
 }

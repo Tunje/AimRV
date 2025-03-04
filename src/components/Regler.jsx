@@ -14,11 +14,11 @@ const Regler = () => {
             </section>
 
             {/* First Text Section with dark blue background */}
-            <section className="om-oss-section regler-section flex flex_j_C flex_a_C set-03" style={{ paddingTop: '50px', paddingBottom: '50px' }}>
+            <section className="om-oss-section regler-section flex flex_j_C flex_a_C set-03">
                 <div className="om-oss-content MaxWH flex flex_col flex_j_C regler-content-container">
-                    <div className="regler-content" style={{ paddingLeft: '150px', paddingRight: '150px', maxWidth: '80%' }}>
-                        <h2 className="regler-heading font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>LAGET</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                    <div className="regler-content">
+                        <h2 className="regler-heading font_white">LAGET</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Åldersgräns 15år/18år
                             </li>
@@ -42,8 +42,8 @@ const Regler = () => {
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>SÄKERHET</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                        <h2 className="regler-heading-with-margin font_white">SÄKERHET</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Lagen väljer själva vilka kontroller de klarar att ta baserat på väder, egen färdighet och kunskap.
                             </li>
@@ -76,8 +76,8 @@ const Regler = () => {
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>ÖVRIGT</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                        <h2 className="regler-heading-with-margin font_white">ÖVRIGT</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Elcyklar är ej tillåtet, med undantag för Elcykelklassen i Hemsedal.
                             </li>
@@ -119,8 +119,8 @@ const Regler = () => {
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>OBLIGATORISK UTRUSTNING</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                        <h2 className="regler-heading-with-margin font_white">OBLIGATORISK UTRUSTNING</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Cykel, utan elmotor med undantag för Elcykelklassen i Hemsedal.
                             </li>
@@ -135,8 +135,8 @@ const Regler = () => {
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>VI REKOMMENDERAR ATT NI ÄVEN HAR MED ER</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                        <h2 className="regler-heading-with-margin font_white">VI REKOMMENDERAR ATT NI ÄVEN HAR MED ER</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Förstärkningskläder vid hastigt väderomslag
                             </li>
@@ -160,19 +160,19 @@ const Regler = () => {
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>AIM CHALLENGE STÅR FÖR</h2>
-                        <ul className="regler-list" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+                        <h2 className="regler-heading-with-margin font_white">AIM CHALLENGE STÅR FÖR</h2>
+                        <ul className="regler-list">
                             <li className="fonts_small om-oss-text regler-list-item font_white">
                                 Kanot, SUP, sele, rep, hjälm vid firningar/klättring. All utrustning vid bemannade poster finns där klättring etc förekommer.
                             </li>
                         </ul>
 
-                        <h2 className="regler-heading-with-margin font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>VILLKOR I FÖRBINDELSE MED ANMÄLAN</h2>
-                        <p className="fonts_small om-oss-text regler-list-item font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+                        <h2 className="regler-heading-with-margin font_white">VILLKOR I FÖRBINDELSE MED ANMÄLAN</h2>
+                        <p className="fonts_small om-oss-text regler-list-item font_white">
                             Villkor i förbindelse med anmälan
                         </p>
 
-                        <p className="fonts_small om-oss-text regler-contact font_white" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+                        <p className="fonts_small om-oss-text regler-contact font_white">
                             Om du har frågor: <a href="mailto:info@aimchallenge.com" className="font_white">info@aimchallenge.com</a>
                         </p>
                     </div>

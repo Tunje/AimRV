@@ -3,16 +3,21 @@
         height: 120px;
     }
 
-    &-row {
-        height: 90vh;
-        min-height: 700px;
+    &-container {
         width: 100%;
         display: flex;
+        flex-direction: column;
+    }
+
+    &-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 0;
     }
 
     &-card {
-        width: 50%;
-        height: 100%;
+        height: 90vh;
         min-height: 700px;
         display: flex;
         flex-direction: column;
@@ -39,32 +44,69 @@
     }
 
     &-header {
-        height: 30%;
-        min-height: 150px;
+        height: auto;
+        min-height: 80px;
+        max-height: 120px;
         z-index: 10;
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         width: 100%;
+        text-align: center;
+        align-items: center;
+        padding: 5px 0;
+        background-color: rgba(255, 255, 255, 0.7); /* Add semi-transparent background */
+        margin-top: 10px; /* Add some space at the top */
+        
+        // Override any padding from trans-background
+        &.trans-background {
+            padding: 5px 0;
+        }
+        
+        // Apply text alignment to all elements in the competitions header
+        .editable-text,
+        p,
+        .competitions-title,
+        .competitions-date,
+        .font_blue,
+        [class*="competitions-title"],
+        [class*="competitions-date"] {
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     &-title, &-date {
         z-index: 20;
         position: relative;
         text-align: center;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px 0;
+        color: rgb(56, 76, 135); /* Ensure text color is consistent */
     }
 
     &-button-container {
         z-index: 10;
         position: relative;
+        height: 20%;
+        min-height: 100px;
+        margin-top: auto; /* Push buttons to bottom */
+        padding-bottom: 40px; /* Increased padding at bottom */
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: flex-end; /* Push buttons to the bottom */
         align-items: center;
         width: 100%;
-        padding-bottom: 50px;
-        min-height: 100px;
+        
+        /* Add more space between the header and buttons */
+        margin-top: 50px;
     }
 
     &-button {
@@ -76,10 +118,14 @@
 
 .competition-date,
 .competition-title,
-.competition-button {
+.competition-button,
+.competitions-title,
+.competitions-date {
     text-align: center;
     display: block;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fonts_medium {
@@ -100,4 +146,55 @@
 [data-textkey$="overnattning-title"],
 [data-textkey$="accommodation-title"] {
     text-align: center;
+}
+
+// Additional specific styles for text centering with higher specificity
+.competitions .competitions-grid .competitions-card .competitions-header .competitions-title,
+.competitions .competitions-grid .competitions-card .competitions-header .competitions-date,
+.competitions-title,
+.competitions-date {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Target the actual text elements inside EditableText
+.competitions-title p,
+.competitions-date p {
+    text-align: center;
+    width: 100%;
+}
+
+// Target the specific elements by their class names
+[class*="competitions-title"],
+[class*="competitions-date"] {
+    text-align: center;
+}
+
+// Add a utility class for text centering
+.text-center {
+    text-align: center;
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+    .competitions {
+        &-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        &-card {
+            min-height: 500px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .competitions {
+        &-card {
+            min-height: 400px;
+        }
+    }
 }

@@ -109,25 +109,25 @@ const Pages = () => {
                 </div>
             </section>
 
-            <section id="page_03" className="page_02 simple-background flex flex_col flex_j_SA MaxWH location">
-                <div className="page_01box flex flex_col flex_j_SA MaxWH  font_white">
+            <section id="page_03" className="page_02 simple-background flex flex_col flex_j_C MaxWH location">
+                <div className="page_01box flex flex_col flex_j_C MaxWH font_white">
                     <EditableText 
                         textKey="main-skistarshop" 
                         defaultText="SKISTARSHOP.COM*" 
                         tag="p" 
-                        className="font_white fonts_huge" 
+                        className="font_white fonts_huge skistar-text" 
                     />
                     <EditableText 
                         textKey="main-official-butik" 
                         defaultText="OFFICIELL AIM CHALLENGE BUTIK" 
                         tag="p" 
-                        className="font_white fonts_large" 
+                        className="font_white fonts_large skistar-subtext" 
                     />
                 </div>
             </section>
 
-            <section id="page_04" className="page_02 simple-background flex flex_j_SA MaxWH location">
-                <div className="page_03box flex flex_col trans-background flex flex_j_SA MaxWH">
+            <section id="page_04" className="aim-section simple-background flex MaxWH">
+                <div className="page_03box flex flex_col trans-background flex_j_SA MaxWH aim-info-box">
                     <EditableText 
                         textKey="main-what-is-aim" 
                         defaultText="VAD ÄR AIM CHALLENGE?" 

@@ -1,26 +1,51 @@
+.pages-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .page_01{
     width: 100%;
     min-height: 700px;
 }
+
 .page_01box{
     width: 100%;
     min-height: 100px;
 }
+
 .page_02{
     width: 100%;
     min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .page_02box{
     max-width: 25%;
     min-height: 500px;
+    padding: 10px;
+    box-sizing: border-box;
 }
+
 .page_02top{
     width: 25%;
     min-height: 100px;
+    align-items: center;
+    
+    p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
+
 .pad{
     padding: 64px;
 }
+
 .page_03box{
     max-width: 50%;
     min-height: 500px;
@@ -32,8 +57,14 @@
 }
 
 // Apply centering to common page elements
-.page_01box, .page_02box, .page_03box {
+.page_01box, .page_02box {
     text-align: center;
+}
+
+// Keep the page_03box left-aligned
+.page_03box {
+    text-align: left;
+    margin-right: auto;
 }
 
 // Keep paragraph content left-aligned by default
@@ -48,4 +79,166 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 
 .simple-background {
     background-color: #ffffff;
+}
+
+#page_04 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: auto;
+    height: auto;
+}
+
+.aim-info-box {
+    text-align: center;
+    padding: 20px;
+    min-height: auto;
+    height: auto;
+    
+    p {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .fonts_large {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+#page_03 {
+    .page_01box {
+        .fonts_huge, .fonts_large {
+            margin: 10px 0;
+        }
+        .skistar-text, .skistar-subtext {
+            margin: 5px 0;
+        }
+    }
+}
+
+.page_02box {
+    // No special styling for card titles
+}
+
+// Aim Challenge section
+.aim-section {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    
+    .page_03box {
+        min-height: 0;
+        height: auto;
+        max-height: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    
+    // Remove the empty second box
+    .page_03box:last-child {
+        display: none;
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .fonts_huge {
+        font-size: 2.5rem;
+    }
+    
+    .fonts_large {
+        font-size: 1.8rem;
+    }
+    
+    .page_02box {
+        max-width: 50%;
+        min-height: 450px;
+    }
+    
+    .page_02top {
+        width: 100%;
+    }
+    
+    .page_03box {
+        max-width: 100%;
+    }
+    
+    #page_04 .page_03box {
+        max-width: 50%;
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page_01 {
+        min-height: 500px;
+    }
+    
+    .fonts_huge {
+        font-size: 2rem;
+    }
+    
+    .fonts_large {
+        font-size: 1.5rem;
+    }
+    
+    .fonts_medium {
+        font-size: 1.2rem;
+    }
+    
+    .page_02 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .page_02box {
+        max-width: 90%;
+        min-height: 350px;
+        margin-bottom: 20px;
+    }
+    
+    .pad {
+        padding: 30px;
+    }
+    
+    #page_04 {
+        flex-direction: column;
+    }
+    
+    #page_04 .page_03box {
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page_01 {
+        min-height: 400px;
+    }
+    
+    .fonts_huge {
+        font-size: 1.8rem;
+    }
+    
+    .fonts_large {
+        font-size: 1.3rem;
+    }
+    
+    .fonts_medium {
+        font-size: 1rem;
+    }
+    
+    .page_02box {
+        min-height: 300px;
+        max-width: 100%;
+    }
+    
+    .pad {
+        padding: 15px;
+    }
 }

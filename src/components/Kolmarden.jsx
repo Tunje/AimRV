@@ -199,6 +199,7 @@ const Kolmarden = () => {
                             textKey="kolmarden-anmalan-button2" 
                             defaultText="ANMÄLAN" 
                             tag="span" 
+                            className="font_white"
                         />
                     </a>
                 </div>

@@ -219,7 +219,7 @@ const Hemsedal = () => {
                         />
                     </div>
                     <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 hemsedal-button-align flex flex_s">
-                        <span>ANMÄLAN</span>
+                        <span className="font_white">ANMÄLAN</span>
                     </a>
                 </div>
             </section>
