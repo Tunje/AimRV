@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/index.css';
 import EditableText from './EditableText';
-import EditableBackgroundImage from './EditableBackgroundImage';
 import CreatePostModal from './CreatePostModal';
 import { useText } from '../context/TextContext';
 import { getPosts, addPost, deletePost } from '../firebase/posts';
@@ -314,11 +313,8 @@ const SenasteNytt = () => {
             )}
 
             {/* Background Image Section */}
-            <EditableBackgroundImage
-                backgroundKey="senaste-nytt-bottom-bg"
-                defaultSrc="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg"
-                className="page_01 dynamic-background flex flex_col flex_j_E"
-            />
+            <div className="senaste-nytt-background-container locked-background page_01">
+            </div>
         </div>
     );
 };

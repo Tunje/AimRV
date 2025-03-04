@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/index.css';
 import EditableText from './EditableText';
-import EditableBackgroundImage from './EditableBackgroundImage';
 
 const HistorienOmAim = () => {
     return (
@@ -112,11 +111,8 @@ const HistorienOmAim = () => {
             </section>
 
             {/* Background Image Section - Full width and height */}
-            <EditableBackgroundImage
-                backgroundKey="historien-om-aim-bottom-bg"
-                defaultSrc="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg"
-                className="page_01 dynamic-background flex flex_col flex_j_E"
-            />
+            <div className="historien-om-aim-background-container locked-background page_01">
+            </div>
         </div>
     );
 };
