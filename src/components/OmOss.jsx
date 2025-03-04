@@ -16,7 +16,6 @@ const OmOss = () => {
                                 defaultText="OM OSS" 
                                 tag="p" 
                                 className="font_blue fonts_huge" 
-                                style={{ color: 'rgb(56, 76, 135)', fontWeight: 'bold' }}
                             />
                         </div>
                     </div>
@@ -87,8 +86,7 @@ const OmOss = () => {
             </section>
 
             {/* Background Image Section */}
-            <div className="om-oss-background-container locked-background" style={{ width: '100%', height: '400px', overflow: 'hidden' }}>
-                <div className="om-oss-background-image" style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundImage: 'url(https://via.placeholder.com/1920x400?text=Background+Image)' }} />
+            <div className="om-oss-background-container locked-background">
             </div>
 
             {/* Second Text Section with dark blue background */}
