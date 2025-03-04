@@ -40,6 +40,13 @@ const ResultUploadModal = ({
     setUploadProgress(0);
     
     try {
+      // Make sure we have a fresh authentication token before upload
+      if (auth.currentUser) {
+        await auth.currentUser.getIdToken(true);
+      } else {
+        throw new Error('You must be logged in to upload files');
+      }
+      
       // Create a unique file name
       const fileName = `${yearState}_${category}_${duration}_${Date.now()}_${file.name}`;
       const storageRef = ref(storage, `results/${fileName}`);
@@ -54,11 +61,6 @@ const ResultUploadModal = ({
           'location': location
         }
       };
-      
-      // Make sure we have a fresh authentication token before upload
-      if (auth.currentUser) {
-        await auth.currentUser.getIdToken(true);
-      }
       
       // Use uploadBytesResumable instead of uploadBytes to track progress
       const uploadTask = uploadBytesResumable(storageRef, file, metadata);
