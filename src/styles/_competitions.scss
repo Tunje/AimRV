@@ -25,6 +25,18 @@
         background-size: cover;
         background-position: center;
         position: relative;
+        background-color: #2D4F60; /* Primary dark blue */
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(45, 79, 96, 0.3); /* Primary dark blue with opacity */
+            z-index: 1;
+        }
 
         &-ulricehamn {
             background-image: url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg');
@@ -49,6 +61,7 @@
         max-height: 120px;
         z-index: 10;
         position: relative;
+        color: #F5F5F5; /* Light gray secondary */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -58,6 +71,7 @@
         padding: 5px 0;
         background-color: rgba(255, 255, 255, 0.7); /* Add semi-transparent background */
         margin-top: 10px; /* Add some space at the top */
+        background-color: #6A9FB5; /* Primary light blue */
         
         // Override any padding from trans-background
         &.trans-background {
@@ -80,16 +94,22 @@
         }
     }
 
-    &-title, &-date {
-        z-index: 20;
-        position: relative;
+    &-title {
+        color: #E87722; /* Orange secondary */
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
         text-align: center;
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 5px 0;
-        color: rgb(56, 76, 135); /* Ensure text color is consistent */
+        z-index: 2;
+        position: relative;
+    }
+
+    &-date {
+        color: #E87722; /* Orange secondary */
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        z-index: 2;
+        position: relative;
     }
 
     &-button-container {
@@ -110,9 +130,31 @@
     }
 
     &-button {
-        z-index: 20;
+        background-color: rgb(56, 76, 135); /* Dark blue */
+        color: #F5F5F5; /* Light gray secondary */
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+        z-index: 2;
         position: relative;
-        text-align: center;
+
+        &:hover {
+            background-color: rgb(79, 99, 158); /* Light blue */
+        }
+    }
+
+    &-link {
+        color: #E87722; /* Orange secondary */
+        text-decoration: none;
+        z-index: 2;
+        position: relative;
+        
+        &:hover {
+            color: #6A9FB5; /* Primary light blue */
+        }
     }
 }
 

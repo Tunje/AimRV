@@ -71,9 +71,9 @@ const Navbar = () => {
                 </div>
                 
                 {/* Desktop Navigation - Hidden on mobile */}
-                <div className="navbside MaxWH location flex flex_j_SA">
+                <div className="navbside">
                     {/* Tävlingar Button */}
-                    <div className="navbbutton flex flex_j_SA flex_col MaxWH location button">
+                    <div className="nav-button">
                         <a href="#" className="dropdown-trigger" onClick={(e) => {
                             e.preventDefault();
                             setDropOpen1(!dropOpen1);
@@ -92,11 +92,11 @@ const Navbar = () => {
                         )}
                     </div>
                     {/* Anmälan Button */}
-                    <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <div className="nav-button">
                         <a href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f">Anmälan</a>
                     </div>
                     {/* Om oss Button */}
-                    <div className="navbbutton flex flex_j_SA flex_col MaxWH location button">
+                    <div className="nav-button">
                         <a href="#" className="dropdown-trigger" onClick={(e) => {
                             e.preventDefault();
                             setDropOpen2(!dropOpen2);
@@ -111,7 +111,7 @@ const Navbar = () => {
                         )}
                     </div>
                     {/* Sponsorer Button */}
-                    <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <div className="nav-button">
                         <a href="#sponsors-section" onClick={(e) => {
                             // Prevent default navigation
                             e.preventDefault();
@@ -126,25 +126,25 @@ const Navbar = () => {
                         }}>Sponsorer</a>
                     </div>
                     {/* Senaste nytt Button */}
-                    <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <div className="nav-button">
                         <Link to="/senaste-nytt">Senaste nytt</Link>
                     </div>
                     {/* Kontakta oss Button */}
-                    <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <div className="nav-button">
                         <Link to="#">Kontakta oss</Link>
                     </div>
                     {/* Language Button */}
-                    <div className="navbbutton flex flex_j_SA MaxWH location button">
+                    <div className="nav-button">
                         <a href="#">SV|NO|EN</a>
                     </div>
                     
                     {/* Content Manager and Logout Buttons - Only visible when logged in */}
                     {isAuthenticated && (
                         <>
-                            <div className="navbbutton flex flex_j_SA MaxWH location button">
+                            <div className="nav-button">
                                 <Link to="/content-manager">Innehåll</Link>
                             </div>
-                            <div className="navbbutton flex flex_j_SA MaxWH location button">
+                            <div className="nav-button">
                                 <a href="#" onClick={(e) => {
                                     e.preventDefault();
                                     handleLogout();

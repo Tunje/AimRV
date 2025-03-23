@@ -19,6 +19,7 @@
 @import './_competitions';
 @import './_edit-frame';
 @import './_background-settings';
+@import './_background';
 @import './_footer';
 @import './_pages';
 @import './_editor';
@@ -34,7 +35,7 @@ body{
     overflow-x: hidden;
     width: 100vw;
     font-family: 'Josefin Sans', sans-serif;
-    color: rgb(56, 76, 135);
+    color: #2D4F60;  /* Primary dark blue */
 }
 p{    
     color: black;

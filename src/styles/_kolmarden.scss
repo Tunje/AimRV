@@ -8,6 +8,7 @@
     position: relative;
     width: 100%;
     overflow: visible;
+    background-color: #2D4F60; /* Primary dark blue */
 }
 
 .kolmarden-content {
@@ -35,20 +36,21 @@
 }
 
 .kolmarden-button {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60; /* Primary dark blue */
     width: 80%;
     height: 100%;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    color: white;
-}
-
-.kolmarden-button:hover {
-    background-color: rgb(79, 99, 158);
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #6A9FB5; /* Primary light blue */
+    }
 }
 
 .kolmarden-button-section-bg {
-    background-color: rgb(56, 76, 135);
+    background-color: #6A9FB5; /* Primary light blue */
     width: 100%;
     height: auto;
     min-height: 10vh;
@@ -100,13 +102,29 @@
 }
 
 .kolmarden-link {
-    color: rgb(56, 76, 135);
+    color: #E87722; /* Orange secondary */
     text-decoration: none;
     display: inline-block;
     
     &:hover {
         text-decoration: underline;
     }
+}
+
+.kolmarden-title {
+    color: #F5F5F5; /* Light gray secondary */
+    margin-bottom: 1rem;
+}
+
+.kolmarden-date {
+    color: #F5F5F5; /* Light gray secondary */
+    margin-bottom: 2rem;
+}
+
+.kolmarden-description {
+    color: #F5F5F5; /* Light gray secondary */
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 @media (max-width: 992px) {

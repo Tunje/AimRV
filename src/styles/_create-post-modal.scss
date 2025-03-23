@@ -34,7 +34,7 @@
   &__title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: rgb(56, 76, 135);
+    color: #2D4F60;  /* Primary dark blue */
     text-align: center;
   }
   
@@ -63,8 +63,8 @@
     
     &:focus {
       outline: none;
-      border-color: rgb(56, 76, 135);
-      box-shadow: 0 0 0 2px rgba(56, 76, 135, 0.2);
+      border-color: #2D4F60;  /* Primary dark blue */
+      box-shadow: 0 0 0 2px rgba(45, 79, 96, 0.2);
     }
   }
   
@@ -78,8 +78,8 @@
     
     &:focus {
       outline: none;
-      border-color: rgb(56, 76, 135);
-      box-shadow: 0 0 0 2px rgba(56, 76, 135, 0.2);
+      border-color: #2D4F60;  /* Primary dark blue */
+      box-shadow: 0 0 0 2px rgba(45, 79, 96, 0.2);
     }
   }
   
@@ -92,8 +92,8 @@
     transition: all 0.2s ease;
     
     &:hover {
-      border-color: rgb(56, 76, 135);
-      background-color: rgba(56, 76, 135, 0.05);
+      border-color: #2D4F60;  /* Primary dark blue */
+      background-color: rgba(45, 79, 96, 0.05);
     }
   }
   
@@ -137,12 +137,12 @@
     transition: all 0.2s ease;
     
     &--primary {
-      background-color: rgb(56, 76, 135);
+      background-color: #2D4F60;  /* Primary dark blue */
       color: white;
       border: none;
       
       &:hover {
-        background-color: rgb(79, 99, 158);
+        background-color: #6A9FB5;  /* Primary light blue */
       }
       
       &:disabled {
@@ -153,11 +153,11 @@
     
     &--secondary {
       background-color: white;
-      color: rgb(56, 76, 135);
-      border: 1px solid rgb(56, 76, 135);
+      color: #2D4F60;  /* Primary dark blue */
+      border: 1px solid #2D4F60;  /* Primary dark blue */
       
       &:hover {
-        background-color: rgba(56, 76, 135, 0.05);
+        background-color: rgba(45, 79, 96, 0.05);
       }
     }
   }

@@ -1,20 +1,26 @@
 /* Base button style */
 .button {
-    background-color: #B0C4DE; /* Light grayish blue */
+    background-color: #E87722; /* Orange secondary */
+    color: #F5F5F5; /* Light gray secondary */
     border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 16px; /* Text size */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Increased padding for a larger button */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+    &:hover {
+        background-color: darken(#E87722, 10%); /* Darker orange */
+    }
+
+    &:disabled {
+        background-color: #A0A0A0; /* Dark gray secondary */
+        cursor: not-allowed;
+    }
 }
 
-/* Hover effect */
-.button:hover {
-    background-color: #A3B8CC; /* Slightly brighter grayish blue */
-}
 /* Base button style */
 .button-2 {
-    background-color: rgb(56, 76, 135); /* Dark blue per user preference */
+    background-color: #E87722; /* Orange secondary */
     color: white;
     border: none; /* No border */
     border-radius: 25px; /* Rounded corners */
@@ -34,11 +40,63 @@
 
 /* Hover effect */
 .button-2:hover {
-    background-color: rgb(79, 99, 158); /* Light blue per user preference */
+    background-color: darken(#E87722, 10%); /* Darker orange */
+}
+
+.button-secondary {
+    background-color: #E87722; /* Orange secondary */
+    color: #2D4F60; /* Dark blue primary */
+    border: 1px solid #A0A0A0; /* Dark gray secondary */
+
+    &:hover {
+        background-color: darken(#E87722, 10%); /* Darker orange */
+        color: #F5F5F5; /* Light gray secondary */
+    }
+}
+
+.button-transparent {
+    background-color: transparent;
+    color: #F5F5F5; /* Light gray secondary */
+    border: 2px solid #E87722; /* Orange secondary */
+
+    &:hover {
+        background-color: #E87722; /* Orange secondary */
+    }
+}
+
+.button-large {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+.button-small {
+    padding: 8px 15px;
+    font-size: 0.9rem;
 }
 
 /* Global button styles to ensure all buttons have rounded corners */
-button, 
+button {
+  padding: 5px 10px;
+  min-width: 100px;
+  max-width: 100px;
+  max-height: 25px;
+  min-height: 25px;
+  border: 1px solid #2D4F60;  /* Primary dark blue border */
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;  /* Primary dark blue text */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #2D4F60;  /* Primary dark blue background */
+    color: white;  /* White text */
+  }
+}
+
 .btn,
 input[type="button"], 
 input[type="submit"], 

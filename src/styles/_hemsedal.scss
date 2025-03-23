@@ -11,7 +11,7 @@
     padding: 2rem;
     z-index: 1;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(245, 245, 245, 0.9); /* Light gray secondary with opacity */
     height: auto;
 }
 
@@ -20,15 +20,16 @@
 }
 
 .hemsedal-button {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60; /* Dark blue primary */
     width: 80%;
     height: 100%;
     border: none;
     cursor: pointer;
+    color: #F5F5F5; /* Light gray secondary */
 }
 
 .hemsedal-button:hover {
-    background-color: rgb(79, 99, 158);
+    background-color: #6A9FB5; /* Light blue primary */
 }
 
 .hemsedal-button-section {
@@ -36,7 +37,7 @@
 }
 
 .hemsedal-button-section-bg {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60; /* Dark blue primary */
     background-attachment: fixed;
     height: 10vh;
 }
@@ -49,6 +50,7 @@
     margin-left: 1rem;
     display: block;
     margin-bottom: 0.5rem;
+    color: #2D4F60; /* Dark blue primary */
 }
 
 .hemsedal-text-block {
@@ -65,12 +67,11 @@
 }
 
 .hemsedal-link {
-    color: rgb(56, 76, 135);
+    color: #2D4F60; /* Dark blue primary */
     text-decoration: none;
-    display: inline-block;
     
     &:hover {
-        text-decoration: underline;
+        color: #6A9FB5; /* Light blue primary */
     }
 }
 

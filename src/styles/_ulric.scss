@@ -18,7 +18,7 @@
 }
 
 .ulric-button {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60;  /* Primary dark blue */
     width: 80%;
     height: 100%;
     border: none;
@@ -32,11 +32,11 @@
 }
 
 .ulric-button:hover {
-    background-color: rgb(79, 99, 158);
+    background-color: #6A9FB5;  /* Primary light blue */
 }
 
 .ulric-button-section-bg {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60;  /* Primary dark blue */
     width: 100vw;
     height: 10vh;
 }
@@ -59,7 +59,7 @@
 }
 
 .ulric-link {
-    color: rgb(56, 76, 135);
+    color: #2D4F60;  /* Primary dark blue */
     text-decoration: none;
     margin-top: 0.5rem;
     display: inline-block;

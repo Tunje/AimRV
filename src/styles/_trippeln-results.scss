@@ -1,21 +1,18 @@
+@import 'buttons';
+
+.trippeln-results-container {
+    background-color: #2D4F60; /* Dark blue primary */
+    padding: 2rem;
+    border-radius: 8px;
+}
+
 .filter-select {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    border: 2px solid white;
-    background: transparent;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
+    @extend button;
     margin: 0 1rem;
     
     option {
-        background: rgb(56, 76, 135);
-        color: white;
-    }
-
-    &:focus {
-        outline: none;
-        border-color: #fff;
+        background-color: white;
+        color: #2D4F60;  /* Primary dark blue text */
     }
 }
 
@@ -24,14 +21,15 @@
     min-width: 0;
     padding: 2rem;
     margin: 0 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #6A9FB5; /* Light blue primary */
     border-radius: 8px;
 
     h2 {
         margin-bottom: 2rem;
         text-align: center;
         padding-bottom: 1rem;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 2px solid #E87722; /* Orange secondary */
+        color: #F5F5F5; /* Light gray secondary */
     }
 }
 
@@ -39,24 +37,64 @@
     margin-bottom: 1.5rem;
     padding: 1.5rem;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
 
     &:hover {
         transform: translateY(-2px);
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: rgba(245, 245, 245, 0.15); /* Light gray secondary with more opacity */
     }
 
     p {
         margin: 0.5rem 0;
-        font-size: 1.1rem;
+        color: #F5F5F5; /* Light gray secondary */
 
-        &:first-child {
-            font-size: 1.2rem;
+        &.result-name {
             font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #F5F5F5; /* Light gray secondary */
+        }
+
+        &.result-time {
+            color: #E87722; /* Orange secondary */
+            font-weight: bold;
+        }
+
+        &.result-position {
+            color: #F5F5F5; /* Light gray secondary */
+            font-size: 0.9rem;
+        }
+    }
+}
+
+.result-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+
+    button {
+        background-color: #E87722; /* Orange secondary */
+        color: #F5F5F5; /* Light gray secondary */
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken(#E87722, 10%); /* Darker orange */
+        }
+
+        &.secondary {
+            background-color: transparent;
+            border: 1px solid #F5F5F5; /* Light gray secondary */
+            color: #F5F5F5; /* Light gray secondary */
+
+            &:hover {
+                background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
+            }
         }
     }
 }

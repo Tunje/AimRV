@@ -22,7 +22,7 @@
   
   h3 {
     margin-top: 0;
-    color: rgb(56, 76, 135);
+    color: #2D4F60;  /* Primary dark blue */
     margin-bottom: 20px;
     text-align: center;
   }
@@ -43,8 +43,8 @@
       transition: all 0.2s ease;
       
       &.active {
-        color: rgb(56, 76, 135);
-        border-bottom: 3px solid rgb(56, 76, 135);
+        color: #2D4F60;  /* Primary dark blue */
+        border-bottom: 3px solid #2D4F60;  /* Primary dark blue */
       }
       
       &:hover {
@@ -139,11 +139,11 @@
       }
       
       &.apply-button {
-        background-color: rgb(56, 76, 135);
+        background-color: #2D4F60;  /* Primary dark blue */
         color: white;
         
         &:hover {
-          background-color: rgb(79, 99, 158);
+          background-color: #6A9FB5;  /* Primary light blue */
         }
       }
     }

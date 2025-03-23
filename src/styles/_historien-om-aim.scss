@@ -3,6 +3,8 @@
     padding-top: 50px;
     padding-bottom: 50px;
     width: 100vw;
+    background-color: #2D4F60; /* Dark blue primary */
+    color: #F5F5F5; /* Light gray secondary */
   }
 
   &-content {
@@ -21,9 +23,18 @@
     padding-left: 30px;
     padding-right: 30px;
     margin-top: 20px;
+    color: #E87722; /* Orange secondary */
     
     &:first-child {
       margin-top: 0;
     }
+  }
+
+  &-title {
+    color: #F5F5F5; /* Light gray secondary */
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #6A9FB5; /* Light blue primary */
+    padding: 1rem;
   }
 }

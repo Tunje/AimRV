@@ -17,11 +17,11 @@
   left: -5px;
   right: -5px;
   bottom: -5px;
-  border: 2px dashed rgba(56, 76, 135, 0.7);
+  border: 2px dashed rgba(45, 79, 96, 0.7);
   border-radius: 4px;
   pointer-events: none; // Allow clicks to pass through
   z-index: 5; // Above background images but below text
-  background-color: rgba(255, 255, 255, 0.1); // Very subtle white overlay
+  background-color: rgba(106, 159, 181, 0.1); // Very subtle light blue overlay
 }
 
 .editable-text {
@@ -62,7 +62,7 @@
   &__edit-icon {
     margin-left: 5px;
     font-size: 0.8em;
-    color: #00a6fb;
+    color: #2D4F60;
     cursor: pointer;
   }
 }
@@ -83,12 +83,12 @@
 }
 
 .edit-button-primary {
-  background-color: rgb(56, 76, 135);
+  background-color: #2D4F60;
   color: white;
 }
 
 .edit-button-primary:hover {
-  background-color: rgb(79, 99, 158);
+  background-color: #6A9FB5;
 }
 
 // Modal button styles - IMPORTANT: These are the buttons inside the modal
@@ -107,12 +107,12 @@
 }
 
 .modal-button-primary {
-  background-color: rgb(56, 76, 135) !important;
+  background-color: #2D4F60 !important;
   color: white !important;
 }
 
 .modal-button-primary:hover {
-  background-color: rgb(79, 99, 158) !important;
+  background-color: #6A9FB5 !important;
 }
 
 .modal-button-primary:disabled {
@@ -220,12 +220,12 @@
 
 // Ensure links within editable text have proper styling
 .editable-text a {
-  color: rgb(56, 76, 135);
+  color: #2D4F60;
   text-decoration: none;
   
   &:hover {
     text-decoration: underline;
-    color: rgb(79, 99, 158);
+    color: #6A9FB5;
   }
 }
 
@@ -235,11 +235,11 @@
 .ulricehamn-link,
 .hemsedal-link,
 .senaste-nytt-link {
-  color: rgb(56, 76, 135);
+  color: #2D4F60;
   text-decoration: none;
   
   &:hover {
     text-decoration: underline;
-    color: rgb(79, 99, 158);
+    color: #6A9FB5;
   }
 }

@@ -3,9 +3,12 @@
 .om-oss-section {
     padding: 60px 0;
     width: 100%;
+    background-color: #2D4F60; /* Dark blue primary */
 
-    p:not([data-textkey="om-oss-title"]) {
-        color: white !important;
+    p {
+        &:not([data-textkey="om-oss-title"]) {
+            color: #F5F5F5; /* Light gray secondary */
+        }
     }
 }
 
@@ -13,11 +16,13 @@
     width: 80%;
     max-width: 1200px;
     padding: 40px;
+    background-color: #6A9FB5; /* Light blue primary */
 }
 
 .om-oss-text {
     margin-bottom: 20px;
     line-height: 1.6;
+    color: #F5F5F5; /* Light gray secondary */
 }
 
 .om-oss-image-section {
@@ -31,7 +36,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(45, 79, 96, 0.3); /* Dark blue primary with opacity */
         z-index: -1;
     }
 }
@@ -40,21 +45,25 @@
     text-align: center;
 }
 
-.om-oss-title .font_blue {
-    color: rgb(56, 76, 135) !important;
-    font-weight: bold;
+.om-oss-title {
+    .font_blue {
+        color: #2D4F60; /* Dark blue primary */
+        font-weight: bold;
+    }
 }
 
 .om-oss-header-content {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     box-sizing: border-box;
+    background-color: #6A9FB5; /* Light blue primary */
 }
 
 .om-oss-header-content .trans-background {
     width: 100%;
     margin: 0;
     padding: 1rem;
+    background-color: #2D4F60; /* Dark blue primary */
 }
 
 .section-content {
@@ -78,6 +87,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #6A9FB5; /* Light blue primary */
 }
 
 .om-oss-card-content {
@@ -86,30 +96,41 @@
     padding: 1rem;
     box-sizing: border-box;
     text-align: center;
+    color: #F5F5F5; /* Light gray secondary */
 }
 
 .om-oss-card .trans-background {
     height: auto;
     min-height: 120px;
     text-align: center;
+    background-color: #2D4F60; /* Dark blue primary */
 }
 
 .om-oss-card .trans-background p {
-    text-align: center !important;
+    text-align: center;
+    color: #F5F5F5; /* Light gray secondary */
 }
 
 .om-oss-card-button {
     padding: 1rem;
     text-align: center;
+    background-color: #E87722; /* Orange secondary */
+    color: #F5F5F5; /* Light gray secondary */
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken(#E87722, 10%); /* Darker orange */
+    }
 }
 
 .om-oss-background-container {
     width: 100%;
     height: 400px;
     overflow: hidden;
+    background-color: #6A9FB5; /* Light blue primary */
 }
 
 // Override the default left-align for cards in OmOss
 .page_02box p, .page_02top p {
-    text-align: center !important;
+    text-align: center;
 }

@@ -1,20 +1,32 @@
+@import 'buttons';
+
 .drop-down {
-  background-color: #B0C4DE;
+  background-color: #6A9FB5; /* Primary light blue */
   min-width: 100px;
   width: 120px; /* Moderate width */
   border-radius: 20px; /* Rounded corners */
   z-index: 1000;
   position: absolute; /* Need this for proper positioning */
-  top: 25px; /* Position right below the button (25px is the button height) */
-  left: -10px; /* Offset to center the dropdown */
+  top: 100%; /* Position right below the button */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
   overflow: hidden; /* Prevent content from overflowing */
+}
+
+.dropdown-button {
+    @extend button;
+    
+    &:hover {
+        background-color: #2D4F60;  /* Primary dark blue */
+        color: white;
+    }
 }
 
 .drop-item {
   display: block;
   padding: 5px 5px; /* Smaller padding */
   text-decoration: none;
-  color: black;
+  color: white;
   text-align: center;
   width: 100%; /* Make items fill the dropdown width */
   box-sizing: border-box; /* Include padding in width calculation */
@@ -23,6 +35,6 @@
 }
 
 .drop-item:hover {
-  background: #f0f0f0;
+  background: #2D4F60; /* Primary dark blue */
   border-radius: 20px; /* Rounded corners */
 }

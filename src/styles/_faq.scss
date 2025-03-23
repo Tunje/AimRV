@@ -1,12 +1,15 @@
 .faq-container {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #2D4F60; /* Dark blue primary */
 }
 
 .faq-section {
   width: 100%;
   padding: 50px 0;
+  margin-bottom: 2rem;
 }
 
 .faq-content-container {
@@ -25,6 +28,7 @@
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
+  color: #F5F5F5; /* Light gray secondary */
 }
 
 .faq-item {
@@ -34,8 +38,8 @@
 }
 
 .faq-question {
-  background-color: rgb(56, 76, 135);
-  color: white;
+  background-color: #6A9FB5; /* Light blue primary */
+  color: #F5F5F5; /* Light gray secondary */
   padding: 15px 20px;
   cursor: pointer;
   display: flex;
@@ -44,7 +48,11 @@
   transition: background-color 0.3s ease;
   
   &:hover {
-    background-color: rgb(79, 99, 158);
+    background-color: lighten(#6A9FB5, 10%); /* Lighter blue */
+  }
+  
+  &.active {
+    background-color: #E87722; /* Orange secondary */
   }
   
   .question-text {
@@ -64,7 +72,8 @@
 }
 
 .faq-answer {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #F5F5F5; /* Light gray secondary */
+  color: #2D4F60; /* Dark blue primary */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
@@ -73,6 +82,7 @@
   &.open {
     max-height: 500px;
     padding: 20px;
+    display: block;
   }
   
   p {
@@ -83,12 +93,13 @@
 
 .faq-category {
   margin-bottom: 40px;
+  margin-bottom: 3rem;
 }
 
 .faq-category-title {
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: white;
+  color: #E87722; /* Orange secondary */
   text-align: center;
 }
 
@@ -110,7 +121,7 @@
 
 /* Dark and light section styles */
 .faq-dark-section {
-  background-color: rgb(56, 76, 135);
+  background-color: #2D4F60; /* Dark blue primary */
   color: white;
   
   .faq-question {
@@ -128,19 +139,19 @@
 
 .faq-light-section {
   background-color: white;
-  color: rgb(56, 76, 135);
+  color: #2D4F60; /* Dark blue primary */
   
   .faq-question {
-    background-color: rgb(56, 76, 135);
+    background-color: #2D4F60; /* Dark blue primary */
     color: white;
     
     &:hover {
-      background-color: rgb(79, 99, 158);
+      background-color: #6A9FB5; /* Light blue primary */
     }
   }
   
   .faq-answer {
-    background-color: rgba(56, 76, 135, 0.05);
+    background-color: rgba(255, 255, 255, 0.05);
     color: #333;
   }
 }

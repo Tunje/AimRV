@@ -30,6 +30,7 @@ import { AuthProvider } from './context/AuthContext';
 import { TextProvider } from './context/TextContext';
 import BackgroundFrames from './components/BackgroundFrames';
 import BackgroundSettings from './components/BackgroundSettings';
+import Background from './components/Background';
 import { initializeAdminUser } from './firebase/auth';
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
                         flexDirection: 'column',
                         position: 'relative'
                     }}>
+                        <Background />
                         <Navbar />
                         <BackgroundFrames />
                         <BackgroundSettings />
