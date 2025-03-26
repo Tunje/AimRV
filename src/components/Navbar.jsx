@@ -69,8 +69,8 @@ const Navbar = () => {
         <div className="navim MaxWH location">
           <Link to="/">
             <img
-              src="/images/Aim_Challenge_logo_white.svg"
-              alt="aim challange logo"
+              src="/images/Aim Blue.svg"
+              alt="aim challenge logo"
               className="custom-image navim"
             ></img>
           </Link>

@@ -197,10 +197,10 @@
 /* Global button styles to ensure all buttons have rounded corners */
 button, .filter-select, .dropdown-button, .nav-button {
   padding: 5px 10px;
-  min-width: 100px;
-  max-width: 100px;
-  max-height: 25px;
-  min-height: 25px;
+  min-width: 85px;
+  max-width: 85px;
+  max-height: 15px;
+  min-height: 15px;
   border: 1px solid #2D4F60; /* Primary dark blue border */
   border-radius: 20px;
   background-color: white;
@@ -231,7 +231,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 .booking-button,
@@ -257,7 +258,7 @@ a.button-2,
   max-height: 90px;
   position: fixed;
   top: 0;
-  left: 960px;
+  left: 50.5%;
   transform: translateX(-50%);
   z-index: 1000;
   background-color: rgba(45, 79, 96, 0.8);
@@ -496,10 +497,10 @@ body {
 /* Global button styles to ensure all buttons have rounded corners */
 button, .filter-select, .dropdown-button, .nav-button {
   padding: 5px 10px;
-  min-width: 100px;
-  max-width: 100px;
-  max-height: 25px;
-  min-height: 25px;
+  min-width: 85px;
+  max-width: 85px;
+  max-height: 15px;
+  min-height: 15px;
   border: 1px solid #2D4F60; /* Primary dark blue border */
   border-radius: 20px;
   background-color: white;
@@ -530,7 +531,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 .booking-button,
@@ -617,10 +619,10 @@ a.button-2,
 /* Global button styles to ensure all buttons have rounded corners */
 button, .filter-select, .dropdown-button, .nav-button {
   padding: 5px 10px;
-  min-width: 100px;
-  max-width: 100px;
-  max-height: 25px;
-  min-height: 25px;
+  min-width: 85px;
+  max-width: 85px;
+  max-height: 15px;
+  min-height: 15px;
   border: 1px solid #2D4F60; /* Primary dark blue border */
   border-radius: 20px;
   background-color: white;
@@ -651,7 +653,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 .booking-button,
@@ -696,22 +699,6 @@ a.button-2,
 .drop-item:hover {
   background: #2D4F60; /* Primary dark blue */
   border-radius: 20px; /* Rounded corners */
-}
-
-.simple-background {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  border-radius: 0;
-}
-
-.locked-background {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  border-radius: 0;
 }
 
 .trans-background {
@@ -983,6 +970,22 @@ a.button-2,
   background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+.background-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .ulric-section {
@@ -1703,10 +1706,10 @@ a.button-2,
 /* Global button styles to ensure all buttons have rounded corners */
 button, .filter-select, .nav-button, .dropdown-button {
   padding: 5px 10px;
-  min-width: 100px;
-  max-width: 100px;
-  max-height: 25px;
-  min-height: 25px;
+  min-width: 85px;
+  max-width: 85px;
+  max-height: 15px;
+  min-height: 15px;
   border: 1px solid #2D4F60; /* Primary dark blue border */
   border-radius: 20px;
   background-color: white;
@@ -1737,7 +1740,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 .booking-button,
@@ -2836,21 +2840,6 @@ a.button-2,
   background-color: #6A9FB5; /* Primary light blue */
 }
 
-.background-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-.background-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .footer-wrapper {
   display: flex;
   flex-direction: column;
@@ -3029,7 +3018,8 @@ a.button-2,
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transition: transform 0.2s ease-in-out;
   margin: 0 auto;
 }
@@ -3450,7 +3440,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .page_03-image img {
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border: 1px solid white;
 }
 
@@ -3570,7 +3561,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -4317,7 +4309,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .create-post-modal__image-preview {
   max-width: 100%;
   max-height: 200px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .create-post-modal__file-input {
   display: none;
@@ -4872,6 +4865,9 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   outline: none;
   border-color: #6A9FB5; /* Light blue primary */
 }
+.result-upload-modal-field input::-moz-placeholder, .result-upload-modal-field select::-moz-placeholder {
+  color: #A0A0A0; /* Dark gray secondary */
+}
 .result-upload-modal-field input::placeholder,
 .result-upload-modal-field select::placeholder {
   color: #A0A0A0; /* Dark gray secondary */
@@ -5075,4 +5071,4 @@ p {
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   z-index: 10;
-}
+}/*# sourceMappingURL=index.css.map */
