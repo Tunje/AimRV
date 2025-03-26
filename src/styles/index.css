@@ -746,13 +746,13 @@ a.button-2,
 }
 
 .dynamic-background {
-  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg") !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: scroll !important;
-  position: relative !important;
-  z-index: 0 !important;
+  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  position: relative;
+  z-index: 0;
 }
 
 .ulricehamn-bg {
