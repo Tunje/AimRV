@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ResultUploadModal from './ResultUploadModal';
+import { getResults } from '../firebase/results';
 
 const Results = () => {
     const { currentUser } = useAuth();
@@ -12,7 +13,6 @@ const Results = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [error, setError] = useState('');
     
-    // Check if user is admin
     const isAdmin = currentUser?.role === 'admin';
     
     const years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
@@ -20,42 +20,30 @@ const Results = () => {
     const durations = ['3 timmar', '6 timmar'];
     const locations = ['Ulricehamn', 'Sälen', 'Hemsedal', 'Kolmården'];
 
-    // Load results from localStorage on component mount and when filters change
     useEffect(() => {
         fetchResults();
     }, [selectedYear, selectedCategory, selectedDuration]);
 
-    const fetchResults = () => {
+    const fetchResults = async () => {
         try {
             setIsLoading(true);
             setError('');
             
-            // Get results from localStorage
-            const storedResults = localStorage.getItem('raceResults');
-            let resultsData = storedResults ? JSON.parse(storedResults) : [];
-            
-            // Apply filters
+            const filters = {};
             if (selectedYear !== 'all') {
-                resultsData = resultsData.filter(result => 
-                    result.year === parseInt(selectedYear)
-                );
+                filters.year = selectedYear;
             }
-            
             if (selectedCategory !== 'all') {
-                resultsData = resultsData.filter(result => 
-                    result.category === selectedCategory
-                );
+                filters.category = selectedCategory;
             }
-            
             if (selectedDuration !== 'all') {
-                resultsData = resultsData.filter(result => 
-                    result.duration === selectedDuration
-                );
+                filters.duration = selectedDuration;
             }
             
+            const resultsData = await getResults(filters);
             setResults(resultsData);
-        } catch (error) {
-            console.error('Error fetching results:', error);
+        } catch (err) {
+            console.error('Error fetching results:', err);
             setError('Failed to load results. Please try again later.');
         } finally {
             setIsLoading(false);
@@ -65,18 +53,9 @@ const Results = () => {
     const handleDeleteResult = (resultId) => {
         if (window.confirm('Are you sure you want to delete this result?')) {
             try {
-                // Get current results
-                const storedResults = localStorage.getItem('raceResults');
-                let resultsData = storedResults ? JSON.parse(storedResults) : [];
-                
-                // Filter out the result to delete
-                resultsData = resultsData.filter(result => result.id !== resultId);
-                
-                // Save back to localStorage
-                localStorage.setItem('raceResults', JSON.stringify(resultsData));
-                
-                // Refresh results
-                fetchResults();
+                const resultsData = [...results];
+                const updatedResults = resultsData.filter(result => result.id !== resultId);
+                setResults(updatedResults);
             } catch (error) {
                 console.error('Error deleting result:', error);
                 setError('Failed to delete result. Please try again.');
@@ -92,40 +71,26 @@ const Results = () => {
         setIsModalOpen(false);
     };
 
-    const handleUploadSuccess = () => {
-        fetchResults();
+    const handleUploadSuccess = (newResult) => {
+        setResults(prevResults => [newResult, ...prevResults]);
+        closeModal();
     };
 
-    // Filter results by location
     const getLocationResults = (location) => {
         return results.filter(result => result.location === location);
     };
 
-    // Group results by year, category, and duration
     const groupResults = (locationResults) => {
         const grouped = {};
-        
         locationResults.forEach(result => {
             const key = `${result.year}-${result.category}-${result.duration}`;
             grouped[key] = result;
         });
-        
         return grouped;
     };
 
     return (
         <div className="results-container">
-            <div className="results-top-spacer"></div>
-            
-            <section className="results-header-section">
-                <div className="results-header-content">
-                    <h1 className="results-title">RESULTAT</h1>
-                    <p className="results-description">
-                        Här hittar du resultaten från våra tävlingar. Välj år, kategori och distans för att filtrera resultaten.
-                    </p>
-                </div>
-            </section>
-            
             <section className="results-filters-section">
                 <div className="results-filters">
                     <select 
@@ -163,81 +128,59 @@ const Results = () => {
                 </div>
                 
                 <div className="results-upload-section">
-                    <button 
-                        onClick={openModal}
-                        className="results-upload-button"
-                        style={{
-                            padding: '10px 20px',
-                            backgroundColor: 'rgb(56, 76, 135)',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '4px',
-                            fontSize: '1rem',
-                            cursor: 'pointer',
-                            display: 'block',
-                            margin: '0 auto'
-                        }}
-                    >
-                        Ladda upp resultat
-                    </button>
+                    {isAdmin && (
+                        <button 
+                            onClick={openModal}
+                            className="results-upload-button"
+                        >
+                            Ladda upp resultat
+                        </button>
+                    )}
                 </div>
             </section>
             
             {error && <div className="results-error">{error}</div>}
             
-            {isLoading ? (
-                <div className="results-loading">Laddar resultat...</div>
-            ) : (
-                <section className="results-content-section">
-                    <div className="results-grid">
-                        {locations.map(location => {
-                            const locationResults = getLocationResults(location);
-                            const groupedResults = groupResults(locationResults);
-                            
-                            return (
-                                <div key={location} className="results-location-card">
-                                    <h2 className="results-location-title">{location}</h2>
-                                    
-                                    {Object.keys(groupedResults).length > 0 ? (
-                                        <div className="results-list">
-                                            {Object.entries(groupedResults).map(([key, result]) => (
-                                                <div key={key} className="results-item">
-                                                    <a 
-                                                        href={result.fileUrl} 
-                                                        target="_blank" 
-                                                        rel="noopener noreferrer"
-                                                        className="results-link"
-                                                    >
-                                                        <div className="results-info">
-                                                            <span className="results-year">{result.year}</span>
-                                                            <span className="results-category">{result.category}</span>
-                                                            <span className="results-duration">{result.duration}</span>
-                                                        </div>
-                                                    </a>
-                                                    
-                                                    {isAdmin && (
-                                                        <button 
-                                                            onClick={() => handleDeleteResult(result.id)}
-                                                            className="results-delete-button"
-                                                        >
-                                                            Ta bort
-                                                        </button>
-                                                    )}
+            <section className="results-content-section">
+                <div className="results-grid">
+                    {locations.map(location => (
+                        <div key={location} className="results-location-card">
+                            <h2 className="results-location-title">{location}</h2>
+                            <div className="results-list">
+                                {isLoading ? (
+                                    <div className="results-loading">Laddar...</div>
+                                ) : (
+                                    getLocationResults(location).map(result => (
+                                        <div key={result.id} className="results-item">
+                                            <a 
+                                                href={result.fileUrl} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="results-link"
+                                            >
+                                                <div className="results-info">
+                                                    <span className="results-year">{result.year}</span>
+                                                    <span className="results-category">{result.category}</span>
+                                                    <span className="results-duration">{result.duration}</span>
                                                 </div>
-                                            ))}
+                                            </a>
+                                            {isAdmin && (
+                                                <button 
+                                                    onClick={() => handleDeleteResult(result.id)}
+                                                    className="results-delete-button"
+                                                >
+                                                    Ta bort
+                                                </button>
+                                            )}
                                         </div>
-                                    ) : (
-                                        <div className="results-empty">
-                                            Inga resultat tillgängliga för {location} med valda filter.
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </section>
-            )}
-            
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {isModalOpen && (
                 <ResultUploadModal 
                     onClose={closeModal} 

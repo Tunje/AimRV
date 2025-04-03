@@ -29,7 +29,7 @@ const Pages = () => {
             className="page_02-image"
             style={{
               backgroundImage:
-                "url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg')",
+                "url('images/EE-AIMChallenge24-Uhamn-0171-high.jpg')",
             }}
           ></div>
           <div className="page_02-content">

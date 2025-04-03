@@ -14,7 +14,6 @@ import Kolmarden from './components/Kolmarden';
 import Trippeln from './components/Trippeln';
 import TrippelnResults from './components/TrippelnResults';
 import Results from './components/Results';
-import ResultsTest from './components/ResultsTest';
 import Gallery from './components/Gallery';
 import VideoCarousel from './components/VideoCarousel';
 import OmOss from './components/OmOss';

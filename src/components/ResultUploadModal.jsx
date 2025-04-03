@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { db, storage } from '../firebase/config';
-import { collection, doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { useAuth } from '../context/AuthContext';
+import { db } from '../firebase/config';
+import { doc, setDoc } from 'firebase/firestore';
 
 const ResultUploadModal = ({ 
   onClose, 
@@ -12,6 +12,7 @@ const ResultUploadModal = ({
   locations = ['Ulricehamn', 'Borås', 'Göteborg', 'Jönköping', 'Stockholm'],
   year 
 }) => {
+  const { currentUser } = useAuth();
   const [location, setLocation] = useState('Ulricehamn');
   const [yearState, setYearState] = useState(year || '2023');
   const [category, setCategory] = useState('Herrar');
@@ -22,8 +23,10 @@ const ResultUploadModal = ({
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleFileChange = (e) => {
-    if (e.target.files[0]) {
-      setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setError('');
     }
   };
 
@@ -34,85 +37,76 @@ const ResultUploadModal = ({
       setError('Please select a file to upload');
       return;
     }
+
+    if (!currentUser) {
+      setError('You must be logged in to upload results');
+      return;
+    }
     
     setIsUploading(true);
     setError('');
     setUploadProgress(0);
     
     try {
-      // Create a unique file name
-      const fileName = `${yearState}_${category}_${duration}_${Date.now()}_${file.name}`;
-      const storageRef = ref(storage, `results/${fileName}`);
+      const timestamp = Date.now();
+      const docId = `${yearState}_${location}_${category}_${timestamp}`;
       
-      // Create file metadata including the content type
-      const metadata = { 
-        contentType: file.type,
-        customMetadata: {
-          'year': yearState,
-          'category': category,
-          'duration': duration,
-          'location': location
-        }
-      };
-      
-      // Use uploadBytesResumable instead of uploadBytes to track progress
-      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-      
-      // Listen for state changes, errors, and completion of the upload
-      uploadTask.on('state_changed', 
-        (snapshot) => {
-          // Get upload progress
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setUploadProgress(progress);
-          console.log('Upload is ' + progress + '% done');
-        }, 
-        (error) => {
-          // Handle unsuccessful uploads
-          console.error('Upload error:', error);
-          setError(`Upload failed: ${error.message}`);
-          setIsUploading(false);
-        }, 
-        async () => {
-          // Handle successful uploads on complete
-          console.log('Upload completed successfully');
+      // Read file as text
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        try {
+          const fileContent = event.target.result;
           
-          // Get the download URL
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          console.log('Download URL:', downloadURL);
-          
-          // Create result object
+          // Create result document
           const resultData = {
             year: parseInt(yearState),
             location,
             category,
             duration,
-            fileUrl: downloadURL,
+            content: fileContent,
             fileName: file.name,
-            uploadedAt: new Date().toISOString()
+            uploadedAt: new Date().toISOString(),
+            uploadedBy: currentUser.uid,
+            timestamp
           };
           
-          // Store metadata in Firestore
-          const docRef = doc(collection(db, 'results'));
-          await setDoc(docRef, resultData);
+          // Save to Firestore
+          const resultRef = doc(db, 'results', docId);
+          await setDoc(resultRef, resultData);
           
-          // Reset form
           setFile(null);
-          setUploadProgress(0);
+          setUploadProgress(100);
           
-          // Notify parent component
-          if (onUploadSuccess) {
-            onUploadSuccess();
-          }
-          
-          // Close modal
-          onClose();
-          
+          setTimeout(() => {
+            setIsUploading(false);
+            if (onUploadSuccess) {
+              onUploadSuccess({ id: docId, ...resultData });
+            }
+            onClose();
+          }, 500);
+        } catch (error) {
+          console.error('Error saving to Firestore:', error);
+          setError(error.message || 'Failed to save result');
           setIsUploading(false);
         }
-      );
+      };
+      
+      reader.onerror = () => {
+        setError('Failed to read file');
+        setIsUploading(false);
+      };
+      
+      reader.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const progress = (event.loaded / event.total) * 100;
+          setUploadProgress(progress);
+        }
+      };
+      
+      reader.readAsText(file);
     } catch (error) {
-      console.error('Error setting up upload:', error);
-      setError(`Upload setup failed: ${error.message}`);
+      console.error('Upload error:', error);
+      setError(error.message || 'Upload failed');
       setIsUploading(false);
     }
   };
@@ -184,9 +178,11 @@ const ResultUploadModal = ({
                 type="file" 
                 className="result-upload-modal-file-input"
                 onChange={handleFileChange}
-                accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt"
+                accept=".txt,.pdf,.doc,.docx,.xls,.xlsx"
               />
             </div>
+            
+            {error && <div className="result-upload-modal-error">{error}</div>}
             
             {isUploading && (
               <div className="result-upload-modal-progress">
@@ -194,8 +190,6 @@ const ResultUploadModal = ({
                 <div className="result-upload-modal-progress-text">{Math.round(uploadProgress)}%</div>
               </div>
             )}
-            
-            {error && <div className="result-upload-modal-error">{error}</div>}
             
             <div className="result-upload-modal-actions">
               <button 
