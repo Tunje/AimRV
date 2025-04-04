@@ -7,6 +7,14 @@ export default defineConfig({
   plugins: [react()],
   // Use root path for deployment
   base: '/',
+  server: {
+    cors: {
+      origin: '*',
+      methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true
+    }
+  },
   build: {
     // Output to dist folder
     outDir: 'dist',

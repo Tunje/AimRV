@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ResultUploadModal from './ResultUploadModal';
-import { getResults } from '../firebase/results';
+import { getResults, deleteResult } from '../firebase/results';
 
 const Results = () => {
     const { currentUser } = useAuth();
@@ -21,27 +21,20 @@ const Results = () => {
     const locations = ['Ulricehamn', 'Sälen', 'Hemsedal', 'Kolmården'];
 
     useEffect(() => {
+        console.log('Fetching results...');
         fetchResults();
-    }, [selectedYear, selectedCategory, selectedDuration]);
+    }, []); // Only fetch on mount
 
     const fetchResults = async () => {
         try {
             setIsLoading(true);
             setError('');
             
-            const filters = {};
-            if (selectedYear !== 'all') {
-                filters.year = selectedYear;
-            }
-            if (selectedCategory !== 'all') {
-                filters.category = selectedCategory;
-            }
-            if (selectedDuration !== 'all') {
-                filters.duration = selectedDuration;
-            }
+            console.log('Getting results from Firebase...');
+            const resultsData = await getResults({});
+            console.log('Got results:', resultsData);
+            setResults(resultsData || []);
             
-            const resultsData = await getResults(filters);
-            setResults(resultsData);
         } catch (err) {
             console.error('Error fetching results:', err);
             setError('Failed to load results. Please try again later.');
@@ -50,15 +43,19 @@ const Results = () => {
         }
     };
 
-    const handleDeleteResult = (resultId) => {
-        if (window.confirm('Are you sure you want to delete this result?')) {
+    const handleDeleteResult = async (resultId) => {
+        if (window.confirm('Är du säker på att du vill ta bort detta resultat?')) {
             try {
-                const resultsData = [...results];
-                const updatedResults = resultsData.filter(result => result.id !== resultId);
+                setIsLoading(true);
+                const resultToDelete = results.find(r => r.id === resultId);
+                await deleteResult(resultId, resultToDelete.fileUrl);
+                const updatedResults = results.filter(result => result.id !== resultId);
                 setResults(updatedResults);
             } catch (error) {
                 console.error('Error deleting result:', error);
                 setError('Failed to delete result. Please try again.');
+            } finally {
+                setIsLoading(false);
             }
         }
     };
@@ -72,127 +69,125 @@ const Results = () => {
     };
 
     const handleUploadSuccess = (newResult) => {
+        console.log('New result:', newResult);
         setResults(prevResults => [newResult, ...prevResults]);
         closeModal();
     };
 
     const getLocationResults = (location) => {
-        return results.filter(result => result.location === location);
-    };
-
-    const groupResults = (locationResults) => {
-        const grouped = {};
-        locationResults.forEach(result => {
-            const key = `${result.year}-${result.category}-${result.duration}`;
-            grouped[key] = result;
-        });
-        return grouped;
+        const locationResults = results.filter(result => result.location === location);
+        console.log('Results for', location, ':', locationResults);
+        return locationResults;
     };
 
     return (
-        <div className="results-container">
-            <section className="results-filters-section">
-                <div className="results-filters">
-                    <select 
-                        value={selectedYear} 
-                        onChange={(e) => setSelectedYear(e.target.value)}
-                        className="results-filter-select"
-                    >
-                        <option value="all">Alla År</option>
-                        {years.map(year => (
-                            <option key={year} value={year}>{year}</option>
-                        ))}
-                    </select>
-
-                    <select 
-                        value={selectedCategory} 
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="results-filter-select"
-                    >
-                        <option value="all">Alla Kategorier</option>
-                        {categories.map(category => (
-                            <option key={category} value={category}>{category}</option>
-                        ))}
-                    </select>
-
-                    <select 
-                        value={selectedDuration} 
-                        onChange={(e) => setSelectedDuration(e.target.value)}
-                        className="results-filter-select"
-                    >
-                        <option value="all">Alla Distanser</option>
-                        {durations.map(duration => (
-                            <option key={duration} value={duration}>{duration}</option>
-                        ))}
-                    </select>
-                </div>
-                
-                <div className="results-upload-section">
-                    {isAdmin && (
-                        <button 
-                            onClick={openModal}
-                            className="results-upload-button"
+        <>
+            <div className="results-header-banner"></div>
+            <div className="results-container">
+                <h1 className="results-title">Multisort för alla</h1>
+                <section className="results-filters-section">
+                    <div className="results-filters">
+                        <select 
+                            value={selectedYear} 
+                            onChange={(e) => setSelectedYear(e.target.value)}
+                            className="results-filter-select"
                         >
-                            Ladda upp resultat
-                        </button>
-                    )}
-                </div>
-            </section>
-            
-            {error && <div className="results-error">{error}</div>}
-            
-            <section className="results-content-section">
-                <div className="results-grid">
-                    {locations.map(location => (
-                        <div key={location} className="results-location-card">
-                            <h2 className="results-location-title">{location}</h2>
-                            <div className="results-list">
-                                {isLoading ? (
-                                    <div className="results-loading">Laddar...</div>
-                                ) : (
-                                    getLocationResults(location).map(result => (
-                                        <div key={result.id} className="results-item">
-                                            <a 
-                                                href={result.fileUrl} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="results-link"
-                                            >
-                                                <div className="results-info">
-                                                    <span className="results-year">{result.year}</span>
-                                                    <span className="results-category">{result.category}</span>
-                                                    <span className="results-duration">{result.duration}</span>
-                                                </div>
-                                            </a>
-                                            {isAdmin && (
-                                                <button 
-                                                    onClick={() => handleDeleteResult(result.id)}
-                                                    className="results-delete-button"
-                                                >
-                                                    Ta bort
-                                                </button>
-                                            )}
-                                        </div>
-                                    ))
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+                            <option value="all">Alla År</option>
+                            {years.map(year => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
+                        </select>
 
-            {isModalOpen && (
-                <ResultUploadModal 
-                    onClose={closeModal} 
-                    onUploadSuccess={handleUploadSuccess}
-                    isAdmin={isAdmin}
-                    locations={locations}
-                    years={years}
-                    categories={categories}
-                    durations={durations}
-                />
-            )}
-        </div>
+                        <select 
+                            value={selectedCategory} 
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="results-filter-select"
+                        >
+                            <option value="all">Alla Kategorier</option>
+                            {categories.map(category => (
+                                <option key={category} value={category}>{category}</option>
+                            ))}
+                        </select>
+
+                        <select 
+                            value={selectedDuration} 
+                            onChange={(e) => setSelectedDuration(e.target.value)}
+                            className="results-filter-select"
+                        >
+                            <option value="all">Alla Distanser</option>
+                            {durations.map(duration => (
+                                <option key={duration} value={duration}>{duration}</option>
+                            ))}
+                        </select>
+                    </div>
+                    
+                    <div className="results-upload-section">
+                        {isAdmin && (
+                            <button 
+                                onClick={openModal}
+                                className="upload-result-button"
+                            >
+                                Ladda upp resultat
+                            </button>
+                        )}
+                    </div>
+                </section>
+                
+                {error && <div className="results-error">{error}</div>}
+                
+                <section className="results-content-section">
+                    <div className="results-grid">
+                        {locations.map(location => (
+                            <div key={location} className="results-location-card">
+                                <h2 className="results-location-title">{location}</h2>
+                                <div className="results-list">
+                                    {isLoading ? (
+                                        <div className="results-loading">Laddar...</div>
+                                    ) : (
+                                        getLocationResults(location).map(result => (
+                                            <div key={result.id} className="results-item">
+                                                <a 
+                                                    href={result.fileUrl} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="results-link"
+                                                >
+                                                    <div className="results-info">
+                                                        <span className="results-year">{result.year}</span>
+                                                        <span className="results-category">{result.category}</span>
+                                                        <span className="results-duration">{result.duration}</span>
+                                                    </div>
+                                                </a>
+                                                {isAdmin && (
+                                                    <button 
+                                                        onClick={() => handleDeleteResult(result.id)}
+                                                        className="results-delete-button"
+                                                    >
+                                                        Ta bort
+                                                    </button>
+                                                )}
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {isModalOpen && (
+                    <ResultUploadModal 
+                        onClose={closeModal} 
+                        onUploadSuccess={handleUploadSuccess}
+                        isAdmin={isAdmin}
+                        locations={locations}
+                        years={years}
+                        categories={categories}
+                        durations={durations}
+                    />
+                )}
+            </div>
+        </>
     );
 };
 

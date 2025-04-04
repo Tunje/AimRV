@@ -8,12 +8,6 @@ const Pages = () => {
       <section id="page_01" className="page_01 dynamic-background ">
         <div className=" page_01box flex flex_col flex_j_SA MaxWH">
           <EditableText
-            textKey="main-multisport-for-alla"
-            defaultText="MULTISPORT FÖR ALLA"
-            tag="p"
-            className="font_white fonts_medium"
-          />
-          <EditableText
             textKey="main-multisport-sedan"
             defaultText="MUTLISPORT SEDAN 2004"
             tag="p"

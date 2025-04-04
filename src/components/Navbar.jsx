@@ -142,7 +142,7 @@ const Navbar = () => {
                   AIM CHALLENGE TRIPPELN
                 </Link>
                 <Link
-                  to="/trippeln-results"
+                  to="/results"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
@@ -315,7 +315,7 @@ const Navbar = () => {
                     AIM CHALLENGE TRIPPELN
                   </Link>
                   <Link
-                    to="/trippeln-results"
+                    to="/results"
                     onClick={toggleMobileMenu}
                     className="mobile-submenu-item"
                   >

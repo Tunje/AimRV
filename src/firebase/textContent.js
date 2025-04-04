@@ -1,4 +1,4 @@
-import { db, storage } from './config';
+import { db, textStorage } from './config';
 import { 
   doc, 
   getDoc, 
@@ -35,30 +35,23 @@ export const getTextContent = async () => {
 // Update text content
 export const updateTextContent = async (key, newText) => {
   try {
-    const update = {};
-    update[key] = newText;
-    
-    await updateDoc(textContentDocRef, update);
-    return { success: true };
+    const updates = {};
+    updates[key] = newText;
+    await updateDoc(textContentDocRef, updates);
+    return true;
   } catch (error) {
     console.error('Error updating text content:', error);
-    throw error;
+    return false;
   }
 };
 
 // Upload background image
 export const uploadBackgroundImage = async (imageData, path) => {
   try {
-    // Create a reference to the image in storage
-    const imageRef = ref(storage, `background-images/${path}`);
-    
-    // Upload the image
-    await uploadString(imageRef, imageData, 'data_url');
-    
-    // Get the download URL
-    const imageUrl = await getDownloadURL(imageRef);
-    
-    return imageUrl;
+    const storageRef = ref(textStorage, path);
+    await uploadString(storageRef, imageData, 'data_url');
+    const downloadURL = await getDownloadURL(storageRef);
+    return downloadURL;
   } catch (error) {
     console.error('Error uploading background image:', error);
     throw error;
@@ -89,13 +82,12 @@ export const getBackgroundImages = async () => {
 // Update background image
 export const updateBackgroundImage = async (key, imageUrl) => {
   try {
-    const update = {};
-    update[key] = imageUrl;
-    
-    await updateDoc(backgroundImagesDocRef, update);
-    return { success: true };
+    const updates = {};
+    updates[key] = imageUrl;
+    await updateDoc(backgroundImagesDocRef, updates);
+    return true;
   } catch (error) {
     console.error('Error updating background image:', error);
-    throw error;
+    return false;
   }
 };

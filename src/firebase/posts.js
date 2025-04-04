@@ -79,16 +79,14 @@ export const addPost = async (post, imageData) => {
 // Delete a post
 export const deletePost = async (postId, imageUrl) => {
   try {
-    // Delete the document from Firestore
+    // Delete the post document
     await deleteDoc(doc(db, 'posts', postId));
     
-    // If there's an image URL and it's from Firebase Storage, delete it too
-    if (imageUrl && imageUrl.includes('firebase')) {
+    // Delete the image if it exists
+    if (imageUrl) {
       const imageRef = ref(storage, imageUrl);
       await deleteObject(imageRef);
     }
-    
-    return { success: true };
   } catch (error) {
     console.error('Error deleting post:', error);
     throw error;

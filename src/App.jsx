@@ -12,7 +12,6 @@ import Salen from './components/Salen';
 import Hemsedal from './components/Hemsedal';
 import Kolmarden from './components/Kolmarden';
 import Trippeln from './components/Trippeln';
-import TrippelnResults from './components/TrippelnResults';
 import Results from './components/Results';
 import Gallery from './components/Gallery';
 import VideoCarousel from './components/VideoCarousel';
@@ -28,8 +27,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { TextProvider } from './context/TextContext';
 import BackgroundFrames from './components/BackgroundFrames';
-import BackgroundSettings from './components/BackgroundSettings';
 import Background from './components/Background';
+import BackgroundSettings from './components/BackgroundSettings';
 import { initializeAdminUser } from './firebase/auth';
 
 const App = () => {
@@ -73,7 +72,6 @@ const App = () => {
                                 <Route path="/hemsedal" element={<Hemsedal />} />
                                 <Route path="/kolmarden" element={<Kolmarden />} />
                                 <Route path="/trippeln" element={<Trippeln />} />
-                                <Route path="/trippeln-results" element={<TrippelnResults />} />
                                 <Route path="/results" element={<Results />} />
                                 <Route path="/gallery" element={
                                     <>
