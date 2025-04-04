@@ -140,19 +140,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 99999;
 
   &__content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    max-height: 80vh;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    z-index: 10000;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
   }
 
   &__toolbar {
@@ -169,7 +171,7 @@
 
   &__textarea {
     width: 100%;
-    min-height: 150px;
+    min-height: 300px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -209,12 +211,15 @@
     display: flex;
     gap: 10px;
     margin-top: 15px;
+    padding-bottom: 20px;
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+    margin-top: auto;
+    padding: 20px 0;
   }
 }
 

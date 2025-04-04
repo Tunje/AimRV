@@ -75,16 +75,31 @@ const Results = () => {
     };
 
     const getLocationResults = (location) => {
-        const locationResults = results.filter(result => result.location === location);
-        console.log('Results for', location, ':', locationResults);
-        return locationResults;
+        let filtered = [...results];
+        
+        // Apply filters
+        if (selectedYear !== 'all') {
+            filtered = filtered.filter(r => r.year === parseInt(selectedYear));
+        }
+        if (selectedCategory !== 'all') {
+            filtered = filtered.filter(r => r.category === selectedCategory);
+        }
+        if (selectedDuration !== 'all') {
+            filtered = filtered.filter(r => r.duration === selectedDuration);
+        }
+
+        // Then filter by location
+        filtered = filtered.filter(r => r.location === location);
+        
+        console.log('Filtered results for', location, ':', filtered);
+        return filtered;
     };
 
     return (
         <>
             <div className="results-header-banner"></div>
             <div className="results-container">
-                <h1 className="results-title">Multisort för alla</h1>
+                <h1 className="results-header-title">Multisport för alla</h1>
                 <section className="results-filters-section">
                     <div className="results-filters">
                         <select 

@@ -1,9 +1,11 @@
 import React from 'react';
 import EditableText from './EditableText';
+import BackgroundFrames from './BackgroundFrames';
 
 const Ulricehamn = () => {
     return (
         <div className="flex flex_col">
+            <BackgroundFrames />
             <section className="page_01 dynamic-background flex flex_col flex_j_E">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <EditableText 
@@ -14,9 +16,9 @@ const Ulricehamn = () => {
                     />
                     <EditableText 
                         textKey="ulricehamn-date" 
-                        defaultText="10/5-2025" 
+                        defaultText="datum insert" 
                         tag="p" 
-                        className="font_blue fonts_medium" 
+                        className="font_blue fonts_medium competitions-date text-center"
                     />
                 </div>
             </section>
@@ -137,9 +139,9 @@ const Ulricehamn = () => {
                     <a href="https://raceid.com/sv/races/12846/about" target="_blank" rel="noopener noreferrer">
                         <EditableText 
                             textKey="ulricehamn-date" 
-                            defaultText="10/5-2025" 
+                            defaultText="datum insert" 
                             tag="p" 
-                            className="font_blue fonts_medium" 
+                            className="font_blue fonts_medium competitions-date text-center"
                         />
                     </a>
                     

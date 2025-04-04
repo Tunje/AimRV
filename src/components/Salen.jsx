@@ -14,9 +14,9 @@ const Salen = () => {
                     />
                     <EditableText 
                         textKey="salen-date" 
-                        defaultText="2/8-2024" 
+                        defaultText="datum insert" 
                         tag="p" 
-                        className="font_blue fonts_medium" 
+                        className="font_blue fonts_medium competitions-date text-center"
                     />
                 </div>
             </section>
@@ -126,9 +126,9 @@ const Salen = () => {
                         <a href="https://raceid.com/sv/races/13016/about" target="_blank" rel="noopener noreferrer">
                             <EditableText 
                                 textKey="salen-date" 
-                                defaultText="2/8-2024" 
+                                defaultText="datum insert" 
                                 tag="p" 
-                                className="fonts_medium" 
+                                className="font_blue fonts_medium competitions-date text-center"
                             />
                         </a>
                         <EditableText 

@@ -106,41 +106,13 @@ const Navbar = () => {
                 >
                   TÄVLINGAR
                 </Link>
-                <Link
-                  to="/ulricehamn"
+                <a
+                  href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  ULRICEHAMN
-                </Link>
-                <Link
-                  to="/salen"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  SÄLEN
-                </Link>
-                <Link
-                  to="/hemsedal"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  HEMSEDAL
-                </Link>
-                <Link
-                  to="/kolmarden"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  KOLMÅRDEN
-                </Link>
-                <Link
-                  to="/trippeln"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  AIM CHALLENGE TRIPPELN
-                </Link>
+                  ANMÄLAN
+                </a>
                 <Link
                   to="/results"
                   onClick={closeDropdown1}
@@ -148,21 +120,8 @@ const Navbar = () => {
                 >
                   RESULTAT
                 </Link>
-                <Link
-                  to="/gallery"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  GALLERI
-                </Link>
               </div>
             )}
-          </div>
-          {/* Anmälan Button */}
-          <div className="nav-button">
-            <a href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f">
-              Anmälan
-            </a>
           </div>
           {/* Om oss Button */}
           <div className="nav-button">
@@ -207,22 +166,13 @@ const Navbar = () => {
           </div>
           {/* Sponsorer Button */}
           <div className="nav-button">
-            <a
-              href="#sponsors-section"
-              onClick={(e) => {
-                // Prevent default navigation
-                e.preventDefault();
-
-                // Find the sponsors section
-                const sponsorsSection =
-                  document.getElementById("sponsors-section");
-
-                // Scroll to it if it exists
-                if (sponsorsSection) {
-                  sponsorsSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-            >
+            <a href="#sponsors-section" onClick={(e) => {
+              e.preventDefault();
+              const sponsorsSection = document.getElementById('sponsors-section');
+              if (sponsorsSection) {
+                sponsorsSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>
               Sponsorer
             </a>
           </div>
@@ -279,41 +229,13 @@ const Navbar = () => {
                   >
                     TÄVLINGAR
                   </Link>
-                  <Link
-                    to="/ulricehamn"
+                  <a
+                    href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f"
                     onClick={toggleMobileMenu}
                     className="mobile-submenu-item"
                   >
-                    ULRICEHAMN
-                  </Link>
-                  <Link
-                    to="/salen"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    SÄLEN
-                  </Link>
-                  <Link
-                    to="/hemsedal"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    HEMSEDAL
-                  </Link>
-                  <Link
-                    to="/kolmarden"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    KOLMÅRDEN
-                  </Link>
-                  <Link
-                    to="/trippeln"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    AIM CHALLENGE TRIPPELN
-                  </Link>
+                    ANMÄLAN
+                  </a>
                   <Link
                     to="/results"
                     onClick={toggleMobileMenu}
@@ -321,24 +243,8 @@ const Navbar = () => {
                   >
                     RESULTAT
                   </Link>
-                  <Link
-                    to="/gallery"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    GALLERI
-                  </Link>
                 </div>
               )}
-            </div>
-
-            <div className="mobile-menu-item">
-              <a
-                href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f"
-                className="mobile-menu-link"
-              >
-                Anmälan
-              </a>
             </div>
 
             <div className="mobile-menu-item">

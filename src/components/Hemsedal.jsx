@@ -18,7 +18,7 @@ const Hemsedal = () => {
                         textKey="hemsedal-date" 
                         defaultText="datum insert" 
                         tag="p" 
-                        className="font_blue fonts_medium" 
+                        className="font_blue fonts_medium competitions-date text-center"
                     />
                 </div>
             </section>
@@ -130,7 +130,7 @@ const Hemsedal = () => {
                                 textKey="hemsedal-date" 
                                 defaultText="24/8-2024" 
                                 tag="p" 
-                                className="fonts_medium" 
+                                className="font_blue fonts_medium competitions-date text-center"
                             />
                         </a>
                         <EditableText 

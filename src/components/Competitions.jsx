@@ -104,6 +104,31 @@ const Competitions = () => {
                     </div>
                 </div>
             </div>
+            <div className="competitions-grid">
+                <div className="competitions-card competitions-card-trippeln flex flex_col flex_j_SB location simple-background" style={{ gridColumn: "span 2" }}>
+                    <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+                        <EditableText 
+                            textKey="competitions-trippeln-title" 
+                            defaultText="AIM CHALLENGE TRIPPELN" 
+                            tag="p" 
+                            className="font_blue fonts_medium_B competitions-title text-center"
+                            style={{textAlign: 'center'}}
+                        />
+                        <EditableText 
+                            textKey="trippeln-description" 
+                            defaultText="Tävla i alla tre deltävlingar och bli en del av AIM Challenge Trippeln" 
+                            tag="p" 
+                            className="font_blue fonts_medium competitions-date text-center"
+                            style={{textAlign: 'center'}}
+                        />
+                    </div>
+                    <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+                        <Link to="/trippeln" className="location button-2 competitions-button">
+                            <span>Läs mer</span>
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

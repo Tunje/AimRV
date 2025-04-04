@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useText } from '../context/TextContext';
+import ReactDOM from 'react-dom';
 
 const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style = {}, placeholder = 'Skriv text här...', onClick }) => {
     const { getText, updateText, isAdmin } = useText();
@@ -112,31 +113,12 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         }
     };
 
-    const renderEditableContent = () => {
-        const TagName = tag;
-        const contentProps = {
-            className: `editable-text ${className}`,
-            style: style,
-            dangerouslySetInnerHTML: { __html: text || placeholder },
-            'data-textkey': textKey.toString() // Ensure this is properly set
-        };
+    const renderModal = () => {
+        if (!isEditing) return null;
         
-        if (onClick) {
-            contentProps.onClick = onClick;
-        }
-
-        return <TagName {...contentProps} />;
-    };
-
-    if (isEditing) {
-        return (
+        return ReactDOM.createPortal(
             <div className="edit-modal">
                 <div className="edit-modal__content">
-                    <div className="edit-modal__toolbar">
-                        <h3>Redigera text</h3>
-                        <span className="edit-modal__hint">Tryck Ctrl+Enter för att spara, Esc för att avbryta</span>
-                    </div>
-                    
                     <textarea
                         ref={textareaRef}
                         value={text}
@@ -149,7 +131,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                     <button 
                         type="button" 
                         onClick={toggleLinkTools} 
-                        className="modal-button modal-button-secondary"
+                        className="modal-action-button modal-action-button--secondary"
                     >
                         {showLinkTools ? 'Dölj länkverktyg' : 'Lägg till länk'}
                     </button>
@@ -186,7 +168,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                                 type="button" 
                                 onClick={insertLink} 
                                 disabled={!linkText || !linkUrl}
-                                className="modal-button modal-button-primary"
+                                className="modal-action-button modal-action-button--primary"
                             >
                                 Infoga länk
                             </button>
@@ -197,40 +179,56 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                         <button 
                             type="button" 
                             onClick={handleCancel} 
-                            className="modal-button modal-button-secondary"
+                            className="modal-action-button modal-action-button--secondary"
                         >
                             Avbryt
                         </button>
                         <button 
                             type="button" 
                             onClick={handleSave} 
-                            className="modal-button modal-button-primary"
+                            className="modal-action-button modal-action-button--primary"
                         >
                             Spara
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>,
+            document.body
         );
-    }
+    };
+
+    const renderEditableContent = () => {
+        const TagName = tag;
+        const contentProps = {
+            className: `editable-text ${className}`,
+            style: style,
+            dangerouslySetInnerHTML: { __html: text || placeholder },
+            onClick: onClick
+        };
+
+        return <TagName {...contentProps} />;
+    };
 
     // Use the appropriate wrapper based on whether the tag is an inline element
     const WrapperTag = isInlineElement ? 'span' : 'div';
     
     return (
-        <WrapperTag className="editable-text-wrapper">
-            {renderEditableContent()}
-            {isAdmin && (
-                <button 
-                    type="button" 
-                    onClick={handleEdit} 
-                    className="edit-button edit-button-primary"
-                    title="Redigera text"
-                >
-                    Redigera
-                </button>
-            )}
-        </WrapperTag>
+        <>
+            <WrapperTag className="editable-text-wrapper">
+                {renderEditableContent()}
+                {isAdmin && (
+                    <button 
+                        type="button" 
+                        onClick={handleEdit} 
+                        className="edit-button edit-button-primary"
+                        title="Redigera text"
+                    >
+                        Redigera
+                    </button>
+                )}
+            </WrapperTag>
+            {renderModal()}
+        </>
     );
 };
 

@@ -19,7 +19,7 @@ const Kolmarden = () => {
                         textKey="kolmarden-date" 
                         defaultText="datum insert" 
                         tag="p" 
-                        className="font_blue fonts_medium" 
+                        className="font_blue fonts_medium competitions-date text-center"
                     />
                 </div>
             </section>

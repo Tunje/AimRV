@@ -235,6 +235,49 @@ a.button-2,
           clip-path: none;
 }
 
+/* Modal action buttons - taller variant for better clickability */
+.modal-action-button, .modal-action-button--secondary, .modal-action-button--primary {
+  min-width: 120px;
+  max-width: none;
+  min-height: 40px;
+  max-height: 40px;
+  border: 1px solid #2D4F60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 8px 20px;
+}
+.modal-action-button:hover, .modal-action-button--secondary:hover, .modal-action-button--primary:hover {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary:hover {
+  background-color: #6A9FB5;
+  border-color: #6A9FB5;
+}
+.modal-action-button--primary:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+.modal-action-button--secondary {
+  background-color: white;
+}
+.modal-action-button--secondary:hover {
+  background-color: #f0f0f0;
+  color: #2D4F60;
+}
+
 .booking-button,
 .kolmarden-button,
 .salen-button,
@@ -535,6 +578,49 @@ a.button-2,
           clip-path: none;
 }
 
+/* Modal action buttons - taller variant for better clickability */
+.modal-action-button, .modal-action-button--primary, .modal-action-button--secondary {
+  min-width: 120px;
+  max-width: none;
+  min-height: 40px;
+  max-height: 40px;
+  border: 1px solid #2D4F60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 8px 20px;
+}
+.modal-action-button:hover, .modal-action-button--primary:hover, .modal-action-button--secondary:hover {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary:hover {
+  background-color: #6A9FB5;
+  border-color: #6A9FB5;
+}
+.modal-action-button--primary:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+.modal-action-button--secondary {
+  background-color: white;
+}
+.modal-action-button--secondary:hover {
+  background-color: #f0f0f0;
+  color: #2D4F60;
+}
+
 .booking-button,
 .kolmarden-button,
 .salen-button,
@@ -655,6 +741,49 @@ a.button-2,
   border-radius: 25px;
   -webkit-clip-path: none;
           clip-path: none;
+}
+
+/* Modal action buttons - taller variant for better clickability */
+.modal-action-button, .modal-action-button--primary, .modal-action-button--secondary {
+  min-width: 120px;
+  max-width: none;
+  min-height: 40px;
+  max-height: 40px;
+  border: 1px solid #2D4F60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 8px 20px;
+}
+.modal-action-button:hover, .modal-action-button--primary:hover, .modal-action-button--secondary:hover {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary:hover {
+  background-color: #6A9FB5;
+  border-color: #6A9FB5;
+}
+.modal-action-button--primary:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+.modal-action-button--secondary {
+  background-color: white;
+}
+.modal-action-button--secondary:hover {
+  background-color: #f0f0f0;
+  color: #2D4F60;
 }
 
 .booking-button,
@@ -1744,6 +1873,49 @@ a.button-2,
           clip-path: none;
 }
 
+/* Modal action buttons - taller variant for better clickability */
+.modal-action-button, .modal-action-button--primary, .modal-action-button--secondary {
+  min-width: 120px;
+  max-width: none;
+  min-height: 40px;
+  max-height: 40px;
+  border: 1px solid #2D4F60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 8px 20px;
+}
+.modal-action-button:hover, .modal-action-button--primary:hover, .modal-action-button--secondary:hover {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary {
+  background-color: #2D4F60;
+  color: white;
+}
+.modal-action-button--primary:hover {
+  background-color: #6A9FB5;
+  border-color: #6A9FB5;
+}
+.modal-action-button--primary:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+.modal-action-button--secondary {
+  background-color: white;
+}
+.modal-action-button--secondary:hover {
+  background-color: #f0f0f0;
+  color: #2D4F60;
+}
+
 .booking-button,
 .kolmarden-button,
 .salen-button,
@@ -2463,6 +2635,9 @@ a.button-2,
 }
 .competitions-container {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -2470,11 +2645,12 @@ a.button-2,
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  gap: 0;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 .competitions-card {
-  height: 90vh;
-  min-height: 700px;
+  height: 85vh;
+  min-height: 650px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2482,6 +2658,8 @@ a.button-2,
   background-position: center;
   position: relative;
   background-color: #2D4F60; /* Primary dark blue */
+  border-radius: 8px;
+  overflow: hidden;
 }
 .competitions-card::before {
   content: "";
@@ -2509,7 +2687,7 @@ a.button-2,
   height: auto;
   min-height: 80px;
   max-height: 120px;
-  z-index: 10;
+  z-index: 2;
   position: relative;
   color: #F5F5F5; /* Light gray secondary */
   display: flex;
@@ -2519,9 +2697,8 @@ a.button-2,
   text-align: center;
   align-items: center;
   padding: 5px 0;
-  background-color: rgba(255, 255, 255, 0.7); /* Add semi-transparent background */
+  background-color: rgba(45, 79, 96, 0.8);
   margin-top: 10px; /* Add some space at the top */
-  background-color: #6A9FB5; /* Primary light blue */
 }
 .competitions-header.trans-background {
   padding: 5px 0;
@@ -2556,7 +2733,7 @@ a.button-2,
   position: relative;
 }
 .competitions-button-container {
-  z-index: 10;
+  z-index: 2;
   position: relative;
   height: 20%;
   min-height: 100px;
@@ -2571,19 +2748,25 @@ a.button-2,
   margin-top: 50px;
 }
 .competitions-button {
-  background-color: rgb(56, 76, 135); /* Dark blue */
-  color: #F5F5F5; /* Light gray secondary */
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 4px;
+  min-width: 100px;
+  max-width: 100px;
+  max-height: 15px;
+  min-height: 15px;
+  border: 1px solid #2D4F60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2D4F60;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 2;
   position: relative;
 }
 .competitions-button:hover {
-  background-color: rgb(79, 99, 158); /* Light blue */
+  background-color: #2D4F60;
+  color: white;
 }
 .competitions-link {
   color: #E87722; /* Orange secondary */
@@ -3856,19 +4039,21 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 99999;
 }
 .edit-modal__content {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  max-height: 80vh;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
-  z-index: 10000;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
 }
 .edit-modal__toolbar {
   display: flex;
@@ -3882,7 +4067,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 }
 .edit-modal__textarea {
   width: 100%;
-  min-height: 150px;
+  min-height: 300px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -3917,11 +4102,14 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   display: flex;
   gap: 10px;
   margin-top: 15px;
+  padding-bottom: 20px;
 }
 .edit-modal__actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  margin-top: auto;
+  padding: 20px 0;
 }
 
 .editable-text a {
@@ -4522,9 +4710,11 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 }
 
 .results-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #F5F5F5; /* Light gray secondary */
+  font-size: 2rem;
+  color: #2D4F60;
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
 }
 
 .results-description {
