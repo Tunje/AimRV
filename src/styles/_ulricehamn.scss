@@ -1,6 +1,6 @@
-// Sälen styles based on the Ulricehamn styling
+// Ulricehamn styles based on the provided image
 
-.salen-container {
+.ulricehamn-container {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -10,124 +10,371 @@
 }
 
 // Hero section with image
-.salen-hero-section {
+.ulricehamn-hero-section {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 0 0;
-  
-  .hero-content {
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
     width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero-image-container {
-    width: 100%;
-    height: 500px;
-    border-radius: 10px;
-    overflow: hidden;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    height: 100%;
+    object-fit: cover;
   }
 }
 
 // Title section
-.salen-title-section {
+.ulricehamn-title-section {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 30px 0 10px;
-  
-  .title-container {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-  }
-  
-  .salen-title {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0;
-    font-family: "AFCarplets Bold", sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-  }
+}
+
+.title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.ulricehamn-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 // Button section
-.salen-button-section,
-.salen-bottom-button-section {
+.ulricehamn-button-section,
+.ulricehamn-bottom-button-section {
   width: 100%;
   padding: 15px 0 30px;
   display: flex;
   justify-content: center;
-  
-  .button-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
+}
+
+.button-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.anmalan-button {
+  background-color: #2d4f60;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: "AFCarplets Bold", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: #2d4f60;
   }
-  
+
+  p {
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-family: "AFCarplets Bold", sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  &:hover p {
+    color: #2d4f60;
+  }
+}
+
+// Program section with wavy background
+.ulricehamn-program-section {
+  width: 100%;
+  background-image: url("/images/wavy-background.svg");
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+}
+
+.program-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.program-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.program-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 585px;
+  background-color: #2d4f60;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-card {
+  height: auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.info-card {
+  padding: 25px;
+  color: white;
+}
+
+.program-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+}
+
+.program-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.program-day {
+  margin-bottom: 15px;
+}
+
+.day-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "AFCarplets Bold", sans-serif;
+}
+
+.schedule-item {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-family: "Museo Sans 500", sans-serif;
+  line-height: 1.4;
+}
+
+// Price section
+.ulricehamn-price-section {
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.price-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.price-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .price-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+.price-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 60px;
+  z-index: 2;
+}
+
+.price-content {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.price-content {
+  .section-title {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+    font-family: "AFCarplets Bold", sans-serif;
+  }
+
+  .price-subtitle {
+    color: black;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: "AFCarplets Bold", sans-serif;
+  }
+
+  .category-title {
+    color: black;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: "AFCarplets Bold", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .price-item {
+    color: black;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-family: "Museo Sans 500", sans-serif;
+    line-height: 1.3;
+  }
+}
+
+.price-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.price-category {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.trippeln-category {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.price-image {
+  flex: 1;
+  min-width: 1200px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+}
+
+.price-button-container {
+  margin-top: 5px;
+
   .anmalan-button {
     background-color: #2d4f60;
     color: white;
-    border: none;
     border-radius: 30px;
     padding: 12px 30px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
     font-size: 1rem;
-    letter-spacing: 1px;
-    font-family: "AFCarplets Bold", sans-serif;
-    display: flex;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    
-    &:hover {
-      background-color: white;
-      color: #2d4f60;
-    }
-    
+
     p {
       margin: 0;
       text-align: center;
       color: white;
       font-family: "AFCarplets Bold", sans-serif;
-      transition: all 0.3s ease;
     }
-    
-    &:hover p {
+
+    &:hover {
+      background-color: white;
       color: #2d4f60;
+      p {
+        color: #2d4f60;
+      }
     }
   }
 }
 
-.salen-time-entry {
-    margin-left: 1rem;
-    display: block;
-    color: #F5F5F5; /* Light gray secondary */
+.category-title {
+  color: #2d4f60;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-transform: uppercase;
 }
 
-.salen-text-block {
-    margin: 1.5rem 0;
-    
-    p {
-        margin-bottom: 1rem;
-    }
+.price-item {
+  color: #2d4f60;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  font-family: "Museo Sans 500", sans-serif;
+  line-height: 1.3;
 }
 
 // Latest News Section
@@ -142,27 +389,22 @@
   align-items: center;
 }
 
-.news-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.news-title {
+.latest-news-title {
   color: white;
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 40px;
   font-family: "AFCarplets Bold", sans-serif;
-  text-transform: uppercase;
 }
 
-.news-cards {
+.latest-news-container {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 30px;
-  justify-content: center;
+  padding: 0 40px;
 }
 
 .news-card {
@@ -177,7 +419,7 @@
   width: 100%;
   height: 350px;
   overflow: hidden;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -318,11 +560,9 @@
   color: white;
   text-decoration: underline;
   font-family: "Museo Sans 500", sans-serif;
-  display: inline-block;
-  margin-bottom: 10px;
-  
+
   &:hover {
-    text-decoration: none;
+    color: #f58220;
   }
 }
 
@@ -402,7 +642,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px auto 0;
+  margin-top: 20px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -566,113 +806,83 @@
 }
 
 // Responsive styles
-@media (max-width: 1200px) {
-  .news-container,
-  .useful-links-container,
-  .sponsors-container,
-  .footer-container {
-    width: 95%;
-  }
-  
-  .news-card {
-    width: calc(50% - 15px);
-  }
-}
-
-@media (max-width: 768px) {
-  .news-card {
-    width: 100%;
-  }
-  
-  .footer-top {
-    flex-direction: column;
-  }
-  
-  .footer-left,
-  .footer-columns {
-    width: 100%;
-    padding: 0 20px;
-  }
-  
-  .footer-columns {
-    margin-top: 30px;
-  }
-}
-
-// Original Sälen styles
-.salen-section p {
-    margin-bottom: 1rem;
-    line-height: 1.5;
-    color: #F5F5F5; /* Light gray secondary */
-}
-
-.salen-section .fonts_small {
-    margin-top: 0.5rem;
-}
-
-.salen-title {
-    color: #F5F5F5; /* Light gray secondary */
-    margin-bottom: 1rem;
-}
-
-.salen-date {
-    color: #E87722; /* Orange secondary */
-    margin-bottom: 1rem;
-}
-
-.salen-description {
-    color: #F5F5F5; /* Light gray secondary */
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.salen-link {
-    color: #E87722; /* Orange secondary */
-    text-decoration: none;
-    
-    &:hover {
-        color: #6A9FB5; /* Primary light blue */
-        text-decoration: underline;
-    }
-}
-
 @media (max-width: 992px) {
-    .salen-section {
-        min-height: auto;
-        padding: 2rem 0;
-    }
-    
-    .salen-content {
-        max-width: 100%;
-        width: 100%;
-        padding: 1.5rem;
-    }
-    
-    .salen-spacer {
-        display: none;
-    }
-    
-    .salen-text-block {
-        margin: 1rem 0;
-    }
+  .program-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .program-image,
+  .program-info {
+    max-width: 100%;
+  }
+
+  .program-image {
+    height: 300px;
+  }
+
+  .price-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-category {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
-    .salen-content {
-        padding: 1rem;
-    }
-    
-    .salen-time-entry {
-        margin-left: 0.5rem;
-    }
+  .ulricehamn-hero-section {
+    height: 50vh;
+  }
+
+  .hero-content {
+    padding: 15px 20px;
+  }
+
+  .ulricehamn-title {
+    font-size: 2rem;
+  }
+
+  .program-content-box {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .price-subtitle {
+    font-size: 1.5rem;
+  }
 }
 
-@media (max-width: 480px) {
-    .salen-content {
-        padding: 0.75rem;
-    }
-    
-    .salen-time-entry {
-        margin-left: 0.25rem;
-    }
+@media (max-width: 576px) {
+  .ulricehamn-title {
+    font-size: 1.5rem;
+  }
+
+  .program-title {
+    font-size: 1.5rem;
+  }
+
+  .day-title {
+    font-size: 1.1rem;
+  }
+
+  .schedule-item {
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+  }
+
+  .price-item {
+    font-size: 0.9rem;
+  }
 }
