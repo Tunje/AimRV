@@ -146,3 +146,48 @@
         margin-left: 0.25rem;
     }
 }
+
+
+
+
+
+
+// Responsive styles
+@media (max-width: 992px) {
+  .senaste-nytt-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .senaste-nytt-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title,
+  .senaste-nytt-title {
+    font-size: 2rem;
+  }
+
+  .ulricehamn-content-box {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title,
+  .senaste-nytt-title {
+    font-size: 1.8rem;
+  }
+
+  .day-title {
+    font-size: 1.3rem;
+  }
+
+  .schedule-item,
+  .price-item {
+    font-size: 0.9rem;
+  }
+}
