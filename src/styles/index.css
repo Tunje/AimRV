@@ -2683,6 +2683,11 @@ a.button-2,
 .competitions-card-kolmarden {
   background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
 }
+.competitions-card-trippeln {
+  background-image: url("/images/trippeln.jpg");
+  width: 100%;
+  margin: 0 auto;
+}
 .competitions-header {
   height: auto;
   min-height: 80px;
@@ -2860,13 +2865,13 @@ a.button-2,
     min-height: 400px;
   }
 }
-.admin-editing-mode [class*=-bg],
+.admin-editing-mode [class*="'-bg'"],
 .admin-editing-mode .simple-background,
 .admin-editing-mode .locked-background,
 .admin-editing-mode .dynamic-background {
   position: relative;
 }
-.admin-editing-mode [class*=-bg]::before,
+.admin-editing-mode [class*="'-bg'"]::before,
 .admin-editing-mode .simple-background::before,
 .admin-editing-mode .locked-background::before,
 .admin-editing-mode .dynamic-background::before {
@@ -4147,16 +4152,20 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   margin-bottom: 30px;
   text-align: center;
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFFFFF; /* White text */
 }
 .senaste-nytt-news-section {
   padding: 50px 0;
   background-color: #2D4F60; /* Primary dark blue */
-  width: 100vw;
 }
 .senaste-nytt-container {
   margin: 0 auto;
-  max-width: 1200px;
+  min-width: 1200px;
+  width: 1200px;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 .senaste-nytt-section-title {
   font-size: 2rem;
@@ -4165,9 +4174,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   color: #F5F5F5; /* Light gray secondary */
 }
 .senaste-nytt-news-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
 }
 .senaste-nytt-news-card {
@@ -4205,9 +4211,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   margin-bottom: 15px;
 }
 .senaste-nytt-read-more {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   margin-top: 15px;
 }
 .senaste-nytt-read-more-text {
@@ -4217,9 +4220,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .senaste-nytt-card-actions {
   padding: 1rem 1.5rem;
   background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .senaste-nytt-card-actions .action-button {
   background-color: #2D4F60; /* Primary dark blue */
@@ -4247,7 +4247,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   margin-bottom: 2rem;
 }
 .senaste-nytt-news-filters .filter-group {
-  display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -4268,9 +4267,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   border-color: #E87722; /* Orange secondary */
 }
 .senaste-nytt-news-filters .filter-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
   margin-top: 1rem;
 }
 .senaste-nytt-news-filters .filter-actions button, .senaste-nytt-news-filters .filter-actions .nav-button, .senaste-nytt-news-filters .filter-actions .dropdown-button, .senaste-nytt-news-filters .filter-actions .filter-select {
@@ -4293,9 +4289,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
 }
 .senaste-nytt-admin-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 .senaste-nytt-create-post-button {
@@ -4303,10 +4296,13 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   color: #F5F5F5; /* Light gray secondary */
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
+  padding: 40px 20px;
   margin: 0 10px 30px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 18px;
+  min-width: 120px;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 .senaste-nytt-create-post-button:hover {
@@ -4327,10 +4323,50 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .senaste-nytt-delete-post-button:hover {
   background-color: #6A9FB5; /* Primary light blue */
 }
-
 .senaste-nytt-subscribe-section {
-  width: 100vw;
   background-color: #2D4F60; /* Primary dark blue */
+}
+.senaste-nytt-subscribe-description {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #FFFFFF; /* White text */
+}
+.senaste-nytt-form {
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.senaste-nytt-form label {
+  font-weight: bold;
+  color: #F5F5F5; /* Light gray secondary */
+}
+.senaste-nytt-form input,
+.senaste-nytt-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #A0A0A0; /* Dark gray secondary */
+  border-radius: 4px;
+}
+.senaste-nytt-form button, .senaste-nytt-form .nav-button, .senaste-nytt-form .dropdown-button, .senaste-nytt-form .filter-select {
+  cursor: pointer;
+  padding: 15px 60px;
+  font-size: 18px;
+  background-color: #2D4F60; /* Primary dark blue */
+  color: #F5F5F5; /* Light gray secondary */
+  border: none;
+  border-radius: 4px;
+  min-width: 200px;
+  text-align: center;
+}
+.senaste-nytt-form button:hover, .senaste-nytt-form .nav-button:hover, .senaste-nytt-form .dropdown-button:hover, .senaste-nytt-form .filter-select:hover {
+  background-color: #6A9FB5; /* Primary light blue */
+}
+.senaste-nytt-form .error {
+  color: red;
+  font-size: 14px;
+}
+.senaste-nytt-main-title {
+  color: rgb(56, 76, 135);
 }
 
 .senaste-nytt-subscribe-description {
@@ -4356,39 +4392,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .senaste-nytt-create-post-container {
   margin-top: 20px;
   padding: 20px;
-}
-
-.senaste-nytt-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.senaste-nytt-form label {
-  font-weight: bold;
-  color: #F5F5F5; /* Light gray secondary */
-}
-.senaste-nytt-form input,
-.senaste-nytt-form textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #A0A0A0; /* Dark gray secondary */
-  border-radius: 4px;
-}
-.senaste-nytt-form button, .senaste-nytt-form .nav-button, .senaste-nytt-form .dropdown-button, .senaste-nytt-form .filter-select {
-  cursor: pointer;
-  width: 30%;
-  font-size: 16px;
-  background-color: #2D4F60; /* Primary dark blue */
-  color: #F5F5F5; /* Light gray secondary */
-}
-.senaste-nytt-form button:hover, .senaste-nytt-form .nav-button:hover, .senaste-nytt-form .dropdown-button:hover, .senaste-nytt-form .filter-select:hover {
-  background-color: #6A9FB5; /* Primary light blue */
-}
-.senaste-nytt-form .error {
-  color: red;
-  font-size: 14px;
 }
 
 .senaste-nytt-title, .news-title {
@@ -4470,8 +4473,11 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
-  min-height: 150px;
+  min-height: 300px;
+  height: 300px;
   resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
 }
 .create-post-modal__textarea:focus {
   outline: none;
@@ -4519,11 +4525,14 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   margin-top: 1rem;
 }
 .create-post-modal__button {
-  padding: 0.75rem 1.5rem;
+  padding: 40px 20px;
   border-radius: 4px;
   font-weight: 600;
+  font-size: 18px;
+  min-width: 120px;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
 }
 .create-post-modal__button--primary {
   background-color: #2D4F60; /* Primary dark blue */

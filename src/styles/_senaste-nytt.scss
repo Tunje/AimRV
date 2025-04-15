@@ -9,18 +9,22 @@
     margin-bottom: 30px;
     text-align: center;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF; /* White text */
   }
 
   &-news-section {
     padding: 50px 0;
     background-color: #2D4F60; /* Primary dark blue */
-    width: 100vw;
   }
 
   &-container {
     margin: 0 auto;
-    max-width: 1200px;
+    min-width: 1200px;
+    width: 1200px;
     padding: 0 20px;
+    box-sizing: border-box;
   }
 
   &-section-title {
@@ -31,9 +35,6 @@
   }
 
   &-news-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
   }
 
@@ -77,9 +78,6 @@
   }
 
   &-read-more {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
     margin-top: 15px;
     
     &-text {
@@ -91,10 +89,6 @@
   &-card-actions {
     padding: 1rem 1.5rem;
     background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     .action-button {
       background-color: #2D4F60; /* Primary dark blue */
       color: #F5F5F5; /* Light gray secondary */
@@ -126,7 +120,6 @@
     margin-bottom: 2rem;
 
     .filter-group {
-      display: flex;
       gap: 1rem;
       margin-bottom: 1rem;
 
@@ -151,9 +144,6 @@
     }
 
     .filter-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 1rem;
       margin-top: 1rem;
 
       button {
@@ -182,9 +172,6 @@
   }
 
   &-admin-actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     margin-bottom: 20px;
   }
 
@@ -193,10 +180,13 @@
     color: #F5F5F5; /* Light gray secondary */
     border: none;
     border-radius: 4px;
-    padding: 10px 20px;
+    padding: 40px 20px;
     margin: 0 10px 30px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 18px;
+    min-width: 120px;
+    text-align: center;
     transition: background-color 0.3s ease;
     
     &:hover {
@@ -220,12 +210,60 @@
       background-color: #6A9FB5; /* Primary light blue */
     }
   }
-}
 
-// Full width background for subscription section
-.senaste-nytt-subscribe-section {
-  width: 100vw;
-  background-color: #2D4F60; /* Primary dark blue */
+  &-subscribe-section {
+    background-color: #2D4F60; /* Primary dark blue */
+  }
+
+  &-subscribe-description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White text */
+  }
+
+  &-form {
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+
+    label {
+      font-weight: bold;
+      color: #F5F5F5; /* Light gray secondary */
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #A0A0A0; /* Dark gray secondary */
+      border-radius: 4px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 15px 60px;
+      font-size: 18px;
+      background-color: #2D4F60; /* Primary dark blue */
+      color: #F5F5F5; /* Light gray secondary */
+      border: none;
+      border-radius: 4px;
+      min-width: 200px;
+      text-align: center;
+      
+      &:hover {
+        background-color: #6A9FB5; /* Primary light blue */
+      }
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  }
+
+  &-main-title {
+    color: rgb(56, 76, 135); // Dark blue per memory requirement
+  }
 }
 
 // Center the subscription description text
@@ -255,45 +293,6 @@
 .senaste-nytt-create-post-container {
   margin-top: 20px;
   padding: 20px;
-}
-
-// Form styles
-.senaste-nytt-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-
-  label {
-    font-weight: bold;
-    color: #F5F5F5; /* Light gray secondary */
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #A0A0A0; /* Dark gray secondary */
-    border-radius: 4px;
-  }
-
-  button {
-    cursor: pointer;
-    width: 30%;
-    font-size: 16px;
-    background-color: #2D4F60; /* Primary dark blue */
-    color: #F5F5F5; /* Light gray secondary */
-    
-    &:hover {
-      background-color: #6A9FB5; /* Primary light blue */
-    }
-  }
-
-  .error {
-    color: red;
-    font-size: 14px;
-  }
 }
 
 // Add this to center titles in Senaste Nytt component

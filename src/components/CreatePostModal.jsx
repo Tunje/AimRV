@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useText } from '../context/TextContext';
 import '../styles/index.css';
 
-const CreatePostModal = ({ isOpen, onClose, onSave }) => {
+const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -73,27 +73,32 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
     setLinkText('');
   };
 
-  const handleSave = () => {
-    if (!title.trim() || !content.trim() || !imagePreview) {
-      alert('Vänligen fyll i alla fält (titel, bild och innehåll)');
+  const handleSave = async () => {
+    if (!title.trim() || !content.trim()) {
+      alert('Vänligen fyll i titel och innehåll');
       return;
     }
     
-    const newPost = {
-      id: Date.now(), // Use timestamp as a unique ID
-      title,
-      date: new Date().toLocaleDateString('sv-SE', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      }),
-      content,
-      image: imagePreview
-    };
+    try {
+      const newPost = {
+        id: Date.now(), // Use timestamp as a unique ID
+        title,
+        date: new Date().toLocaleDateString('sv-SE', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        }),
+        content,
+        image: image ? await uploadImage(image) : null // Only upload if image exists
+      };
 
-    onSave(newPost);
-    resetForm();
-    onClose();
+      await addPost(newPost);
+      resetForm();
+      onClose();
+    } catch (error) {
+      console.error('Error saving post:', error);
+      alert('Ett fel uppstod när inlägget skulle sparas. Försök igen.');
+    }
   };
 
   const resetForm = () => {
@@ -106,9 +111,14 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
     setLinkText('');
   };
 
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
   const handleClickOutside = (e) => {
     if (e.target.className === 'create-post-modal__overlay') {
-      onClose();
+      handleClose();
     }
   };
 
@@ -136,7 +146,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
           </div>
           
           <div className="create-post-modal__form-group">
-            <label className="create-post-modal__label">Bild</label>
+            <label className="create-post-modal__label">Bild (valfritt)</label>
             <div 
               className="create-post-modal__image-upload"
               onClick={() => fileInputRef.current.click()}
@@ -214,13 +224,6 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
                     >
                       Infoga länk
                     </button>
-                    <button 
-                      onClick={() => setShowLinkTools(false)}
-                      className="create-post-modal__button create-post-modal__button--secondary"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Avbryt
-                    </button>
                   </div>
                 </div>
               )}
@@ -229,7 +232,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
           
           <div className="create-post-modal__actions">
             <button 
-              onClick={onClose}
+              onClick={handleClose}
               className="create-post-modal__button create-post-modal__button--secondary"
             >
               Avbryt
@@ -237,7 +240,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
             <button 
               onClick={handleSave}
               className="create-post-modal__button create-post-modal__button--primary"
-              disabled={!title.trim() || !content.trim() || !imagePreview}
+              disabled={!title.trim() || !content.trim()}
             >
               Spara
             </button>
