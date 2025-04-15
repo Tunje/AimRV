@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useText } from '../context/TextContext';
 import '../styles/index.css';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage, db } from '../firebase/config';
+import { collection, addDoc } from 'firebase/firestore';
 
-const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
+const CreatePostModal = ({ isOpen, onClose }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -12,6 +15,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
   const [linkText, setLinkText] = useState('');
   const [selectionStart, setSelectionStart] = useState(0);
   const [selectionEnd, setSelectionEnd] = useState(0);
+  const [category, setCategory] = useState('Alla');
   const contentRef = useRef(null);
   const fileInputRef = useRef(null);
   const { isAdmin } = useText();
@@ -19,6 +23,11 @@ const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Ensure the file has a name property
+      if (!file.name) {
+        file.name = `image-${Date.now()}.jpg`;
+      }
+      
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(file);
@@ -80,21 +89,46 @@ const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
     }
     
     try {
+      let imageUrl = null;
+      if (image) {
+        // Generate a completely new filename without using the original name at all
+        const timestamp = Date.now();
+        const fileExtension = image.name ? image.name.split('.').pop() : 'jpg';
+        const newFileName = `image_${timestamp}.${fileExtension}`;
+        const storageRef = ref(storage, `post-images/${newFileName}`);
+        
+        console.log("Uploading image with new filename:", newFileName);
+        
+        // Upload the image
+        await uploadBytes(storageRef, image);
+        
+        // Get the download URL
+        imageUrl = await getDownloadURL(storageRef);
+        console.log("Image URL after upload:", imageUrl);
+      }
+      
       const newPost = {
-        id: Date.now(), // Use timestamp as a unique ID
         title,
+        content,
+        image: imageUrl,
         date: new Date().toLocaleDateString('sv-SE', { 
           year: 'numeric', 
           month: 'long', 
           day: 'numeric' 
         }),
-        content,
-        image: image ? await uploadImage(image) : null // Only upload if image exists
+        category,
+        createdAt: new Date().toISOString()
       };
 
-      await addPost(newPost);
+      // Save directly to Firestore
+      const docRef = await addDoc(collection(db, 'posts'), newPost);
+      console.log("Post saved with ID:", docRef.id);
+      
       resetForm();
       onClose();
+      
+      // Reload the page to show the new post
+      window.location.reload();
     } catch (error) {
       console.error('Error saving post:', error);
       alert('Ett fel uppstod när inlägget skulle sparas. Försök igen.');
@@ -109,6 +143,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
     setShowLinkTools(false);
     setLinkUrl('');
     setLinkText('');
+    setCategory('Alla');
   };
 
   const handleClose = () => {
@@ -170,6 +205,23 @@ const CreatePostModal = ({ isOpen, onClose, onSave, addPost, uploadImage }) => {
                 ref={fileInputRef}
               />
             </div>
+          </div>
+          
+          <div className="create-post-modal__form-group">
+            <label className="create-post-modal__label">Kategori</label>
+            <select 
+              className="create-post-modal__input"
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+            >
+              <option value="Alla">Alla</option>
+              <option value="Inga">Inga</option>
+              <option value="Kolmården">Kolmården</option>
+              <option value="Sälen">Sälen</option>
+              <option value="Hemsedal">Hemsedal</option>
+              <option value="Ulricshamn">Ulricshamn</option>
+              <option value="Tripplen">Tripplen</option>
+            </select>
           </div>
           
           <div className="create-post-modal__form-group">

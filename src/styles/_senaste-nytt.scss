@@ -36,10 +36,13 @@
 
   &-news-grid {
     gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   &-news-card {
-    width: calc(33.333% - 20px);
+    width: calc(50% - 15px);
     margin-bottom: 30px;
     background-color: #6A9FB5; /* Primary light blue */
     border-radius: 8px;
@@ -57,10 +60,55 @@
     }
   }
 
+  &-news-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    background-color: #f0f0f0; // Fallback background color
+  }
+
   &-news-image {
-    height: 200px;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    &--empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #999;
+      font-style: italic;
+      background-color: #f0f0f0;
+      height: 250px;
+    }
+  }
+  
+  &-news-image-alt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  &-news-image-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
   }
 
   &-news-content {
@@ -263,6 +311,74 @@
 
   &-main-title {
     color: rgb(56, 76, 135); // Dark blue per memory requirement
+  }
+
+  &-image-debug {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    z-index: 10;
+  }
+
+  &-debug-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    z-index: 10;
+  }
+
+  &-debug-panel {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    
+    h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      margin: 5px 0;
+      word-break: break-all;
+    }
+  }
+  
+  &-debug-image-container {
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  &-debug-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+  }
+
+  &-image-status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    z-index: 10;
   }
 }
 

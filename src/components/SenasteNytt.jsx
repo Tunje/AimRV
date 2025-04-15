@@ -5,7 +5,7 @@ import CreatePostModal from './CreatePostModal';
 import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
 import { collection, getDocs, doc, deleteDoc, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 const SenasteNytt = () => {
     const [email, setEmail] = useState('');
@@ -16,26 +16,31 @@ const SenasteNytt = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
-    // Load posts from Firebase on component mount
+    // Function to fetch posts from Firestore
+    const fetchPosts = async () => {
+        try {
+            setLoading(true);
+            const postsCollection = collection(db, 'posts');
+            const postsSnapshot = await getDocs(postsCollection);
+            
+            // Get all posts from Firestore
+            const postsData = postsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            
+            // Log all posts for debugging
+            console.log("All posts from Firestore:", postsData);
+            
+            setNewsPosts(postsData);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                setLoading(true);
-                const querySnapshot = await getDocs(collection(db, 'posts'));
-                const posts = querySnapshot.docs.map(doc => ({
-                    ...doc.data(),
-                    id: doc.id  // This ensures we get the string ID from Firebase
-                }));
-                setNewsPosts(posts);
-                setError(null);
-            } catch (err) {
-                console.error('Error fetching posts:', err);
-                setError('Failed to load posts');
-            } finally {
-                setLoading(false);
-            }
-        };
-        
         fetchPosts();
     }, []);
 
@@ -49,47 +54,32 @@ const SenasteNytt = () => {
         setTimeout(() => setSubscribed(false), 3000);
     };
     
-    const handleSavePost = async (newPost) => {
-        try {
-            setLoading(true);
-            let imageUrl = null;
-            
-            if (newPost.image) {
-                const storageRef = ref(storage, `post-images/${Date.now()}_${newPost.image.name}`);
-                await uploadBytes(storageRef, newPost.image);
-                imageUrl = await getDownloadURL(storageRef);
-            }
-            
-            const docRef = await addDoc(collection(db, 'posts'), {
-                title: newPost.title,
-                content: newPost.content,
-                image: imageUrl,
-                date: new Date().toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' }),
-                createdAt: new Date().toISOString()
-            });
-
-            const post = {
-                id: docRef.id, // This will be a string ID from Firebase
-                ...newPost,
-                image: imageUrl,
-                date: new Date().toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' })
-            };
-            
-            setNewsPosts(current => [post, ...current]);
-            setShowCreateModal(false);
-            setError(null);
-        } catch (err) {
-            console.error('Error saving post:', err);
-            setError('Failed to save post');
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const handleDeletePost = async (postId) => {
         try {
+            // Find the post to get its image URL
+            const postToDelete = newsPosts.find(post => String(post.id) === String(postId));
+            // Delete the Firestore document
             await deleteDoc(doc(db, 'posts', String(postId)));
-            window.location.reload(); // Reload to get fresh posts
+            // Delete the image from Firebase Storage if it exists
+            if (postToDelete && postToDelete.image) {
+                try {
+                    // Get the storage path from the URL
+                    const decodePath = (url) => {
+                        const match = url.match(/\/o\/(.+)\?alt=media/);
+                        return match ? decodeURIComponent(match[1]) : null;
+                    };
+                    const imagePath = decodePath(postToDelete.image);
+                    if (imagePath) {
+                        const imageRef = ref(storage, imagePath);
+                        await deleteObject(imageRef);
+                    }
+                } catch (imgErr) {
+                    console.error('Failed to delete image from storage:', imgErr);
+                }
+            }
+            
+            // Update the local state instead of reloading the page
+            setNewsPosts(newsPosts.filter(post => String(post.id) !== String(postId)));
         } catch (error) {
             console.error('Failed to delete post:', error);
         }
@@ -123,6 +113,9 @@ const SenasteNytt = () => {
                                 placeholder="Din e-postadress"
                                 required
                                 className="senaste-nytt-form-input fonts_small"
+                                id="newsletter-email"
+                                name="newsletter-email"
+                                autoComplete="email"
                             />
                             <button
                                 type="submit"
@@ -159,12 +152,18 @@ const SenasteNytt = () => {
                     <div className="senaste-nytt-news-grid">
                         {newsPosts.map((post) => (
                             <div key={post.id} className="senaste-nytt-news-card">
-                                <div 
-                                    className="senaste-nytt-news-image"
-                                    style={{ 
-                                        backgroundImage: `url(${post.image})`
-                                    }}
-                                ></div>
+                                <div className="senaste-nytt-news-image-wrapper">
+                                    {post.image ? (
+                                        <div 
+                                            className="senaste-nytt-news-image"
+                                            style={{ backgroundImage: `url(${post.image})` }}
+                                        ></div>
+                                    ) : (
+                                        <div className="senaste-nytt-news-image senaste-nytt-news-image--empty">
+                                            <span>Ingen bild</span>
+                                        </div>
+                                    )}
+                                </div>
                                 <div className="senaste-nytt-news-content">
                                     <h3 className="senaste-nytt-news-card-title">{post.title}</h3>
                                     <p className="senaste-nytt-news-date">{post.date}</p>
@@ -197,7 +196,6 @@ const SenasteNytt = () => {
                 <CreatePostModal
                     isOpen={showCreateModal}
                     onClose={() => setShowCreateModal(false)}
-                    addPost={handleSavePost}
                 />
             )}
 
