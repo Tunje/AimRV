@@ -1,76 +1,76 @@
 // Import all SCSS partials with consistent format
-@import './_flex';
-@import './_font';
-@import './_nav';
-@import './_buttons';
-@import './_dropdown';
-@import './_backgorunds';
-@import './_ulric';
-@import './_ulricehamn';
-@import './_salen';
-@import './_hemsedal';
-@import './_kolmarden';
-@import './_trippeln';
-@import './_trippeln-results';
-@import './_om-oss';
-@import './_om-oss-new';
-@import './_regler';
-@import './_faq';
-@import './_historien-om-aim';
-@import './_competitions';
-@import './_edit-frame';
-@import './_background-settings';
-@import './_footer';
-@import './_pages';
-@import './_editor';
-@import './_editable-text';
-@import './_senaste-nytt';
-@import './_create-post-modal';
-@import './_background-editor';
-@import './_results';
-@import './_result-upload';
-@import './_login';
+@import "./_flex";
+@import "./_font";
+@import "./_nav";
+@import "./_buttons";
+@import "./_dropdown";
+@import "./_backgorunds";
+// @import './_ulric';
+@import "./_ulricehamn";
+@import "./_salen";
+@import "./_hemsedal";
+@import "./_kolmarden";
+@import "./_trippeln";
+@import "./_trippeln-results";
+@import "./_om-oss";
+@import "./_om-oss-new";
+@import "./_regler";
+@import "./_faq";
+@import "./_historien-om-aim";
+@import "./_competitions";
+@import "./_edit-frame";
+@import "./_background-settings";
+@import "./_footer";
+@import "./_pages";
+@import "./_editor";
+@import "./_editable-text";
+@import "./_senaste-nytt";
+@import "./_create-post-modal";
+@import "./_background-editor";
+@import "./_results";
+@import "./_result-upload";
+@import "./_login";
 
-body{
-    background-color: white;
-    overflow-x: hidden;
-    width: 100vw;
-    font-family: 'Josefin Sans', sans-serif;
-    color: #2D4F60;  /* Primary dark blue */
+body {
+  background-color: white;
+  overflow-x: hidden;
+  width: 100vw;
+  font-family: "Josefin Sans", sans-serif;
+  color: #2d4f60; /* Primary dark blue */
 }
-p{    
-    color: black;
+p {
+  color: black;
 }
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.location-1{
-    border: #c37272;
-    border-width: 3px;
-    border-style: solid;
+.location-1 {
+  border: #c37272;
+  border-width: 3px;
+  border-style: solid;
 }
-.location_2{
-    border: #a072c3;
-    border-width: 3px;
-    border-style: solid;
+.location_2 {
+  border: #a072c3;
+  border-width: 3px;
+  border-style: solid;
 }
-.MaxWH{
-    width: 100%;
-    height: 100%;
+.MaxWH {
+  width: 100%;
+  height: 100%;
 }
-.test{
-    border: #c37272;
+.test {
+  border: #c37272;
 }
 
 .card-wrapper {
-    overflow: hidden;
-    max-width: 25%;
+  overflow: hidden;
+  max-width: 25%;
 }
 
 .content-wrapper {
-    background-color: rgba(255, 255, 255, 0.7);
-    width: 100%;
-    z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  z-index: 10;
 }
