@@ -545,11 +545,11 @@
   margin-bottom: 10px;
   font-family: "Museo Sans 500", sans-serif;
   color: white;
-  
+
   a {
     color: white;
     text-decoration: underline;
-    
+
     &:hover {
       text-decoration: none;
     }
@@ -592,10 +592,11 @@
   width: 100%;
   max-width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 40px;
+  gap: 30px;
+  padding: 30px;
   background-image: url("/images/wavy-background.svg");
   background-size: cover;
   background-position: center;
@@ -604,7 +605,7 @@
   box-sizing: border-box;
 }
 
-.sponsor-logo {
+.s-sponsor-logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -799,7 +800,7 @@
   width: 100%;
   padding-left: 30px;
   color: white;
-  
+
   p {
     color: white;
   }
