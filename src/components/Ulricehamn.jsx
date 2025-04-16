@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
-import "../styles/_ulricehamn.scss";
+import "../styles/index.css";
 
 const Ulricehamn = () => {
   return (
@@ -474,7 +474,7 @@ const Ulricehamn = () => {
           </div>
 
           <div className="footer-copyright">
-            <p>© Copyright AIM Challenge.</p>
+            <p> 2023 Copyright AIM Challenge.</p>
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@
 // When admin mode is active, add frames to all background elements
 .admin-editing-mode {
   // Target all background classes
-  [class*="-bg"],
+  [class*="'-bg'"],
   .simple-background,
   .locked-background,
   .dynamic-background {
@@ -28,3 +28,4 @@
     }
   }
 }
+

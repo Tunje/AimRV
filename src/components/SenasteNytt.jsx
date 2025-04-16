@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/index.css';
-import EditableText from './EditableText';
 import CreatePostModal from './CreatePostModal';
 import { useText } from '../context/TextContext';
-import { getPosts, addPost, deletePost } from '../firebase/posts';
+import { db, storage } from '../firebase/config';
+import { collection, getDocs, doc, deleteDoc, addDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 const SenasteNytt = () => {
     const [email, setEmail] = useState('');
@@ -15,61 +16,33 @@ const SenasteNytt = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
-    // Load posts from Firebase on component mount
+    // Function to fetch posts from Firestore
+    const fetchPosts = async () => {
+        try {
+            setLoading(true);
+            const postsCollection = collection(db, 'posts');
+            const postsSnapshot = await getDocs(postsCollection);
+            
+            // Get all posts from Firestore
+            const postsData = postsSnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            
+            // Log all posts for debugging
+            console.log("All posts from Firestore:", postsData);
+            
+            setNewsPosts(postsData);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                setLoading(true);
-                const posts = await getPosts();
-                setNewsPosts(posts);
-                setError(null);
-            } catch (err) {
-                console.error('Error fetching posts:', err);
-                setError('Failed to load posts. Please try again later.');
-                // Set default posts if Firebase fails
-                setDefaultPosts();
-            } finally {
-                setLoading(false);
-            }
-        };
-        
         fetchPosts();
     }, []);
-    
-    // Set default posts if no posts exist or on error
-    const setDefaultPosts = () => {
-        const defaultPosts = [
-            {
-                id: 'default-1',
-                title: 'AIM Challenge 2025 - Anmälan öppen!',
-                date: '28 februari 2025',
-                content: 'Nu är anmälan öppen för AIM Challenge 2025! Vi ser fram emot att välkomna både nya och återkommande deltagare till årets tävlingar i Hemsedal, Sälen, Ulricehamn och Kolmården.',
-                image: '/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg'
-            },
-            {
-                id: 'default-2',
-                title: 'Nya utmaningar i Hemsedal',
-                date: '15 februari 2025',
-                content: 'I år har vi lagt till flera nya spännande utmaningar på Hemsedal-banan. Förbered er på att testa era gränser i den vackra norska fjällmiljön!',
-                image: '/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg'
-            },
-            {
-                id: 'default-3',
-                title: 'Resultat från förra årets tävlingar',
-                date: '10 januari 2025',
-                content: 'Nu finns alla resultat från förra årets tävlingar tillgängliga på vår hemsida. Kolla in hur du och ditt lag placerade er!',
-                image: '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg'
-            },
-            {
-                id: 'default-4',
-                title: 'Ny sponsor för AIM Challenge',
-                date: '5 januari 2025',
-                content: 'Vi är glada att meddela att vi har fått en ny huvudsponsor för AIM Challenge 2025. Mer information kommer snart!',
-                image: '/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg'
-            }
-        ];
-        setNewsPosts(defaultPosts);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -81,67 +54,34 @@ const SenasteNytt = () => {
         setTimeout(() => setSubscribed(false), 3000);
     };
     
-    const handleSavePost = async (newPost) => {
+    const handleDeletePost = async (postId) => {
         try {
-            setLoading(true);
-            // Add post to Firebase
-            const savedPost = await addPost(newPost, newPost.image);
-            
-            // Update local state with the new post
-            setNewsPosts([savedPost, ...newsPosts]);
-            setError(null);
-        } catch (err) {
-            console.error('Error saving post:', err);
-            setError('Failed to save post. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
-    
-    const handleDeletePost = async (postId, imageUrl) => {
-        if (window.confirm('Är du säker på att du vill ta bort detta inlägg?')) {
-            try {
-                setLoading(true);
-                // Delete post from Firebase
-                await deletePost(postId, imageUrl);
-                
-                // Update local state
-                const updatedPosts = newsPosts.filter(post => post.id !== postId);
-                setNewsPosts(updatedPosts);
-                setError(null);
-            } catch (err) {
-                console.error('Error deleting post:', err);
-                setError('Failed to delete post. Please try again.');
-            } finally {
-                setLoading(false);
-            }
-        }
-    };
-
-    const handleResetPosts = async () => {
-        if (window.confirm('Är du säker på att du vill återställa till standardinlägg? Alla dina anpassade inlägg kommer att försvinna.')) {
-            try {
-                setLoading(true);
-                
-                // Delete all existing posts from Firebase
-                // This would require additional code to get all post IDs and delete them
-                // For now, we'll just set the default posts
-                
-                // Set default posts in state
-                setDefaultPosts();
-                
-                // Add default posts to Firebase
-                for (const post of newsPosts) {
-                    await addPost(post, post.image);
+            // Find the post to get its image URL
+            const postToDelete = newsPosts.find(post => String(post.id) === String(postId));
+            // Delete the Firestore document
+            await deleteDoc(doc(db, 'posts', String(postId)));
+            // Delete the image from Firebase Storage if it exists
+            if (postToDelete && postToDelete.image) {
+                try {
+                    // Get the storage path from the URL
+                    const decodePath = (url) => {
+                        const match = url.match(/\/o\/(.+)\?alt=media/);
+                        return match ? decodeURIComponent(match[1]) : null;
+                    };
+                    const imagePath = decodePath(postToDelete.image);
+                    if (imagePath) {
+                        const imageRef = ref(storage, imagePath);
+                        await deleteObject(imageRef);
+                    }
+                } catch (imgErr) {
+                    console.error('Failed to delete image from storage:', imgErr);
                 }
-                
-                setError(null);
-            } catch (err) {
-                console.error('Error resetting posts:', err);
-                setError('Failed to reset posts. Please try again.');
-            } finally {
-                setLoading(false);
             }
+            
+            // Update the local state instead of reloading the page
+            setNewsPosts(newsPosts.filter(post => String(post.id) !== String(postId)));
+        } catch (error) {
+            console.error('Failed to delete post:', error);
         }
     };
 
@@ -149,34 +89,20 @@ const SenasteNytt = () => {
         <div className="flex flex_col">
             {/* Header Section */}
             <section className="page_01 dynamic-background flex flex_col flex_j_E">
-                <div className="page_01box flex flex_col flex_j_SA">
+                <div className="MaxWH flex flex_col flex_j_SA">
                     <div className="om-oss-title flex flex_j_C flex_a_C">
-                        <EditableText 
-                            textKey="senaste-nytt-title" 
-                            defaultText="SENASTE NYTT" 
-                            tag="p" 
-                            className="fonts_huge senaste-nytt-main-title" 
-                            style={{ color: 'rgb(56, 76, 135)' }}
-                        />
+                        <p className="fonts_huge senaste-nytt-main-title">SENASTE NYTT</p>
                     </div>
                 </div>
             </section>
 
             {/* Email Subscription Section */}
-            <section className="set-03 senaste-nytt-subscribe-section">
-                <div className="MaxWH flex flex_col flex_j_C flex_a_C font_white">
-                    <EditableText 
-                        textKey="senaste-nytt-subscribe-title" 
-                        defaultText="Håll dig uppdaterad" 
-                        tag="h2" 
-                        className="fonts_large senaste-nytt-title" 
-                    />
-                    <EditableText 
-                        textKey="senaste-nytt-subscribe-text" 
-                        defaultText="Prenumerera på vårt nyhetsbrev för att få de senaste uppdateringarna om AIM Challenge direkt i din inkorg." 
-                        tag="p" 
-                        className="fonts_small senaste-nytt-description" 
-                    />
+            <div className="set-03 senaste-nytt-subscribe-section">
+                <div className="senaste-nytt-container flex flex_col flex_j_C flex_a_C font_white">
+                    <h2 className="fonts_large senaste-nytt-title">Håll dig uppdaterad</h2>
+                    <p className="fonts_small senaste-nytt-description">
+                        Prenumerera på vårt nyhetsbrev för att få de senaste uppdateringarna om AIM Challenge direkt i din inkorg.
+                    </p>
                     
                     <form onSubmit={handleSubmit} className="senaste-nytt-form flex flex_col flex_a_C">
                         <div className="senaste-nytt-form-input-container flex">
@@ -186,43 +112,31 @@ const SenasteNytt = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Din e-postadress"
                                 required
-                                className="senaste-nytt-form-input"
+                                className="senaste-nytt-form-input fonts_small"
+                                id="newsletter-email"
+                                name="newsletter-email"
+                                autoComplete="email"
                             />
                             <button
                                 type="submit"
-                                className="senaste-nytt-form-button"
+                                className="senaste-nytt-form-button fonts_small flex flex_j_C flex_a_C"
                             >
-                                <EditableText 
-                                    textKey="senaste-nytt-subscribe-button" 
-                                    defaultText="Prenumerera" 
-                                    tag="span" 
-                                    className="" 
-                                />
+                                <span>Prenumerera</span>
                             </button>
                         </div>
                         {subscribed && (
                             <p className="senaste-nytt-form-success">
-                                <EditableText 
-                                    textKey="senaste-nytt-subscribe-thanks" 
-                                    defaultText="Tack för din prenumeration!" 
-                                    tag="span" 
-                                    className="" 
-                                />
+                                Tack för din prenumeration!
                             </p>
                         )}
                     </form>
                 </div>
-            </section>
+            </div>
 
-            {/* News Posts Section - Two Column Layout */}
-            <section className="senaste-nytt-news-section">
-                <div className="MaxWH senaste-nytt-container">
-                    <EditableText 
-                        textKey="senaste-nytt-news-title" 
-                        defaultText="Nyheter" 
-                        tag="h2" 
-                        className="senaste-nytt-section-title" 
-                    />
+            {/* News Posts Section */}
+            <div className="set-03 senaste-nytt-news-section">
+                <div className="senaste-nytt-container">
+                    <h2 className="senaste-nytt-section-title">Nyheter</h2>
                     
                     {isAdmin && (
                         <div className="senaste-nytt-admin-actions flex flex_j_E">
@@ -230,23 +144,7 @@ const SenasteNytt = () => {
                                 className="senaste-nytt-create-post-button"
                                 onClick={() => setShowCreateModal(true)}
                             >
-                                <EditableText 
-                                    textKey="senaste-nytt-create-post-button" 
-                                    defaultText="Skapa nytt inlägg" 
-                                    tag="span" 
-                                    className="" 
-                                />
-                            </button>
-                            <button
-                                className="senaste-nytt-reset-posts-button"
-                                onClick={handleResetPosts}
-                            >
-                                <EditableText 
-                                    textKey="senaste-nytt-reset-posts-button" 
-                                    defaultText="Återställ till standardinlägg" 
-                                    tag="span" 
-                                    className="" 
-                                />
+                                Skapa nytt inlägg
                             </button>
                         </div>
                     )}
@@ -254,47 +152,37 @@ const SenasteNytt = () => {
                     <div className="senaste-nytt-news-grid">
                         {newsPosts.map((post) => (
                             <div key={post.id} className="senaste-nytt-news-card">
-                                <div className="senaste-nytt-news-image" style={{ 
-                                    backgroundImage: `url(${post.image})`
-                                }}></div>
+                                <div className="senaste-nytt-news-image-wrapper">
+                                    {post.image ? (
+                                        <div 
+                                            className="senaste-nytt-news-image"
+                                            style={{ backgroundImage: `url(${post.image})` }}
+                                        ></div>
+                                    ) : (
+                                        <div className="senaste-nytt-news-image senaste-nytt-news-image--empty">
+                                            <span>Ingen bild</span>
+                                        </div>
+                                    )}
+                                </div>
                                 <div className="senaste-nytt-news-content">
-                                    <EditableText 
-                                        textKey={`senaste-nytt-news-title-${post.id}`} 
-                                        defaultText={post.title} 
-                                        tag="h3" 
-                                        className="senaste-nytt-news-card-title" 
-                                    />
-                                    <EditableText 
-                                        textKey={`senaste-nytt-news-date-${post.id}`} 
-                                        defaultText={post.date} 
-                                        tag="p" 
-                                        className="senaste-nytt-news-date" 
-                                    />
-                                    <EditableText 
-                                        textKey={`senaste-nytt-news-content-${post.id}`} 
-                                        defaultText={post.content} 
-                                        tag="p" 
-                                        className="senaste-nytt-news-text" 
-                                    />
+                                    <h3 className="senaste-nytt-news-card-title">{post.title}</h3>
+                                    <p className="senaste-nytt-news-date">{post.date}</p>
+                                    <p className="senaste-nytt-news-text">{post.content}</p>
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">
-                                        <EditableText 
-                                            textKey={`senaste-nytt-news-read-more-${post.id}`} 
-                                            defaultText="Läs mer" 
-                                            tag="span" 
-                                            className="senaste-nytt-read-more-text" 
-                                        />
+                                        Läs mer
                                     </Link>
                                     {isAdmin && (
                                         <button
                                             className="senaste-nytt-delete-post-button"
-                                            onClick={() => handleDeletePost(post.id, post.image)}
+                                            onClick={() => {
+                                                console.log('Post:', post);
+                                                console.log('Post ID:', post.id);
+                                                console.log('Post ID type:', typeof post.id);
+                                                console.log('Post ID value:', String(post.id));
+                                                handleDeletePost(String(post.id));
+                                            }}
                                         >
-                                            <EditableText 
-                                                textKey={`senaste-nytt-delete-post-button-${post.id}`} 
-                                                defaultText="Ta bort" 
-                                                tag="span" 
-                                                className="" 
-                                            />
+                                            Ta bort
                                         </button>
                                     )}
                                 </div>
@@ -302,13 +190,12 @@ const SenasteNytt = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </div>
 
             {isAdmin && (
                 <CreatePostModal
                     isOpen={showCreateModal}
                     onClose={() => setShowCreateModal(false)}
-                    onSave={handleSavePost}
                 />
             )}
 

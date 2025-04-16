@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useText } from '../context/TextContext';
 import '../styles/index.css';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage, db } from '../firebase/config';
+import { collection, addDoc } from 'firebase/firestore';
 
-const CreatePostModal = ({ isOpen, onClose, onSave }) => {
+const CreatePostModal = ({ isOpen, onClose }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -12,6 +15,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
   const [linkText, setLinkText] = useState('');
   const [selectionStart, setSelectionStart] = useState(0);
   const [selectionEnd, setSelectionEnd] = useState(0);
+  const [category, setCategory] = useState('Alla');
   const contentRef = useRef(null);
   const fileInputRef = useRef(null);
   const { isAdmin } = useText();
@@ -19,6 +23,11 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Ensure the file has a name property
+      if (!file.name) {
+        file.name = `image-${Date.now()}.jpg`;
+      }
+      
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(file);
@@ -73,27 +82,57 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
     setLinkText('');
   };
 
-  const handleSave = () => {
-    if (!title.trim() || !content.trim() || !imagePreview) {
-      alert('Vänligen fyll i alla fält (titel, bild och innehåll)');
+  const handleSave = async () => {
+    if (!title.trim() || !content.trim()) {
+      alert('Vänligen fyll i titel och innehåll');
       return;
     }
     
-    const newPost = {
-      id: Date.now(), // Use timestamp as a unique ID
-      title,
-      date: new Date().toLocaleDateString('sv-SE', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      }),
-      content,
-      image: imagePreview
-    };
+    try {
+      let imageUrl = null;
+      if (image) {
+        // Generate a completely new filename without using the original name at all
+        const timestamp = Date.now();
+        const fileExtension = image.name ? image.name.split('.').pop() : 'jpg';
+        const newFileName = `image_${timestamp}.${fileExtension}`;
+        const storageRef = ref(storage, `post-images/${newFileName}`);
+        
+        console.log("Uploading image with new filename:", newFileName);
+        
+        // Upload the image
+        await uploadBytes(storageRef, image);
+        
+        // Get the download URL
+        imageUrl = await getDownloadURL(storageRef);
+        console.log("Image URL after upload:", imageUrl);
+      }
+      
+      const newPost = {
+        title,
+        content,
+        image: imageUrl,
+        date: new Date().toLocaleDateString('sv-SE', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        }),
+        category,
+        createdAt: new Date().toISOString()
+      };
 
-    onSave(newPost);
-    resetForm();
-    onClose();
+      // Save directly to Firestore
+      const docRef = await addDoc(collection(db, 'posts'), newPost);
+      console.log("Post saved with ID:", docRef.id);
+      
+      resetForm();
+      onClose();
+      
+      // Reload the page to show the new post
+      window.location.reload();
+    } catch (error) {
+      console.error('Error saving post:', error);
+      alert('Ett fel uppstod när inlägget skulle sparas. Försök igen.');
+    }
   };
 
   const resetForm = () => {
@@ -104,11 +143,17 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
     setShowLinkTools(false);
     setLinkUrl('');
     setLinkText('');
+    setCategory('Alla');
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
   };
 
   const handleClickOutside = (e) => {
     if (e.target.className === 'create-post-modal__overlay') {
-      onClose();
+      handleClose();
     }
   };
 
@@ -136,7 +181,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
           </div>
           
           <div className="create-post-modal__form-group">
-            <label className="create-post-modal__label">Bild</label>
+            <label className="create-post-modal__label">Bild (valfritt)</label>
             <div 
               className="create-post-modal__image-upload"
               onClick={() => fileInputRef.current.click()}
@@ -160,6 +205,23 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
                 ref={fileInputRef}
               />
             </div>
+          </div>
+          
+          <div className="create-post-modal__form-group">
+            <label className="create-post-modal__label">Kategori</label>
+            <select 
+              className="create-post-modal__input"
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+            >
+              <option value="Alla">Alla</option>
+              <option value="Inga">Inga</option>
+              <option value="Kolmården">Kolmården</option>
+              <option value="Sälen">Sälen</option>
+              <option value="Hemsedal">Hemsedal</option>
+              <option value="Ulricshamn">Ulricshamn</option>
+              <option value="Tripplen">Tripplen</option>
+            </select>
           </div>
           
           <div className="create-post-modal__form-group">
@@ -214,13 +276,6 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
                     >
                       Infoga länk
                     </button>
-                    <button 
-                      onClick={() => setShowLinkTools(false)}
-                      className="create-post-modal__button create-post-modal__button--secondary"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Avbryt
-                    </button>
                   </div>
                 </div>
               )}
@@ -229,7 +284,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
           
           <div className="create-post-modal__actions">
             <button 
-              onClick={onClose}
+              onClick={handleClose}
               className="create-post-modal__button create-post-modal__button--secondary"
             >
               Avbryt
@@ -237,7 +292,7 @@ const CreatePostModal = ({ isOpen, onClose, onSave }) => {
             <button 
               onClick={handleSave}
               className="create-post-modal__button create-post-modal__button--primary"
-              disabled={!title.trim() || !content.trim() || !imagePreview}
+              disabled={!title.trim() || !content.trim()}
             >
               Spara
             </button>

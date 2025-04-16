@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
-import "../styles/_salen.scss";
+import "../styles/index.css";
 
 const Salen = () => {
   return (
@@ -519,7 +519,7 @@ const Salen = () => {
             </div>
           </div>
           <div className="footer-copyright">
-            <p>© 2025 AIM Challenge. Alla rättigheter förbehållna.</p>
+            <p> 2025 AIM Challenge. Alla rättigheter förbehållna.</p>
           </div>
         </div>
       </section>
