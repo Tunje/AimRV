@@ -25,9 +25,10 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Initialize Firebase Storage for files
-export const storage = getStorage(app, "gs://aimchallange-67039.firebasestorage.app");
+export const storage = getStorage(app, "gs://aimchallange-67039.appspot.com");
 
 // Initialize Firebase Storage for text content
 export const textStorage = getStorage(app, "gs://aimchallange-67039.appspot.com");
 
+// Export default app for other uses
 export default app;
