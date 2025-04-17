@@ -397,17 +397,17 @@ const Ulricehamn = () => {
       <section className="sponsors-section">
         <h2 className="sponsors-title">LOKALA SPONSORER</h2>
         <div className="sponsors-container">
-          <div className="sponsor-logo side-logo">
-            <img src="/images/UD Logo.png" alt="UD Logo" />
+          <div className="s-sponsor-logo side-logo">
+            <img src="images/UD Logo.png" alt="UD Logo" />
           </div>
-          <div className="sponsor-logo main-logo">
+          <div className="s-sponsor-logo main-logo">
             <img
-              src="/images/Aim_Challenge_logo_white.svg"
+              src="images/Aim_Challenge_logo_white.svg"
               alt="AIM Challenge"
             />
           </div>
-          <div className="sponsor-logo side-logo">
-            <img src="/images/holdut_logo_sort_1.png" alt="Holdut Logo" />
+          <div className="s-sponsor-logo side-logo">
+            <img src="images/holdut_logo_sort_1.png" alt="Holdut Logo" />
           </div>
         </div>
       </section>
