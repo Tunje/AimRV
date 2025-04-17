@@ -26,6 +26,7 @@ import ContentManager from './components/ContentManager';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { TextProvider } from './context/TextContext';
+import BackgroundEditor from './components/BackgroundEditor';
 import Background from './components/Background';
 import { initializeAdminUser } from './firebase/auth';
 
@@ -53,6 +54,7 @@ const App = () => {
                     }}>
                         <Background />
                         <Navbar />
+                        <BackgroundEditor />
                         <div style={{ 
                             margin: 0, 
                             padding: 0, 

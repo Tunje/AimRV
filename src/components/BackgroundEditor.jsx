@@ -181,7 +181,7 @@ const BackgroundEditor = () => {
       if (filename) {
         console.log('Deleting file with filename:', filename);
         // Use the same path format as in the upload function
-        const oldImageRef = ref(storage, `background-images/${filename}`);
+        const oldImageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/background-images/${filename}`);
         await deleteObject(oldImageRef);
         console.log('Successfully deleted old image');
       }
