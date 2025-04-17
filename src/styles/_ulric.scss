@@ -147,11 +147,6 @@
     }
 }
 
-
-
-
-
-
 // Responsive styles
 @media (max-width: 992px) {
   .senaste-nytt-cards {
@@ -177,17 +172,17 @@
 }
 
 @media (max-width: 480px) {
-  .section-title,
-  .senaste-nytt-title {
-    font-size: 1.8rem;
-  }
+    .section-title,
+    .senaste-nytt-title {
+        font-size: 1.8rem;
+    }
 
-  .day-title {
-    font-size: 1.3rem;
-  }
+    .day-title {
+        font-size: 1.3rem;
+    }
 
-  .schedule-item,
-  .price-item {
-    font-size: 0.9rem;
-  }
+    .schedule-item,
+    .price-item {
+        font-size: 0.9rem;
+    }
 }

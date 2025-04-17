@@ -8,6 +8,7 @@ import {
 import { 
   ref, 
   uploadString, 
+  uploadBytes, 
   getDownloadURL 
 } from 'firebase/storage';
 
@@ -42,19 +43,6 @@ export const updateTextContent = async (key, newText) => {
   } catch (error) {
     console.error('Error updating text content:', error);
     return false;
-  }
-};
-
-// Upload background image
-export const uploadBackgroundImage = async (imageData, path) => {
-  try {
-    const storageRef = ref(textStorage, path);
-    await uploadString(storageRef, imageData, 'data_url');
-    const downloadURL = await getDownloadURL(storageRef);
-    return downloadURL;
-  } catch (error) {
-    console.error('Error uploading background image:', error);
-    throw error;
   }
 };
 
