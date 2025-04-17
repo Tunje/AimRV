@@ -39,11 +39,10 @@
   background-repeat: no-repeat;
   
   &.simple-background {
-    background-image: var(--background-image-url);
+    background-attachment: scroll;
   }
   
-  &.fixed-background {
-    background-image: var(--background-image-url);
+  &.locked-background {
     background-attachment: fixed;
   }
 }

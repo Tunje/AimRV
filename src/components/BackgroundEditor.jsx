@@ -19,6 +19,11 @@ const BackgroundEditor = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Initial load of all background settings when component mounts
+    loadAllBackgroundSettings();
+  }, []);
+
+  useEffect(() => {
     const backgroundElements = document.querySelectorAll('.background-editable');
     console.log('Found background elements:', backgroundElements.length);
     
@@ -298,7 +303,7 @@ const BackgroundEditor = () => {
     if (type === 'simple') {
       element.classList.add('simple-background');
     } else {
-      element.classList.add('fixed-background');
+      element.classList.add('locked-background');
     }
     
     // Set the background image directly
@@ -308,6 +313,12 @@ const BackgroundEditor = () => {
     element.style.backgroundSize = 'cover';
     element.style.backgroundPosition = 'center';
     element.style.backgroundRepeat = 'no-repeat';
+    
+    if (type === 'fixed') {
+      element.style.backgroundAttachment = 'fixed';
+    } else {
+      element.style.backgroundAttachment = 'scroll';
+    }
     
     console.log(`Background applied to element ${element.id}`);
   };
