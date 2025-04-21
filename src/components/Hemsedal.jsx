@@ -1,332 +1,420 @@
-import React from 'react';
-import '../styles/index.css';
-import '../styles/java/scripts.js';
-import EditableText from './EditableText';
+import React from "react";
+import { Link } from "react-router-dom";
+import EditableText from "./EditableText";
+import "../styles/index.css";
 
 const Hemsedal = () => {
-    return (
-        <div className="MaxWH location">
-            <section className="page_01 dynamic-background flex flex_col flex_j_E">
-                <div className="trans-background page_01box flex flex_col flex_j_SA">
-                    <EditableText 
-                        textKey="hemsedal-title" 
-                        defaultText="HEMSEDAL" 
-                        tag="p" 
-                        className="font_blue fonts_huge" 
-                    />
-                    <EditableText 
-                        textKey="hemsedal-date" 
-                        defaultText="datum insert" 
-                        tag="p" 
-                        className="font_blue fonts_medium competitions-date text-center"
-                    />
-                </div>
-            </section>
-            <section className="hemsedal-button-section-bg flex flex_j_C flex_a_C">
-                <a href="https://raceid.com/sv/races/13015/about" target="_blank" rel="noopener noreferrer" className="hemsedal-button flex flex_j_C flex_a_C">
-                    <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
-                </a>
-            </section>
-
-            {/* Program Section */}
-            <section className="hemsedal-section hemsedal-bg-1 flex flex_j_C flex_a_C">
-                <div className="hemsedal-content trans-background MaxWH flex flex_col flex_j_C">
-                    <EditableText 
-                        textKey="hemsedal-program-title" 
-                        defaultText="PROGRAM" 
-                        tag="p" 
-                        className="font_blue fonts_large" 
-                    />
-                    <EditableText 
-                        textKey="hemsedal-program-subtitle" 
-                        defaultText="PRELIMINÄRT PROGRAM:" 
-                        tag="p" 
-                        className="font_blue fonts_medium" 
-                    />
-                    
-                    <div className="font_blue">
-                        <EditableText 
-                            textKey="hemsedal-friday-title" 
-                            defaultText="FREDAG 23 AUGUSTI" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-friday-schedule" 
-                            defaultText="17:00 - 20:00 Nummerlappsutdelning för alla tävlande på SkiStarshop Hemsedal" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-
-                    <div className="font_blue">
-                        <EditableText 
-                            textKey="hemsedal-saturday-title" 
-                            defaultText="LÖRDAG 24 AUGUSTI" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule1" 
-                            defaultText="08:30-09:00 Nummerlappsutdelning vid starten" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule2" 
-                            defaultText="09:30 Obligatoriskt infomöte vid starten" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule3" 
-                            defaultText="10:00 START! Start/målområde vid Hemsedal Skisenter" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule4" 
-                            defaultText="15:30 After AIM på Stavkroa" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule5" 
-                            defaultText="16:00 Målgång AIM Challenge" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-saturday-schedule6" 
-                            defaultText="18:00 Prisutdelning på Stavkroa" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-                </div>
-                <div className="hemsedal-spacer MaxWH"></div>
-            </section>
-
-            {/* Pris Section */}
-            <section className="hemsedal-section hemsedal-bg-2 flex flex_j_C flex_a_C">
-                <div className="hemsedal-spacer MaxWH"></div>
-                <div className="hemsedal-content trans-background MaxWH flex flex_col flex_j_C">
-                    <EditableText 
-                        textKey="hemsedal-pris-title" 
-                        defaultText="PRIS" 
-                        tag="p" 
-                        className="font_blue fonts_large" 
-                    />
-                    
-                    <div className="font_blue">
-                        <EditableText 
-                            textKey="hemsedal-pris-date" 
-                            defaultText="HEMSEDAL" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <a href="https://raceid.com/sv/races/13015/about" target="_blank" rel="noopener noreferrer">
-                            <EditableText 
-                                textKey="hemsedal-date" 
-                                defaultText="24/8-2024" 
-                                tag="p" 
-                                className="font_blue fonts_medium competitions-date text-center"
-                            />
-                        </a>
-                        <EditableText 
-                            textKey="hemsedal-pris-price1" 
-                            defaultText="1900 NOK / lag för Early Bird-anmälan innan 1 januari" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-pris-price2" 
-                            defaultText="2100 NOK / lag för anmälan mellan 1 januari och 1 april" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-pris-price3" 
-                            defaultText="2300 NOK / lag för anmälan mellan 2 april och 18 juli" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-pris-price4" 
-                            defaultText="2500 NOK / lag för anmälan från 19 juli och fram till start" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-
-                    <div className="font_blue">
-                        <EditableText 
-                            textKey="hemsedal-trippeln-title" 
-                            defaultText="AIM CHALLENGE TRIPPELN 2025" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-trippeln-price1" 
-                            defaultText="4750 SEK / lag för Early Bird-anmälan innan 1 januari" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-trippeln-price2" 
-                            defaultText="5250 SEK / lag för anmälan mellan 1 januari och 1 februari" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-trippeln-price3" 
-                            defaultText="5750 SEK / lag för anmälan mellan 2 februari och 25 april" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-trippeln-price4" 
-                            defaultText="6250 SEK / lag för anmälan efter den 26 april" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-
-                    <div className="font_blue">
-                        <EditableText 
-                            textKey="hemsedal-landskampen-title" 
-                            defaultText="LANDSKAMPEN = LINDVALLEN OCH HEMSEDAL" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-landskampen-price1" 
-                            defaultText="3400 SEK / lag för anmälan innan 1 maj" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-landskampen-price2" 
-                            defaultText="3800 SEK / lag för anmälan mellan 1 maj och 1 juli" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-landskampen-price3" 
-                            defaultText="4200 SEK / lag för anmälan från 1 juli och framåt" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-                    <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="button-2 hemsedal-button-align flex flex_s">
-                        <span className="font_white">ANMÄLAN</span>
-                    </a>
-                </div>
-            </section>
-
-            {/* Övernattning och Mat Section */}
-            <section className="hemsedal-section hemsedal-bg-3 flex flex_j_C flex_a_C">
-                <div className="hemsedal-content trans-background MaxWH flex flex_col flex_j_C">
-                    <EditableText 
-                        textKey="hemsedal-overnattning-title" 
-                        defaultText="ÖVERNATTNING OCH MAT" 
-                        tag="p" 
-                        className="font_blue fonts_large" 
-                    />
-                    
-                    <div className="font_blue hemsedal-text-block">
-                        <EditableText 
-                            textKey="hemsedal-overnattning-subtitle" 
-                            defaultText="ÖVERNATTNING" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-overnattning-info" 
-                            defaultText="Boende bokas enklast genom Skistar. Klicka för att komma direkt till bokningssida." 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-cykeluthyrning-info" 
-                            defaultText="Cykel kan hyras hos Concept Store. Klicka för att komma till bokningssida." 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-
-                    <div className="font_blue hemsedal-text-block">
-                        <EditableText 
-                            textKey="hemsedal-mat-subtitle" 
-                            defaultText="MAT" 
-                            tag="p" 
-                            className="fonts_medium" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-friday" 
-                            defaultText="FREDAG:" 
-                            tag="p" 
-                            className="fonts_small" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-friday-info" 
-                            defaultText="18:00 - 21:00 Italiensk pizza som Take Away - Beställ på plats på lodgen Spiseri eller ring +47 458 65 086. Meny kommer att läggas ut HÄR." 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-
-                        <EditableText 
-                            textKey="hemsedal-mat-saturday" 
-                            defaultText="LÖRDAG:" 
-                            tag="p" 
-                            className="fonts_small" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-saturday-info1" 
-                            defaultText="10:00 - 15:00 Cafe och lunchservering på Lodgen Spiseri" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-saturday-info2" 
-                            defaultText="15:30-18:00 After AIM på Lodgen Spiseri. Viktigt att fylla på med vätska och energi efter målgång!" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-saturday-info3" 
-                            defaultText="19:30 Bankettmiddag på Lodgen Spiseri. Bokas här." 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-
-                        <EditableText 
-                            textKey="hemsedal-mat-sunday" 
-                            defaultText="SÖNDAG:" 
-                            tag="p" 
-                            className="fonts_small" 
-                        />
-                        <EditableText 
-                            textKey="hemsedal-mat-sunday-info" 
-                            defaultText="10:00 - 15:00 Cafe och lunchservering på Lodgen Spiseri" 
-                            tag="p" 
-                            className="fonts_xsmall hemsedal-time-entry" 
-                        />
-                    </div>
-
-                    <div className="font_blue hemsedal-text-block">
-                        <EditableText 
-                            textKey="hemsedal-mat-info" 
-                            defaultText="Lodgen Spiseri följer alla de nationella riktlinjerna för att ge dig en trygg och bra upplevelse." 
-                            tag="p" 
-                            className="fonts_xsmall" 
-                        />
-                    </div>
-                </div>
-                <div className="hemsedal-spacer MaxWH"></div>
-            </section>
+  return (
+    <div className="hemsedal-container">
+      {/* Hero Section with Image */}
+      <section className="hemsedal-hero-section">
+        <div className="hero-content">
+          <div className="hero-image-container">
+            <img
+              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg"
+              alt="Hemsedal Event"
+            />
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Title Section */}
+      <section className="hemsedal-title-section">
+        <div className="title-container">
+          <EditableText
+            textKey="hemsedal-title-with-date"
+            defaultText="HEMSEDAL - 10 MAJ 2025"
+            tag="h1"
+            className="hemsedal-title"
+          />
+        </div>
+      </section>
+
+      {/* Button Section */}
+      <section className="hemsedal-button-section">
+        <div className="button-container">
+          <a
+            href="https://raceid.com/sv/races/13015/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="anmalan-button"
+          >
+            <p>TA MIG TILL ANMÄLAN</p>
+          </a>
+        </div>
+      </section>
+
+      {/* Program Section with Wavy Background */}
+      <section className="hemsedal-program-section">
+        <div className="program-container">
+          <div className="program-cards">
+            {/* Image Card */}
+            <div className="program-card image-card">
+              <img
+                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg"
+                alt="Hemsedal Event"
+              />
+            </div>
+
+            {/* Program Info Card */}
+            <div className="program-card info-card">
+              <EditableText
+                textKey="hemsedal-program-title"
+                defaultText="PROGRAM"
+                tag="h2"
+                className="program-title"
+              />
+
+              <div className="program-schedule">
+                <div className="program-day">
+                  <EditableText
+                    textKey="hemsedal-friday-title"
+                    defaultText="Fredag 9/5"
+                    tag="h3"
+                    className="day-title"
+                  />
+                  <EditableText
+                    textKey="hemsedal-friday-schedule"
+                    defaultText="17:00 - 19:00 Nummerlappsutdelning på XCC"
+                    tag="p"
+                    className="schedule-item"
+                  />
+                </div>
+
+                <div className="program-day">
+                  <EditableText
+                    textKey="hemsedal-saturday-title"
+                    defaultText="Lördag 10/5"
+                    tag="h3"
+                    className="day-title"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule1"
+                    defaultText="08:30 - 10:15 Registrering för alla tävlande som ej registrerat sig under fredagen på 157 XCC, på Lassalyckan."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule2"
+                    defaultText="10:30 Obligatoriskt informationsmöte vid starten på Lassalyckan stadion."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule3"
+                    defaultText="11:00 Start AIM Challenge, på Lassalyckan stadion. Gemensam start för 3 & 6-timmars tävlingen."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule4"
+                    defaultText="14:00 Målgång för 3-timmars tävlingen."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule5"
+                    defaultText="ca 15:30 Prisutdelning 3-timmars tävlingen"
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule6"
+                    defaultText="16:30 - 20:00 After AIM med mat och dryck på Hotell Lassalyckan."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule7"
+                    defaultText="17:00 Målgång för 6-timmars tävlingen."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-saturday-schedule8"
+                    defaultText="19:00 Prisutdelning utanför Hotell Lassalyckan."
+                    tag="p"
+                    className="schedule-item"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Price Section */}
+      <section className="hemsedal-price-section">
+        <div className="price-container">
+          <div className="price-image-container">
+            <img
+              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg"
+              alt="Climbing in Hemsedal"
+              className="price-background-image"
+            />
+            <div className="price-overlay">
+              <div className="price-content">
+                <EditableText
+                  textKey="hemsedal-price-title"
+                  defaultText="PRIS"
+                  tag="h2"
+                  className="section-title"
+                />
+                <EditableText
+                  textKey="hemsedal-price-subtitle"
+                  defaultText="HEMSEDAL 24/8-2024"
+                  tag="h3"
+                  className="price-subtitle"
+                />
+
+                <div className="price-categories">
+                  <div className="price-category">
+                    <EditableText
+                      textKey="hemsedal-price-3h-title"
+                      defaultText="3-TIMMARS"
+                      tag="h4"
+                      className="category-title"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-3h-1"
+                      defaultText="1500 SEK / lag för Early Bird-anmälan innan 1 november."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-3h-2"
+                      defaultText="1700 SEK / lag för anmälan mellan 1 november och 1 februari."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-3h-3"
+                      defaultText="1900 SEK / lag för anmälan mellan 2 februari och 24 april."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-3h-4"
+                      defaultText="2100 SEK / lag för anmälan från 25 april och fram till start."
+                      tag="p"
+                      className="price-item"
+                    />
+                  </div>
+
+                  <div className="price-category">
+                    <EditableText
+                      textKey="hemsedal-price-6h-title"
+                      defaultText="6-TIMMARS"
+                      tag="h4"
+                      className="category-title"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-6h-1"
+                      defaultText="1900 SEK / lag för Early Bird-anmälan innan 1 november."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-6h-2"
+                      defaultText="2100 SEK / lag för anmälan mellan 1 november och 1 februari."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-6h-3"
+                      defaultText="2300 SEK / lag för anmälan mellan 2 februari och 24 april."
+                      tag="p"
+                      className="price-item"
+                    />
+                    <EditableText
+                      textKey="hemsedal-price-6h-4"
+                      defaultText="2500 SEK / lag för anmälan från 25 april och fram till start."
+                      tag="p"
+                      className="price-item"
+                    />
+                  </div>
+                </div>
+
+                <div className="price-category trippeln-category">
+                  <EditableText
+                    textKey="hemsedal-price-trippeln-title"
+                    defaultText="AIM CHALLENGE TRIPPELN 2025"
+                    tag="h4"
+                    className="category-title"
+                  />
+                  <EditableText
+                    textKey="hemsedal-price-trippeln-1"
+                    defaultText="4750 SEK / lag för Early Bird-anmälan innan 1 januari."
+                    tag="p"
+                    className="price-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-price-trippeln-2"
+                    defaultText="5250 SEK / lag för anmälan mellan 1 januari och 1 februari."
+                    tag="p"
+                    className="price-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-price-trippeln-3"
+                    defaultText="5750 SEK / lag för anmälan mellan 2 februari och 24 april."
+                    tag="p"
+                    className="price-item"
+                  />
+                  <EditableText
+                    textKey="hemsedal-price-trippeln-4"
+                    defaultText="6250 SEK / lag för anmälan efter den 25 april."
+                    tag="p"
+                    className="price-item"
+                  />
+                </div>
+
+                <div className="price-button-container">
+                  <a
+                    href="https://raceid.com/sv/races/13015/about"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="anmalan-button"
+                  >
+                    <p>TA MIG TILL ANMÄLAN</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News section */}
+      <section id="latest-news" className="latest-news-section">
+        <h2 className="latest-news-title">SENASTE NYTT HEMSEDAL</h2>
+        <div className="latest-news-container">
+          <div className="news-card">
+            <div className="news-image">
+              <img
+                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
+                alt="News"
+              />
+            </div>
+            <div className="news-content">
+              <h3 className="news-location">NYHETSARTIKEL 1</h3>
+              <p className="news-description">
+                Brödtext om tävlingen, 2 korta em-ningar
+              </p>
+              <div className="news-button">
+                <Link to="/news/1" className="button-2">
+                  <span>LÄS MER</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="news-card">
+            <div className="news-image">
+              <img
+                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
+                alt="News"
+              />
+            </div>
+            <div className="news-content">
+              <h3 className="news-location">NYHETSARTIKEL 2</h3>
+              <p className="news-description">
+                Brödtext om tävlingen, 2 korta em-ningar
+              </p>
+              <div className="news-button">
+                <Link to="/news/2" className="button-2">
+                  <span>LÄS MER</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="news-card">
+            <div className="news-image">
+              <img
+                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
+                alt="News"
+              />
+            </div>
+            <div className="news-content">
+              <h3 className="news-location">NYHETSARTIKEL 3</h3>
+              <p className="news-description">
+                Brödtext om tävlingen, 2 korta em-ningar
+              </p>
+              <div className="news-button">
+                <Link to="/news/3" className="button-2">
+                  <span>LÄS MER</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Useful Links Section */}
+      <section className="useful-links-section">
+        <div className="useful-links-container">
+          <h2 className="useful-links-title">NYTTIGA LÄNKAR</h2>
+
+          <div className="links-category">
+            <h3 className="links-category-title">Cykeluthyrning</h3>
+            <p className="links-text">
+              Cykeluthyrning med in- och utlämning på Lassalyckan Stadion.{" "}
+              <a href="#" className="links-link">
+                Läs mer och boka här.
+              </a>
+            </p>
+          </div>
+
+          <div className="links-category">
+            <h3 className="links-category-title">Boende</h3>
+            <p className="links-text">
+              Önskar du att bo nära start och mål så kan vi varmt rekommendera
+              Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast
+              ifrån starten.
+            </p>
+            <a
+              href="https://www.hotell-lassalyckan.se"
+              className="links-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.hotell-lassalyckan.se
+            </a>
+          </div>
+
+          <div className="links-category">
+            <h3 className="links-category-title">Mat</h3>
+            <p className="links-text">
+              Önskar du att bo nära start och mål så kan vi varmt rekommendera
+              Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast
+              ifrån starten.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="sponsors-section">
+        <h2 className="sponsors-title">LOKALA SPONSORER</h2>
+        <div className="sponsors-container">
+          <div className="s-sponsor-logo side-logo">
+            <img src="images/UD Logo.png" alt="UD Logo" />
+          </div>
+          <div className="s-sponsor-logo main-logo">
+            <img
+              src="images/Aim_Challenge_logo_white.svg"
+              alt="AIM Challenge"
+            />
+          </div>
+          <div className="s-sponsor-logo side-logo">
+            <img src="images/holdut_logo_sort_1.png" alt="Holdut Logo" />
+          </div>
+        </div>
+      </section>
+
+      {/* No footer needed here - it's already included in App.jsx */}
+    </div>
+  );
 };
 
 export default Hemsedal;
