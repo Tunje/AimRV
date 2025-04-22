@@ -19,10 +19,16 @@ const Salen = () => {
       <section className="salen-title-section">
         <div className="title-container">
           <EditableText
-            textKey="salen-title-with-date"
-            defaultText="SÄLEN - 1 AUGUSTI 2025"
+            textKey="salen-title"
+            defaultText="SÄLEN"
             tag="h1"
-            className="salen-title"
+            className="location-title"
+          />
+          <EditableText
+            textKey="salen-date"
+            defaultText="1 AUGUSTI 2025"
+            tag="h2"
+            className="location-date"
           />
         </div>
       </section>
@@ -256,7 +262,7 @@ const Salen = () => {
                     href="https://raceid.com/sv/races/12846/about"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="anmalan-button"
+                    className="price-anmalan-button"
                   >
                     <p>TA MIG TILL ANMÄLAN</p>
                   </a>

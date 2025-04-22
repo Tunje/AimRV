@@ -1595,7 +1595,7 @@ a.button-2,
 .price-button-container {
   margin-top: 5px;
 }
-.price-button-container .anmalan-button {
+.price-button-container .price-anmalan-button {
   background-color: #2d4f60;
   color: white;
   border-radius: 30px;
@@ -1609,18 +1609,18 @@ a.button-2,
   text-decoration: none;
   cursor: pointer;
 }
-.price-button-container .anmalan-button p {
+.price-button-container .price-anmalan-button p {
   margin: 0;
   text-align: center;
   color: white;
   font-family: "AFCarplets Bold", sans-serif;
 }
-.price-button-container .anmalan-button:hover {
-  background-color: white;
-  color: #2d4f60;
+.price-button-container .price-anmalan-button:hover {
+  background-color: #1a3240; /* Darker blue */
+  color: white;
 }
-.price-button-container .anmalan-button:hover p {
-  color: #2d4f60;
+.price-button-container .price-anmalan-button:hover p {
+  color: white;
 }
 
 .category-title {
@@ -1821,7 +1821,7 @@ a.button-2,
   color: #f58220;
 }
 
-.sponsors-section {
+/* .sponsors-section {
   width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
@@ -1863,12 +1863,13 @@ a.button-2,
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.s-sponsor-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(1.1);
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
 }
 
 .main-logo {
@@ -1879,13 +1880,14 @@ a.button-2,
 .side-logo {
   width: 200px;
   height: 100px;
-}
-.side-logo img {
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-}
 
+  img {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+}
+ */
 .footer-section {
   width: 1200px;
   max-width: 1200px;
@@ -2568,7 +2570,7 @@ a.button-2,
   text-decoration: none;
 }
 
-.sponsors-section {
+/* .sponsors-section {
   width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
@@ -2609,12 +2611,13 @@ a.button-2,
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.sponsor-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(1.1);
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
 }
 
 .main-logo {
@@ -2625,13 +2628,13 @@ a.button-2,
 .side-logo {
   width: 200px;
   height: 100px;
-}
-.side-logo img {
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-}
 
+  img {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+} */
 .footer-section {
   width: 1200px;
   max-width: 1200px;
@@ -3426,7 +3429,7 @@ a.button-2,
   color: #f58220;
 }
 
-.sponsors-section {
+/* .sponsors-section {
   width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
@@ -3468,12 +3471,13 @@ a.button-2,
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.s-sponsor-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(1.1);
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
 }
 
 .main-logo {
@@ -3484,13 +3488,13 @@ a.button-2,
 .side-logo {
   width: 200px;
   height: 100px;
-}
-.side-logo img {
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-}
 
+  img {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+} */
 .footer-section {
   width: 1200px;
   max-width: 1200px;
@@ -4253,7 +4257,7 @@ a.button-2,
   color: #f58220;
 }
 
-.sponsors-section {
+/* .sponsors-section {
   width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
@@ -4295,12 +4299,13 @@ a.button-2,
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.s-sponsor-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(1.1);
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
 }
 
 .main-logo {
@@ -4311,13 +4316,13 @@ a.button-2,
 .side-logo {
   width: 200px;
   height: 100px;
-}
-.side-logo img {
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-}
 
+  img {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+} */
 .footer-section {
   width: 1200px;
   max-width: 1200px;
@@ -8471,7 +8476,7 @@ body {
   overflow-x: hidden;
   width: 100vw;
   font-family: "Josefin Sans", sans-serif;
-  color: #2D4F60; /* Primary dark blue */
+  color: #2d4f60; /* Primary dark blue */
 }
 
 p {
@@ -8513,4 +8518,86 @@ p {
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   z-index: 10;
+}
+
+.location-title {
+  color: white !important;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.location-date {
+  color: white !important;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0 0;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sponsors-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px;
+  background-image: url("/images/wavy-background.svg");
+  background-position: center;
+  box-sizing: border-box;
+}
+
+.sponsors-section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto 0;
+  box-sizing: border-box;
+}
+
+.sponsors-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.s-sponsor-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.s-sponsor-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.main-logo {
+  width: 200px;
+  height: 100px;
+}
+
+.side-logo {
+  width: 200px;
+  height: 100px;
+}
+.side-logo img {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
 }

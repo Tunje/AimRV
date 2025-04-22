@@ -22,10 +22,16 @@ const Ulricehamn = () => {
       <section className="ulricehamn-title-section">
         <div className="title-container">
           <EditableText
-            textKey="ulricehamn-title-with-date"
-            defaultText="ULRICEHAMN - 10 MAJ 2025"
+            textKey="ulricehamn-title"
+            defaultText="ULRICEHAMN"
             tag="h1"
-            className="ulricehamn-title"
+            className="location-title"
+          />
+          <EditableText
+            textKey="ulricehamn-date"
+            defaultText="10 MAJ 2025"
+            tag="h2"
+            className="location-date"
           />
         </div>
       </section>
@@ -273,7 +279,7 @@ const Ulricehamn = () => {
                     href="https://raceid.com/sv/races/12846/about"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="anmalan-button"
+                    className="price-anmalan-button"
                   >
                     <p>TA MIG TILL ANMÄLAN</p>
                   </a>
