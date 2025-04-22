@@ -19,10 +19,16 @@ const Kolmarden = () => {
       <section className="kolmarden-title-section">
         <div className="title-container">
           <EditableText
-            textKey="kolmarden-title-with-date"
-            defaultText="KOLMADERN - 10 MAJ 2025"
+            textKey="kolmarden-title"
+            defaultText="KOLMÅRDEN"
             tag="h1"
-            className="kolmarden-title"
+            className="location-title"
+          />
+          <EditableText
+            textKey="kolmarden-date"
+            defaultText="10 MAJ 2025"
+            tag="h2"
+            className="location-date"
           />
         </div>
       </section>
@@ -267,7 +273,7 @@ const Kolmarden = () => {
                     href="https://raceid.com/sv/races/12846/about"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="anmalan-button"
+                    className="price-anmalan-button"
                   >
                     <p>TA MIG TILL ANMÄLAN</p>
                   </a>

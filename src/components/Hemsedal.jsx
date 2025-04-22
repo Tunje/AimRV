@@ -22,10 +22,16 @@ const Hemsedal = () => {
       <section className="hemsedal-title-section">
         <div className="title-container">
           <EditableText
-            textKey="hemsedal-title-with-date"
-            defaultText="HEMSEDAL - 10 MAJ 2025"
+            textKey="hemsedal-title"
+            defaultText="HEMSEDAL"
             tag="h1"
-            className="hemsedal-title"
+            className="location-title"
+          />
+          <EditableText
+            textKey="hemsedal-date"
+            defaultText="10 MAJ 2025"
+            tag="h2"
+            className="location-date"
           />
         </div>
       </section>
@@ -273,7 +279,7 @@ const Hemsedal = () => {
                     href="https://raceid.com/sv/races/13015/about"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="anmalan-button"
+                    className="price-anmalan-button"
                   >
                     <p>TA MIG TILL ANMÄLAN</p>
                   </a>

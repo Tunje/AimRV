@@ -334,7 +334,7 @@
 .price-button-container {
   margin-top: 5px;
 
-  .anmalan-button {
+  .price-anmalan-button {
     background-color: #2d4f60;
     color: white;
     border-radius: 30px;
@@ -356,10 +356,10 @@
     }
 
     &:hover {
-      background-color: white;
-      color: #2d4f60;
+      background-color: #1a3240; /* Darker blue */
+      color: white;
       p {
-        color: #2d4f60;
+        color: white;
       }
     }
   }
@@ -573,7 +573,7 @@
 }
 
 // Sponsors Section
-.sponsors-section {
+/* .sponsors-section {
   width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
@@ -639,7 +639,7 @@
     border-radius: 8px;
   }
 }
-
+ */
 // Footer Section
 .footer-section {
   width: 1200px;
