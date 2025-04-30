@@ -100,25 +100,39 @@ const Navbar = () => {
             {dropOpen1 && (
               <div className="drop-down">
                 <Link
-                  to="/competitions"
+                  to="/ulricehamn"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  TÄVLINGAR
+                  ULRICEHAMN
                 </Link>
-                <a
-                  href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  ANMÄLAN
-                </a>
                 <Link
-                  to="/results"
+                  to="/salen"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  RESULTAT
+                  SÄLEN
+                </Link>
+                <Link
+                  to="/hemsedal"
+                  onClick={closeDropdown1}
+                  className="drop-item"
+                >
+                  HEMSEDAL
+                </Link>
+                <Link
+                  to="/kolmarden"
+                  onClick={closeDropdown1}
+                  className="drop-item"
+                >
+                  KOLMÅRDEN
+                </Link>
+                <Link
+                  to="/trippeln"
+                  onClick={closeDropdown1}
+                  className="drop-item"
+                >
+                  TRIPPELN
                 </Link>
               </div>
             )}
@@ -166,13 +180,17 @@ const Navbar = () => {
           </div>
           {/* Sponsorer Button */}
           <div className="nav-button">
-            <a href="#sponsors-section" onClick={(e) => {
-              e.preventDefault();
-              const sponsorsSection = document.getElementById('sponsors-section');
-              if (sponsorsSection) {
-                sponsorsSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}>
+            <a
+              href="#sponsors-section"
+              onClick={(e) => {
+                e.preventDefault();
+                const sponsorsSection =
+                  document.getElementById("sponsors-section");
+                if (sponsorsSection) {
+                  sponsorsSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Sponsorer
             </a>
           </div>
@@ -223,25 +241,39 @@ const Navbar = () => {
               {dropOpen1 && (
                 <div className="mobile-submenu">
                   <Link
-                    to="/competitions"
+                    to="/ulricehamn"
                     onClick={toggleMobileMenu}
                     className="mobile-submenu-item"
                   >
-                    TÄVLINGAR
+                    ULRICEHAMN
                   </Link>
-                  <a
-                    href="https://raceid.com/sv/campaigns/bcfa3952-92c0-11ef-a892-06546bc3018f"
-                    onClick={toggleMobileMenu}
-                    className="mobile-submenu-item"
-                  >
-                    ANMÄLAN
-                  </a>
                   <Link
-                    to="/results"
+                    to="/salen"
                     onClick={toggleMobileMenu}
                     className="mobile-submenu-item"
                   >
-                    RESULTAT
+                    SÄLEN
+                  </Link>
+                  <Link
+                    to="/hemsedal"
+                    onClick={toggleMobileMenu}
+                    className="mobile-submenu-item"
+                  >
+                    HEMSEDAL
+                  </Link>
+                  <Link
+                    to="/kolmarden"
+                    onClick={toggleMobileMenu}
+                    className="mobile-submenu-item"
+                  >
+                    KOLMÅRDEN
+                  </Link>
+                  <Link
+                    to="/trippeln"
+                    onClick={toggleMobileMenu}
+                    className="mobile-submenu-item"
+                  >
+                    TRIPPELN
                   </Link>
                 </div>
               )}
