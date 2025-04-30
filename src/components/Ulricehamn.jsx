@@ -11,8 +11,10 @@ const Ulricehamn = () => {
         <div className="hero-content">
           <div className="hero-image-container">
             <img
+              id="ulricehamn-hero-image"
               src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
               alt="Ulricehamn Event"
+              className="image-editable"
             />
           </div>
         </div>
@@ -148,9 +150,10 @@ const Ulricehamn = () => {
         <div className="price-container">
           <div className="price-image-container">
             <img
+              id="ulricehamn-price-image"
               src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
               alt="Climbing in Ulricehamn"
-              className="price-background-image"
+              className="price-background-image image-editable"
             />
             <div className="price-overlay">
               <div className="price-content">

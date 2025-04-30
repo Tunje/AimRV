@@ -5,13 +5,13 @@ import '../styles/java/scripts.js';
 const Trippeln = () => {
     return (
         <div className="MaxWH location">
-            <section className="page_01 dynamic-background flex flex_col flex_j_E">
+            <section id="trippeln-main-background" className="page_01 dynamic-background flex flex_col flex_j_E image-editable">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <p className="font_blue fonts_huge">AIM CHALLENGE TRIPPELN</p>
                 </div>
             </section>
             
-            <section className="trippeln-section trippeln-bg">
+            <section id="trippeln-section-background" className="trippeln-section trippeln-bg image-editable">
                 <div className="trippeln-content trans-background">
                     <div className="font_blue">
                         <p className="fonts_medium">Trippeln är en tävling i tävlingen där de som deltar i minst tre av årets deltävlingar är med och tävlar om den mycket hedervärda titeln Vinnare av AIM Challenge Trippeln!</p>

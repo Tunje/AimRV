@@ -7,7 +7,7 @@ const Competitions = () => {
         <div className="competitions-container flex flex_col MaxWH location">
             <div className="competitions-spacer"></div>
             <div className="competitions-grid">
-                <div className="competitions-card competitions-card-ulricehamn flex flex_col flex_j_SB location simple-background">
+                <div className="competitions-card competitions-card-ulricehamn flex flex_col flex_j_SB location simple-background image-editable" id="competitions-ulricehamn-bg">
                     <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
                         <EditableText 
                             textKey="competitions-ulricehamn-title" 
@@ -31,7 +31,7 @@ const Competitions = () => {
                     </div>
                 </div>
                 
-                <div className="competitions-card competitions-card-salen flex flex_col flex_j_SB location simple-background">
+                <div className="competitions-card competitions-card-salen flex flex_col flex_j_SB location simple-background image-editable" id="competitions-salen-bg">
                     <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
                         <EditableText 
                             textKey="competitions-salen-title" 
@@ -56,7 +56,7 @@ const Competitions = () => {
                 </div>
             </div>
             <div className="competitions-grid">
-                <div className="competitions-card competitions-card-hemsedal flex flex_col flex_j_SB location simple-background">
+                <div className="competitions-card competitions-card-hemsedal flex flex_col flex_j_SB location simple-background image-editable" id="competitions-hemsedal-bg">
                     <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
                         <EditableText 
                             textKey="competitions-hemsedal-title" 
@@ -80,7 +80,7 @@ const Competitions = () => {
                     </div>
                 </div>
                 
-                <div className="competitions-card competitions-card-kolmarden flex flex_col flex_j_SB location simple-background">
+                <div className="competitions-card competitions-card-kolmarden flex flex_col flex_j_SB location simple-background image-editable" id="competitions-kolmarden-bg">
                     <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
                         <EditableText 
                             textKey="competitions-kolmarden-title" 

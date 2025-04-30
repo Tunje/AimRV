@@ -172,7 +172,7 @@ const SenasteNytt = () => {
     return (
         <div className="flex flex_col">
             {/* Header Section */}
-            <section className="page_01 dynamic-background background-editable flex flex_col flex_j_E" id="senaste-nytt-top-background">
+            <section className="page_01 dynamic-background image-editable flex flex_col flex_j_E" id="senaste-nytt-top-background">
                 <div className="MaxWH flex flex_col flex_j_SA">
                     <div className="om-oss-title flex flex_j_C flex_a_C">
                         <p className="fonts_huge senaste-nytt-main-title">SENASTE NYTT</p>
@@ -286,7 +286,7 @@ const SenasteNytt = () => {
             )}
 
             {/* Background Image Section */}
-            <div id="senaste-nytt-background" className="background-editable senaste-nytt-background-container locked-background page_01">
+            <div id="senaste-nytt-background" className="image-editable senaste-nytt-background-container locked-background page_01">
             </div>
         </div>
     );

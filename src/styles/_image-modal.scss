@@ -1,6 +1,6 @@
 
-// Background Editor Styles
-.background-editable {
+// Image Modal Styles
+.image-editable {
   position: relative;
   cursor: pointer;
   
@@ -47,7 +47,7 @@
   }
 }
 
-.background-editor-overlay {
+.image-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +60,7 @@
   z-index: 1000;
 }
 
-.background-editor-modal {
+.image-modal-modal {
   background-color: white;
   border-radius: 8px;
   width: 90%;

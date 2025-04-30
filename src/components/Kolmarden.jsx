@@ -7,7 +7,7 @@ const Kolmarden = () => {
     return (
         <div className="MaxWH location">
             <div className="set-03" style={{ height: '120px' }}></div>
-            <section className="page_01 kolmarden-bg-1 flex flex_col flex_j_E set-03">
+            <section id="kolmarden-main-background" className="page_01 kolmarden-bg-1 flex flex_col flex_j_E set-03 image-editable">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <EditableText 
                         textKey="kolmarden-title" 
@@ -24,7 +24,7 @@ const Kolmarden = () => {
                 </div>
             </section>
 
-            <section className="kolmarden-button-section-bg flex flex_j_C flex_a_C set-03">
+            <section id="kolmarden-button-section" className="kolmarden-button-section-bg flex flex_j_C flex_a_C set-03 image-editable">
                 <a href="https://raceid.com/sv/races/13014/about" target="_blank" rel="noopener noreferrer" className="kolmarden-button flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>

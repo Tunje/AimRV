@@ -6,7 +6,7 @@ import EditableText from './EditableText';
 const Hemsedal = () => {
     return (
         <div className="MaxWH location">
-            <section className="page_01 dynamic-background flex flex_col flex_j_E">
+            <section id="hemsedal-main-background" className="page_01 dynamic-background flex flex_col flex_j_E image-editable">
                 <div className="trans-background page_01box flex flex_col flex_j_SA">
                     <EditableText 
                         textKey="hemsedal-title" 
@@ -22,7 +22,7 @@ const Hemsedal = () => {
                     />
                 </div>
             </section>
-            <section className="hemsedal-button-section-bg flex flex_j_C flex_a_C">
+            <section id="hemsedal-button-section" className="hemsedal-button-section-bg flex flex_j_C flex_a_C image-editable">
                 <a href="https://raceid.com/sv/races/13015/about" target="_blank" rel="noopener noreferrer" className="hemsedal-button flex flex_j_C flex_a_C">
                     <p className="font_white fonts_medium">TA MIG TILL ANMÄLAN</p>
                 </a>

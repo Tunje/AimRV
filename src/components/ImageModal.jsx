@@ -5,7 +5,7 @@ import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage
 import { collection, doc, setDoc, getDocs, query, where, getDoc } from 'firebase/firestore';
 import { useLocation } from 'react-router-dom';
 
-const BackgroundEditor = () => {
+const ImageModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedElement, setSelectedElement] = useState(null);
   const [image, setImage] = useState(null);
@@ -13,7 +13,7 @@ const BackgroundEditor = () => {
   const [backgroundType, setBackgroundType] = useState('simple');
   const [previousImageUrl, setPreviousImageUrl] = useState(null);
   const { isAdmin } = useText();
-  console.log('BackgroundEditor - isAdmin:', isAdmin);
+  console.log('ImageModal - isAdmin:', isAdmin);
   const fileInputRef = useRef(null);
   const modalRef = useRef(null);
   const location = useLocation();
@@ -24,7 +24,7 @@ const BackgroundEditor = () => {
   }, []);
 
   useEffect(() => {
-    const backgroundElements = document.querySelectorAll('.background-editable');
+    const backgroundElements = document.querySelectorAll('.image-editable');
     console.log('Found background elements:', backgroundElements.length);
     
     const handleClick = (e) => {
@@ -346,23 +346,23 @@ const BackgroundEditor = () => {
   return (
     <>
       {showModal && (
-        <div className="background-editor-overlay" onClick={handleClickOutside}>
-          <div className="background-editor-modal" ref={modalRef}>
-            <div className="background-editor-modal__header">
-              <h2 className="background-editor-modal__title">Edit Background</h2>
+        <div className="image-modal-overlay" onClick={handleClickOutside}>
+          <div className="image-modal-modal" ref={modalRef}>
+            <div className="image-modal-modal__header">
+              <h2 className="image-modal-modal__title">Edit Background</h2>
               <button 
-                className="background-editor-modal__close" 
+                className="image-modal-modal__close" 
                 onClick={handleClose}
               >
                 &times;
               </button>
             </div>
             
-            <div className="background-editor-modal__body">
-              <div className="background-editor-modal__form-group">
-                <label className="background-editor-modal__label">Background Type</label>
+            <div className="image-modal-modal__body">
+              <div className="image-modal-modal__form-group">
+                <label className="image-modal-modal__label">Background Type</label>
                 <select 
-                  className="background-editor-modal__select"
+                  className="image-modal-modal__select"
                   value={backgroundType} 
                   onChange={(e) => setBackgroundType(e.target.value)}
                 >
@@ -371,28 +371,28 @@ const BackgroundEditor = () => {
                 </select>
               </div>
               
-              <div className="background-editor-modal__form-group">
-                <label className="background-editor-modal__label">Background Image</label>
+              <div className="image-modal-modal__form-group">
+                <label className="image-modal-modal__label">Background Image</label>
                 <div 
-                  className="background-editor-modal__image-upload"
+                  className="image-modal-modal__image-upload"
                   onClick={triggerFileInput}
                 >
                   {imagePreview ? (
-                    <div className="background-editor-modal__image-preview-container">
+                    <div className="image-modal-modal__image-preview-container">
                       <img 
                         src={imagePreview} 
                         alt="Preview" 
-                        className="background-editor-modal__image-preview"
+                        className="image-modal-modal__image-preview"
                       />
                       <button 
-                        className="background-editor-modal__image-remove"
+                        className="image-modal-modal__image-remove"
                         onClick={handleRemoveImage}
                       >
                         &times;
                       </button>
                     </div>
                   ) : (
-                    <div className="background-editor-modal__image-placeholder">
+                    <div className="image-modal-modal__image-placeholder">
                       Click to upload an image
                     </div>
                   )}
@@ -401,21 +401,21 @@ const BackgroundEditor = () => {
                     ref={fileInputRef}
                     onChange={handleImageChange}
                     accept="image/*"
-                    className="background-editor-modal__file-input"
+                    className="image-modal-modal__file-input"
                   />
                 </div>
               </div>
             </div>
             
-            <div className="background-editor-modal__footer">
+            <div className="image-modal-modal__footer">
               <button 
-                className="background-editor-modal__button background-editor-modal__button--secondary"
+                className="image-modal-modal__button image-modal-modal__button--secondary"
                 onClick={handleClose}
               >
                 Cancel
               </button>
               <button 
-                className="background-editor-modal__button background-editor-modal__button--primary"
+                className="image-modal-modal__button image-modal-modal__button--primary"
                 onClick={handleSave}
               >
                 Save Changes
@@ -428,4 +428,4 @@ const BackgroundEditor = () => {
   );
 };
 
-export default BackgroundEditor;
+export default ImageModal;
