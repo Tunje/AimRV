@@ -10,7 +10,10 @@ const Salen = () => {
       <section className="salen-hero-section">
         <div className="hero-content">
           <div className="hero-image-container">
-            <img src="/images/salen-hero.jpg" alt="Sälen Event" />
+            <img
+              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
+              alt="Sälen Event"
+            />
           </div>
         </div>
       </section>

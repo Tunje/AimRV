@@ -2136,7 +2136,7 @@ a.button-2,
   align-items: center;
 }
 .salen-hero-section .hero-image-container {
-  width: 100%;
+  width: 100vw;
   height: 500px;
   border-radius: 10px;
   overflow: hidden;
@@ -4547,123 +4547,200 @@ a.button-2,
     font-size: 0.9rem;
   }
 }
-.trippeln-section {
-  min-height: 130vh;
-  height: auto;
-  position: relative;
+/*----- Trippeln Page Styles -----*/
+.trippeln-container {
   width: 100%;
-  overflow: visible;
-  background-color: var(--primary-dark-blue); /* Primary dark blue */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.trippeln-bg {
-  background: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg");
+/*----- Hero section with image -----*/
+.trippeln-hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.trippeln-title-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 15px;
+}
+.trippeln-title-section .title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+.trippeln-title-section .title-container h1 {
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 40px;
+  color: #2d4f60;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/*----- Content section -----*/
+.trippeln-content-section {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  background-image: url("/images/wave-haikei-blue.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  width: 100%;
-  height: 100%;
-  position: relative;
 }
-.trippeln-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+
+.trippeln-content-container {
   width: 100%;
-  height: 100%;
-  background-color: rgba(45, 79, 96, 0.3); /* Primary dark blue with opacity */
-  z-index: 1;
+  max-width: 1200px;
+  background-color: #2d4f60;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
 .trippeln-content {
-  max-width: 75%;
-  padding: 2rem;
-  z-index: 2;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  height: auto;
-  background-color: #F5F5F5; /* Light gray secondary */
-  color: var(--primary-dark-blue); /* Primary dark blue */
+  color: white;
+  text-align: left;
+  font-family: "Museo Sans 500", sans-serif;
 }
 
-.trippeln-spacer {
-  max-width: 50%;
+.trippeln-text {
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-size: 16px;
+  color: white;
+}
+.trippeln-text:last-child {
+  margin-bottom: 0;
 }
 
-.trippeln-text-block {
-  margin: 1.5rem 0;
-  color: var(--primary-dark-blue); /* Primary dark blue */
-}
-
-.trippeln-text-block p {
-  margin-bottom: 1rem;
-}
-
-.trippeln-title {
-  color: var(--primary-dark-blue); /* Primary dark blue */
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+.trippeln-subheading {
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
   text-align: center;
 }
 
-.trippeln-description {
-  color: var(--primary-dark-blue); /* Primary dark blue */
-  line-height: 1.6;
-  margin-bottom: 2rem;
+/*----- CTA Section -----*/
+.trippeln-cta-section {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  /*  background-color: #f5f5f5; */
 }
 
-.trippeln-link {
-  color: #E87722; /* Orange secondary */
+.cta-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}
+
+.trippeln-cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #f58220;
+  color: white;
   text-decoration: none;
-}
-.trippeln-link:hover {
-  color: var(--primary-light-blue); /* Primary light blue */
-}
-
-.trippeln-button {
-  background-color: var(--primary-dark-blue); /* Primary dark blue */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  text-transform: uppercase;
   transition: background-color 0.3s ease;
 }
-.trippeln-button:hover {
-  background-color: var(--primary-light-blue); /* Primary light blue */
+.trippeln-cta-button:hover {
+  background-color: #d8690a;
 }
 
+.locked-background {
+  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 60px;
+  height: 300px;
+  width: 100%;
+}
+
+/*----- Responsive styles -----*/
 @media (max-width: 992px) {
-  .trippeln-section {
-    min-height: auto;
-    padding: 2rem 0;
+  .trippeln-content-container {
+    padding: 30px;
   }
-  .trippeln-content {
-    max-width: 100%;
-    width: 100%;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-  .trippeln-spacer {
-    display: none;
-  }
-  .trippeln-text-block {
-    margin: 1rem 0;
+  .trippeln-title-section .title-container h1 {
+    font-size: 36px;
   }
 }
 @media (max-width: 768px) {
-  .trippeln-content {
-    padding: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  .hero-image-container {
+    height: 300px;
+  }
+  .trippeln-content-container {
+    padding: 25px;
+  }
+  .trippeln-title-section .title-container h1 {
+    font-size: 32px;
+  }
+  .trippeln-subheading {
+    font-size: 22px;
+  }
+  .trippeln-text {
+    font-size: 15px;
+  }
+  .trippeln-cta-button {
+    font-size: 16px;
+    padding: 12px 25px;
   }
 }
 @media (max-width: 480px) {
-  .trippeln-content {
-    padding: 0.75rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .hero-image-container {
+    height: 250px;
+  }
+  .trippeln-content-container {
+    padding: 20px 15px;
+  }
+  .trippeln-content-section {
+    padding: 30px 15px;
+  }
+  .trippeln-title-section .title-container h1 {
+    font-size: 28px;
+  }
+  .trippeln-subheading {
+    font-size: 20px;
+  }
+  .trippeln-cta-button {
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
 /* Base button style */
