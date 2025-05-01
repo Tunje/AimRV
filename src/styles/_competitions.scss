@@ -1,178 +1,190 @@
 .competitions {
-    &-spacer {
-        height: 120px;
+  &-spacer {
+    height: 120px;
+  }
+
+  &-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &-card {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: #2d4f60;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(
+        45,
+        79,
+        96,
+        0.3
+      ); /* Primary dark blue with opacity */
+      z-index: 1;
     }
 
-    &-container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
+    &-ulricehamn {
+      background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
     }
 
-    &-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: 100%;
-        gap: 2rem;
-        margin-bottom: 2rem;
+    &-salen {
+      background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
     }
 
-    &-card {
-        height: 85vh;
-        min-height: 650px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        background-color: #2D4F60; /* Primary dark blue */
-        border-radius: 8px;
-        overflow: hidden;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(45, 79, 96, 0.3); /* Primary dark blue with opacity */
-            z-index: 1;
-        }
-
-        &-ulricehamn {
-            background-image: url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg');
-        }
-
-        &-salen {
-            background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
-        }
-
-        &-hemsedal {
-            background-image: url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg');
-        }
-
-        &-kolmarden {
-            background-image: url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg');
-        }
-
-        &-trippeln {
-            background-image: url('/images/trippeln.jpg');
-            width: 100%; 
-            margin: 0 auto; 
-        }
+    &-hemsedal {
+      background-image: url("/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg");
     }
 
-    &-header {
-        height: auto;
-        min-height: 80px;
-        max-height: 120px;
-        z-index: 2;
-        position: relative;
-        color: #F5F5F5; /* Light gray secondary */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
-        align-items: center;
-        padding: 5px 0;
-        background-color: rgba(45, 79, 96, 0.8);
-        margin-top: 10px; /* Add some space at the top */
-        
-        // Override any padding from trans-background
-        &.trans-background {
-            padding: 5px 0;
-        }
-        
-        // Apply text alignment to all elements in the competitions header
-        .editable-text,
-        p,
-        .competitions-title,
-        .competitions-date,
-        .font_blue,
-        [class*="competitions-title"],
-        [class*="competitions-date"] {
-            text-align: center;
-            display: block;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    &-kolmarden {
+      background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
     }
 
-    &-title {
-        color: #E87722; /* Orange secondary */
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        text-align: center;
-        z-index: 2;
-        position: relative;
+    &-trippeln {
+      background-image: url("/images/trippeln.jpg");
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  &-header {
+    height: auto;
+    min-height: 80px;
+    max-height: 120px;
+    z-index: 2;
+    position: relative;
+    color: #f5f5f5; /* Light gray secondary */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 5px 0;
+    background-color: rgba(45, 79, 96, 0.8);
+    margin-top: 0px; /* Add some space at the top */
+
+    // Override any padding from trans-background
+    &.trans-background {
+      padding: 5px 0;
     }
 
-    &-date {
-        color: #E87722; /* Orange secondary */
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        text-align: center;
-        z-index: 2;
-        position: relative;
+    // Apply text alignment to all elements in the competitions header
+    .editable-text,
+    p,
+    .competitions-title,
+    .competitions-date,
+    .font_blue,
+    [class*="competitions-title"],
+    [class*="competitions-date"] {
+      text-align: center;
+      display: block;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
     }
+  }
 
-    &-button-container {
-        z-index: 2;
-        position: relative;
-        height: 20%;
-        min-height: 100px;
-        margin-top: auto; /* Push buttons to bottom */
-        padding-bottom: 40px; /* Increased padding at bottom */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end; /* Push buttons to the bottom */
-        align-items: center;
-        width: 100%;
-        
-        /* Add more space between the header and buttons */
-        margin-top: 50px;
+  &-title {
+    color: #e87722; /* Orange secondary */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  &-date {
+    color: #e87722; /* Orange secondary */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  &-button-container {
+    z-index: 2;
+    position: relative;
+    padding: 20px 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    /* Add more space between the header and buttons */
+    margin-top: 50px;
+  }
+
+  width: 150px; // Wider button
+  padding: 12px 20px; // More padding for better clickability
+  border: none;
+  border-radius: 30px; // Consistent with other buttons
+  background-color: #2d4f60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: "AFCarplets Bold", sans-serif;
+
+  span {
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background-color: #2d4f60;
+    color: white;
+  }
+
+  &-link {
+    color: #e87722; /* Orange secondary */
+    text-decoration: none;
+    z-index: 2;
+    position: relative;
+
+    span {
+      color: #2d4f60;
+
+      &:hover {
+        color: #6a9fb5; /* Primary light blue */
+      }
     }
-
-    &-button {
-        min-width: 100px;
-        max-width: 100px;
-        max-height: 15px;
-        min-height: 15px;
-        border: 1px solid #2D4F60;
-        border-radius: 20px;
-        background-color: white;
-        color: #2D4F60;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2;
-        position: relative;
-
-        &:hover {
-            background-color: #2D4F60;
-            color: white;
-        }
-    }
-
-    &-link {
-        color: #E87722; /* Orange secondary */
-        text-decoration: none;
-        z-index: 2;
-        position: relative;
-        
-        &:hover {
-            color: #6A9FB5; /* Primary light blue */
-        }
-    }
+  }
 }
 
 .competition-date,
@@ -180,80 +192,91 @@
 .competition-button,
 .competitions-title,
 .competitions-date {
-    text-align: center;
-    display: block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fonts_medium {
-    text-align: left;
+  text-align: left;
 }
 
 .kolmarden-text-block,
 .salen-text-block,
 .hemsedal-text-block,
 .ulricehamn-text-block {
+  text-align: left;
+
+  p,
+  .fonts_medium,
+  .fonts_small,
+  .fonts_xsmall {
     text-align: left;
-    
-    p, .fonts_medium, .fonts_small, .fonts_xsmall {
-        text-align: left;
-    }
+  }
 }
 
 [data-textkey$="overnattning-title"],
 [data-textkey$="accommodation-title"] {
-    text-align: center;
+  text-align: center;
 }
 
 // Additional specific styles for text centering with higher specificity
-.competitions .competitions-grid .competitions-card .competitions-header .competitions-title,
-.competitions .competitions-grid .competitions-card .competitions-header .competitions-date,
+.competitions
+  .competitions-grid
+  .competitions-card
+  .competitions-header
+  .competitions-title,
+.competitions
+  .competitions-grid
+  .competitions-card
+  .competitions-header
+  .competitions-date,
 .competitions-title,
 .competitions-date {
-    text-align: center;
-    display: block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Target the actual text elements inside EditableText
 .competitions-title p,
 .competitions-date p {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 // Target the specific elements by their class names
 [class*="competitions-title"],
 [class*="competitions-date"] {
-    text-align: center;
+  text-align: center;
 }
 
 // Add a utility class for text centering
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 // Media queries for responsive design
 @media (max-width: 768px) {
-    .competitions {
-        &-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        &-card {
-            min-height: 500px;
-        }
+  .competitions {
+    &-grid {
+      grid-template-columns: 1fr;
     }
+
+    &-card {
+      min-height: 500px;
+    }
+  }
 }
 
 @media (max-width: 480px) {
-    .competitions {
-        &-card {
-            min-height: 400px;
-        }
+  .competitions {
+    &-card {
+      min-height: 400px;
     }
+  }
 }
