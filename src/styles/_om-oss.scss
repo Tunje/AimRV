@@ -1,136 +1,265 @@
-// Om Oss Page Styles
+/*----- Container and main layout -----*/
 
-.om-oss-section {
-    padding: 60px 0;
-    width: 100%;
-    background-color: #2D4F60; /* Dark blue primary */
-
-    p {
-        &:not([data-textkey="om-oss-title"]) {
-            color: #F5F5F5; /* Light gray secondary */
-        }
-    }
-}
-
-.om-oss-content {
-    width: 80%;
-    max-width: 1200px;
-    padding: 40px;
-    background-color: #6A9FB5; /* Light blue primary */
-}
-
-.om-oss-text {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    color: #F5F5F5; /* Light gray secondary */
-}
-
-.om-oss-image-section {
-    position: relative;
-    z-index: 1;
-    
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(45, 79, 96, 0.3); /* Dark blue primary with opacity */
-        z-index: -1;
-    }
-}
-
-.om-oss-title, .section-title {
-    text-align: center;
-}
-
-.om-oss-title {
-    .font_blue {
-        color: #2D4F60; /* Dark blue primary */
-        font-weight: bold;
-    }
-}
-
-.om-oss-header-content {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    box-sizing: border-box;
-    background-color: #6A9FB5; /* Light blue primary */
-}
-
-.om-oss-header-content .trans-background {
-    width: 100%;
-    margin: 0;
-    padding: 1rem;
-    background-color: #2D4F60; /* Dark blue primary */
-}
-
-.section-content {
-    text-align: left;
-}
-
-.om-oss-cards-container {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.om-oss-card {
-    flex: 1;
-    min-height: 500px;
+.om-oss {
+  &-container {
     margin: 0;
     padding: 0;
+    width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background-color: #6A9FB5; /* Light blue primary */
-}
+    align-items: center;
+  }
 
-.om-oss-card-content {
+  /*----- Hero section with image -----*/
+
+  &-hero-section {
     width: 100%;
-    height: auto;
-    padding: 1rem;
-    box-sizing: border-box;
-    text-align: center;
-    color: #F5F5F5; /* Light gray secondary */
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
 
-.om-oss-card .trans-background {
-    height: auto;
-    min-height: 120px;
-    text-align: center;
-    background-color: #2D4F60; /* Dark blue primary */
-}
+  &-title-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 10px;
+    /* background-color: #2d4f60; */
+  }
 
-.om-oss-card .trans-background p {
-    text-align: center;
-    color: #F5F5F5; /* Light gray secondary */
-}
+  /*----- Content sections -----*/
 
-.om-oss-card-button {
-    padding: 1rem;
-    text-align: center;
-    background-color: #E87722; /* Orange secondary */
-    color: #F5F5F5; /* Light gray secondary */
-    transition: background-color 0.3s ease;
+  &-section {
+    padding: 60px 0;
+    width: 100%;
+    background-image: url("/images/wavy-background.svg");
+    background-size: cover;
+    background-position: center;
+    /* background-color: #2d4f60;  */ /*----- Dark blue primary -----*/
+    margin: 0;
+    position: relative;
 
-    &:hover {
-        background-color: darken(#E87722, 10%); /* Darker orange */
+    p {
+      &:not([data-textkey="om-oss-title"]) {
+        color: #f5f5f5; /*----- Light gray secondary -----*/
+      }
     }
-}
+  }
 
-.om-oss-background-container {
+  &-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    /* background-color: #6a9fb5; */ /*----- Light blue primary -----*/
+    background-color: #2d4f60;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &-content-wrapper {
+    color: #ffffff;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  &-title {
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  &-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #f5f5f5; /*----- Light gray secondary -----*/
+  }
+
+  /*----- Background container -----*/
+
+  &-background-container {
     width: 100%;
     height: 400px;
     overflow: hidden;
-    background-color: #6A9FB5; /* Light blue primary */
+    background-color: #6a9fb5; /*----- Light blue primary -----*/
+    background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+  }
+
+  &-background-image {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background-position: center center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+  }
 }
 
-// Override the default left-align for cards in OmOss
-.page_02box p, .page_02top p {
-    text-align: center;
+/*----- Section titles -----*/
+
+.om-oss-title,
+.section-title {
+  text-align: center;
+}
+
+.section-content {
+  text-align: left;
+}
+
+/*----- Hero image container styling -----*/
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100vw;
+  height: 500px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/*----- Cards section styling -----*/
+
+.om-oss-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px;
+  box-sizing: border-box;
+  background-image: url("/images/wavy-background.svg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.om-oss-card {
+  width: calc(33.33% - 26px);
+  min-height: 250px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.om-oss-card-content {
+  width: 100%;
+  height: auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.om-oss-card .trans-background {
+  height: auto;
+  min-height: 120px;
+  text-align: center;
+  background-color: white;
+}
+
+.om-oss-card .trans-background p {
+  text-align: center;
+  color: #2d4f60; /*----- Dark blue primary -----*/
+}
+
+.om-oss-card-button {
+  padding: 1rem;
+  text-align: center;
+  background-color: white;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+
+  .location {
+    background-color: #f58220; /*----- Orange secondary -----*/
+    color: #2d4f60; /*----- Dark blue primary -----*/
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: "AFCarplets Bold", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 80%;
+    margin: 0 auto;
+
+    &:hover {
+      background-color: #ff9d4d; /* Lighter orange */
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/*----- Override the default left-align for cards in OmOss -----*/
+
+.page_02box p,
+.page_02top p {
+  text-align: center;
+}
+
+/*----- Media queries for responsive design -----*/
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 350px;
+  }
+
+  .om-oss-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .om-oss-card {
+    width: 100%;
+    max-width: 100%;
+  }
 }

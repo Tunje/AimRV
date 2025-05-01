@@ -4917,133 +4917,12 @@ a.button-2,
   background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
 }
 
-.om-oss-section {
-  padding: 60px 0;
-  width: 100%;
-  background-color: #2D4F60; /* Dark blue primary */
+/*----- Container and main layout -----*/
+.om-oss {
+  /*----- Hero section with image -----*/
+  /*----- Content sections -----*/
+  /*----- Background container -----*/
 }
-.om-oss-section p:not([data-textkey=om-oss-title]) {
-  color: #F5F5F5; /* Light gray secondary */
-}
-
-.om-oss-content {
-  width: 80%;
-  max-width: 1200px;
-  padding: 40px;
-  background-color: #6A9FB5; /* Light blue primary */
-}
-
-.om-oss-text {
-  margin-bottom: 20px;
-  line-height: 1.6;
-  color: #F5F5F5; /* Light gray secondary */
-}
-
-.om-oss-image-section {
-  position: relative;
-  z-index: 1;
-}
-.om-oss-image-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(45, 79, 96, 0.3); /* Dark blue primary with opacity */
-  z-index: -1;
-}
-
-.om-oss-title, .section-title {
-  text-align: center;
-}
-
-.om-oss-title .font_blue {
-  color: #2D4F60; /* Dark blue primary */
-  font-weight: bold;
-}
-
-.om-oss-header-content {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  box-sizing: border-box;
-  background-color: #6A9FB5; /* Light blue primary */
-}
-
-.om-oss-header-content .trans-background {
-  width: 100%;
-  margin: 0;
-  padding: 1rem;
-  background-color: #2D4F60; /* Dark blue primary */
-}
-
-.section-content {
-  text-align: left;
-}
-
-.om-oss-cards-container {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.om-oss-card {
-  flex: 1;
-  min-height: 500px;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #6A9FB5; /* Light blue primary */
-}
-
-.om-oss-card-content {
-  width: 100%;
-  height: auto;
-  padding: 1rem;
-  box-sizing: border-box;
-  text-align: center;
-  color: #F5F5F5; /* Light gray secondary */
-}
-
-.om-oss-card .trans-background {
-  height: auto;
-  min-height: 120px;
-  text-align: center;
-  background-color: #2D4F60; /* Dark blue primary */
-}
-
-.om-oss-card .trans-background p {
-  text-align: center;
-  color: #F5F5F5; /* Light gray secondary */
-}
-
-.om-oss-card-button {
-  padding: 1rem;
-  text-align: center;
-  background-color: #E87722; /* Orange secondary */
-  color: #F5F5F5; /* Light gray secondary */
-  transition: background-color 0.3s ease;
-}
-.om-oss-card-button:hover {
-  background-color: #c35f14; /* Darker orange */
-}
-
-.om-oss-background-container {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  background-color: #6A9FB5; /* Light blue primary */
-}
-
-.page_02box p, .page_02top p {
-  text-align: center;
-}
-
 .om-oss-container {
   margin: 0;
   padding: 0;
@@ -5051,19 +4930,43 @@ a.button-2,
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.om-oss-header {
-  margin: 0;
+.om-oss-hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
-  position: relative;
-  top: 0;
-  margin-top: 0;
+}
+.om-oss-title-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 10px;
+  /* background-color: #2d4f60; */
 }
 .om-oss-section {
-  margin: 0;
-  padding: 0;
-  position: relative;
+  padding: 60px 0;
   width: 100%;
+  background-image: url("/images/wavy-background.svg");
+  background-size: cover;
+  background-position: center;
+  /* background-color: #2d4f60;  */ /*----- Dark blue primary -----*/
+  margin: 0;
+  position: relative;
+}
+.om-oss-section p:not([data-textkey=om-oss-title]) {
+  color: #f5f5f5; /*----- Light gray secondary -----*/
+}
+.om-oss-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px;
+  /* background-color: #6a9fb5; */ /*----- Light blue primary -----*/
+  background-color: #2d4f60;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .om-oss-content-wrapper {
   color: #ffffff;
@@ -5081,18 +4984,23 @@ a.button-2,
   margin-bottom: 20px;
 }
 .om-oss-text {
-  color: #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #f5f5f5; /*----- Light gray secondary -----*/
 }
 .om-oss-background-container {
-  height: 60vh;
   width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background-color: #6a9fb5; /*----- Light blue primary -----*/
+  background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
+  background-size: cover;
+  background-position: center;
   position: relative;
   margin: 0;
   padding: 0;
   top: 0;
   left: 0;
-  overflow: hidden;
 }
 .om-oss-background-image {
   height: 100%;
@@ -5106,340 +5014,502 @@ a.button-2,
   top: 0;
   left: 0;
 }
-.om-oss-header-content {
+
+/*----- Section titles -----*/
+.om-oss-title,
+.section-title {
+  text-align: center;
+}
+
+.section-content {
+  text-align: left;
+}
+
+/*----- Hero image container styling -----*/
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
-  pointer-events: none;
+  align-items: center;
 }
 
-.regler-container {
-  background-color: #2D4F60; /* Dark blue primary */
-  padding: 2rem;
-  border-radius: 8px;
-  margin: 2rem auto;
-  max-width: 1200px;
+.hero-image-container {
+  width: 100vw;
+  height: 500px;
+  overflow: hidden;
 }
-
-.regler-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.regler-header h1 {
-  color: #F5F5F5; /* Light gray secondary */
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-.regler-header p {
-  color: #F5F5F5; /* Light gray secondary */
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-.regler-background {
-  height: 50vh;
+.hero-image-container img {
   width: 100%;
-  background: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  height: 100%;
+  object-fit: cover;
+}
+
+.title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/*----- Cards section styling -----*/
+.om-oss-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px;
+  box-sizing: border-box;
+  background-image: url("/images/wavy-background.svg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-}
-.regler-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(45, 79, 96, 0.3); /* Dark blue primary with opacity */
+  border-radius: 10px;
 }
 
-.regler-content-container {
-  color: #F5F5F5; /* Light gray secondary */
+.om-oss-card {
+  width: calc(33.33% - 26px);
+  min-height: 250px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.om-oss-card-content {
   width: 100%;
-  max-width: 100%;
+  height: auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.om-oss-card .trans-background {
+  height: auto;
+  min-height: 120px;
+  text-align: center;
+  background-color: white;
+}
+
+.om-oss-card .trans-background p {
+  text-align: center;
+  color: #2d4f60; /*----- Dark blue primary -----*/
+}
+
+.om-oss-card-button {
+  padding: 1rem;
+  text-align: center;
+  background-color: white;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.om-oss-card-button .location {
+  background-color: #f58220; /*----- Orange secondary -----*/
+  color: #2d4f60; /*----- Dark blue primary -----*/
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: "AFCarplets Bold", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 80%;
+  margin: 0 auto;
+}
+.om-oss-card-button .location:hover {
+  background-color: #ff9d4d; /* Lighter orange */
+  color: white;
+  transform: translateY(-2px);
+}
+
+/*----- Override the default left-align for cards in OmOss -----*/
+.page_02box p,
+.page_02top p {
+  text-align: center;
+}
+
+/*----- Media queries for responsive design -----*/
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 350px;
+  }
+  .om-oss-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .om-oss-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/*----- Regler Page Styles -----*/
+.regler-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*----- Hero section with image -----*/
+.regler-hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
 }
 
-.regler-section {
-  padding: 50px 0;
+.hero-content {
   width: 100%;
   max-width: 100%;
-  background-color: #2D4F60; /* Dark blue primary */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.regler-section p {
-  color: #F5F5F5; /* Light gray secondary */
+
+.hero-image-container {
+  width: 100vw;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.regler-title-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 20px;
+  /* background-color: #2d4f60; */
+}
+.regler-title-section .title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+.regler-title-section .title-container h1 {
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 48px;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.regler-content-section {
+  width: 100%;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  background-image: url("/images/wave-haikei-blue.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.regler-content-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #2d4f60;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
 }
 
 .regler-content {
-  width: 80%;
-  margin: 0 auto;
+  color: white;
   text-align: left;
-  padding: 50px 0;
-  padding-left: 150px;
-  padding-right: 150px;
-  color: #F5F5F5; /* Light gray secondary */
+  font-family: "Museo Sans 500", sans-serif;
 }
 
 .regler-heading {
-  color: #F5F5F5; /* Light gray secondary */
-  margin-bottom: 30px;
-  font-size: 36px;
-  padding-left: 30px;
-  padding-right: 30px;
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-transform: uppercase;
 }
 
 .regler-heading-with-margin {
-  color: #F5F5F5; /* Light gray secondary */
-  margin-top: 50px;
-  margin-bottom: 30px;
-  font-size: 36px;
-  padding-left: 30px;
-  padding-right: 30px;
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-transform: uppercase;
 }
 
 .regler-list {
   margin-bottom: 30px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 25px;
   list-style-type: disc;
 }
 
 .regler-list-item {
-  margin-bottom: 10px;
-  line-height: 1.5;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 16px;
+  color: white;
 }
 
 .regler-contact {
-  margin-top: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
+  margin-top: 40px;
+  font-size: 16px;
+  color: white;
 }
 .regler-contact a {
+  color: white;
   text-decoration: underline;
 }
 .regler-contact a:hover {
   text-decoration: none;
 }
 
-.regler-cta {
-  text-align: center;
-  margin-top: 3rem;
-}
-.regler-cta .cta-button {
-  background-color: #E87722; /* Orange secondary */
-  color: #F5F5F5; /* Light gray secondary */
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.regler-cta .cta-button:hover {
-  background-color: #c35f14; /* Darker orange */
+.locked-background {
+  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.regler-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.regler-card {
-  background-color: #6A9FB5; /* Light blue primary */
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-}
-.regler-card h3 {
-  color: #F5F5F5; /* Light gray secondary */
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-.regler-card p {
-  color: #F5F5F5; /* Light gray secondary */
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-.regler-card .card-button {
-  background-color: #E87722; /* Orange secondary */
-  color: #F5F5F5; /* Light gray secondary */
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.regler-card .card-button:hover {
-  background-color: #c35f14; /* Darker orange */
-}
-
+/*----- Responsive styles -----*/
 @media (max-width: 992px) {
-  .regler-content {
-    width: 100%;
+  .regler-content-container {
     padding: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
   }
-  .regler-heading,
-  .regler-heading-with-margin {
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 30px;
-  }
-  .regler-list {
-    padding-left: 30px;
-    padding-right: 30px;
+  .regler-title-section .title-container h1 {
+    font-size: 42px;
   }
 }
 @media (max-width: 768px) {
-  .regler-content {
-    padding: 20px;
+  .regler-hero-section {
+    height: 40vh;
+  }
+  .regler-content-container {
+    padding: 25px;
+  }
+  .regler-title-section .title-container h1 {
+    font-size: 36px;
   }
   .regler-heading,
   .regler-heading-with-margin {
-    font-size: 26px;
+    font-size: 24px;
   }
   .regler-list {
     padding-left: 20px;
-    padding-right: 20px;
   }
   .regler-list-item {
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin-bottom: 10px;
   }
 }
 @media (max-width: 480px) {
-  .regler-content {
-    padding: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-    box-sizing: border-box;
+  .regler-hero-section {
+    height: 30vh;
+  }
+  .regler-content-container {
+    padding: 20px 15px;
+  }
+  .regler-content-section {
+    padding: 40px 15px;
+  }
+  .regler-title-section .title-container h1 {
+    font-size: 30px;
   }
   .regler-heading,
   .regler-heading-with-margin {
-    font-size: 22px;
-    padding-left: 5px;
-    padding-right: 5px;
+    font-size: 20px;
     text-align: center;
   }
   .regler-list {
-    padding-left: 30px;
-    padding-right: 5px;
-    margin-left: 0;
-    margin-right: 0;
-    box-sizing: border-box;
-    width: 100%;
+    padding-left: 15px;
   }
   .regler-list-item {
+    font-size: 14px;
     margin-bottom: 8px;
-    padding-left: 0;
-    margin-left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    word-wrap: break-word;
+    line-height: 1.5;
   }
 }
 .faq-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #2D4F60; /* Dark blue primary */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.faq-section {
+/*----- Hero section with image -----*/
+.faq-hero-section {
   width: 100%;
-  padding: 50px 0;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.faq-title-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 15px;
+}
+.faq-title-section .title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+.faq-title-section .title-container h1 {
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 40px;
+  color: #2d4f60;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/*----- Content section -----*/
+.faq-content-section {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  background-image: url("/images/wave-haikei-blue.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .faq-content-container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  background-color: #2d4f60;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
 .faq-content {
-  width: 100%;
-  padding: 0 30px;
+  color: white;
+  text-align: left;
+  font-family: "Museo Sans 500", sans-serif;
 }
 
 .faq-heading {
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 28px;
   text-align: center;
-  font-weight: bold;
-  color: #F5F5F5; /* Light gray secondary */
+}
+
+/*----- FAQ Items -----*/
+.faq-category {
+  margin-bottom: 40px;
+}
+
+.faq-category-title {
+  font-family: "AFCarplets Bold", sans-serif;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .faq-item {
   margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .faq-question {
-  background-color: #6A9FB5; /* Light blue primary */
-  color: #F5F5F5; /* Light gray secondary */
-  padding: 15px 20px;
+  background-color: #f58220; /* Orange brand color */
+  color: #2d4f60; /* Dark blue text */
+  padding: 12px 15px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .faq-question:hover {
-  background-color: #8cb5c6; /* Lighter blue */
+  background-color: #f1750b;
 }
 .faq-question.active {
-  background-color: #E87722; /* Orange secondary */
+  background-color: #d8690a;
+  border-radius: 8px 8px 0 0;
 }
 .faq-question .question-text {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: 600;
+  font-family: "Museo Sans 500", sans-serif;
 }
 .faq-question .icon {
   transition: transform 0.3s ease;
-  font-size: 1.2rem;
+  font-size: 14px;
 }
 .faq-question.active .icon {
   transform: rotate(180deg);
 }
 
 .faq-answer {
-  background-color: #F5F5F5; /* Light gray secondary */
-  color: #2D4F60; /* Dark blue primary */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2d4f60;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
   padding: 0 20px;
+  border-radius: 0 0 8px 8px;
 }
 .faq-answer.open {
-  max-height: 500px;
+  max-height: 1000px;
   padding: 20px;
-  display: block;
 }
 .faq-answer p {
   margin: 0;
   line-height: 1.6;
-}
-
-.faq-category {
-  margin-bottom: 40px;
-  margin-bottom: 3rem;
-}
-
-.faq-category-title {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #E87722; /* Orange secondary */
-  text-align: center;
+  font-size: 16px;
+  font-family: "Museo Sans 500", sans-serif;
 }
 
 .faq-contact-text {
@@ -5456,85 +5526,273 @@ a.button-2,
   text-decoration: none;
 }
 
-/* Dark and light section styles */
-.faq-dark-section {
-  background-color: #2D4F60; /* Dark blue primary */
+.faq-contact {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.faq-contact p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.faq-contact p a {
   color: white;
+  text-decoration: underline;
 }
-.faq-dark-section .faq-question {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.faq-dark-section .faq-question:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.faq-dark-section .faq-answer {
-  background-color: rgba(255, 255, 255, 0.05);
+.faq-contact p a:hover {
+  text-decoration: none;
 }
 
-.faq-light-section {
-  background-color: white;
-  color: #2D4F60; /* Dark blue primary */
-}
-.faq-light-section .faq-question {
-  background-color: #2D4F60; /* Dark blue primary */
-  color: white;
-}
-.faq-light-section .faq-question:hover {
-  background-color: #6A9FB5; /* Light blue primary */
-}
-.faq-light-section .faq-answer {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #333;
+.locked-background {
+  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 60px;
+  height: 300px;
+  width: 100%;
 }
 
-/* Responsive adjustments */
+/*----- Responsive styles -----*/
+@media (max-width: 992px) {
+  .faq-content-container {
+    padding: 30px;
+  }
+  .faq-title-section .title-container h1 {
+    font-size: 42px;
+  }
+}
 @media (max-width: 768px) {
-  .faq-content {
-    padding: 0 15px;
+  .hero-image-container {
+    height: 400px;
+  }
+  .faq-content-container {
+    padding: 25px;
+  }
+  .faq-title-section .title-container h1 {
+    font-size: 36px;
   }
   .faq-heading {
-    font-size: 1.8rem;
+    font-size: 28px;
+  }
+  .faq-category-title {
+    font-size: 22px;
   }
   .faq-question .question-text {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
-.historien-om-aim-section {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  width: 100vw;
-  background-color: #2D4F60; /* Dark blue primary */
-  color: #F5F5F5; /* Light gray secondary */
-}
-.historien-om-aim-content {
-  padding-left: 150px;
-  padding-right: 150px;
-  max-width: 80%;
-}
-@media (max-width: 768px) {
-  .historien-om-aim-content {
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 100%;
+@media (max-width: 480px) {
+  .hero-image-container {
+    height: 300px;
+  }
+  .faq-content-container {
+    padding: 20px 15px;
+  }
+  .faq-content-section {
+    padding: 40px 15px;
+  }
+  .faq-title-section .title-container h1 {
+    font-size: 30px;
+  }
+  .faq-heading {
+    font-size: 24px;
+  }
+  .faq-category-title {
+    font-size: 20px;
+  }
+  .faq-question {
+    padding: 12px 15px;
+  }
+  .faq-question .question-text {
+    font-size: 15px;
+  }
+  .faq-answer.open {
+    padding: 15px;
+  }
+  .faq-answer p {
+    font-size: 14px;
   }
 }
-.historien-om-aim-text {
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-top: 20px;
-  color: #E87722; /* Orange secondary */
-}
-.historien-om-aim-text:first-child {
-  margin-top: 0;
-}
-.historien-om-aim-title {
-  color: #F5F5F5; /* Light gray secondary */
-  text-align: center;
-  margin-bottom: 30px;
-  background-color: #6A9FB5; /* Light blue primary */
-  padding: 1rem;
+/* .historien-om-aim {
+  &-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100vw;
+    background-color: #2D4F60; */ /* Dark blue primary */
+/* color: #F5F5F5; */ /* Light gray secondary */
+/* } */
+.historien-om-aim-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/*----- Hero section with image -----*/
+.historien-om-aim-hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.historien-om-aim-title-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 15px;
+}
+.historien-om-aim-title-section .title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+.historien-om-aim-title-section .title-container h1 {
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 40px;
+  color: #2d4f60;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/*----- Content section -----*/
+.historien-om-aim-content-section {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  background-image: url("/images/wave-haikei-blue.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.historien-om-aim-content-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #2d4f60;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.historien-om-aim-content {
+  color: white;
+  text-align: left;
+  font-family: "Museo Sans 500", sans-serif;
+}
+
+.historien-om-aim-text {
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+.historien-om-aim-text:last-child {
+  margin-bottom: 0;
+}
+
+.locked-background {
+  background-image: url("/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 60px;
+  height: 300px;
+  width: 100%;
+}
+
+/*----- Responsive styles -----*/
+@media (max-width: 992px) {
+  .historien-om-aim-content-container {
+    padding: 30px;
+  }
+  .historien-om-aim-title-section .title-container h1 {
+    font-size: 36px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 300px;
+  }
+  .historien-om-aim-content-container {
+    padding: 25px;
+  }
+  .historien-om-aim-title-section .title-container h1 {
+    font-size: 32px;
+  }
+  .historien-om-aim-text {
+    font-size: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-image-container {
+    height: 250px;
+  }
+  .historien-om-aim-content-container {
+    padding: 20px 15px;
+  }
+  .historien-om-aim-content-section {
+    padding: 30px 15px;
+  }
+  .historien-om-aim-title-section .title-container h1 {
+    font-size: 28px;
+  }
+}
+/* 
+  &-content {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 80%;
+
+    @media (max-width: 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+      max-width: 100%;
+    }
+  }
+
+  &-text {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+    color: #E87722; */ /* Orange secondary */
+/*  &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &-title {
+    color: #F5F5F5; */ /* Light gray secondary */
+/*  text-align: center;
+    margin-bottom: 30px;
+    background-color: #6A9FB5; */ /* Light blue primary */
+/*    padding: 1rem;
+  }
+}
+ */
 .competitions {
   width: 150px;
   padding: 12px 20px;
