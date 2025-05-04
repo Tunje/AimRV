@@ -26,9 +26,10 @@ import ContentManager from './components/ContentManager';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { TextProvider } from './context/TextContext';
-import BackgroundEditor from './components/BackgroundEditor';
+import ImageModal from './components/ImageModal';
 import Background from './components/Background';
 import { initializeAdminUser } from './firebase/auth';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
     useEffect(() => {
@@ -42,6 +43,7 @@ const App = () => {
         <AuthProvider>
             <TextProvider>
                 <Router>
+                    <ScrollToTop />
                     <div className="flex flex_col MaxWH location" style={{ 
                         width: '100%', 
                         maxWidth: '100%', 
@@ -54,7 +56,7 @@ const App = () => {
                     }}>
                         <Background />
                         <Navbar />
-                        <BackgroundEditor />
+                        <ImageModal />
                         <div style={{ 
                             margin: 0, 
                             padding: 0, 

@@ -2,18 +2,20 @@ import React from "react";
 import "../styles/index.css";
 import EditableImage from "./EditableImage";
 import EditableText from "./EditableText";
+import ImageModal from "./ImageModal";
 
 const Trippeln = () => {
   return (
     <div className="trippeln-container">
+      <ImageModal />
       {/* Hero Section with Image */}
-      <section className="trippeln-hero-section">
+      <section id="trippeln-main-background" className="trippeln-hero-section image-editable">
         <div className="hero-content">
           <div className="hero-image-container">
-            <EditableImage
-              imageKey="trippeln-hero-image"
-              defaultSrc="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg"
+            <img
+              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_057.jpg"
               alt="Trippeln Hero"
+              className="image-editable"
             />
           </div>
         </div>
@@ -32,7 +34,7 @@ const Trippeln = () => {
       </section>
 
       {/* Content Section */}
-      <section className="trippeln-content-section">
+      <section id="trippeln-section-background" className="trippeln-content-section image-editable">
         <div className="trippeln-content-container">
           <div className="trippeln-content">
             <p className="trippeln-text">
@@ -61,11 +63,11 @@ const Trippeln = () => {
 
             <p className="trippeln-text">
               AIM Challenge Trippeln är en tävling i tävlingen för de lag som
-              deltar på minst tre deltävlingar under ett och samma år.
-              Tävlingarna som ingår är Ulricehamn, Sälen, Hemsedal och
-              Kolmården. Det är fritt för laget att välja om ni önskar att delta
-              i 3- eller 6-timmars tävlingen i Ulricehamn och Kolmården, båda
-              anses att vara likvärdiga för Trippeln.
+              deltar på minst tre deltävlingar under ett och samma år. Tävlingarna
+              som ingår är Ulricehamn, Sälen, Hemsedal och Kolmården. Det är fritt
+              för laget att välja om ni önskar att delta i 3- eller 6-timmars
+              tävlingen i Ulricehamn och Kolmården, båda anses att vara likvärdiga
+              för Trippeln.
             </p>
 
             <p className="trippeln-text">
@@ -113,22 +115,17 @@ const Trippeln = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="trippeln-cta-section">
-        <div className="cta-container">
-          <a
-            href="https://raceid.com/sv/races/13016/about"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="trippeln-cta-button"
-          >
-            TA MIG TILL ANMÄLAN
-          </a>
-        </div>
+      {/* Registration Button */}
+      <section className="registration-button-section">
+        <a
+          href="https://raceid.com/sv/races/13016/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="registration-button"
+        >
+          <span>TA MIG TILL ANMÄLAN</span>
+        </a>
       </section>
-
-      {/* Background Image Section */}
-      <div className="locked-background"></div>
     </div>
   );
 };

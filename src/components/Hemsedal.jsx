@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
+import ImageModal from "./ImageModal";
 import "../styles/index.css";
 
 const Hemsedal = () => {
   return (
     <div className="hemsedal-container">
+      <ImageModal />
       {/* Hero Section with Image */}
-      <section className="hemsedal-hero-section">
+      <section className="hemsedal-hero-section image-editable" id="hemsedal-hero-image">
         <div className="hero-content">
           <div className="hero-image-container">
             <img
-              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg"
+              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
               alt="Hemsedal Event"
             />
           </div>
@@ -22,43 +24,37 @@ const Hemsedal = () => {
       <section className="hemsedal-title-section">
         <div className="title-container">
           <EditableText
-            textKey="hemsedal-title"
-            defaultText="HEMSEDAL"
+            textKey="hemsedal-title-with-date"
+            defaultText="HEMSEDAL - 24 AUGUSTI 2025"
             tag="h1"
-            className="location-title"
-          />
-          <EditableText
-            textKey="hemsedal-date"
-            defaultText="10 MAJ 2025"
-            tag="h2"
-            className="location-date"
+            className="title"
           />
         </div>
       </section>
 
-      {/* Button Section */}
-      <section className="hemsedal-button-section">
-        <div className="button-container">
-          <a
-            href="https://raceid.com/sv/races/13015/about"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="anmalan-button"
-          >
-            <p>TA MIG TILL ANMÄLAN</p>
-          </a>
-        </div>
+      {/* Registration Button */}
+      <section id="hemsedal-button-section" className="registration-button-section image-editable">
+        <a
+          href="https://raceid.com/sv/races/13015/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="registration-button"
+        >
+          <span>TA MIG TILL ANMÄLAN</span>
+        </a>
       </section>
 
-      {/* Program Section with Wavy Background */}
-      <section className="hemsedal-program-section">
+      {/* Program Section */}
+      <section className="program-section">
         <div className="program-container">
           <div className="program-cards">
             {/* Image Card */}
             <div className="program-card image-card">
               <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_025.jpg"
+                id="hemsedal-program-image"
+                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
                 alt="Hemsedal Event"
+                className="image-editable"
               />
             </div>
 
@@ -75,13 +71,13 @@ const Hemsedal = () => {
                 <div className="program-day">
                   <EditableText
                     textKey="hemsedal-friday-title"
-                    defaultText="Fredag 9/5"
+                    defaultText="Fredag 23/8"
                     tag="h3"
                     className="day-title"
                   />
                   <EditableText
                     textKey="hemsedal-friday-schedule"
-                    defaultText="17:00 - 19:00 Nummerlappsutdelning på XCC"
+                    defaultText="17:00 - 20:00 Nummerlappsutdelning för alla tävlande på SkiStarshop Hemsedal"
                     tag="p"
                     className="schedule-item"
                   />
@@ -90,55 +86,31 @@ const Hemsedal = () => {
                 <div className="program-day">
                   <EditableText
                     textKey="hemsedal-saturday-title"
-                    defaultText="Lördag 10/5"
+                    defaultText="Lördag 24/8"
                     tag="h3"
                     className="day-title"
                   />
                   <EditableText
                     textKey="hemsedal-saturday-schedule1"
-                    defaultText="08:30 - 10:15 Registrering för alla tävlande som ej registrerat sig under fredagen på 157 XCC, på Lassalyckan."
+                    defaultText="08:30-09:00 Nummerlappsutdelning vid starten"
                     tag="p"
                     className="schedule-item"
                   />
                   <EditableText
                     textKey="hemsedal-saturday-schedule2"
-                    defaultText="10:30 Obligatoriskt informationsmöte vid starten på Lassalyckan stadion."
+                    defaultText="09:30 Start AIM Challenge"
                     tag="p"
                     className="schedule-item"
                   />
                   <EditableText
                     textKey="hemsedal-saturday-schedule3"
-                    defaultText="11:00 Start AIM Challenge, på Lassalyckan stadion. Gemensam start för 3 & 6-timmars tävlingen."
+                    defaultText="11:00 Första målgång förväntas"
                     tag="p"
                     className="schedule-item"
                   />
                   <EditableText
                     textKey="hemsedal-saturday-schedule4"
-                    defaultText="14:00 Målgång för 3-timmars tävlingen."
-                    tag="p"
-                    className="schedule-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-saturday-schedule5"
-                    defaultText="ca 15:30 Prisutdelning 3-timmars tävlingen"
-                    tag="p"
-                    className="schedule-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-saturday-schedule6"
-                    defaultText="16:30 - 20:00 After AIM med mat och dryck på Hotell Lassalyckan."
-                    tag="p"
-                    className="schedule-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-saturday-schedule7"
-                    defaultText="17:00 Målgång för 6-timmars tävlingen."
-                    tag="p"
-                    className="schedule-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-saturday-schedule8"
-                    defaultText="19:00 Prisutdelning utanför Hotell Lassalyckan."
+                    defaultText="15:00 Prisutdelning"
                     tag="p"
                     className="schedule-item"
                   />
@@ -150,150 +122,128 @@ const Hemsedal = () => {
       </section>
 
       {/* Price Section */}
-      <section className="hemsedal-price-section">
+      <section className="price-section">
         <div className="price-container">
-          <div className="price-image-container">
-            <img
-              src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_094.jpg"
-              alt="Climbing in Hemsedal"
-              className="price-background-image"
-            />
-            <div className="price-overlay">
-              <div className="price-content">
+          <div className="price-content">
+            <div className="price-header">
+              <EditableText
+                textKey="hemsedal-price-title"
+                defaultText="PRIS"
+                tag="h2"
+                className="price-title"
+              />
+            </div>
+
+            <div className="price-cards">
+              <div className="price-card">
                 <EditableText
-                  textKey="hemsedal-price-title"
-                  defaultText="PRIS"
-                  tag="h2"
-                  className="section-title"
-                />
-                <EditableText
-                  textKey="hemsedal-price-subtitle"
-                  defaultText="HEMSEDAL 24/8-2024"
+                  textKey="hemsedal-price-card1-title"
+                  defaultText="ANMÄLNINGSAVGIFT"
                   tag="h3"
-                  className="price-subtitle"
+                  className="price-card-title"
                 />
+                <EditableText
+                  textKey="hemsedal-price-card1-price"
+                  defaultText="995 SEK"
+                  tag="p"
+                  className="price-card-price"
+                />
+                <EditableText
+                  textKey="hemsedal-price-card1-description"
+                  defaultText="Anmälan stänger 21 augusti"
+                  tag="p"
+                  className="price-card-description"
+                />
+              </div>
 
-                <div className="price-categories">
-                  <div className="price-category">
-                    <EditableText
-                      textKey="hemsedal-price-3h-title"
-                      defaultText="3-TIMMARS"
-                      tag="h4"
-                      className="category-title"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-3h-1"
-                      defaultText="1500 SEK / lag för Early Bird-anmälan innan 1 november."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-3h-2"
-                      defaultText="1700 SEK / lag för anmälan mellan 1 november och 1 februari."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-3h-3"
-                      defaultText="1900 SEK / lag för anmälan mellan 2 februari och 24 april."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-3h-4"
-                      defaultText="2100 SEK / lag för anmälan från 25 april och fram till start."
-                      tag="p"
-                      className="price-item"
-                    />
-                  </div>
+              <div className="price-card">
+                <EditableText
+                  textKey="hemsedal-price-card2-title"
+                  defaultText="EFTERANMÄLAN"
+                  tag="h3"
+                  className="price-card-title"
+                />
+                <EditableText
+                  textKey="hemsedal-price-card2-price"
+                  defaultText="1195 SEK"
+                  tag="p"
+                  className="price-card-price"
+                />
+                <EditableText
+                  textKey="hemsedal-price-card2-description"
+                  defaultText="I mån av plats fram till 23 augusti"
+                  tag="p"
+                  className="price-card-description"
+                />
+              </div>
+            </div>
+          </div>
 
-                  <div className="price-category">
-                    <EditableText
-                      textKey="hemsedal-price-6h-title"
-                      defaultText="6-TIMMARS"
-                      tag="h4"
-                      className="category-title"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-6h-1"
-                      defaultText="1900 SEK / lag för Early Bird-anmälan innan 1 november."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-6h-2"
-                      defaultText="2100 SEK / lag för anmälan mellan 1 november och 1 februari."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-6h-3"
-                      defaultText="2300 SEK / lag för anmälan mellan 2 februari och 24 april."
-                      tag="p"
-                      className="price-item"
-                    />
-                    <EditableText
-                      textKey="hemsedal-price-6h-4"
-                      defaultText="2500 SEK / lag för anmälan från 25 april och fram till start."
-                      tag="p"
-                      className="price-item"
-                    />
-                  </div>
+          <div id="hemsedal-price-image" className="price-background-image image-editable"></div>
+        </div>
+      </section>
+
+      {/* Course Section */}
+      <section className="course-section">
+        <div className="course-container">
+          <div className="course-content">
+            <EditableText
+              textKey="hemsedal-course-title"
+              defaultText="BANAN"
+              tag="h2"
+              className="course-title"
+            />
+            <EditableText
+              textKey="hemsedal-course-description"
+              defaultText="AIM Challenge Hemsedal är en ca 25 km lång mountainbike-tävling med ca 800 höjdmeter. Banan går på stigar, grusvägar och i skidbackar i Hemsedal."
+              tag="p"
+              className="course-description"
+            />
+            <div className="course-details">
+              <div className="course-detail">
+                <div className="detail-icon">
+                  <img src="/images/icons/distance.svg" alt="Distance" />
                 </div>
-
-                <div className="price-category trippeln-category">
+                <div className="detail-text">
                   <EditableText
-                    textKey="hemsedal-price-trippeln-title"
-                    defaultText="AIM CHALLENGE TRIPPELN 2025"
-                    tag="h4"
-                    className="category-title"
-                  />
-                  <EditableText
-                    textKey="hemsedal-price-trippeln-1"
-                    defaultText="4750 SEK / lag för Early Bird-anmälan innan 1 januari."
+                    textKey="hemsedal-course-distance"
+                    defaultText="25 km"
                     tag="p"
-                    className="price-item"
+                    className="detail-value"
                   />
-                  <EditableText
-                    textKey="hemsedal-price-trippeln-2"
-                    defaultText="5250 SEK / lag för anmälan mellan 1 januari och 1 februari."
-                    tag="p"
-                    className="price-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-price-trippeln-3"
-                    defaultText="5750 SEK / lag för anmälan mellan 2 februari och 24 april."
-                    tag="p"
-                    className="price-item"
-                  />
-                  <EditableText
-                    textKey="hemsedal-price-trippeln-4"
-                    defaultText="6250 SEK / lag för anmälan efter den 25 april."
-                    tag="p"
-                    className="price-item"
-                  />
+                  <p className="detail-label">Distans</p>
                 </div>
-
-                <div className="price-button-container">
-                  <a
-                    href="https://raceid.com/sv/races/13015/about"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="price-anmalan-button"
-                  >
-                    <p>TA MIG TILL ANMÄLAN</p>
-                  </a>
+              </div>
+              <div className="course-detail">
+                <div className="detail-icon">
+                  <img src="/images/icons/elevation.svg" alt="Elevation" />
+                </div>
+                <div className="detail-text">
+                  <EditableText
+                    textKey="hemsedal-course-elevation"
+                    defaultText="800 m"
+                    tag="p"
+                    className="detail-value"
+                  />
+                  <p className="detail-label">Höjdmeter</p>
                 </div>
               </div>
             </div>
           </div>
+          <div className="course-map">
+            <img
+              src="/images/hemsedal-map.jpg"
+              alt="Hemsedal Course Map"
+              className="map-image"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Latest News section */}
-      <section id="latest-news" className="latest-news-section">
-        <h2 className="latest-news-title">SENASTE NYTT HEMSEDAL</h2>
-        <div className="latest-news-container">
+      {/* Latest News Section */}
+      <section className="latest-news-section">
+        <h2 className="news-section-title">SENASTE NYTT</h2>
+        <div className="news-cards">
           <div className="news-card">
             <div className="news-image">
               <img
@@ -417,8 +367,6 @@ const Hemsedal = () => {
           </div>
         </div>
       </section>
-
-      {/* No footer needed here - it's already included in App.jsx */}
     </div>
   );
 };

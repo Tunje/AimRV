@@ -5,7 +5,7 @@ import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage
 import { collection, doc, setDoc, getDocs, query, where, getDoc } from 'firebase/firestore';
 import { useLocation } from 'react-router-dom';
 
-const BackgroundEditor = () => {
+const ImageModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedElement, setSelectedElement] = useState(null);
   const [image, setImage] = useState(null);
@@ -13,18 +13,18 @@ const BackgroundEditor = () => {
   const [backgroundType, setBackgroundType] = useState('simple');
   const [previousImageUrl, setPreviousImageUrl] = useState(null);
   const { isAdmin } = useText();
-  console.log('BackgroundEditor - isAdmin:', isAdmin);
+  console.log('ImageModal - isAdmin:', isAdmin);
   const fileInputRef = useRef(null);
   const modalRef = useRef(null);
   const location = useLocation();
-
+  
   useEffect(() => {
     // Initial load of all background settings when component mounts
     loadAllBackgroundSettings();
   }, []);
 
   useEffect(() => {
-    const backgroundElements = document.querySelectorAll('.background-editable');
+    const backgroundElements = document.querySelectorAll('.image-editable');
     console.log('Found background elements:', backgroundElements.length);
     
     const handleClick = (e) => {
@@ -51,8 +51,6 @@ const BackgroundEditor = () => {
         element.classList.add('admin-editable');
       }
     });
-    
-    loadAllBackgroundSettings();
     
     return () => {
       backgroundElements.forEach(element => {
@@ -275,9 +273,44 @@ const BackgroundEditor = () => {
           updatedBy: 'anonymous'
         });
         
-        // Remove the background from the element
-        if (selectedElement) {
-          selectedElement.style.backgroundImage = 'none';
+        // Check if it's an img element or a div with background
+        if (selectedElement.tagName.toLowerCase() === 'img') {
+          // For img elements, restore the original src
+          if (selectedElement.id === 'page_03-about-image') {
+            selectedElement.src = '/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg';
+          } else if (selectedElement.id === 'ulricehamn-hero-image') {
+            selectedElement.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+          } else if (selectedElement.id === 'ulricehamn-price-image') {
+            selectedElement.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+          } else if (selectedElement.id === 'ulricehamn-program-image') {
+            selectedElement.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+          } else if (selectedElement.id === 'salen-hero-image') {
+            selectedElement.src = '/images/salen-hero.jpg';
+          } 
+        } else {
+          // For div elements with background images
+          if (selectedElement.id === 'page_01') {
+            selectedElement.style.backgroundImage = 'none';
+          } else if (selectedElement.id === 'page_02-background') {
+            selectedElement.style.backgroundImage = "url('images/EE-AIMChallenge24-Uhamn-0171-high.jpg')";
+          } else if (selectedElement.id === 'page_02-salen-background') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')";
+          } else if (selectedElement.id === 'page_02-hemsedal-background') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')";
+          } else if (selectedElement.id === 'page_02-kolmarden-background') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')";
+          } else if (selectedElement.id === 'competitions-ulricehamn-bg') {
+            selectedElement.style.backgroundImage = "url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg')";
+          } else if (selectedElement.id === 'competitions-salen-bg') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')";
+          } else if (selectedElement.id === 'competitions-hemsedal-bg') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')";
+          } else if (selectedElement.id === 'competitions-kolmarden-bg') {
+            selectedElement.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')";
+          } else {
+            // Default fallback
+            selectedElement.style.backgroundImage = 'none';
+          }
         }
       }
       
@@ -293,34 +326,67 @@ const BackgroundEditor = () => {
   };
   
   const applyBackgroundToElement = (element, imageUrl, type) => {
-    if (!element || !imageUrl) return;
+    if (!element) return;
     
-    console.log(`Applying background to element ${element.id} with image ${imageUrl}`);
+    console.log('Applying background to element:', element.id, 'with URL:', imageUrl);
     
-    element.classList.remove('simple-background', 'fixed-background');
-    element.classList.add('has-background');
-    
-    if (type === 'simple') {
-      element.classList.add('simple-background');
+    // Check if it's an img element or a div with background
+    if (element.tagName.toLowerCase() === 'img') {
+      if (imageUrl) {
+        element.src = imageUrl;
+      } else {
+        // If no image URL is provided, restore the default image
+        if (element.id === 'page_03-about-image') {
+          element.src = '/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg';
+        } else if (element.id === 'ulricehamn-hero-image') {
+          element.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+        } else if (element.id === 'ulricehamn-price-image') {
+          element.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+        } else if (element.id === 'ulricehamn-program-image') {
+          element.src = '/images/EE-AIMChallenge24-Uhamn-0171-high.jpg';
+        } else if (element.id === 'salen-hero-image') {
+          element.src = '/images/salen-hero.jpg';
+        } 
+      }
     } else {
-      element.classList.add('locked-background');
+      // For div elements with background images
+      if (imageUrl) {
+        element.style.backgroundImage = `url('${imageUrl}')`;
+      } else {
+        // If no image URL is provided, restore the default background
+        if (element.id === 'page_01') {
+          element.style.backgroundImage = 'none';
+        } else if (element.id === 'page_02-background') {
+          element.style.backgroundImage = "url('images/EE-AIMChallenge24-Uhamn-0171-high.jpg')";
+        } else if (element.id === 'page_02-salen-background') {
+          element.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')";
+        } else if (element.id === 'page_02-hemsedal-background') {
+          element.style.backgroundImage = "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')";
+        } else if (element.id === 'page_02-kolmarden-background') {
+          element.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')";
+        } else if (element.id === 'competitions-ulricehamn-bg') {
+          element.style.backgroundImage = "url('/images/EE-AIMChallenge24-Uhamn-0171-high.jpg')";
+        } else if (element.id === 'competitions-salen-bg') {
+          element.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')";
+        } else if (element.id === 'competitions-hemsedal-bg') {
+          element.style.backgroundImage = "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')";
+        } else if (element.id === 'competitions-kolmarden-bg') {
+          element.style.backgroundImage = "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')";
+        } else {
+          // Default fallback
+          element.style.backgroundImage = 'none';
+        }
+      }
+      
+      // Apply the background type class
+      element.classList.remove('simple-background', 'locked-background');
+      element.classList.add(`${type}-background`);
+      
+      // Add the has-background class if it doesn't have it
+      if (!element.classList.contains('has-background')) {
+        element.classList.add('has-background');
+      }
     }
-    
-    // Set the background image directly
-    element.style.backgroundImage = `url(${imageUrl})`;
-    
-    // Also set these properties to ensure the background displays correctly
-    element.style.backgroundSize = 'cover';
-    element.style.backgroundPosition = 'center';
-    element.style.backgroundRepeat = 'no-repeat';
-    
-    if (type === 'fixed') {
-      element.style.backgroundAttachment = 'fixed';
-    } else {
-      element.style.backgroundAttachment = 'scroll';
-    }
-    
-    console.log(`Background applied to element ${element.id}`);
   };
   
   const handleClose = () => {
@@ -346,23 +412,23 @@ const BackgroundEditor = () => {
   return (
     <>
       {showModal && (
-        <div className="background-editor-overlay" onClick={handleClickOutside}>
-          <div className="background-editor-modal" ref={modalRef}>
-            <div className="background-editor-modal__header">
-              <h2 className="background-editor-modal__title">Edit Background</h2>
+        <div className="image-modal-overlay" onClick={handleClickOutside}>
+          <div className="image-modal-modal" ref={modalRef}>
+            <div className="image-modal-modal__header">
+              <h2 className="image-modal-modal__title">Edit Background</h2>
               <button 
-                className="background-editor-modal__close" 
+                className="image-modal-modal__close" 
                 onClick={handleClose}
               >
                 &times;
               </button>
             </div>
             
-            <div className="background-editor-modal__body">
-              <div className="background-editor-modal__form-group">
-                <label className="background-editor-modal__label">Background Type</label>
+            <div className="image-modal-modal__body">
+              <div className="image-modal-modal__form-group">
+                <label className="image-modal-modal__label">Background Type</label>
                 <select 
-                  className="background-editor-modal__select"
+                  className="image-modal-modal__select"
                   value={backgroundType} 
                   onChange={(e) => setBackgroundType(e.target.value)}
                 >
@@ -371,28 +437,28 @@ const BackgroundEditor = () => {
                 </select>
               </div>
               
-              <div className="background-editor-modal__form-group">
-                <label className="background-editor-modal__label">Background Image</label>
+              <div className="image-modal-modal__form-group">
+                <label className="image-modal-modal__label">Background Image</label>
                 <div 
-                  className="background-editor-modal__image-upload"
+                  className="image-modal-modal__image-upload"
                   onClick={triggerFileInput}
                 >
                   {imagePreview ? (
-                    <div className="background-editor-modal__image-preview-container">
+                    <div className="image-modal-modal__image-preview-container">
                       <img 
                         src={imagePreview} 
                         alt="Preview" 
-                        className="background-editor-modal__image-preview"
+                        className="image-modal-modal__image-preview"
                       />
                       <button 
-                        className="background-editor-modal__image-remove"
+                        className="image-modal-modal__image-remove"
                         onClick={handleRemoveImage}
                       >
                         &times;
                       </button>
                     </div>
                   ) : (
-                    <div className="background-editor-modal__image-placeholder">
+                    <div className="image-modal-modal__image-placeholder">
                       Click to upload an image
                     </div>
                   )}
@@ -401,21 +467,21 @@ const BackgroundEditor = () => {
                     ref={fileInputRef}
                     onChange={handleImageChange}
                     accept="image/*"
-                    className="background-editor-modal__file-input"
+                    className="image-modal-modal__file-input"
                   />
                 </div>
               </div>
             </div>
             
-            <div className="background-editor-modal__footer">
+            <div className="image-modal-modal__footer">
               <button 
-                className="background-editor-modal__button background-editor-modal__button--secondary"
+                className="image-modal-modal__button image-modal-modal__button--secondary"
                 onClick={handleClose}
               >
                 Cancel
               </button>
               <button 
-                className="background-editor-modal__button background-editor-modal__button--primary"
+                className="image-modal-modal__button image-modal-modal__button--primary"
                 onClick={handleSave}
               >
                 Save Changes
@@ -428,4 +494,4 @@ const BackgroundEditor = () => {
   );
 };
 
-export default BackgroundEditor;
+export default ImageModal;

@@ -5,7 +5,7 @@ import EditableText from "./EditableText";
 const Pages = () => {
   return (
     <div className="flex flex_col MaxWH location">
-      <section id="page_01" className="page_01 dynamic-background ">
+      <section id="page_01" className="page_01 dynamic-background image-editable">
         <div className=" page_01box flex flex_col flex_j_SA MaxWH">
           <EditableText
             textKey="main-multisport-sedan"
@@ -20,7 +20,8 @@ const Pages = () => {
         <h2 className="page_02-title">ÅRETS TÄVLINGAR</h2>
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-background"
+            className="page_02-image image-editable"
             style={{
               backgroundImage:
                 "url('images/EE-AIMChallenge24-Uhamn-0171-high.jpg')",
@@ -51,7 +52,8 @@ const Pages = () => {
 
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-salen-background"
+            className="page_02-image image-editable"
             style={{
               backgroundImage:
                 "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
@@ -82,7 +84,8 @@ const Pages = () => {
 
         <div className="page_02box flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-hemsedal-background"
+            className="page_02-image image-editable"
             style={{
               backgroundImage:
                 "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')",
@@ -113,7 +116,8 @@ const Pages = () => {
 
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-kolmarden-background"
+            className="page_02-image image-editable"
             style={{
               backgroundImage:
                 "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')",
@@ -167,8 +171,10 @@ const Pages = () => {
           </div>
           <div className="page_03-image">
             <img
+              id="page_03-about-image"
               src="/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg"
               alt="AIM Challenge"
+              className="image-editable"
             />
           </div>
         </div>
