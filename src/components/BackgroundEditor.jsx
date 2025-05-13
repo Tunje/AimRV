@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef, Fragment, useCallback } from 'react';
 import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
@@ -18,55 +18,62 @@ const BackgroundEditor = () => {
   const modalRef = useRef(null);
   const location = useLocation();
 
-  useEffect(() => {
-    // Initial load of all background settings when component mounts
-    loadAllBackgroundSettings();
-  }, []);
+  // Define handleClick outside useEffect to ensure it's not recreated on every render
+  const handleElementClick = useCallback((e) => {
+    e.stopPropagation(); // Stop event propagation
+    console.log('Background element clicked:', e.currentTarget.id);
+    if (isAdmin) {
+      console.log('User is admin, showing modal');
+      setSelectedElement(e.currentTarget);
+      setShowModal(true);
+      
+      const elementId = e.currentTarget.id;
+      if (elementId) {
+        loadBackgroundSettings(elementId);
+      }
+    } else {
+      console.log('User is not admin, click ignored');
+    }
+  }, [isAdmin]);
 
   useEffect(() => {
     const backgroundElements = document.querySelectorAll('.background-editable');
     console.log('Found background elements:', backgroundElements.length);
     
-    const handleClick = (e) => {
-      console.log('Background element clicked:', e.currentTarget.id);
-      if (isAdmin) {
-        console.log('User is admin, showing modal');
-        setSelectedElement(e.currentTarget);
-        setShowModal(true);
-        
-        const elementId = e.currentTarget.id;
-        if (elementId) {
-          loadBackgroundSettings(elementId);
-        }
-      } else {
-        console.log('User is not admin, click ignored');
-      }
-    };
-    
     backgroundElements.forEach(element => {
       console.log('Adding click listener to element:', element.id);
-      element.addEventListener('click', handleClick);
+      // Remove any existing listeners first to prevent duplicates
+      element.removeEventListener('click', handleElementClick);
+      // Add the click listener
+      element.addEventListener('click', handleElementClick);
       
       if (isAdmin) {
         element.classList.add('admin-editable');
       }
     });
     
+    // Load background settings only once when component mounts or location changes
     loadAllBackgroundSettings();
     
     return () => {
       backgroundElements.forEach(element => {
-        element.removeEventListener('click', handleClick);
+        element.removeEventListener('click', handleElementClick);
         if (isAdmin) {
           element.classList.remove('admin-editable');
         }
       });
     };
-  }, [isAdmin, location]);
+  }, [isAdmin, location, handleElementClick]);
 
   useEffect(() => {
-    loadAllBackgroundSettings();
-  }, [location]);
+    // Add event listener for clicks outside the modal when modal is shown
+    if (showModal) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [showModal]);
 
   const loadAllBackgroundSettings = async () => {
     try {
