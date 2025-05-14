@@ -1,0 +1,240 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useText } from '../context/TextContext';
+import { db } from '../firebase/config';
+import { collection, query, getDocs, orderBy, limit, doc, getDoc, setDoc } from 'firebase/firestore';
+
+const NewsCarousel = ({ instanceId }) => {
+  const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('Alla');
+  const [categories, setCategories] = useState(['Alla']);
+  const [showCategorySelector, setShowCategorySelector] = useState(false);
+  const { isAdmin } = useText();
+  
+  // Fetch all available categories from posts
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const postsRef = collection(db, 'posts');
+        const q = query(postsRef, orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+        
+        const uniqueCategories = new Set(['Alla']);
+        querySnapshot.forEach((doc) => {
+          const post = doc.data();
+          if (post.category && post.category.trim() !== '') {
+            uniqueCategories.add(post.category);
+          }
+        });
+        
+        setCategories(Array.from(uniqueCategories));
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    
+    fetchCategories();
+  }, []);
+  
+  // Fetch the saved category setting for this carousel instance
+  useEffect(() => {
+    const fetchCarouselSettings = async () => {
+      try {
+        const settingsRef = doc(db, 'carouselSettings', instanceId);
+        const settingsDoc = await getDoc(settingsRef);
+        
+        if (settingsDoc.exists()) {
+          const data = settingsDoc.data();
+          setSelectedCategory(data.category || 'Alla');
+        }
+      } catch (error) {
+        console.error('Error fetching carousel settings:', error);
+      }
+    };
+    
+    if (instanceId) {
+      fetchCarouselSettings();
+    }
+  }, [instanceId]);
+  
+  // Fetch posts
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postsRef = collection(db, 'posts');
+        const q = query(postsRef, orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+        
+        const fetchedPosts = [];
+        querySnapshot.forEach((doc) => {
+          fetchedPosts.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+    
+    fetchPosts();
+  }, []);
+  
+  // Filter posts based on selected category
+  useEffect(() => {
+    if (selectedCategory === 'Alla') {
+      setFilteredPosts(posts);
+    } else {
+      const filtered = posts.filter(post => post.category === selectedCategory);
+      setFilteredPosts(filtered);
+    }
+    
+    // Reset current index when category changes
+    setCurrentIndex(0);
+  }, [selectedCategory, posts]);
+  
+  // Save the category setting for this carousel instance
+  const saveCarouselSettings = async (category) => {
+    try {
+      const settingsRef = doc(db, 'carouselSettings', instanceId);
+      await setDoc(settingsRef, {
+        category,
+        updatedAt: new Date().toISOString(),
+        updatedBy: 'admin'
+      });
+      
+      console.log('Carousel settings saved successfully');
+    } catch (error) {
+      console.error('Error saving carousel settings:', error);
+    }
+  };
+  
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    saveCarouselSettings(category);
+    setShowCategorySelector(false);
+  };
+  
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+  
+  const handleNext = () => {
+    if (currentIndex < filteredPosts.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+  
+  const toggleCategorySelector = () => {
+    setShowCategorySelector(!showCategorySelector);
+  };
+  
+  // Determine which posts to display (3 at a time)
+  const visiblePosts = [];
+  for (let i = currentIndex; i < currentIndex + 3 && i < filteredPosts.length; i++) {
+    if (filteredPosts[i]) {
+      visiblePosts.push(filteredPosts[i]);
+    }
+  }
+  
+  // Fill with empty placeholders if we don't have enough posts
+  while (visiblePosts.length < 3) {
+    visiblePosts.push(null);
+  }
+  
+  return (
+    <div className="news-carousel">
+      {isAdmin && (
+        <div className="news-carousel-admin">
+          <button 
+            className="category-selector-button"
+            onClick={toggleCategorySelector}
+          >
+            {selectedCategory} ▼
+          </button>
+          
+          {showCategorySelector && (
+            <div className="category-selector">
+              {categories.map((category) => (
+                <div 
+                  key={category} 
+                  className={`category-option ${category === selectedCategory ? 'selected' : ''}`}
+                  onClick={() => handleCategoryChange(category)}
+                >
+                  {category}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      
+      <div className="news-carousel-container">
+        {visiblePosts.map((post, index) => (
+          post ? (
+            <div className="news-card" key={post.id}>
+              <div className="news-image">
+                {post.image ? (
+                  <img src={post.image} alt={post.title} />
+                ) : (
+                  <div className="news-image-placeholder"></div>
+                )}
+              </div>
+              <div className="news-content">
+                <h3 className="news-location">{post.title}</h3>
+                <p className="news-description">
+                  {post.content.length > 100 
+                    ? `${post.content.substring(0, 100)}...` 
+                    : post.content}
+                </p>
+                <div className="news-button">
+                  <button 
+                    className="news-read-more-btn"
+                    onClick={() => window.location.href = `/news/${post.id}`}
+                  >
+                    <span>LÄS MER</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="news-card empty" key={`empty-${index}`}>
+              <div className="news-image-placeholder"></div>
+              <div className="news-content">
+                <h3 className="news-location">Inga fler nyheter</h3>
+                <p className="news-description">
+                  Det finns inga fler nyheter i denna kategori.
+                </p>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+      
+      <div className="news-carousel-controls">
+        <button 
+          className="carousel-control prev"
+          onClick={handlePrevious}
+          disabled={currentIndex === 0}
+        >
+          ◀
+        </button>
+        <button 
+          className="carousel-control next"
+          onClick={handleNext}
+          disabled={currentIndex >= filteredPosts.length - 3}
+        >
+          ▶
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default NewsCarousel;

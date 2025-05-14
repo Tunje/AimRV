@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
+import { useText } from "../context/TextContext";
+import NewsCarousel from "./NewsCarousel";
 
 const Pages = () => {
+  const { isAdmin } = useText();
+  
+
   return (
     <div className="flex flex_col MaxWH location">
-      <section id="page_01" className="page_01 dynamic-background ">
+      <section id="page_01" className="page_01 dynamic-background background-editable">
         <div className=" page_01box flex flex_col flex_j_SA MaxWH">
           <EditableText
             textKey="main-multisport-sedan"
@@ -20,7 +25,8 @@ const Pages = () => {
         <h2 className="page_02-title">ÅRETS TÄVLINGAR</h2>
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-ulricehamn-image"
+            className="page_02-image background-editable"
             style={{
               backgroundImage:
                 "url('images/EE-AIMChallenge24-Uhamn-0171-high.jpg')",
@@ -51,7 +57,8 @@ const Pages = () => {
 
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-salen-image"
+            className="page_02-image background-editable"
             style={{
               backgroundImage:
                 "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
@@ -82,7 +89,8 @@ const Pages = () => {
 
         <div className="page_02box flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-hemsedal-image"
+            className="page_02-image background-editable"
             style={{
               backgroundImage:
                 "url('/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg')",
@@ -113,10 +121,11 @@ const Pages = () => {
 
         <div className="page_02box  flex flex_col MaxWH location">
           <div
-            className="page_02-image"
+            id="page_02-kolmarden-image"
+            className="page_02-image background-editable"
             style={{
               backgroundImage:
-                "url('/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg')",
+                "url('/images/kolmarden.jpg')",
             }}
           ></div>
           <div className="page_02-content">
@@ -166,20 +175,31 @@ const Pages = () => {
             </div>
           </div>
           <div className="page_03-image">
-            <img
-              src="/images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg"
-              alt="AIM Challenge"
-            />
+            <div 
+              id="page_03-aim-image" 
+              className="background-editable" 
+              data-editable="true"
+              style={{
+                width: "90%",
+                height: "90%",
+                backgroundImage: "url('images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat"
+              }}
+            ></div>
           </div>
         </div>
       </section>
 
       {/*  Annons container */}
 
-      <section id="ad-section" className="ad-section">
+      <section className="ad-section">
         <div className="ad-container">
           <div className="ad-content">
-            <p>ANNONS</p>
+            <div className="ad-carousel ad-editable" id="main-ad-section">
+              <div className="annons-text">ANNONS</div>
+            </div>
           </div>
         </div>
       </section>
@@ -189,65 +209,7 @@ const Pages = () => {
       <section id="latest-news" className="latest-news-section">
         <h2 className="latest-news-title">SENASTE NYTT</h2>
         <div className="latest-news-container">
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/1" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/2" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/3" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <NewsCarousel instanceId="main-page-carousel" />
         </div>
       </section>
 
