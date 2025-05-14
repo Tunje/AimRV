@@ -86,13 +86,16 @@ const Navbar = () => {
         {/* Desktop Navigation - Hidden on mobile */}
         <div className="navbside">
           {/* Tävlingar Button */}
-          <div className="nav-button">
+          <div
+            className="nav-button"
+            onMouseEnter={() => setDropOpen1(true)}
+            onMouseLeave={() => setDropOpen1(false)}
+          >
             <a
               href="#"
               className="dropdown-trigger"
               onClick={(e) => {
                 e.preventDefault();
-                setDropOpen1(!dropOpen1);
               }}
             >
               Tävlingar
@@ -137,14 +140,21 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          {/* Om oss Button */}
+          {/* Results Button - Added as a direct link */}
           <div className="nav-button">
+            <Link to="/results">Resultat</Link>
+          </div>
+          {/* Om oss Button */}
+          <div
+            className="nav-button"
+            onMouseEnter={() => setDropOpen2(true)}
+            onMouseLeave={() => setDropOpen2(false)}
+          >
             <a
               href="#"
               className="dropdown-trigger"
               onClick={(e) => {
                 e.preventDefault();
-                setDropOpen2(!dropOpen2);
               }}
             >
               Om oss
@@ -277,6 +287,16 @@ const Navbar = () => {
                   </Link>
                 </div>
               )}
+            </div>
+            {/* Results Link - Added as a direct link in mobile menu */}
+            <div className="mobile-menu-item">
+              <Link
+                to="/results"
+                onClick={toggleMobileMenu}
+                className="mobile-menu-link"
+              >
+                Resultat
+              </Link>
             </div>
 
             <div className="mobile-menu-item">
