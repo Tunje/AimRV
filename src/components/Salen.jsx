@@ -36,6 +36,20 @@ const Salen = () => {
         </div>
       </section>
 
+      {/* Button Section */}
+      <section className="ulricehamn-button-section">
+        <div className="button-container">
+          <a
+            href="https://raceid.com/sv/races/12846/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="anmalan-button"
+          >
+            <p>TA MIG TILL ANMÄLAN</p>
+          </a>
+        </div>
+      </section>
+
       {/* Program Section with Wavy Background */}
       <section className="salen-program-section">
         <div className="program-container">
