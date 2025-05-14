@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import { useText } from "../context/TextContext";
+import NewsCarousel from "./NewsCarousel";
 
 const Pages = () => {
   const { isAdmin } = useText();
@@ -208,65 +209,7 @@ const Pages = () => {
       <section id="latest-news" className="latest-news-section">
         <h2 className="latest-news-title">SENASTE NYTT</h2>
         <div className="latest-news-container">
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/1" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/2" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">ULRICEHAMN 10/5</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta meningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/3" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <NewsCarousel instanceId="main-page-carousel" />
         </div>
       </section>
 
