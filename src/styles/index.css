@@ -7281,7 +7281,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   width: 100%;
   height: auto;
   padding: 40px 0;
-  background-color: white;
   background-size: cover;
   background-position: center;
   display: flex;

@@ -196,7 +196,7 @@ const Pages = () => {
       <section className="ad-section">
         <div className="ad-container">
           <div className="ad-content">
-            <div className="ad-carousel">
+            <div className="ad-carousel ad-editable" id="main-ad-section">
               <div className="annons-text">ANNONS</div>
             </div>
           </div>

@@ -125,7 +125,7 @@ const AdEditor = () => {
     // Filter out ads without images
     const validAds = adsData.filter(ad => ad.imageUrl);
     
-    // Clear all existing ads first, regardless of whether there are new ones
+    // Clear existing ad items only, but preserve the carousel structure
     adContainers.forEach(container => {
       console.log('Clearing container:', container.id || 'unnamed');
       
@@ -134,13 +134,6 @@ const AdEditor = () => {
       existingAdItems.forEach(item => {
         console.log('Removing existing ad item');
         item.remove();
-      });
-      
-      // Clear any carousel containers
-      const carousels = container.querySelectorAll('.ad-carousel');
-      carousels.forEach(carousel => {
-        console.log('Removing carousel');
-        carousel.remove();
       });
       
       // Clear any intervals
@@ -195,7 +188,7 @@ const AdEditor = () => {
       // Add all ads to the carousel, but only show the first one initially
       validAds.forEach((ad, index) => {
         const adElement = document.createElement('div');
-        adElement.className = 'ad-item';
+        adElement.className = index === 0 ? 'ad-item active' : 'ad-item';
         adElement.setAttribute('data-ad-id', ad.id || 'unknown');
         adElement.style.display = index === 0 ? 'block' : 'none'; // Only show the first ad initially
         
@@ -216,24 +209,38 @@ const AdEditor = () => {
         carouselContainer.appendChild(adElement);
       });
       
-      // Set up rotation
+      // Set up rotation with fade effect
       let currentAdIndex = 0;
       const rotateAds = () => {
         const adItems = carouselContainer.querySelectorAll('.ad-item');
         if (adItems.length <= 1) return; // No need to rotate if there's only one ad
         
-        // Hide current ad
-        adItems[currentAdIndex].style.display = 'none';
+        // Fade out current ad
+        adItems[currentAdIndex].classList.remove('active');
         
-        // Move to next ad
-        currentAdIndex = (currentAdIndex + 1) % adItems.length;
-        
-        // Show next ad
-        adItems[currentAdIndex].style.display = 'block';
+        // Wait for fade out transition to complete
+        setTimeout(() => {
+          // Hide previous ad
+          adItems[currentAdIndex].style.display = 'none';
+          
+          // Move to next ad
+          currentAdIndex = (currentAdIndex + 1) % adItems.length;
+          
+          // Show next ad
+          adItems[currentAdIndex].style.display = 'block';
+          
+          // Trigger reflow
+          adItems[currentAdIndex].offsetHeight;
+          
+          // Fade in next ad
+          setTimeout(() => {
+            adItems[currentAdIndex].classList.add('active');
+          }, 50);
+        }, 800); // Match the transition duration
       };
       
-      // Start rotation - change every 5 seconds
-      const intervalId = setInterval(rotateAds, 5000);
+      // Start rotation - change every 8 seconds to allow for the fade effect to be more visible
+      const intervalId = setInterval(rotateAds, 8000);
       
       // Store the interval ID to clear it when component unmounts
       container.setAttribute('data-ad-interval', intervalId);
