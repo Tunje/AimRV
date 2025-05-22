@@ -20,16 +20,16 @@ const OmOss = () => {
       </section>
 
       {/* Title Section */}
-      <section className="om-oss-title-section">
+      {/* <section className="om-oss-title-section">
         <div className="title-container">
           <EditableText
             textKey="om-oss-title"
-            defaultText="OM OSS"
+            defaultText="Om Oss"
             tag="h1"
             className="location-title"
           />
         </div>
-      </section>
+      </section> */}
 
       {/* First Text Section with dark blue background */}
       <section className="om-oss-section flex flex_j_C flex_a_C">
@@ -37,50 +37,81 @@ const OmOss = () => {
           <div className="om-oss-content-wrapper">
             <EditableText
               textKey="om-oss-title-1"
-              defaultText="Vad är AIM Challenge?"
+              defaultText="Om AIM Challenge"
               tag="h2"
               className="fonts_large om-oss-title"
             />
 
             <EditableText
               textKey="om-oss-text-1"
-              defaultText="AIM Challenge är en multisporttävling som arrangeras i Åre, Sverige. Tävlingen går ut på att ta sig runt en bana med hjälp av karta och kompass. Längs banan finns kontroller som ska besökas i rätt ordning."
+              defaultText="AIM Challenge är en multisporttävling i lag om två, där äventyret, glädjen och gemenskapen står i centrum."
+              tag="p"
+              className="fonts_small om-oss-text"
+              style={{ fontWeight: "bold" }}
+            />
+            <EditableText
+              textKey="om-oss-text-2"
+              defaultText="Med karta i handen och sex timmar på klockan gäller det att samla så många poäng som möjligt genom att ta kontroller som är utspridda i naturen. Ni tar er fram framför allt på cykel, men även till fots och ibland genom att klättra, paddla eller simma."
               tag="p"
               className="fonts_small om-oss-text"
             />
             <EditableText
               textKey="om-oss-text-2"
-              defaultText="​"
+              defaultText="Tävlingen är öppen för alla, från nyfikna nybörjare till världseliten inom multisport. Ni bestämmer själva takt, vägval och hur många kontroller ni vill ta. Det är en utmaning på era villkor."
+              tag="p"
+              className="fonts_small om-oss-text"
+            />
+            <h3
+              className="fonts_medium om-oss-title"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              Så går det till
+            </h3>
+            <EditableText
+              textKey="om-oss-text-3"
+              defaultText="När starten går får varje lag en karta med 60 kontroller utplacerade i området. Kartorna är hemliga fram till start och är tryckta på riv- och vattentåligt material. Vissa kontroller är rena stämplingspunkter. Andra innehåller äventyrliga inslag som klättring, simning eller paddling. Vilka ni väljer att ta är helt upp till er. Det är omöjligt att hinna med alla, så smart planering och bra samarbete blir lika viktigt som fysisk kapacitet."
               tag="p"
               className="fonts_small om-oss-text"
             />
             <EditableText
               textKey="om-oss-text-3"
-              defaultText="Tävlingen arrangeras av AIM Challenge AB och har funnits sedan 2004. Tävlingen har utvecklats under åren och är idag en av Sveriges största multisporttävlingar."
+              defaultText="Ni samlar poäng baserat på kontrollernas svårighetsgrad. Många kontroller kan nås direkt med cykel, andra kräver att ni springer en bit eller vågar er ut i vattnet. På varje äventyrlig kontroll finns erfaren personal som ser till att allt sker på ett tryggt och säkert sätt. Inga förkunskaper krävs."
               tag="p"
               className="fonts_small om-oss-text"
             />
+            <h3
+              className="fonts_medium om-oss-title"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              En tävling för alla – oavsett nivå
+            </h3>
             <EditableText
               textKey="om-oss-text-4"
-              defaultText="​"
+              defaultText="AIM Challenge är för alla som vill uppleva multisport på ett tillgängligt och roligt sätt. Därför erbjuder vi två varianter av tävlingen: 3-timmars och 6-timmars. Upplägget är detsamma, men tiden ni har på er att samla kontroller skiljer sig. I Ulricehamn och Kolmården kan ni välja den kortare varianten, perfekt för dig som vill testa konceptet i en mer hanterbar form."
               tag="p"
               className="fonts_small om-oss-text"
             />
             <EditableText
               textKey="om-oss-text-5"
-              defaultText="AIM Challenge är en tävling för alla. Oavsett om du är elit eller motionär finns det en klass för dig. Tävlingen är uppdelad i olika klasser beroende på svårighetsgrad och längd."
+              defaultText="Oavsett om ni är nybörjare eller rutinerade multisportare tävlar ni på samma bana med samma kontroller. Här står några av Nordens bästa lag på startlinjen, tillsammans med förstagångsdeltagare, kompisgäng, kollegor och familjemedlemmar som söker ett gemensamt äventyr. Tävlingen är öppen för dig från 15 år och det viktigaste är inte hur många kontroller ni tar, utan att ni har en minnesvärd dag i naturen."
               tag="p"
               className="fonts_small om-oss-text"
             />
             <EditableText
               textKey="om-oss-text-6"
-              defaultText="​"
+              defaultText="​Det här är multisport när det är som mest inkluderande. En utmaning på era villkor, fylld av rörelse, gemenskap och upptäckarglädje."
               tag="p"
               className="fonts_small om-oss-text"
             />
             <EditableText
               textKey="om-oss-text-7"
-              defaultText="Tävlingen går ut på att ta sig runt en bana med hjälp av karta och kompass. Längs banan finns kontroller som ska besökas i rätt ordning. Tävlingen innehåller olika moment som löpning, cykling, paddling, simning och klättring."
+              defaultText=""
               tag="p"
               className="fonts_small om-oss-text"
             />

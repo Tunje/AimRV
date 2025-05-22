@@ -88,6 +88,12 @@ const Navbar = () => {
           {/* Tävlingar Button */}
           <div
             className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 2px",
+            }}
             onMouseEnter={() => setDropOpen1(true)}
             onMouseLeave={() => setDropOpen1(false)}
           >
@@ -107,46 +113,60 @@ const Navbar = () => {
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  ULRICEHAMN
+                  Ulricehamn
                 </Link>
                 <Link
                   to="/salen"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  SÄLEN
+                  Salen
                 </Link>
                 <Link
                   to="/hemsedal"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  HEMSEDAL
+                  Hemsedal
                 </Link>
                 <Link
                   to="/kolmarden"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  KOLMÅRDEN
+                  Kolmården
                 </Link>
                 <Link
                   to="/trippeln"
                   onClick={closeDropdown1}
                   className="drop-item"
                 >
-                  TRIPPELN
+                  Trippeln
                 </Link>
               </div>
             )}
           </div>
           {/* Results Button - Added as a direct link */}
-          <div className="nav-button">
+          <div
+            className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 2px",
+            }}
+          >
             <Link to="/results">Resultat</Link>
           </div>
           {/* Om oss Button */}
           <div
             className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 2px",
+            }}
             onMouseEnter={() => setDropOpen2(true)}
             onMouseLeave={() => setDropOpen2(false)}
           >
@@ -189,7 +209,15 @@ const Navbar = () => {
             )}
           </div>
           {/* Sponsorer Button */}
-          <div className="nav-button">
+          <div
+            className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 3px",
+            }}
+          >
             <a
               href="#sponsors-section"
               onClick={(e) => {
@@ -205,25 +233,65 @@ const Navbar = () => {
             </a>
           </div>
           {/* Senaste nytt Button */}
-          <div className="nav-button">
+          <div
+            className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 3px",
+            }}
+          >
             <Link to="/senaste-nytt">Senaste nytt</Link>
           </div>
           {/* Kontakta oss Button */}
-          <div className="nav-button">
-            <Link to="#">Kontakta oss</Link>
+          <div
+            className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 3px",
+            }}
+          >
+            <Link to="/faq#contact">Kontakta oss</Link>
           </div>
           {/* Language Button */}
-          <div className="nav-button">
+          <div
+            className="nav-button"
+            style={{
+              minHeight: "20px",
+              maxHeight: "none",
+              height: "auto",
+              margin: "0 3px",
+            }}
+          >
             <a href="#">SV|NO|EN</a>
           </div>
 
           {/* Content Manager and Logout Buttons - Only visible when logged in */}
           {isAuthenticated && (
             <>
-              <div className="nav-button">
+              <div
+                className="nav-button"
+                style={{
+                  minHeight: "20px",
+                  maxHeight: "none",
+                  height: "auto",
+                  margin: "0 3px",
+                }}
+              >
                 <Link to="/content-manager">Innehåll</Link>
               </div>
-              <div className="nav-button">
+              <div
+                className="nav-button"
+                style={{
+                  minHeight: "20px",
+                  maxHeight: "none",
+                  height: "auto",
+                  margin: "0 3px",
+                }}
+              >
                 <a
                   href="#"
                   onClick={(e) => {
@@ -370,7 +438,7 @@ const Navbar = () => {
 
             <div className="mobile-menu-item">
               <Link
-                to="#"
+                to="/faq#contact"
                 onClick={toggleMobileMenu}
                 className="mobile-menu-link"
               >

@@ -20,101 +20,117 @@ const HistorienOmAim = () => {
       </section>
 
       {/* Title Section */}
-      <section className="historien-om-aim-title-section">
+      {/*  <section className="historien-om-aim-title-section">
         <div className="title-container">
           <EditableText
             textKey="historien-om-aim-title"
-            defaultText="HISTORIEN OM AIM"
+            defaultText="Historien bakom AIM Challenge"
             tag="h1"
             className="location-title"
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Content Section with dark blue background */}
       <section className="historien-om-aim-content-section">
         <div className="historien-om-aim-content-container">
           <div className="historien-om-aim-content">
+            <div className="title-container">
+              <EditableText
+                textKey="historien-om-aim-title"
+                defaultText="Historien bakom AIM Challenge"
+                tag="h1"
+                className="location-title"
+                style={{ marginBottom: "20px" }}
+              />
+            </div>
+
             <EditableText
               textKey="historien-om-aim-text-1"
-              defaultText="AIM Challenge är idag Nordens största multisporttävling men historien om AIM Challenge börjar mycket tidigare än så."
+              defaultText="AIM Challenge är idag Nordens största multisporttävling, men starten var något helt annat. Allt tog sin början med ett äventyr i Söderhavet."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-2"
-              defaultText="Vi låter Lisa Nordlind, grundare och initiativtagare till AIM Challenge berätta hur det gick till:"
+              defaultText="År 2000 deltog Lisa Nordlind, grundare av AIM Challenge, i multisporttävlingen Camel Trophy. Tillsammans med Mikael Stening bildade hon Team Skandinavien och tävlade mot lag från 22 länder. Under tre intensiva veckor samlade lagen kontroller med hjälp av karta och kompass, rörande sig med båt, cykel, klätterutrustning och paddelbräda genom övärlden kring Tonga och Samoa."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-3"
-              defaultText="År 2000 deltog jag i mitt livs största äventyr när jag tävlade i multisporttävlingen Camel Trophy."
+              defaultText="Kontrollerna gav olika poäng och lagen valde själva väg och ordning. Friheten, äventyret och det lekfulla upplägget satte spår. Lisa visste att hon ville skapa något liknande hemma i Norden."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-4"
-              defaultText="Av över en miljon sökande så var det 16 tvåmannalag från 22 länder som fick vara med och leka. Jag fick äran att representera Team Skandinavien tillsammans med brandmannen Mikael Stening."
+              defaultText="När hon sommaren 2004 befann sig i Hemsedal väcktes idén till liv. Det var stilla i den lilla skidorten och hon bestämde sig för att arrangera ett nytt typ av lopp. Något som kombinerade fysisk aktivitet med glädje, taktik och gemenskap. Resultatet blev Hemsedal Challenge, och den första septemberhelgen stod 150 deltagare på startlinjen. Med vänner, familj och bekanta som funktionärer växte något större fram."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-5"
-              defaultText="Lag på två personer skulle under 3 veckor samla så många kontroller som möjligt utav 400 utplacerade. Huvudtransportmedel var en specialbyggd RIB (Rigid Inflatable Boat). Båten var utrustad med mountainbikes, klätterutrustning, paddelbräda, dyk- och snorkel utrustning, tält, mat och vatten."
+              defaultText="Fem år senare föddes AIM Challenge. Tävlingen i Hemsedal fick sällskap av en ny deltävling i Lindvallen och namnet byttes för att samla konceptet. AIM Challenge började ta form som den multisportserie det är idag."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
+            />
+            <EditableText
+              textKey="historien-om-aim-text-6"
+              defaultText="En ny era med nya möjligheter"
+              tag="h2"
+              className="historien-om-aim-title"
+              style={{
+                fontWeight: "bold",
+                marginBottom: "20px",
+                textAlign: "center",
+              }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-6"
-              defaultText="Lagen fick själva välja vilka kontroller de ville ta, i vilken ordning och vilken väg."
+              defaultText="Inför säsongen 2020 tackade Lisa för sig och lämnade över stafettpinnen till Marcus Andersson, som sedan 2015 arbetat nära Lisa med att arrangera tävlingen. Planen var att ta AIM Challenge vidare och göra det tillgängligt för fler genom fler deltävlingar och en geografisk förflyttning närmare större städer."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-7"
-              defaultText="Olika kontroller gav olika poäng. Låter det bekant?"
+              defaultText="Starten blev dock tuff. Pandemin slog till och tävlingarna fick ställas in eller anpassas efter restriktioner. Men ur utmaningen föddes något nytt, AIM Home Challenge. Ett digitalt koncept som höll liv i tävlingskänslan våren 2020 och gav deltagare ett sätt att aktivera sig på hemmaplan."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-8"
-              defaultText="Tävlingsområdet var ögrupperna Tonga och Samoa i Söderhavet. Det var galet roligt och Mikael och jag lyckades ta oss till en fjärde plats."
+              defaultText="När restriktionerna lättade arrangerades den första upplagan av AIM Challenge i Ulricehamn hösten 2021. Med sina fina grusvägar och kuperade skogar blev platsen en direkt favorit. Samtidigt introducerades en ny tävlingsklass på tre timmar, ett viktigt steg mot att göra multisport mer tillgängligt för fler."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-9"
-              defaultText="År 2004 spenderade jag min första sommar i Hemsedal. Det var ganska lugnt i den lilla skidorten så jag beslutade mig för att starta ett nytt event. För mig är det viktigt att träning är roligt och jag tycker att den bästa träningen är tävling. Eftersom Camel Trophy var det roligaste jag någonsin varit med om så föll det naturligt att försöka skapa ett event där andra människor får uppleva samma lekfulla koncept om än i en mindre skala. Tävlingen fick namnet 'Hemsedal Challenge' och den första helgen i september 2004 stod 150 deltagare på startlinjen."
+              defaultText="Sedan dess har AIM Challenge fortsatt att växa. Ulricehamn har blivit ett uppskattat och återkommande inslag i tävlingskalendern. Och under hösten 2024 etablerades ytterligare en deltävling, den här gången i Kolmården. Med sin unika natur, närhet till havet och vilda terräng sticker Kolmården ut som en plats där både tävlingsnerv och naturskönhet möts på bästa sätt."
               tag="p"
               className="historien-om-aim-text"
+              style={{ marginBottom: "20px" }}
             />
 
             <EditableText
               textKey="historien-om-aim-text-10"
-              defaultText="Nära, kära, vänner och familj samlades från alla håll och kanter för att ställa upp som funktionärer."
-              tag="p"
-              className="historien-om-aim-text"
-            />
-
-            <EditableText
-              textKey="historien-om-aim-text-11"
-              defaultText="Efter 5 år startade vi en tävling till i Lindvallen och bytte namn till AIM Challenge."
-              tag="p"
-              className="historien-om-aim-text"
-            />
-
-            <EditableText
-              textKey="historien-om-aim-text-12"
-              defaultText="Efter AIM Challenge 2019 tackade Lisa för sig och lämnade över stafettpinnen till Marcus Andersson, som nu står inför en spännande framtid där han ser frem emot att driva vidare och utveckla AIM Challenge."
+              defaultText="AIM Challenge står idag starkare än någonsin, men grundidén är fortfarande densamma. Att multisport ska vara något alla kan uppleva, på sina egna villkor."
               tag="p"
               className="historien-om-aim-text"
             />

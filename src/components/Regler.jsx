@@ -19,24 +19,34 @@ const Regler = () => {
         </div>
       </section>
 
-      {/* Title Section */}
-      <section className="regler-title-section">
-        <div className="title-container">
-          <EditableText
-            textKey="regler-title"
-            defaultText="REGLER"
-            tag="h1"
-            className="location-title"
-          />
-        </div>
-      </section>
-
       {/* First Text Section with dark blue background */}
       {/* Content Section */}
+
       <section className="regler-content-section">
         <div className="regler-content-container">
           <div className="regler-content">
-            <h2 className="regler-heading">LAGET</h2>
+            {/* Title Section */}
+            <div className="regler-title-section">
+              <div className="title-container">
+                <EditableText
+                  textKey="regler-title"
+                  defaultText="REGLER"
+                  tag="h1"
+                  className="location-title"
+                  style={{ marginBottom: "40px" }}
+                />
+              </div>
+            </div>
+
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              LAGET
+            </h2>
             <ul className="regler-list">
               <li className="regler-list-item">Åldersgräns 15år/18år</li>
               <li className="regler-list-item">
@@ -49,7 +59,7 @@ const Regler = () => {
               </li>
               <li className="regler-list-item">
                 Startnummer ska placeras fram på cykel samt synligt på kroppen
-                på båda deltagarna
+                på båda deltagarna.
               </li>
               <li className="regler-list-item">
                 Det är tillåtet att använda GPS men det är alltid kartan som
@@ -65,7 +75,15 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">SÄKERHET</h2>
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              SÄKERHET
+            </h2>
             <ul className="regler-list">
               <li className="regler-list-item">
                 Lagen väljer själva vilka kontroller de klarar att ta baserat på
@@ -80,18 +98,24 @@ const Regler = () => {
               </li>
               <li className="regler-list-item">Trafikregler gäller alltid.</li>
               <li className="regler-list-item">
-                Första hjälpen kit ska bäras med under hela tävlingen
+                Första hjälpen kit ska bäras med under hela tävlingen.
+                Minimikrav är att kunna stoppa blödningar och de mest akuta
+                skadorna i väntan på hjälp.
               </li>
               <li className="regler-list-item">
                 Hjälm ska bäras under all cykling, klättring, bouldering och
-                rappellering
+                rappellering.
               </li>
               <li className="regler-list-item">
                 Vid olycka är det obligatoriska att hjälpa till.
               </li>
               <li className="regler-list-item">
                 Vid allvarlig olycka ring nöd nummer 112 i Sverige och 113 i
-                Norge
+                Norge.
+              </li>
+              <li className="regler-list-item">
+                Vid behov för enklare medicinsk hjälp ring telefonnumret på
+                baksidan av kartan
               </li>
               <li className="regler-list-item">
                 Vid behov för enklare medicinsk hjälp ring telefonnumret på
@@ -102,15 +126,101 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">ÖVRIGT</h2>
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              Poäng
+            </h2>
             <ul className="regler-list">
               <li className="regler-list-item">
-                Elcyklar är ej tillåtet, med undantag för Elcykelklassen i
-                Hemsedal.
+                Tävlingstid tre eller sex timmar
               </li>
               <li className="regler-list-item">
-                Beroende på kapacitet är det möjligt att använda liften i
-                Hemsedal, lyssna noga på vad speakern ger för information för
+                Lag som kommer in efter försent men inte mer än 10 minuter får
+                minus 150/300 poäng.
+              </li>
+              <li className="regler-list-item">
+                Lag som kommer in mer än 10 minuter för sent blir
+                diskvalificerade.
+              </li>
+              <li className="regler-list-item">
+                Kontroller som stämplas efter utsatt måltid är ogiltiga.
+              </li>
+              <li className="regler-list-item">
+                Vid stämpling av kontrollenheten skall enheten ge en ljus och
+                ljudsignal.
+              </li>
+              <li className="regler-list-item">
+                Om en kontroll är trasig, felplacerad eller saknas, ta genast
+                kontakt med banansvarig, telefonnumret står på baksidan av
+                kartan.
+              </li>
+              <li className="regler-list-item">
+                Ett lag som förlorar sin “Pinne” blir diskat.
+              </li>
+              <li className="regler-list-item">
+                Om två lag får samma poäng summa så vinner det lag som går i mål
+                först.
+              </li>
+              <li className="regler-list-item">
+                Alla lagen måste hålla sin plats i målfållan fram tills de är
+                avregistrerade.
+              </li>
+              <li className="regler-list-item">
+                Vid avregistreringen får laget ett kvitto på antal tagna
+                kontroller.
+              </li>
+              <li className="regler-list-item">
+                Det är lagets ansvar att meddela felaktigheter med antal tagna
+                kontroller. Klagomål ska lämnas till tävlingsledningen direkt
+                vid avregistrering.
+              </li>
+              <li className="regler-list-item">
+                Båda lagmedlemmarna med cyklar och Sportident pinnen måste gå i
+                mål samtidigt
+              </li>
+              <li className="regler-list-item">
+                Beslut om eventuell justering av poäng sker efter målgång och
+                avregistreringen. Förutsatt att laget meddelar tävlingsledningen
+                direkt vid avregistreringen.
+              </li>
+              <li className="regler-list-item">
+                Bemannade kontroller – Klättring, rappelering, SUP, paddling,
+                slakkline etc.
+              </li>
+              <li className="regler-list-item">
+                Vid bemannade kontroller räcker det att en i laget tar
+                kontrollen.
+              </li>
+              <li className="regler-list-item">
+                Det är begränsat med utrustning vid de bemannade kontrollerna,
+                det är upp till varje lag att lägga upp strategin så att kö
+                undgås.
+              </li>
+              <li className="regler-list-item">
+                All utrustning som lånas vid en bemannad kontroll ska återlämnas
+                till utgångspunkten.
+              </li>
+            </ul>
+
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              ÖVRIGT
+            </h2>
+            <ul className="regler-list">
+              <li className="regler-list-item">Elcyklar är ej tillåtet.</li>
+              <li className="regler-list-item">
+                Beroende på kapacitet är det möjligt att använda liften i Sälen
+                & Hemsedal, lyssna noga på vad speakern ger för information för
                 vad som gäller för årets tävling.
               </li>
               <li className="regler-list-item">
@@ -131,8 +241,8 @@ const Regler = () => {
                 namn/lagnamn dras drar vi reservnamn/lagnamn.
               </li>
               <li className="regler-list-item">
-                LINDVALLEN, viadukten mellan Lodgen och Experium är stängd under
-                hela tävlingen.
+                Sälen, viadukten mellan Lodgen och Experium är stängd under hela
+                tävlingen.
               </li>
               <li className="regler-list-item">
                 Tävlingsledningens beslut går inte att överklaga.
@@ -157,19 +267,32 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">OBLIGATORISK UTRUSTNING</h2>
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              OBLIGATORISK UTRUSTNING
+            </h2>
             <ul className="regler-list">
-              <li className="regler-list-item">
-                Cykel, utan elmotor med undantag för Elcykelklassen i Hemsedal.
-              </li>
+              <li className="regler-list-item">Cykel, utan elmotor</li>
               <li className="regler-list-item">Cykelhjälm vid cykling</li>
-              <li className="regler-list-item">Mobiltelefon (1 st per lag)</li>
               <li className="regler-list-item">
-                Första hjälpen (1 st per lag)
+                Mobiltelefon (minst 1 st per lag)
+              </li>
+              <li className="regler-list-item">
+                Första hjälpen (minst 1 st per lag)
               </li>
             </ul>
-
-            <h2 className="regler-heading">
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
               VI REKOMMENDERAR ATT NI ÄVEN HAR MED ER
             </h2>
             <ul className="regler-list">
@@ -187,7 +310,15 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">AIM CHALLENGE STÅR FÖR</h2>
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              AIM CHALLENGE STÅR FÖR
+            </h2>
             <ul className="regler-list">
               <li className="regler-list-item">
                 Kanot, SUP, sele, rep, hjälm vid firningar/klättring. All
@@ -196,7 +327,13 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">
+            <h2
+              className="regler-heading"
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
               VILLKOR I FÖRBINDELSE MED ANMÄLAN
             </h2>
             <p className="regler-list-item">

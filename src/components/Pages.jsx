@@ -6,11 +6,13 @@ import NewsCarousel from "./NewsCarousel";
 
 const Pages = () => {
   const { isAdmin } = useText();
-  
 
   return (
     <div className="flex flex_col MaxWH location">
-      <section id="page_01" className="page_01 dynamic-background background-editable">
+      <section
+        id="page_01"
+        className="page_01 dynamic-background background-editable"
+      >
         <div className=" page_01box flex flex_col flex_j_SA MaxWH">
           <EditableText
             textKey="main-multisport-sedan"
@@ -124,8 +126,7 @@ const Pages = () => {
             id="page_02-kolmarden-image"
             className="page_02-image background-editable"
             style={{
-              backgroundImage:
-                "url('/images/kolmarden.jpg')",
+              backgroundImage: "url('/images/kolmarden.jpg')",
             }}
           ></div>
           <div className="page_02-content">
@@ -158,13 +159,19 @@ const Pages = () => {
             <h2 className="page_03-title">OM AIM CHALLENGE</h2>
             <EditableText
               textKey="aim-challenge-desc-1"
-              defaultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              defaultText="AIM Challenge är en multisporttävling i lag om två, där ni under tre eller sex timmar samlar så många kontroller som möjligt med hjälp av en karta som är hemlig fram till start. Ni tar er fram framför allt på cykel, men kommer också att springa kortare sträckor till fots för att nå vissa kontroller."
               tag="p"
               className="font_white"
             />
             <EditableText
               textKey="aim-challenge-desc-2"
-              defaultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              defaultText="På kartan finns 60 kontroller, flera av dem innehåller äventyrliga moment som klättring, paddling eller simning, och ofta dyker det upp en eller annan överraskning baserat på destinationens unika miljö. Andra kontroller handlar mer om att ta sig dit och stämpla. Ni väljer själva vilka ni vill ta, i vilken ordning och hur långt ni vill gå för att samla poäng."
+              tag="p"
+              className="font_white"
+            />
+            <EditableText
+              textKey="aim-challenge-desc-3"
+              defaultText="AIM Challenge passar både erfarna lag som vill jaga varje poäng och nybörjare som är ute efter ett roligt och minnesvärt äventyr tillsammans. En tävling på era villkor och för alla, precis som multisport ska vara!"
               tag="p"
               className="font_white"
             />
@@ -175,17 +182,18 @@ const Pages = () => {
             </div>
           </div>
           <div className="page_03-image">
-            <div 
-              id="page_03-aim-image" 
-              className="background-editable" 
+            <div
+              id="page_03-aim-image"
+              className="background-editable"
               data-editable="true"
               style={{
                 width: "90%",
                 height: "90%",
-                backgroundImage: "url('images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
+                backgroundImage:
+                  "url('images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
                 backgroundSize: "contain",
                 backgroundPosition: "center",
-                backgroundRepeat: "no-repeat"
+                backgroundRepeat: "no-repeat",
               }}
             ></div>
           </div>
@@ -212,29 +220,6 @@ const Pages = () => {
           <NewsCarousel instanceId="main-page-carousel" />
         </div>
       </section>
-
-      {/*    <section id="page_04" className="aim-section flex MaxWH">
-        <div className="page_03box flex flex_col trans-background flex_j_SA MaxWH aim-info-box">
-          <EditableText
-            textKey="main-what-is-aim"
-            defaultText="VAD ÄR AIM CHALLENGE?"
-            tag="p"
-            className="font_blue fonts_large"
-          />
-          <EditableText
-            textKey="main-aim-description"
-            defaultText="AIM Challenge är en multisport tävling som passar för alla. Lag på två personer ska under 6 timmar ta så många kontroller som möjligt utav 60 utplacerade."
-            tag="p"
-            className="font_blue fonts_medium"
-          />
-          <Link to="/aim-challenge" className="button-2">
-            <span>Läs mer</span>
-          </Link>
-        </div>
-        <div className="page_03box flex flex_col pad flex_j_SA MaxWH">
-          <div></div>
-        </div>
-      </section> */}
     </div>
   );
 };
