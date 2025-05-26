@@ -795,6 +795,15 @@ a.button-2,
   text-align: left !important;
 }
 
+.dropdown-container {
+  position: relative;
+}
+.dropdown-container:hover .drop-down {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
 .drop-down {
   background-color: #6A9FB5; /* Primary light blue */
   min-width: 100px;
@@ -806,6 +815,10 @@ a.button-2,
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
   overflow: hidden; /* Prevent content from overflowing */
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .dropdown-button:hover {
@@ -5547,6 +5560,25 @@ a.button-2,
   text-align: center;
 }
 
+.admin-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.admin-controls .toggle-editors-button {
+  background-color: #f58220;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.admin-controls .toggle-editors-button:hover {
+  background-color: #d8690a;
+}
+
 /*----- FAQ Items -----*/
 .faq-category {
   margin-bottom: 40px;
@@ -5722,6 +5754,95 @@ a.button-2,
     font-size: 14px;
   }
 }
+.faq-editor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.faq-editor h3 {
+  color: #2d4f60;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.faq-editor h4 {
+  color: #2d4f60;
+  margin: 15px 0;
+}
+.faq-editor .faq-list {
+  margin-bottom: 30px;
+}
+.faq-editor .faq-item-editor {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faq-editor .faq-controls {
+  display: flex;
+  justify-content: flex-end;
+}
+.faq-editor .faq-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faq-editor textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+}
+.faq-editor .faq-question-editor {
+  min-height: 60px;
+  font-weight: bold;
+}
+.faq-editor .faq-answer-editor {
+  min-height: 100px;
+}
+.faq-editor .add-faq-form {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.faq-editor button, .faq-editor .nav-button, .faq-editor .dropdown-button, .faq-editor .filter-select {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.faq-editor .delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+.faq-editor .delete-button:hover {
+  background-color: #c0392b;
+}
+.faq-editor .add-button {
+  background-color: #2d4f60;
+  color: white;
+  margin-top: 10px;
+}
+.faq-editor .add-button:hover {
+  background-color: #1a2f3a;
+}
+.faq-editor .add-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
 /* .historien-om-aim {
   &-section {
     padding-top: 50px;
@@ -6543,6 +6664,32 @@ a.button-2,
     margin: 0 20px;
   }
 }
+.sponsors-grid.admin-editable {
+  position: relative;
+  cursor: pointer;
+}
+.sponsors-grid.admin-editable::before {
+  content: "Click to edit sponsors";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(56, 76, 135, 0.7);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+.sponsors-grid.admin-editable:hover::before {
+  opacity: 1;
+}
+
 .ad-section {
   width: 100%;
   padding: 40px 0;
@@ -9399,32 +9546,35 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-card .news-content .news-button {
   text-align: center;
 }
-.news-card .news-content .news-button .news-read-more-btn {
+.news-card .news-content .news-button .button-2 {
   background-color: rgb(56, 76, 135);
   color: white;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  padding: 10px 20px;
-  margin: 10px;
-  z-index: 20;
-  position: relative;
-  min-width: 120px;
-  min-height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.news-card .news-content .news-button .news-read-more-btn:hover {
-  background-color: rgb(79, 99, 158);
-}
-.news-card .news-content .news-button .news-read-more-btn span {
-  color: white;
-  text-align: center;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 30px;
   font-weight: bold;
+  transition: all 0.3s ease;
   text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: "AFCarplets Bold", sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  width: 80%;
+  text-align: center;
+}
+.news-card .news-content .news-button .button-2:hover {
+  background-color: rgb(79, 99, 158);
+  transform: scale(1.05);
+}
+.news-card .news-content .news-button .button-2 span {
+  color: white;
+  font-family: "AFCarplets Bold", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  width: 100%;
 }
 
 body {

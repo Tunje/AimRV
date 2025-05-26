@@ -1,5 +1,15 @@
 @import 'buttons';
 
+.dropdown-container {
+  position: relative;
+  
+  &:hover .drop-down {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .drop-down {
   background-color: #6A9FB5; /* Primary light blue */
   min-width: 100px;
@@ -11,6 +21,10 @@
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
   overflow: hidden; /* Prevent content from overflowing */
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .dropdown-button {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './styles/java/scripts.js';
+// scripts.js import removed
 // Remove the local Font Awesome import and use CDN in index.html instead
 // import 'font-awesome/css/font-awesome.min.css';
 import Navbar from './components/Navbar';

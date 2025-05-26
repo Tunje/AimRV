@@ -1,11 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useText } from "../context/TextContext";
 import "../styles/index.css";
-import "../styles/java/scripts.js";
+import SponsorEditor from "./SponsorEditor";
 
 const Footer = () => {
+  const { isAdmin } = useText();
+  const location = useLocation();
+
   return (
     <>
+      {/* Include SponsorEditor component */}
+      <SponsorEditor />
+      
       {/* Sponsors Section */}
       <div className="footer-wrapper">
         <div className="container">

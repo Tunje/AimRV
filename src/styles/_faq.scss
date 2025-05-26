@@ -94,6 +94,27 @@
   text-align: center;
 }
 
+.admin-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  
+  .toggle-editors-button {
+    background-color: #f58220;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: darken(#f58220, 10%);
+    }
+  }
+}
+
 /*----- FAQ Items -----*/
 
 .faq-category {

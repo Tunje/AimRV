@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useText } from "../context/TextContext";
 import "../styles/index.css";
-import "../styles/java/scripts.js";
+// scripts.js import removed
 
 const Navbar = () => {
   const [dropOpen1, setDropOpen1] = useState(false);
@@ -86,97 +86,80 @@ const Navbar = () => {
         {/* Desktop Navigation - Hidden on mobile */}
         <div className="navbside">
           {/* Tävlingar Button */}
-          <div className="nav-button">
-            <a
-              href="#"
+          <div className="nav-button dropdown-container">
+            <Link
+              to="/competitions"
               className="dropdown-trigger"
-              onClick={(e) => {
-                e.preventDefault();
-                setDropOpen1(!dropOpen1);
-              }}
             >
               Tävlingar
-            </a>
-            {dropOpen1 && (
-              <div className="drop-down">
-                <Link
-                  to="/ulricehamn"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  ULRICEHAMN
-                </Link>
-                <Link
-                  to="/salen"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  SÄLEN
-                </Link>
-                <Link
-                  to="/hemsedal"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  HEMSEDAL
-                </Link>
-                <Link
-                  to="/kolmarden"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  KOLMÅRDEN
-                </Link>
-                <Link
-                  to="/trippeln"
-                  onClick={closeDropdown1}
-                  className="drop-item"
-                >
-                  TRIPPELN
-                </Link>
-              </div>
-            )}
+            </Link>
+            <div className="drop-down">
+              <Link
+                to="/ulricehamn"
+                className="drop-item"
+              >
+                ULRICEHAMN
+              </Link>
+              <Link
+                to="/salen"
+                className="drop-item"
+              >
+                SÄLEN
+              </Link>
+              <Link
+                to="/hemsedal"
+                className="drop-item"
+              >
+                HEMSEDAL
+              </Link>
+              <Link
+                to="/kolmarden"
+                className="drop-item"
+              >
+                KOLMÅRDEN
+              </Link>
+              <Link
+                to="/trippeln"
+                className="drop-item"
+              >
+                TRIPPELN
+              </Link>
+              <Link
+                to="/results"
+                className="drop-item"
+              >
+                RESULTAT
+              </Link>
+            </div>
           </div>
           {/* Om oss Button */}
-          <div className="nav-button">
-            <a
-              href="#"
+          <div className="nav-button dropdown-container">
+            <Link
+              to="/om-oss"
               className="dropdown-trigger"
-              onClick={(e) => {
-                e.preventDefault();
-                setDropOpen2(!dropOpen2);
-              }}
             >
               Om oss
-            </a>
-            {dropOpen2 && (
-              <div className="drop-down">
-                <Link
-                  to="/om-oss"
-                  onClick={closeDropdown2}
-                  className="drop-item"
-                >
-                  Om oss
-                </Link>
-                <Link
-                  to="/regler"
-                  onClick={closeDropdown2}
-                  className="drop-item"
-                >
-                  Regler
-                </Link>
-                <Link to="/faq" onClick={closeDropdown2} className="drop-item">
-                  FAQ
-                </Link>
-                <Link
-                  to="/historien-om-aim"
-                  onClick={closeDropdown2}
-                  className="drop-item"
-                >
-                  Historien om AIM
-                </Link>
-              </div>
-            )}
+            </Link>
+            <div className="drop-down">
+              <Link
+                to="/regler"
+                className="drop-item"
+              >
+                Regler
+              </Link>
+              <Link
+                to="/faq"
+                className="drop-item"
+              >
+                FAQ
+              </Link>
+              <Link
+                to="/historien-om-aim"
+                className="drop-item"
+              >
+                Historien om AIM
+              </Link>
+            </div>
           </div>
           {/* Sponsorer Button */}
           <div className="nav-button">
