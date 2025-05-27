@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
+import BackgroundEditor from "./BackgroundEditor";
+import NewsCarousel from "./NewsCarousel";
+import SponsorEditor from "./SponsorEditor";
 import "../styles/index.css";
 
 const Ulricehamn = () => {
   return (
+    <>
+      <BackgroundEditor key="ulricehamn-background-editor" />
     <div className="ulricehamn-container">
       {/* Hero Section with Image */}
       <section className="ulricehamn-hero-section">
         <div className="hero-content">
-          <div className="hero-image-container">
+          <div className="hero-image-container background-editable" id="ulricehamn-hero-image">
             <img
               src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
               alt="Ulricehamn Event"
@@ -55,7 +60,7 @@ const Ulricehamn = () => {
         <div className="program-container">
           <div className="program-cards">
             {/* Image Card */}
-            <div className="program-card image-card">
+            <div className="program-card image-card background-editable" id="ulricehamn-program-image">
               <img
                 src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
                 alt="Ulricehamn Event"
@@ -152,7 +157,7 @@ const Ulricehamn = () => {
       {/* Price Section */}
       <section className="ulricehamn-price-section">
         <div className="price-container">
-          <div className="price-image-container">
+          <div className="price-image-container background-editable" id="ulricehamn-price-image">
             <img
               src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
               alt="Climbing in Ulricehamn"
@@ -293,133 +298,86 @@ const Ulricehamn = () => {
       {/* Latest News section */}
       <section id="latest-news" className="latest-news-section">
         <h2 className="latest-news-title">SENASTE NYTT ULRICEHAMN</h2>
-        <div className="latest-news-container">
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">NYHETSARTIKEL 1</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta em-ningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/1" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">NYHETSARTIKEL 2</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta em-ningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/2" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-card">
-            <div className="news-image">
-              <img
-                src="/images/AIM_Hemsedal_2024_AnkiGrothe_45cm_300dpi_049.jpg"
-                alt="News"
-              />
-            </div>
-            <div className="news-content">
-              <h3 className="news-location">NYHETSARTIKEL 3</h3>
-              <p className="news-description">
-                Brödtext om tävlingen, 2 korta em-ningar
-              </p>
-              <div className="news-button">
-                <Link to="/news/3" className="button-2">
-                  <span>LÄS MER</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+        <div style={{ width: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
+          <NewsCarousel instanceId="ulricehamn-news" defaultCategory="Ulricehamn" />
         </div>
       </section>
 
       {/* Useful Links Section */}
       <section className="useful-links-section">
         <div className="useful-links-container">
-          <h2 className="useful-links-title">NYTTIGA LÄNKAR</h2>
+          <EditableText
+            textKey="ulricehamn-useful-links-title"
+            defaultText="NYTTIGA LÄNKAR"
+            tag="h2"
+            className="useful-links-title"
+          />
 
           <div className="links-category">
-            <h3 className="links-category-title">Cykeluthyrning</h3>
-            <p className="links-text">
-              Cykeluthyrning med in- och utlämning på Lassalyckan Stadion.{" "}
-              <a href="#" className="links-link">
-                Läs mer och boka här.
-              </a>
-            </p>
+            <EditableText
+              textKey="ulricehamn-links-category1-title"
+              defaultText="Cykeluthyrning"
+              tag="h3"
+              className="links-category-title"
+            />
+            <EditableText
+              textKey="ulricehamn-links-category1-text"
+              defaultText="Cykeluthyrning med in- och utlämning på Lassalyckan Stadion. Läs mer och boka här."
+              tag="p"
+              className="links-text"
+            />
           </div>
 
           <div className="links-category">
-            <h3 className="links-category-title">Boende</h3>
-            <p className="links-text">
-              Önskar du att bo nära start och mål så kan vi varmt rekommendera
-              Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast
-              ifrån starten.
-            </p>
-            <a
-              href="https://www.hotell-lassalyckan.se"
-              className="links-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://www.hotell-lassalyckan.se
-            </a>
+            <EditableText
+              textKey="ulricehamn-links-category2-title"
+              defaultText="Boende"
+              tag="h3"
+              className="links-category-title"
+            />
+            <EditableText
+              textKey="ulricehamn-links-category2-text"
+              defaultText="Önskar du att bo nära start och mål så kan vi varmt rekommendera Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast ifrån starten. https://www.hotell-lassalyckan.se"
+              tag="p"
+              className="links-text"
+            />
           </div>
 
           <div className="links-category">
-            <h3 className="links-category-title">Mat</h3>
-            <p className="links-text">
-              Önskar du att bo nära start och mål så kan vi varmt rekommendera
-              Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast
-              ifrån starten.
-            </p>
+            <EditableText
+              textKey="ulricehamn-links-category3-title"
+              defaultText="Mat"
+              tag="h3"
+              className="links-category-title"
+            />
+            <EditableText
+              textKey="ulricehamn-links-category3-text"
+              defaultText="Önskar du att bo nära start och mål så kan vi varmt rekommendera Hotell Lassalyckan som erbjuder ett modernt boende ett stenkast ifrån starten."
+              tag="p"
+              className="links-text"
+            />
           </div>
         </div>
       </section>
 
       {/* Sponsors Section */}
       <section className="sponsors-section">
-        <h2 className="sponsors-title">LOKALA SPONSORER</h2>
-        <div className="sponsors-container">
-          <div className="s-sponsor-logo side-logo">
-            <img src="images/UD Logo.png" alt="UD Logo" />
-          </div>
-          <div className="s-sponsor-logo main-logo">
-            <img
-              src="images/Aim_Challenge_logo_white.svg"
-              alt="AIM Challenge"
-            />
-          </div>
-          <div className="s-sponsor-logo side-logo">
-            <img src="images/holdut_logo_sort_1.png" alt="Holdut Logo" />
-          </div>
+        <EditableText
+          textKey="ulricehamn-sponsors-title"
+          defaultText="LOKALA SPONSORER"
+          tag="h2"
+          className="sponsors-title"
+        />
+        <div id="ulricehamn-sponsors" className="sponsors-container">
+          {/* SponsorEditor will load sponsors from Firebase */}
         </div>
+        {/* Add SponsorEditor component with location prop */}
+        <SponsorEditor location="ulricehamn" targetId="ulricehamn-sponsors" />
       </section>
 
       {/* No footer needed here - it's already included in App.jsx */}
     </div>
+    </>
   );
 };
 

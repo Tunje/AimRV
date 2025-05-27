@@ -4,16 +4,16 @@ import { useText } from '../context/TextContext';
 import { db } from '../firebase/config';
 import { collection, query, getDocs, orderBy, limit, doc, getDoc, setDoc } from 'firebase/firestore';
 
-const NewsCarousel = ({ instanceId }) => {
+const NewsCarousel = ({ instanceId, defaultCategory = 'Alla' }) => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState('Alla');
-  const [categories, setCategories] = useState(['Alla']);
+  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
+  const [categories, setCategories] = useState([defaultCategory]);
   const [showCategorySelector, setShowCategorySelector] = useState(false);
   const { isAdmin } = useText();
   
-  // Fetch all available categories from posts
+  // Fetch all available categories from posts and add location categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -21,7 +21,16 @@ const NewsCarousel = ({ instanceId }) => {
         const q = query(postsRef, orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
         
-        const uniqueCategories = new Set(['Alla']);
+        // Always include these categories regardless of whether posts exist for them
+        const uniqueCategories = new Set([
+          'Alla', 
+          'Sälen', 
+          'Ulricehamn', 
+          'Hemsedal', 
+          'Kolmården'
+        ]);
+        
+        // Add any additional categories from posts
         querySnapshot.forEach((doc) => {
           const post = doc.data();
           if (post.category && post.category.trim() !== '') {
@@ -194,12 +203,9 @@ const NewsCarousel = ({ instanceId }) => {
                     : post.content}
                 </p>
                 <div className="news-button">
-                  <button 
-                    className="news-read-more-btn"
-                    onClick={() => window.location.href = `/news/${post.id}`}
-                  >
+                  <Link to={`/news/${post.id}`} className="button-2">
                     <span>LÄS MER</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

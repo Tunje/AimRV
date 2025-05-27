@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useText } from '../context/TextContext';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { db } from '../firebase/config';
+import { collection, getDocs, query } from 'firebase/firestore';
 
 const ContentManager = () => {
     const { textContent, resetAllContent, removeContentItem, isAdmin } = useText();
@@ -9,14 +11,81 @@ const ContentManager = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
     const [activeTab, setActiveTab] = useState('all');
+    const [faqItems, setFaqItems] = useState([]);
+    const [backgroundItems, setBackgroundItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
-    // Redirect non-admin users
+    // Redirect non-admin users and load data
     useEffect(() => {
         if (!isAuthenticated || !isAdmin) {
             navigate('/');
+            return;
         }
+        
+        // Load all data when component mounts
+        const loadAllData = async () => {
+            setIsLoading(true);
+            try {
+                await Promise.all([
+                    loadFaqItems(),
+                    loadBackgroundItems()
+                ]);
+            } catch (error) {
+                console.error('Error loading content data:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        
+        loadAllData();
     }, [isAuthenticated, isAdmin, navigate]);
+    
+    // Load FAQ items from Firestore
+    const loadFaqItems = async () => {
+        try {
+            const faqCollection = collection(db, 'faqs');
+            const snapshot = await getDocs(faqCollection);
+            
+            const items = [];
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                items.push({
+                    id: doc.id,
+                    ...data
+                });
+            });
+            
+            setFaqItems(items);
+            return items;
+        } catch (error) {
+            console.error('Error loading FAQ items:', error);
+            return [];
+        }
+    };
+    
+    // Load background settings from Firestore
+    const loadBackgroundItems = async () => {
+        try {
+            const bgCollection = collection(db, 'backgroundSettings');
+            const snapshot = await getDocs(bgCollection);
+            
+            const items = [];
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                items.push({
+                    id: doc.id,
+                    ...data
+                });
+            });
+            
+            setBackgroundItems(items);
+            return items;
+        } catch (error) {
+            console.error('Error loading background settings:', error);
+            return [];
+        }
+    };
 
     // If not authenticated or not admin, don't render the component
     if (!isAuthenticated || !isAdmin) {
@@ -52,9 +121,12 @@ const ContentManager = () => {
         const categories = {
             text: {},
             image: {},
-            background: {}
+            background: {},
+            faq: {},
+            backgroundSettings: {}
         };
 
+        // Categorize text content
         Object.entries(textContent).forEach(([key, value]) => {
             if (value.startsWith('data:image') || value.startsWith('http') || value.startsWith('/')) {
                 // Check if it's a background image
@@ -67,6 +139,24 @@ const ContentManager = () => {
                 categories.text[key] = value;
             }
         });
+        
+        // Add FAQ items
+        faqItems.forEach(item => {
+            categories.faq[item.id] = {
+                question: item.question,
+                answer: item.answer,
+                category: item.category
+            };
+        });
+        
+        // Add background settings
+        backgroundItems.forEach(item => {
+            categories.backgroundSettings[item.id] = {
+                elementId: item.elementId,
+                imageUrl: item.imageUrl,
+                type: item.type
+            };
+        });
 
         return categories;
     };
@@ -76,7 +166,18 @@ const ContentManager = () => {
     // Filter content based on active tab
     const getFilteredContent = () => {
         if (activeTab === 'all') {
-            return textContent;
+            // Combine all content types for 'all' tab
+            return {
+                ...textContent,
+                ...Object.fromEntries(faqItems.map(item => [
+                    `faq-${item.id}`,
+                    `FAQ: ${item.question.substring(0, 30)}...`
+                ])),
+                ...Object.fromEntries(backgroundItems.map(item => [
+                    `bg-${item.id}`,
+                    item.imageUrl
+                ]))
+            };
         } else {
             return categories[activeTab] || {};
         }
@@ -119,53 +220,79 @@ const ContentManager = () => {
                         onClick={() => setActiveTab('all')}
                         style={{
                             padding: '8px 16px',
-                            backgroundColor: activeTab === 'all' ? '#00a6fb' : '#f0f0f0',
-                            color: activeTab === 'all' ? 'white' : 'black',
+                            backgroundColor: activeTab === 'all' ? '#2d4f60' : '#e0e0e0',
+                            color: activeTab === 'all' ? 'white' : '#333',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        Alla ({Object.keys(textContent).length})
+                        Alla
                     </button>
                     <button 
                         onClick={() => setActiveTab('text')}
                         style={{
                             padding: '8px 16px',
-                            backgroundColor: activeTab === 'text' ? '#00a6fb' : '#f0f0f0',
-                            color: activeTab === 'text' ? 'white' : 'black',
+                            backgroundColor: activeTab === 'text' ? '#0984e3' : '#e0e0e0',
+                            color: activeTab === 'text' ? 'white' : '#333',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        Texter ({Object.keys(categories.text).length})
+                        Text
                     </button>
                     <button 
                         onClick={() => setActiveTab('image')}
                         style={{
                             padding: '8px 16px',
-                            backgroundColor: activeTab === 'image' ? '#00a6fb' : '#f0f0f0',
-                            color: activeTab === 'image' ? 'white' : 'black',
+                            backgroundColor: activeTab === 'image' ? '#00b894' : '#e0e0e0',
+                            color: activeTab === 'image' ? 'white' : '#333',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        Bilder ({Object.keys(categories.image).length})
+                        Bilder
                     </button>
                     <button 
                         onClick={() => setActiveTab('background')}
                         style={{
                             padding: '8px 16px',
-                            backgroundColor: activeTab === 'background' ? '#00a6fb' : '#f0f0f0',
-                            color: activeTab === 'background' ? 'white' : 'black',
+                            backgroundColor: activeTab === 'background' ? '#6c5ce7' : '#e0e0e0',
+                            color: activeTab === 'background' ? 'white' : '#333',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        Bakgrundsbilder ({Object.keys(categories.background).length})
+                        Bakgrundsbilder
+                    </button>
+                    <button 
+                        onClick={() => setActiveTab('faq')}
+                        style={{
+                            padding: '8px 16px',
+                            backgroundColor: activeTab === 'faq' ? '#e84393' : '#e0e0e0',
+                            color: activeTab === 'faq' ? 'white' : '#333',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        FAQ
+                    </button>
+                    <button 
+                        onClick={() => setActiveTab('backgroundSettings')}
+                        style={{
+                            padding: '8px 16px',
+                            backgroundColor: activeTab === 'backgroundSettings' ? '#fdcb6e' : '#e0e0e0',
+                            color: activeTab === 'backgroundSettings' ? 'white' : '#333',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Bakgrundsinställningar
                     </button>
                 </div>
 

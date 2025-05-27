@@ -8,15 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
         "/AimRV/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg"
     ];
 
-    // Function to initialize background changer
-    function initBackgroundChanger() {
-        const elements = document.querySelectorAll('.dynamic-background');
-        if (elements.length === 0) {
-            // If elements don't exist yet, retry after a short delay
-            setTimeout(initBackgroundChanger, 100);
-            return;
-        }
-
         // Try to get custom images from localStorage
         let images = defaultImages;
         try {

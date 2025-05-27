@@ -1,18 +1,19 @@
 import React from "react";
 import "../styles/index.css";
 import EditableText from "./EditableText";
-import EditableImage from "./EditableImage";
+import BackgroundEditor from "./BackgroundEditor";
 
 const HistorienOmAim = () => {
   return (
-    <div className="historien-om-aim-container">
+    <>
+      <BackgroundEditor key="historien-om-aim-background-editor" />
+      <div className="historien-om-aim-container">
       {/* Hero Section with Image */}
       <section className="historien-om-aim-hero-section">
         <div className="hero-content">
-          <div className="hero-image-container">
-            <EditableImage
-              imageKey="historien-om-aim-hero-image"
-              defaultSrc="/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg"
+          <div className="hero-image-container background-editable" id="historien-om-aim-hero-image">
+            <img
+              src="/images/AIM_lindvallen_2024_AnkiGrothe_highres_125.jpg"
               alt="Historien Om AIM Hero"
             />
           </div>
@@ -123,8 +124,9 @@ const HistorienOmAim = () => {
       </section>
 
       {/* Background Image Section - Full width and height */}
-      <div className="locked-background"></div>
+      <div className="locked-background background-editable" id="historien-om-aim-background-image"></div>
     </div>
+    </>
   );
 };
 

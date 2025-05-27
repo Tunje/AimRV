@@ -199,8 +199,26 @@ const AdEditor = () => {
         adElement.appendChild(imgElement);
         
         if (ad.link && !isAdmin) {
-          adElement.onclick = () => {
-            window.open(ad.link, '_blank');
+          adElement.onclick = (e) => {
+            e.preventDefault();
+            // Ensure the link is an absolute URL with proper protocol
+            let url = ad.link;
+            
+            // Remove any localhost or relative path prefix
+            if (url.includes('localhost') || url.startsWith('/')) {
+              // Extract just the domain part if it exists
+              const matches = url.match(/(?:https?:\/\/)?(?:localhost:[0-9]+\/)?([^\s]+)/);
+              if (matches && matches[1]) {
+                url = matches[1];
+              }
+            }
+            
+            // Add https:// if no protocol is specified
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+              url = 'https://' + url;
+            }
+            
+            window.open(url, '_blank', 'noopener,noreferrer');
           };
           adElement.style.cursor = 'pointer';
         }

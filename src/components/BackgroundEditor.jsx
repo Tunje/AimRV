@@ -36,7 +36,8 @@ const BackgroundEditor = () => {
     }
   }, [isAdmin]);
 
-  useEffect(() => {
+  // Function to attach click listeners to editable elements
+  const attachClickListeners = () => {
     const backgroundElements = document.querySelectorAll('.background-editable');
     console.log('Found background elements:', backgroundElements.length);
     
@@ -49,21 +50,121 @@ const BackgroundEditor = () => {
       
       if (isAdmin) {
         element.classList.add('admin-editable');
+        // Add a visual indicator for admins to see which elements are editable
+        element.style.cursor = 'pointer';
+        
+        // Add a small indicator if it doesn't exist yet
+        if (!element.querySelector('.background-editable-indicator')) {
+          const indicator = document.createElement('div');
+          indicator.className = 'background-editable-indicator';
+          indicator.style.position = 'absolute';
+          indicator.style.top = '5px';
+          indicator.style.right = '5px';
+          indicator.style.width = '10px';
+          indicator.style.height = '10px';
+          indicator.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
+          indicator.style.borderRadius = '50%';
+          indicator.style.zIndex = '1000';
+          indicator.style.display = isAdmin ? 'block' : 'none';
+          
+          // Make sure the element has position relative for absolute positioning of the indicator
+          if (window.getComputedStyle(element).position === 'static') {
+            element.style.position = 'relative';
+          }
+          
+          element.appendChild(indicator);
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    console.log('BackgroundEditor useEffect - path:', location.pathname);
+    
+    // Use a small delay to ensure DOM is fully loaded
+    const initTimer = setTimeout(() => {
+      // Attach click listeners to existing elements
+      attachClickListeners();
+      
+      // Load background settings
+      loadAllBackgroundSettings();
+    }, 300);
+    
+    // Set up a MutationObserver to watch for new editable elements
+    const observer = new MutationObserver((mutations) => {
+      let shouldUpdate = false;
+      
+      mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1) { // Element node
+              if (node.classList && node.classList.contains('background-editable')) {
+                shouldUpdate = true;
+              } else if (node.querySelectorAll) {
+                const editableChildren = node.querySelectorAll('.background-editable');
+                if (editableChildren.length > 0) {
+                  shouldUpdate = true;
+                }
+              }
+            }
+          });
+        } else if (mutation.type === 'attributes') {
+          // Also check for attribute changes that might add the background-editable class
+          if (mutation.target.classList && mutation.target.classList.contains('background-editable')) {
+            shouldUpdate = true;
+          }
+        }
+      });
+      
+      if (shouldUpdate) {
+        console.log('New editable elements detected, attaching listeners');
+        // Use a small delay to ensure DOM is stable
+        setTimeout(() => {
+          attachClickListeners();
+        }, 100);
       }
     });
     
-    // Load background settings only once when component mounts or location changes
-    loadAllBackgroundSettings();
+    // Start observing the document with more comprehensive options
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class'] 
+    });
+    
+    // Set up a periodic check for editable elements that might have been missed
+    const periodicCheck = setInterval(() => {
+      const elements = document.querySelectorAll('.background-editable');
+      if (elements.length > 0) {
+        console.log('Periodic check found', elements.length, 'editable elements');
+        attachClickListeners();
+      }
+    }, 2000); // Check every 2 seconds
     
     return () => {
+      // Clear timers
+      clearTimeout(initTimer);
+      clearInterval(periodicCheck);
+      
+      // Disconnect the observer when component unmounts
+      observer.disconnect();
+      
+      // Remove event listeners
+      const backgroundElements = document.querySelectorAll('.background-editable');
       backgroundElements.forEach(element => {
         element.removeEventListener('click', handleElementClick);
         if (isAdmin) {
           element.classList.remove('admin-editable');
+          // Remove any indicators we added
+          const indicator = element.querySelector('.background-editable-indicator');
+          if (indicator) {
+            element.removeChild(indicator);
+          }
         }
       });
     };
-  }, [isAdmin, location, handleElementClick]);
+  }, [isAdmin, location.pathname, handleElementClick]);
 
   useEffect(() => {
     // Add event listener for clicks outside the modal when modal is shown

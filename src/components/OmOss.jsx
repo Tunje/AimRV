@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
-import EditableImage from "./EditableImage";
+import BackgroundEditor from "./BackgroundEditor";
 
 const OmOss = () => {
   return (
-    <div className="om-oss-container">
+    <>
+      <BackgroundEditor key="om-oss-background-editor" />
+      <div className="om-oss-container">
       {/* Hero Section with Image */}
       <section className="om-oss-hero-section">
         <div className="hero-content">
-          <div className="hero-image-container">
-            <EditableImage
-              imageKey="om-oss-hero-image"
-              defaultSrc="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
+          <div className="hero-image-container background-editable" id="om-oss-hero-image">
+            <img
+              src="/images/EE-AIMChallenge24-Uhamn-0171-high.jpg"
               alt="Om Oss Hero"
             />
           </div>
@@ -95,7 +96,7 @@ const OmOss = () => {
       </section>
 
       {/* Background Image Section */}
-      <div className="om-oss-background-container locked-background"></div>
+      <div className="om-oss-background-container locked-background background-editable" id="om-oss-background-image"></div>
 
       {/* Second Text Section with dark blue background */}
       <section className="om-oss-section flex flex_j_C flex_a_C ">
@@ -214,6 +215,7 @@ const OmOss = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
