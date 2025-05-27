@@ -1,4 +1,4 @@
-@import 'buttons';
+@import "buttons";
 
 .dropdown-container {
   position: relative;
@@ -11,10 +11,11 @@
 }
 
 .drop-down {
-  background-color: #6A9FB5; /* Primary light blue */
-  min-width: 100px;
-  width: 120px; /* Moderate width */
-  border-radius: 20px; /* Rounded corners */
+  background-color: rgba(45, 79, 96, 0.9); /* Semi-transparent dark blue */
+  min-width: 120px;
+  width: 150px; /* Slightly wider for better readability */
+  border-radius: 10px; /* Rounded corners matching content sections */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   z-index: 1000;
   position: absolute; /* Need this for proper positioning */
   top: 100%; /* Position right below the button */
@@ -28,27 +29,31 @@
 }
 
 .dropdown-button {
-    @extend button;
-    
-    &:hover {
-        background-color: #2D4F60;  /* Primary dark blue */
-        color: white;
-    }
+  @extend button;
+
+  &:hover {
+    background-color: #f58220; /* Orange accent color */
+    color: #2d4f60; /* Dark blue text */
+  }
 }
 
 .drop-item {
   display: block;
-  padding: 5px 5px; /* Smaller padding */
+  padding: 8px 15px;
   text-decoration: none;
   color: white;
   text-align: center;
-  width: 100%; /* Make items fill the dropdown width */
-  box-sizing: border-box; /* Include padding in width calculation */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "AFCarplets Bold", sans-serif;
+  transition: all 0.3s ease;
 }
 
 .drop-item:hover {
-  background: #2D4F60; /* Primary dark blue */
-  border-radius: 20px; /* Rounded corners */
+  background: #f58220; /* Orange accent color */
+  color: #2d4f60; /* Dark blue text */
+  transform: translateX(5px);
+  border-radius: 5px;
 }
