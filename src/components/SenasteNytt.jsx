@@ -6,6 +6,7 @@ import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
 import { collection, getDocs, doc, deleteDoc, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import EditableText from './EditableText';
 
 const SenasteNytt = () => {
     const [email, setEmail] = useState('');
@@ -175,7 +176,12 @@ const SenasteNytt = () => {
             <section className="page_01 dynamic-background background-editable flex flex_col flex_j_E" id="senaste-nytt-top-background">
                 <div className="MaxWH flex flex_col flex_j_SA">
                     <div className="om-oss-title flex flex_j_C flex_a_C">
-                        <p className="fonts_huge senaste-nytt-main-title">SENASTE NYTT</p>
+                        <EditableText
+                            textKey="senaste-nytt-main-title"
+                            defaultText="SENASTE NYTT"
+                            tag="p"
+                            className="fonts_huge senaste-nytt-main-title"
+                        />
                     </div>
                 </div>
             </section>
@@ -183,10 +189,18 @@ const SenasteNytt = () => {
             {/* Email Subscription Section */}
             <div className="set-03 senaste-nytt-subscribe-section">
                 <div className="senaste-nytt-container flex flex_col flex_j_C flex_a_C font_white">
-                    <h2 className="fonts_large senaste-nytt-title">Håll dig uppdaterad</h2>
-                    <p className="fonts_small senaste-nytt-description">
-                        Prenumerera på vårt nyhetsbrev för att få de senaste uppdateringarna om AIM Challenge direkt i din inkorg.
-                    </p>
+                    <EditableText
+                        textKey="senaste-nytt-subscribe-title"
+                        defaultText="Håll dig uppdaterad"
+                        tag="h2"
+                        className="fonts_large senaste-nytt-title"
+                    />
+                    <EditableText
+                        textKey="senaste-nytt-subscribe-description"
+                        defaultText="Prenumerera på vårt nyhetsbrev för att få de senaste uppdateringarna om AIM Challenge direkt i din inkorg."
+                        tag="p"
+                        className="fonts_small senaste-nytt-description"
+                    />
                     
                     <form onSubmit={handleSubmit} className="senaste-nytt-form flex flex_col flex_a_C">
                         <div className="senaste-nytt-form-input-container flex">
@@ -220,7 +234,12 @@ const SenasteNytt = () => {
             {/* News Posts Section */}
             <div className="set-03 senaste-nytt-news-section">
                 <div className="senaste-nytt-container">
-                    <h2 className="senaste-nytt-section-title">Nyheter</h2>
+                    <EditableText
+                        textKey="senaste-nytt-news-title"
+                        defaultText="Nyheter"
+                        tag="h2"
+                        className="senaste-nytt-section-title"
+                    />
                     
                     {isAdmin && (
                         <div className="senaste-nytt-admin-actions flex flex_j_E">
