@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
+import BackgroundEditor from "./BackgroundEditor";
 
 const Competitions = () => {
+  // Add BackgroundEditor to the component
   return (
+    <>
+      {/* Include the BackgroundEditor component */}
+      <BackgroundEditor />
     <div className="competitions-container flex flex_col MaxWH location">
       <div className="competitions-spacer"></div>
       <div className="competitions-grid">
-        <div className="competitions-card competitions-card-ulricehamn flex flex_col flex_j_SB location simple-background">
-          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+        <div id="competitions-card-ulricehamn" className="competitions-card competitions-card-ulricehamn flex flex_col flex_j_SB location simple-background background-editable">
+          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH" style={{ position: 'relative', zIndex: 30 }}>
             <EditableText
               textKey="competitions-ulricehamn-title"
               defaultText="ULRICEHAMN"
@@ -24,7 +29,7 @@ const Competitions = () => {
               style={{ textAlign: "center" }}
             />
           </div>
-          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link
               to="/ulricehamn"
               className="location button-2 competitions-button"
@@ -34,8 +39,8 @@ const Competitions = () => {
           </div>
         </div>
 
-        <div className="competitions-card competitions-card-salen flex flex_col flex_j_SB location simple-background">
-          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+        <div id="competitions-card-salen" className="competitions-card competitions-card-salen flex flex_col flex_j_SB location simple-background background-editable">
+          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH" style={{ position: 'relative', zIndex: 30 }}>
             <EditableText
               textKey="competitions-salen-title"
               defaultText="SÄLEN"
@@ -51,7 +56,7 @@ const Competitions = () => {
               style={{ textAlign: "center" }}
             />
           </div>
-          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link to="/salen" className="location button-2 competitions-button">
               <span>Läs mer</span>
             </Link>
@@ -59,8 +64,8 @@ const Competitions = () => {
         </div>
       </div>
       <div className="competitions-grid">
-        <div className="competitions-card competitions-card-hemsedal flex flex_col flex_j_SB location simple-background">
-          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+        <div id="competitions-card-hemsedal" className="competitions-card competitions-card-hemsedal flex flex_col flex_j_SB location simple-background background-editable">
+          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH" style={{ position: 'relative', zIndex: 30 }}>
             <EditableText
               textKey="competitions-hemsedal-title"
               defaultText="HEMSEDAL"
@@ -76,7 +81,7 @@ const Competitions = () => {
               style={{ textAlign: "center" }}
             />
           </div>
-          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link
               to="/hemsedal"
               className="location button-2 competitions-button"
@@ -86,8 +91,8 @@ const Competitions = () => {
           </div>
         </div>
 
-        <div className="competitions-card competitions-card-kolmarden flex flex_col flex_j_SB location simple-background">
-          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+        <div id="competitions-card-kolmarden" className="competitions-card competitions-card-kolmarden flex flex_col flex_j_SB location simple-background background-editable">
+          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH" style={{ position: 'relative', zIndex: 30 }}>
             <EditableText
               textKey="competitions-kolmarden-title"
               defaultText="KOLMÅRDEN"
@@ -103,7 +108,7 @@ const Competitions = () => {
               style={{ textAlign: "center" }}
             />
           </div>
-          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link
               to="/kolmarden"
               className="location button-2 competitions-button"
@@ -115,10 +120,11 @@ const Competitions = () => {
       </div>
       <div className="competitions-grid">
         <div
-          className="competitions-card competitions-card-trippeln flex flex_col flex_j_SB location simple-background"
+          id="competitions-card-trippeln"
+          className="competitions-card competitions-card-trippeln flex flex_col flex_j_SB location simple-background background-editable"
           style={{ gridColumn: "span 2" }}
         >
-          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH">
+          <div className="trans-background competitions-header flex flex_col flex_j_C flex_a_C flex_text_C MaxWH" style={{ position: 'relative', zIndex: 30 }}>
             <EditableText
               textKey="competitions-trippeln-title"
               defaultText="AIM CHALLENGE TRIPPELN"
@@ -134,7 +140,7 @@ const Competitions = () => {
               style={{ textAlign: "center" }}
             />
           </div>
-          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button">
+          <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link
               to="/trippeln"
               className="location button-2 competitions-button"
@@ -145,6 +151,7 @@ const Competitions = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

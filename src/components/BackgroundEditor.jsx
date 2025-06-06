@@ -20,6 +20,13 @@ const BackgroundEditor = () => {
 
   // Define handleClick outside useEffect to ensure it's not recreated on every render
   const handleElementClick = useCallback((e) => {
+    // Check if the click target is an edit button or part of the editable text wrapper
+    if (e.target.closest('.edit-button') || 
+        (e.target.closest('.editable-text-wrapper') && !e.target.classList.contains('background-editable'))) {
+      // Don't process background editing for these elements
+      return;
+    }
+    
     e.stopPropagation(); // Stop event propagation
     console.log('Background element clicked:', e.currentTarget.id);
     if (isAdmin) {
@@ -45,6 +52,7 @@ const BackgroundEditor = () => {
       console.log('Adding click listener to element:', element.id);
       // Remove any existing listeners first to prevent duplicates
       element.removeEventListener('click', handleElementClick);
+      
       // Add the click listener
       element.addEventListener('click', handleElementClick);
       
@@ -64,7 +72,7 @@ const BackgroundEditor = () => {
           indicator.style.height = '10px';
           indicator.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
           indicator.style.borderRadius = '50%';
-          indicator.style.zIndex = '1000';
+          indicator.style.zIndex = '1'; // Very low z-index so it doesn't interfere with buttons
           indicator.style.display = isAdmin ? 'block' : 'none';
           
           // Make sure the element has position relative for absolute positioning of the indicator

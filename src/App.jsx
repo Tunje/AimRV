@@ -29,6 +29,7 @@ import { TextProvider } from './context/TextContext';
 import BackgroundEditor from './components/BackgroundEditor';
 import AdEditor from './components/AdEditor';
 import Background from './components/Background';
+import MetaUpdater from './components/MetaUpdater';
 import { initializeAdminUser } from './firebase/auth';
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
         <AuthProvider>
             <TextProvider>
                 <Router>
+                    <MetaUpdater />
                     <div className="flex flex_col MaxWH location" style={{ 
                         width: '100%', 
                         maxWidth: '100%', 

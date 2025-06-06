@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ResultUploadModal from './ResultUploadModal';
 import { getResults, deleteResult } from '../firebase/results';
+import EditableText from './EditableText';
 
 const Results = () => {
     const { currentUser } = useAuth();
@@ -99,7 +100,12 @@ const Results = () => {
         <>
             <div className="results-header-banner"></div>
             <div className="results-container">
-                <h1 className="results-header-title">Multisport för alla</h1>
+                <EditableText
+                    textKey="results-header-title"
+                    defaultText="Multisport för alla"
+                    tag="h1"
+                    className="results-header-title"
+                />
                 <section className="results-filters-section">
                     <div className="results-filters">
                         <select 

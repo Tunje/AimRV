@@ -22,7 +22,12 @@ const Pages = () => {
       </section>
 
       <section id="page_02" className="page_02 flex flex_j_E MaxWH location">
-        <h2 className="page_02-title">ÅRETS TÄVLINGAR</h2>
+        <EditableText
+          textKey="main-competitions-title"
+          defaultText="ÅRETS TÄVLINGAR"
+          tag="h2"
+          className="page_02-title"
+        />
         <div className="page_02box  flex flex_col MaxWH location">
           <div
             id="page_02-ulricehamn-image"
@@ -155,7 +160,12 @@ const Pages = () => {
       <section id="page_03" className="page_03 flex MaxWH">
         <div className="page_03-content flex">
           <div className="page_03-text">
-            <h2 className="page_03-title">OM AIM CHALLENGE</h2>
+            <EditableText
+              textKey="main-about-title"
+              defaultText="OM AIM CHALLENGE"
+              tag="h2"
+              className="page_03-title"
+            />
             <EditableText
               textKey="aim-challenge-desc-1"
               defaultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."

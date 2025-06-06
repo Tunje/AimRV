@@ -1,0 +1,21 @@
+/* CSS for competition card editing */
+.competitions-container .competitions-grid .competitions-card .competitions-header {
+  z-index: 30;
+  position: relative;
+}
+
+.competitions-container .competitions-grid .competitions-card .competitions-button-container {
+  z-index: 30;
+  position: relative;
+}
+
+.competitions-container .competitions-grid .competitions-card .editable-text-container,
+.competitions-container .competitions-grid .competitions-card .editable-text-button {
+  z-index: 35;
+  position: relative;
+}
+
+.background-editable .background-editable-indicator {
+  z-index: 25;
+  position: absolute;
+}

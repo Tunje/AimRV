@@ -36,7 +36,12 @@ const Regler = () => {
       <section className="regler-content-section">
         <div className="regler-content-container">
           <div className="regler-content">
-            <h2 className="regler-heading">LAGET</h2>
+            <EditableText
+              textKey="regler-team-heading"
+              defaultText="LAGET"
+              tag="h2"
+              className="regler-heading"
+            />
             <ul className="regler-list">
               <li className="regler-list-item">Åldersgräns 15år/18år</li>
               <li className="regler-list-item">
@@ -65,7 +70,12 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">SÄKERHET</h2>
+            <EditableText
+              textKey="regler-safety-heading"
+              defaultText="SÄKERHET"
+              tag="h2"
+              className="regler-heading"
+            />
             <ul className="regler-list">
               <li className="regler-list-item">
                 Lagen väljer själva vilka kontroller de klarar att ta baserat på
@@ -102,7 +112,12 @@ const Regler = () => {
               </li>
             </ul>
 
-            <h2 className="regler-heading">ÖVRIGT</h2>
+            <EditableText
+              textKey="regler-other-heading"
+              defaultText="ÖVRIGT"
+              tag="h2"
+              className="regler-heading"
+            />
             <ul className="regler-list">
               <li className="regler-list-item">
                 Elcyklar är ej tillåtet, med undantag för Elcykelklassen i

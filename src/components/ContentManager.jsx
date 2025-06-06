@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase/config';
 import { collection, getDocs, query } from 'firebase/firestore';
+import SEOManager from './SEOManager';
 
 const ContentManager = () => {
     const { textContent, resetAllContent, removeContentItem, isAdmin } = useText();
     const { isAuthenticated } = useAuth();
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
+    const [mainTab, setMainTab] = useState('content');
     const [activeTab, setActiveTab] = useState('all');
     const [faqItems, setFaqItems] = useState([]);
     const [backgroundItems, setBackgroundItems] = useState([]);
@@ -195,7 +197,56 @@ const ContentManager = () => {
                     </div>
                 </div>
             </section>
+            
+            {/* Main Tabs */}
+            <div style={{ 
+                padding: '20px 40px 0', 
+                maxWidth: '1200px', 
+                margin: '0 auto',
+                width: '100%',
+                display: 'flex',
+                gap: '20px',
+                borderBottom: '2px solid #eee'
+            }}>
+                <button 
+                    onClick={() => setMainTab('content')}
+                    style={{
+                        padding: '12px 24px',
+                        backgroundColor: mainTab === 'content' ? '#2d4f60' : '#e0e0e0',
+                        color: mainTab === 'content' ? 'white' : '#333',
+                        border: 'none',
+                        borderRadius: '4px 4px 0 0',
+                        cursor: 'pointer',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        position: 'relative',
+                        bottom: mainTab === 'content' ? '-2px' : '0',
+                        borderBottom: mainTab === 'content' ? '2px solid #2d4f60' : 'none'
+                    }}
+                >
+                    Innehåll
+                </button>
+                <button 
+                    onClick={() => setMainTab('seo')}
+                    style={{
+                        padding: '12px 24px',
+                        backgroundColor: mainTab === 'seo' ? '#2d4f60' : '#e0e0e0',
+                        color: mainTab === 'seo' ? 'white' : '#333',
+                        border: 'none',
+                        borderRadius: '4px 4px 0 0',
+                        cursor: 'pointer',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        position: 'relative',
+                        bottom: mainTab === 'seo' ? '-2px' : '0',
+                        borderBottom: mainTab === 'seo' ? '2px solid #2d4f60' : 'none'
+                    }}
+                >
+                    SEO & Meta
+                </button>
+            </div>
 
+            {mainTab === 'content' && (
             <section style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
                 <div style={{ marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
                     <h2 className="font_blue fonts_large">Alla redigerbara innehåll</h2>
@@ -453,6 +504,9 @@ const ContentManager = () => {
                     </div>
                 )}
             </section>
+            )}
+            
+            {mainTab === 'seo' && <SEOManager />}
         </div>
     );
 };
