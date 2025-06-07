@@ -67,6 +67,7 @@
     font-family: "AFCarplets Bold", sans-serif;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    white-space: nowrap;
 
     &:hover {
       color: inherit;
