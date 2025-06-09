@@ -8,7 +8,7 @@ import { useText } from '../context/TextContext';
  */
 const MetaUpdater = () => {
     const location = useLocation();
-    const { textContent } = useText();
+    const { textContent, currentLanguage, LANGUAGES } = useText();
     const path = location.pathname;
 
     useEffect(() => {
@@ -37,10 +37,26 @@ const MetaUpdater = () => {
             pageName = 'results';
         }
 
+        // Helper function to get multilingual content
+        const getMultilingualContent = (key) => {
+            const content = textContent[key];
+            
+            // Check if content is multilingual
+            if (content && typeof content === 'object' && content._isMultilingual) {
+                // Return content in current language, fallback to Swedish if not available
+                return content[currentLanguage] || content[LANGUAGES.SWEDISH] || '';
+            }
+            
+            // Return regular content if not multilingual
+            return content || '';
+        };
+        
         // Update title
         const titleKey = `meta-title-${pageName}`;
-        if (textContent[titleKey]) {
-            document.title = textContent[titleKey];
+        const title = getMultilingualContent(titleKey);
+        
+        if (title) {
+            document.title = title;
         } else if (pageName !== 'home') {
             // Fallback title if not found in textContent
             document.title = `${pageName.charAt(0).toUpperCase() + pageName.slice(1).replace(/-/g, ' ')} - Aim Challenge`;
@@ -58,8 +74,9 @@ const MetaUpdater = () => {
             document.head.appendChild(metaDescription);
         }
         
-        if (textContent[descriptionKey]) {
-            metaDescription.content = textContent[descriptionKey];
+        const description = getMultilingualContent(descriptionKey);
+        if (description) {
+            metaDescription.content = description;
         } else {
             metaDescription.content = 'Aim Challenge - A premier archery competition series';
         }
@@ -74,8 +91,9 @@ const MetaUpdater = () => {
             document.head.appendChild(metaKeywords);
         }
         
-        if (textContent[keywordsKey]) {
-            metaKeywords.content = textContent[keywordsKey];
+        const keywords = getMultilingualContent(keywordsKey);
+        if (keywords) {
+            metaKeywords.content = keywords;
         } else {
             metaKeywords.content = 'archery, competition, aim challenge, bow, arrow';
         }
@@ -127,12 +145,13 @@ const MetaUpdater = () => {
             document.head.appendChild(ogImage);
         }
         
-        if (textContent[ogImageKey]) {
+        const ogImageUrl = getMultilingualContent(ogImageKey);
+        if (ogImageUrl) {
             // Make sure we have an absolute URL for the OG image
-            if (textContent[ogImageKey].startsWith('/')) {
-                ogImage.content = `${window.location.origin}${textContent[ogImageKey]}`;
+            if (ogImageUrl.startsWith('/')) {
+                ogImage.content = `${window.location.origin}${ogImageUrl}`;
             } else {
-                ogImage.content = textContent[ogImageKey];
+                ogImage.content = ogImageUrl;
             }
         } else {
             // Default image

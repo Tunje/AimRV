@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useText } from "../context/TextContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 import "../styles/index.css";
 // scripts.js import removed
 
@@ -185,9 +186,9 @@ const Navbar = () => {
           <div className="nav-button">
             <Link to="#">Kontakta oss</Link>
           </div>
-          {/* Language Button */}
-          <div className="nav-button">
-            <a href="#">SV|NO|EN</a>
+          {/* Language Switcher */}
+          <div className="nav-button language-nav-button">
+            <LanguageSwitcher />
           </div>
 
           {/* Content Manager and Logout Buttons - Only visible when logged in */}
@@ -341,10 +342,8 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="mobile-menu-item">
-              <a href="#" className="mobile-menu-link">
-                SV|NO|EN
-              </a>
+            <div className="mobile-menu-item mobile-language-switcher">
+              <LanguageSwitcher className="mobile-language-selector" />
             </div>
 
             {/* Content Manager and Logout Buttons - Only visible when logged in */}

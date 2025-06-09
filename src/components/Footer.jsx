@@ -7,117 +7,134 @@ import SponsorEditor from "./SponsorEditor";
 const Footer = () => {
   const { isAdmin } = useText();
   const location = useLocation();
+  
+  // Define which pages should show sponsors
+  const showSponsors = () => {
+    const path = location.pathname;
+    const sponsorPages = [
+      '/', // Front page
+      '/competitions', // Competitions page
+      '/ulricehamn', // Competition pages
+      '/salen',
+      '/hemsedal',
+      '/kolmarden',
+      '/trippeln' // Trippeln page
+    ];
+    
+    return sponsorPages.includes(path);
+  };
 
   return (
     <>
       {/* Include SponsorEditor component */}
       <SponsorEditor />
-      
-      {/* Sponsors Section */}
-      <div className="footer-wrapper">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="grid-item sponsors">
-              <h1 className="footer-heading" id="sponsors-section">
-                Sponsorer & Partners
-              </h1>
-              <div className="sponsors-grid">
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Artboard 1@4x.png"
-                    alt="Artboard"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Camelbak_vit.svg"
-                    alt="Camelbak"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Hedghog_vit.svg"
-                    alt="Hedghog"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Kona_vit.png"
-                    alt="Kona"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Mareld_svart.svg"
-                    alt="Mareld"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/ODD_white_RGB.png"
-                    alt="ODD"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Oofos.png"
-                    alt="Oofos"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Ortovox_svart.svg"
-                    alt="Ortovox"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/UD Logo.png"
-                    alt="UD"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/Upplev.png"
-                    alt="Upplev Norrköping"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/holdut_logo_sort_1.png"
-                    alt="Hold ut"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/h%C3%A4llmark logga sv_v.svg"
-                    alt="Hällmark"
-                    className="sponsor-logo"
-                  />
-                </div>
-                <div className="sponsor-item">
-                  <img
-                    src="/images/injinji_black.svg"
-                    alt="Injinji"
-                    className="sponsor-logo"
-                  />
+      {/* Sponsors Section - Only shown on specific pages */}
+      {showSponsors() && (
+        <div className="footer-wrapper">
+          <div className="container">
+            <div className="footer-grid">
+              <div className="grid-item sponsors">
+                <h1 className="footer-heading" id="sponsors-section">
+                  Sponsorer & Partners
+                </h1>
+                <div className="sponsors-grid">
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Artboard 1@4x.png"
+                      alt="Artboard"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Camelbak_vit.svg"
+                      alt="Camelbak"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Hedghog_vit.svg"
+                      alt="Hedghog"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Kona_vit.png"
+                      alt="Kona"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Mareld_svart.svg"
+                      alt="Mareld"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/ODD_white_RGB.png"
+                      alt="ODD"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Oofos.png"
+                      alt="Oofos"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Ortovox_svart.svg"
+                      alt="Ortovox"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/UD Logo.png"
+                      alt="UD"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/Upplev.png"
+                      alt="Upplev Norrköping"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/holdut_logo_sort_1.png"
+                      alt="Hold ut"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/h%C3%A4llmark logga sv_v.svg"
+                      alt="Hällmark"
+                      className="sponsor-logo"
+                    />
+                  </div>
+                  <div className="sponsor-item">
+                    <img
+                      src="/images/injinji_black.svg"
+                      alt="Injinji"
+                      className="sponsor-logo"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Footer Section - Main Content */}
       <footer className="footer-section">

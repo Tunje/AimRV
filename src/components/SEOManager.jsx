@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useText } from '../context/TextContext';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import LanguageSwitcher from './LanguageSwitcher';
 import { db, storage } from '../firebase/config';
 import { collection, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const SEOManager = () => {
-    const { textContent, updateText, isAdmin } = useText();
+    const { textContent, updateText, isAdmin, currentLanguage, changeLanguage, LANGUAGES, LANGUAGE_NAMES } = useText();
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('metaTexts');
     const [isLoading, setIsLoading] = useState(false);
+    const [activeLanguage, setActiveLanguage] = useState(currentLanguage);
     const [metaTexts, setMetaTexts] = useState({
         'meta-title-home': 'Aim Challenge - Multisport tävling för alla',
         'meta-description-home': 'Aim Challenge är en multisport tävling som passar för alla. Lag på två personer ska under 6 timmar ta så många kontroller som möjligt.',
@@ -41,6 +43,11 @@ const SEOManager = () => {
         }
     }, [isAuthenticated, isAdmin, navigate]);
 
+    // Update active language when current language changes
+    useEffect(() => {
+        setActiveLanguage(currentLanguage);
+    }, [currentLanguage]);
+
     // Load meta texts and sharing images from TextContext
     useEffect(() => {
         const loadMetaContent = () => {
@@ -49,10 +56,21 @@ const SEOManager = () => {
             
             // Extract meta texts from textContent
             Object.entries(textContent).forEach(([key, value]) => {
-                if (key.startsWith('meta-')) {
-                    newMetaTexts[key] = value;
-                } else if (key.startsWith('og-image-')) {
-                    newSharingImages[key] = value;
+                // Handle multilingual content
+                if (typeof value === 'object' && value._isMultilingual) {
+                    // For multilingual meta tags, use the active language content
+                    if (key.startsWith('meta-')) {
+                        newMetaTexts[key] = value[activeLanguage] || value[LANGUAGES.SWEDISH] || '';
+                    } else if (key.startsWith('og-image-')) {
+                        newSharingImages[key] = value[activeLanguage] || value[LANGUAGES.SWEDISH] || '';
+                    }
+                } else {
+                    // Legacy non-multilingual content
+                    if (key.startsWith('meta-')) {
+                        newMetaTexts[key] = value;
+                    } else if (key.startsWith('og-image-')) {
+                        newSharingImages[key] = value;
+                    }
                 }
             });
             
@@ -61,7 +79,7 @@ const SEOManager = () => {
         };
         
         loadMetaContent();
-    }, [textContent]);
+    }, [textContent, activeLanguage]);
 
     // Handle text editing
     const handleEditText = (key, value) => {
@@ -71,7 +89,27 @@ const SEOManager = () => {
 
     const handleSaveText = () => {
         if (editingKey) {
-            updateText(editingKey, editValue);
+            // Get the existing content to preserve other language translations
+            const existingContent = textContent[editingKey];
+            
+            // Check if content is already multilingual
+            if (typeof existingContent === 'object' && existingContent._isMultilingual) {
+                // Update only the active language while preserving others
+                const updatedContent = {
+                    ...existingContent,
+                    [activeLanguage]: editValue
+                };
+                updateText(editingKey, updatedContent);
+            } else {
+                // Convert to multilingual format
+                const multilingualContent = {
+                    _isMultilingual: true,
+                    [activeLanguage]: editValue,
+                    // Preserve existing content as Swedish if it's not already multilingual
+                    [LANGUAGES.SWEDISH]: activeLanguage === LANGUAGES.SWEDISH ? editValue : existingContent || ''
+                };
+                updateText(editingKey, multilingualContent);
+            }
             
             // Update local state
             if (editingKey.startsWith('meta-')) {
@@ -133,38 +171,56 @@ const SEOManager = () => {
         return null;
     }
 
+    // Handle language change in SEO Manager
+    const handleLanguageChange = (language) => {
+        setActiveLanguage(language);
+    };
+
     return (
-        <div className="seo-manager-container" style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 className="font_blue fonts_large" style={{ marginBottom: '30px' }}>SEO Hanterare</h2>
+        <div className="seo-manager" style={{ padding: '20px' }}>
+            <h1 className="font_blue fonts_big" style={{ marginBottom: '20px' }}>SEO Manager</h1>
             
-            {/* Tabs */}
-            <div style={{ marginBottom: '30px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <button 
-                    onClick={() => setActiveTab('metaTexts')}
-                    style={{
-                        padding: '8px 16px',
-                        backgroundColor: activeTab === 'metaTexts' ? '#2d4f60' : '#e0e0e0',
-                        color: activeTab === 'metaTexts' ? 'white' : '#333',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    Meta Texter
-                </button>
-                <button 
-                    onClick={() => setActiveTab('sharingImages')}
-                    style={{
-                        padding: '8px 16px',
-                        backgroundColor: activeTab === 'sharingImages' ? '#0984e3' : '#e0e0e0',
-                        color: activeTab === 'sharingImages' ? 'white' : '#333',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    Delningsbilder
-                </button>
+            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <button 
+                        className={`modal-button ${activeTab === 'metaTexts' ? 'modal-button-primary' : 'modal-button-secondary'}`}
+                        onClick={() => setActiveTab('metaTexts')}
+                    >
+                        Meta Texter
+                    </button>
+                    <button 
+                        className={`modal-button ${activeTab === 'sharingImages' ? 'modal-button-primary' : 'modal-button-secondary'}`}
+                        onClick={() => setActiveTab('sharingImages')}
+                    >
+                        Delningsbilder
+                    </button>
+                </div>
+                
+                <div className="language-selector-container" style={{ display: 'flex', alignItems: 'center' }}>
+                    <span style={{ marginRight: '10px', fontSize: '14px', color: '#666' }}>Redigera språk:</span>
+                    <div className="seo-language-tabs">
+                        {Object.values(LANGUAGES).map((lang) => (
+                            <button
+                                key={lang}
+                                className={`seo-language-tab ${activeLanguage === lang ? 'seo-language-tab--active' : ''}`}
+                                onClick={() => handleLanguageChange(lang)}
+                                style={{
+                                    padding: '6px 12px',
+                                    margin: '0 4px',
+                                    border: 'none',
+                                    borderBottom: activeLanguage === lang ? '2px solid #2D4F60' : '2px solid transparent',
+                                    background: 'none',
+                                    cursor: 'pointer',
+                                    fontSize: '14px',
+                                    color: activeLanguage === lang ? '#2D4F60' : '#666',
+                                    fontWeight: activeLanguage === lang ? 'bold' : 'normal'
+                                }}
+                            >
+                                {LANGUAGE_NAMES[lang]}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
             
             {/* Meta Texts Section */}

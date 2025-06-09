@@ -1,14 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useText } from '../context/TextContext';
 import ReactDOM from 'react-dom';
+import '../styles/_editable-text.scss';
 
 const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style = {}, placeholder = 'Skriv text här...', onClick }) => {
-    const { getText, updateText, isAdmin } = useText();
+    const { 
+        getText, 
+        updateText, 
+        isAdmin, 
+        currentLanguage, 
+        LANGUAGES, 
+        LANGUAGE_NAMES,
+        translateText,
+        mockTranslateAPI 
+    } = useText();
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState('');
     const [showLinkTools, setShowLinkTools] = useState(false);
-    const [linkUrl, setLinkUrl] = useState('');
     const [linkText, setLinkText] = useState('');
+    const [linkUrl, setLinkUrl] = useState('');
+    const [activeLanguageTab, setActiveLanguageTab] = useState(currentLanguage);
+    const [translations, setTranslations] = useState({
+        sv: '',
+        en: '',
+        no: ''
+    });
+    const [isTranslating, setIsTranslating] = useState(false);
     const textareaRef = useRef(null);
     const linkTextRef = useRef(null);
     const linkUrlRef = useRef(null);
@@ -17,9 +34,21 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
     const isInlineElement = ['span', 'a', 'em', 'strong', 'i', 'b', 'code', 'small'].includes(tag);
 
     useEffect(() => {
-        const savedText = getText(textKey);
-        setText(savedText || defaultText);
-    }, [textKey, defaultText, getText]);
+        // Load text for current language
+        const savedText = getText(textKey, defaultText);
+        setText(savedText);
+        
+        // Load translations for all languages
+        const svText = getText(textKey, defaultText, 'sv');
+        const enText = getText(textKey, defaultText, 'en');
+        const noText = getText(textKey, defaultText, 'no');
+        
+        setTranslations({
+            sv: svText,
+            en: enText,
+            no: noText
+        });
+    }, [textKey, defaultText, getText, currentLanguage]);
 
     // Add event listener for Escape key
     useEffect(() => {
@@ -44,15 +73,23 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         setIsEditing(true);
     };
 
-    const handleSave = () => {
-        updateText(textKey, text);
+    const handleSave = async () => {
+        // Save all language versions
+        for (const lang of Object.values(LANGUAGES)) {
+            await updateText(textKey, translations[lang], lang);
+        }
+        
+        // Update the main text to match the current language
+        setText(translations[currentLanguage]);
+        
         setIsEditing(false);
         setShowLinkTools(false);
     };
 
     const handleCancel = () => {
-        const savedText = getText(textKey);
-        setText(savedText || defaultText);
+        // Reset text to the saved translation for the active language tab
+        const savedText = getText(textKey, defaultText, activeLanguageTab);
+        setText(savedText);
         setIsEditing(false);
         setShowLinkTools(false);
     };
@@ -112,25 +149,103 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
             handleCancel();
         }
     };
+    
+    // Update text for a specific language
+    const updateLanguageText = (language, newText) => {
+        setTranslations(prev => ({
+            ...prev,
+            [language]: newText
+        }));
+        
+        // If this is the active language, also update the main text
+        if (language === activeLanguageTab) {
+            setText(newText);
+        }
+    };
+    
+    // Handle auto-translation of the current text
+    const handleAutoTranslate = async (targetLanguage) => {
+        if (isTranslating) return;
+        
+        setIsTranslating(true);
+        
+        try {
+            // Get the Swedish source text
+            const sourceText = translations.sv || '';
+            
+            if (!sourceText) {
+                console.error('No Swedish source text available for translation');
+                return;
+            }
+            
+            console.log(`Translating from Swedish to ${targetLanguage}: ${sourceText}`);
+            
+            // First update the text content in Firebase to ensure Swedish text is saved
+            await updateText(textKey, sourceText, 'sv');
+            
+            // Then use the translateText function from context
+            const success = await translateText(textKey, targetLanguage);
+            
+            if (success) {
+                // Get the newly translated text
+                const translatedText = getText(textKey, defaultText, targetLanguage);
+                console.log(`Translation result: ${translatedText}`);
+                
+                // Update our local state
+                setTranslations(prev => ({
+                    ...prev,
+                    [targetLanguage]: translatedText
+                }));
+            }
+        } catch (error) {
+            console.error('Translation failed:', error);
+        } finally {
+            setIsTranslating(false);
+        }
+    };
 
     const renderModal = () => {
         if (!isEditing) return null;
         
         return ReactDOM.createPortal(
-            <div className="edit-modal">
-                <div className="edit-modal__content">
-                    <textarea
-                        ref={textareaRef}
-                        value={text}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                        placeholder={placeholder}
-                        className="edit-modal__textarea"
-                    />
+            <div className="edit-modal-overlay">
+                <div className="edit-modal">
+                    <h3 className="edit-modal__title">Redigera text</h3>
+                    
+                    {/* All languages shown vertically */}
+                    <div className="edit-modal__languages-vertical">
+                        {Object.values(LANGUAGES).map((lang) => (
+                            <div key={lang} className="edit-modal__language-section">
+                                <div className="edit-modal__language-header">
+                                    <h4 className="edit-modal__language-title">{LANGUAGE_NAMES[lang]}</h4>
+                                    
+                                    {/* Translation button for non-Swedish languages */}
+                                    {lang !== 'sv' && (
+                                        <button
+                                            type="button"
+                                            onClick={() => handleAutoTranslate(lang)}
+                                            className="modal-action-button modal-action-button--secondary modal-action-button--small"
+                                            disabled={isTranslating}
+                                        >
+                                            {isTranslating ? 'Översätter...' : `Översätt automatiskt`}
+                                        </button>
+                                    )}
+                                </div>
+                                
+                                <textarea
+                                    value={translations[lang]}
+                                    onChange={(e) => updateLanguageText(lang, e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                    className="edit-modal__textarea"
+                                    autoFocus={lang === currentLanguage}
+                                />
+                            </div>
+                        ))}
+                    </div>
                     
                     <button 
                         type="button" 
-                        onClick={toggleLinkTools} 
+                        onClick={toggleLinkTools}
                         className="modal-action-button modal-action-button--secondary"
                     >
                         {showLinkTools ? 'Dölj länkverktyg' : 'Lägg till länk'}
