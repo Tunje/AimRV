@@ -262,6 +262,16 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            {/* Results Link - Added as a direct link in mobile menu */}
+            <div className="mobile-menu-item">
+              <Link
+                to="/results"
+                onClick={toggleMobileMenu}
+                className="mobile-menu-link"
+              >
+                Resultat
+              </Link>
+            </div>
 
             <div className="mobile-menu-item">
               <div

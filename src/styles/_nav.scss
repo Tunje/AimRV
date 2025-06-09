@@ -47,6 +47,14 @@
 .nav-button {
   position: relative;
   @extend button;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f58220; /* Orange accent color */
+    color: #2d4f60; /* Dark blue text */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
   a {
     color: inherit;
@@ -56,6 +64,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "AFCarplets Bold", sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 
     &:hover {
       color: inherit;
@@ -124,9 +136,11 @@
   text-decoration: none;
   display: block;
   padding: 10px 0;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: #e87722;
+    color: #f58220; /* Orange accent color */
+    transform: translateX(5px);
   }
 }
 
@@ -142,10 +156,13 @@
   display: block;
   padding: 8px 0;
   font-size: 0.9em;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: #6a9fb5;
-    color: #f5f5f5;
+    background-color: #f58220; /* Orange accent color */
+    color: #2d4f60; /* Dark blue text */
+    padding-left: 5px;
+    border-radius: 5px;
   }
 }
 
