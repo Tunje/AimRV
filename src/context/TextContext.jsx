@@ -225,28 +225,7 @@ export const TextProvider = ({ children }) => {
             setCurrentLanguage(language);
             localStorage.setItem('preferredLanguage', language);
             
-            // If switching to a non-Swedish language, check for missing translations
-            if (language !== LANGUAGES.SWEDISH && isAdmin) {
-                try {
-                    // Show loading indicator or notification
-                    console.log(`Checking for missing ${LANGUAGE_NAMES[language]} translations...`);
-                    
-                    // Auto-translate missing content
-                    const translatedCount = await translateAllMissingContent(textContent, language, mockTranslateAPI);
-                    
-                    if (translatedCount > 0) {
-                        console.log(`Auto-translated ${translatedCount} missing items to ${LANGUAGE_NAMES[language]}`);
-                        
-                        // Refresh content from Firebase to get the updated translations
-                        const updatedContent = await getTextContent();
-                        setTextContent(updatedContent);
-                        localStorage.setItem('textContent', JSON.stringify(updatedContent));
-                    }
-                } catch (error) {
-                    console.error('Error during auto-translation:', error);
-                }
-            }
-            
+            // Auto-translation has been removed
             return true;
         }
         return false;
@@ -271,38 +250,86 @@ export const TextProvider = ({ children }) => {
         }
     };
     
-    // Real Google Translate API implementation with capitalization preservation
-    const googleTranslate = async (text, sourceLang, targetLang) => {
+    // Free translation service using LibreTranslate API
+    const freeTranslateService = async (text, sourceLang, targetLang) => {
         if (!text) return '';
         
         try {
-            // Build the Google Translate API URL
-            const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+            // Try multiple free translation services in order of reliability
             
-            // Fetch the translation
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            
-            // Extract the translated text from the response
-            let translatedText = '';
-            if (data && data[0]) {
-                data[0].forEach(item => {
-                    if (item[0]) {
-                        translatedText += item[0];
-                    }
+            // 1. Try LibreTranslate public API
+            try {
+                const libreTranslateUrl = 'https://libretranslate.de/translate';
+                
+                const response = await fetch(libreTranslateUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        q: text,
+                        source: sourceLang === 'sv' ? 'sv' : 'en', // LibreTranslate uses 'sv' for Swedish
+                        target: targetLang === 'no' ? 'nb' : targetLang, // LibreTranslate uses 'nb' for Norwegian Bokmål
+                        format: 'text'
+                    })
                 });
+                
+                const data = await response.json();
+                
+                if (data.translatedText) {
+                    return preserveCapitalization(text, data.translatedText);
+                }
+            } catch (libreTranslateError) {
+                console.warn('LibreTranslate API failed:', libreTranslateError);
             }
             
-            // If translation failed, return original text
-            if (!translatedText) return text;
+            // 2. Try Lingva Translate API (another free service)
+            try {
+                const lingvaUrl = `https://lingva.ml/api/v1/${sourceLang === 'sv' ? 'sv' : 'en'}/${targetLang === 'no' ? 'no' : targetLang}/${encodeURIComponent(text)}`;
+                
+                const response = await fetch(lingvaUrl);
+                const data = await response.json();
+                
+                if (data.translation) {
+                    return preserveCapitalization(text, data.translation);
+                }
+            } catch (lingvaError) {
+                console.warn('Lingva API failed:', lingvaError);
+            }
             
-            // Preserve capitalization pattern from original text
-            return preserveCapitalization(text, translatedText);
+            // 3. Try the unofficial Google Translate API as a last resort
+            try {
+                const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                let translatedText = '';
+                if (data && data[0]) {
+                    data[0].forEach(item => {
+                        if (item[0]) {
+                            translatedText += item[0];
+                        }
+                    });
+                }
+                
+                if (translatedText) {
+                    return preserveCapitalization(text, translatedText);
+                }
+            } catch (googleError) {
+                console.warn('Unofficial Google API failed:', googleError);
+            }
+            
+            // If all APIs fail, return the original text with a language tag
+            return `[${targetLang.toUpperCase()}] ${text}`;
         } catch (error) {
-            console.error('Google Translate API error:', error);
+            console.error('Translation error:', error);
             return text; // Return original text on error
         }
     };
+    
+    // Alias for backward compatibility
+    const googleTranslate = freeTranslateService;
     
     // Helper function to preserve capitalization pattern from source to target text
     const preserveCapitalization = (sourceText, translatedText) => {
@@ -325,85 +352,7 @@ export const TextProvider = ({ children }) => {
         return translatedText;
     };
     
-    // Mock translation API (replace with real API)
-    const mockTranslateAPI = async (text, targetLanguage) => {
-        // This is just a placeholder. In a real implementation, you would call an actual translation API.
-        // For example, Google Translate, DeepL, or Microsoft Translator
-        
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        // Simple word replacements for demo purposes
-        const translations = {
-            en: {
-                // Common Swedish words translated to English
-                'Hem': 'Home',
-                'Om oss': 'About us',
-                'Kontakt': 'Contact',
-                'Regler': 'Rules',
-                'Tävlingar': 'Competitions',
-                'Senaste nytt': 'Latest news',
-                'Läs mer': 'Read more',
-                'Skicka': 'Send',
-                'Välkommen': 'Welcome',
-                'Boka': 'Book',
-                'Resultat': 'Results',
-                'Bilder': 'Images',
-                'Video': 'Video',
-                'Delningsbilder': 'Sharing images',
-                'Meta Texter': 'Meta Texts',
-                'Redigera språk': 'Edit language',
-                'Redigera': 'Edit',
-                'Spara': 'Save',
-                'Avbryt': 'Cancel'
-            },
-            no: {
-                // Common Swedish words translated to Norwegian
-                'Hem': 'Hjem',
-                'Om oss': 'Om oss',
-                'Kontakt': 'Kontakt',
-                'Regler': 'Regler',
-                'Tävlingar': 'Konkurranser',
-                'Senaste nytt': 'Siste nytt',
-                'Läs mer': 'Les mer',
-                'Skicka': 'Send',
-                'Välkommen': 'Velkommen',
-                'Boka': 'Bestill',
-                'Resultat': 'Resultater',
-                'Bilder': 'Bilder',
-                'Video': 'Video',
-                'Delningsbilder': 'Delingsbilder',
-                'Meta Texter': 'Meta Tekster',
-                'Redigera språk': 'Rediger språk',
-                'Redigera': 'Rediger',
-                'Spara': 'Lagre',
-                'Avbryt': 'Avbryt'
-            }
-        };
-        
-        if (!text) return '';
-        
-        // Simple word replacement for demo purposes
-        let translatedText = text;
-        const wordMap = translations[targetLanguage] || {};
-        
-        // Replace words that match exactly
-        Object.entries(wordMap).forEach(([swedish, translated]) => {
-            const regex = new RegExp(`\\b${swedish}\\b`, 'gi');
-            translatedText = translatedText.replace(regex, translated);
-        });
-        
-        // For words not in our dictionary, add a language tag for demonstration
-        if (translatedText === text) {
-            const langPrefix = {
-                en: '[EN] ',
-                no: '[NO] '
-            };
-            translatedText = `${langPrefix[targetLanguage] || ''}${text}`;
-        }
-        
-        return translatedText;
-    };
+    // Removed mock translation API - now using real Google Cloud Translation API
     
     const value = {
         getText,

@@ -11,8 +11,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         currentLanguage, 
         LANGUAGES, 
         LANGUAGE_NAMES,
-        translateText,
-        mockTranslateAPI 
+        translateText
     } = useText();
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState('');
@@ -227,7 +226,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                                             className="modal-action-button modal-action-button--secondary modal-action-button--small"
                                             disabled={isTranslating}
                                         >
-                                            {isTranslating ? 'Översätter...' : `Översätt automatiskt`}
+                                            {isTranslating ? 'Översätter...' : `Översätt till ${LANGUAGE_NAMES[lang]}`}
                                         </button>
                                     )}
                                 </div>
