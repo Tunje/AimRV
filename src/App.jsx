@@ -26,6 +26,7 @@ import ContentManager from './components/ContentManager';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { TextProvider } from './context/TextContext';
+import { LanguageProvider } from './context/LanguageContext';
 import BackgroundEditor from './components/BackgroundEditor';
 import AdEditor from './components/AdEditor';
 import Background from './components/Background';
@@ -42,8 +43,9 @@ const App = () => {
 
     return (
         <AuthProvider>
-            <TextProvider>
-                <Router>
+            <LanguageProvider>
+                <TextProvider>
+                    <Router>
                     <MetaUpdater />
                     <div className="flex flex_col MaxWH location" style={{ 
                         width: '100%', 
@@ -98,8 +100,9 @@ const App = () => {
                         </div>
                         <Footer />
                     </div>
-                </Router>
-            </TextProvider>
+                    </Router>
+                </TextProvider>
+            </LanguageProvider>
         </AuthProvider>
     );
 };
