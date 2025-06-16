@@ -1,77 +1,77 @@
 /* Base button style */
 .button {
-    background-color: #E87722; /* Orange secondary */
-    color: #F5F5F5; /* Light gray secondary */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners */
-    padding: 10px 20px; /* Increased padding for a larger button */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  background-color: #e87722; /* Orange secondary */
+  color: #f5f5f5; /* Light gray secondary */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Increased padding for a larger button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 
-    &:hover {
-        background-color: darken(#E87722, 10%); /* Darker orange */
-    }
+  &:hover {
+    background-color: darken(#e87722, 10%); /* Darker orange */
+  }
 
-    &:disabled {
-        background-color: #A0A0A0; /* Dark gray secondary */
-        cursor: not-allowed;
-    }
+  &:disabled {
+    background-color: #a0a0a0; /* Dark gray secondary */
+    cursor: not-allowed;
+  }
 }
 
 /* Base button style */
 .button-2 {
-    background-color: #E87722; /* Orange secondary */
-    color: white;
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 16px; /* Text size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    padding: 10px 20px; /* Increased padding for a larger button */
-    margin: 10px; /* Add margin to space it out */
-    z-index: 20;
-    position: relative;
-    min-width: 120px;
-    min-height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #e87722; /* Orange secondary */
+  color: white;
+  border: none; /* No border */
+  border-radius: 25px; /* Rounded corners */
+  font-size: 16px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  padding: 10px 20px; /* Increased padding for a larger button */
+  margin: 10px; /* Add margin to space it out */
+  z-index: 20;
+  position: relative;
+  min-width: 120px;
+  min-height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Hover effect */
 .button-2:hover {
-    background-color: darken(#E87722, 10%); /* Darker orange */
+  background-color: darken(#e87722, 10%); /* Darker orange */
 }
 
 .button-secondary {
-    background-color: #E87722; /* Orange secondary */
-    color: #2D4F60; /* Dark blue primary */
-    border: 1px solid #A0A0A0; /* Dark gray secondary */
+  background-color: #e87722; /* Orange secondary */
+  color: #2d4f60; /* Dark blue primary */
+  border: 1px solid #a0a0a0; /* Dark gray secondary */
 
-    &:hover {
-        background-color: darken(#E87722, 10%); /* Darker orange */
-        color: #F5F5F5; /* Light gray secondary */
-    }
+  &:hover {
+    background-color: darken(#e87722, 10%); /* Darker orange */
+    color: #f5f5f5; /* Light gray secondary */
+  }
 }
 
 .button-transparent {
-    background-color: transparent;
-    color: #F5F5F5; /* Light gray secondary */
-    border: 2px solid #E87722; /* Orange secondary */
+  background-color: transparent;
+  color: #f5f5f5; /* Light gray secondary */
+  border: 2px solid #e87722; /* Orange secondary */
 
-    &:hover {
-        background-color: #E87722; /* Orange secondary */
-    }
+  &:hover {
+    background-color: #e87722; /* Orange secondary */
+  }
 }
 
 .button-large {
-    padding: 15px 30px;
-    font-size: 1.2rem;
+  padding: 15px 30px;
+  font-size: 1.2rem;
 }
 
 .button-small {
-    padding: 8px 15px;
-    font-size: 0.9rem;
+  padding: 8px 15px;
+  font-size: 0.9rem;
 }
 
 /* Global button styles to ensure all buttons have rounded corners */
@@ -81,10 +81,10 @@ button {
   max-width: 100px;
   max-height: 15px;
   min-height: 15px;
-  border: 1px solid #2D4F60;  /* Primary dark blue border */
+  border: 1px solid #2d4f60; /* Primary dark blue border */
   border-radius: 20px;
   background-color: white;
-  color: #2D4F60;  /* Primary dark blue text */
+  color: #2d4f60; /* Primary dark blue text */
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -92,86 +92,102 @@ button {
   justify-content: center;
 
   &:hover {
-    background-color: #2D4F60;  /* Primary dark blue background */
-    color: white;  /* White text */
+    background-color: #2d4f60; /* Primary dark blue background */
+    color: white; /* White text */
   }
 }
 
 .btn,
-input[type="button"], 
-input[type="submit"], 
+input[type="button"],
+input[type="submit"],
 input[type="reset"],
 a.button,
 a.btn {
-    border-radius: 25px; /* Enforce rounded corners on all button elements */
-    overflow: hidden; /* Ensure content respects the border radius */
+  border-radius: 25px; /* Enforce rounded corners on all button elements */
+  overflow: hidden; /* Ensure content respects the border radius */
 }
 
 /* Override any global styles that might be affecting buttons */
 a.button-2,
 .button-2,
 .location.button-2 {
-    border-radius: 25px;
-    clip-path: none;
+  border-radius: 25px;
+  clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
 .modal-action-button {
-    min-width: 120px;
-    max-width: none;
-    min-height: 40px;
-    max-height: 40px;
-    border: 1px solid #2D4F60;
-    border-radius: 20px;
-    background-color: white;
-    color: #2D4F60;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 8px 20px;
+  min-width: 120px;
+  max-width: none;
+  min-height: 40px;
+  max-height: 40px;
+  border: 1px solid #2d4f60;
+  border-radius: 20px;
+  background-color: white;
+  color: #2d4f60;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 8px 20px;
+
+  &:hover {
+    background-color: #2d4f60;
+    color: white;
+  }
+
+  &--primary {
+    @extend .modal-action-button;
+    background-color: #2d4f60;
+    color: white;
 
     &:hover {
-        background-color: #2D4F60;
-        color: white;
+      background-color: #6a9fb5;
+      border-color: #6a9fb5;
     }
 
-    &--primary {
-        @extend .modal-action-button;
-        background-color: #2D4F60;
-        color: white;
-
-        &:hover {
-            background-color: #6A9FB5;
-            border-color: #6A9FB5;
-        }
-
-        &:disabled {
-            background-color: #cccccc;
-            border-color: #cccccc;
-            cursor: not-allowed;
-        }
+    &:disabled {
+      background-color: #cccccc;
+      border-color: #cccccc;
+      cursor: not-allowed;
     }
+  }
 
-    &--secondary {
-        @extend .modal-action-button;
-        background-color: white;
-        
-        &:hover {
-            background-color: #f0f0f0;
-            color: #2D4F60;
-        }
+  &--secondary {
+    @extend .modal-action-button;
+    background-color: white;
+
+    &:hover {
+      background-color: #f0f0f0;
+      color: #2d4f60;
     }
+  }
 }
 
 // Ensure booking buttons are left-aligned
-.booking-button, 
-.kolmarden-button, 
-.salen-button, 
-.ulricehamn-button, 
+.booking-button,
+.kolmarden-button,
+.salen-button,
+.ulricehamn-button,
 .hemsedal-button,
 [data-textkey*="boka"] {
   text-align: left !important;
+}
+
+// Improved navbar button styling for better text fitting
+.nav-button {
+  padding: 5px 13px;
+  min-width: 90px;
+  max-width: 110px;
+  min-height: 25px;
+  max-height: 30px;
+
+  a {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

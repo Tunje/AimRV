@@ -88,76 +88,43 @@ const Navbar = () => {
         <div className="navbside">
           {/* Tävlingar Button */}
           <div className="nav-button dropdown-container">
-            <Link
-              to="/competitions"
-              className="dropdown-trigger"
-            >
+            <Link to="/competitions" className="dropdown-trigger">
               Tävlingar
             </Link>
             <div className="drop-down">
-              <Link
-                to="/ulricehamn"
-                className="drop-item"
-              >
+              <Link to="/ulricehamn" className="drop-item">
                 ULRICEHAMN
               </Link>
-              <Link
-                to="/salen"
-                className="drop-item"
-              >
+              <Link to="/salen" className="drop-item">
                 SÄLEN
               </Link>
-              <Link
-                to="/hemsedal"
-                className="drop-item"
-              >
+              <Link to="/hemsedal" className="drop-item">
                 HEMSEDAL
               </Link>
-              <Link
-                to="/kolmarden"
-                className="drop-item"
-              >
+              <Link to="/kolmarden" className="drop-item">
                 KOLMÅRDEN
               </Link>
-              <Link
-                to="/trippeln"
-                className="drop-item"
-              >
+              <Link to="/trippeln" className="drop-item">
                 TRIPPELN
               </Link>
-              <Link
-                to="/results"
-                className="drop-item"
-              >
+              <Link to="/results" className="drop-item">
                 RESULTAT
               </Link>
             </div>
           </div>
           {/* Om oss Button */}
           <div className="nav-button dropdown-container">
-            <Link
-              to="/om-oss"
-              className="dropdown-trigger"
-            >
+            <Link to="/om-oss" className="dropdown-trigger">
               Om oss
             </Link>
             <div className="drop-down">
-              <Link
-                to="/regler"
-                className="drop-item"
-              >
+              <Link to="/regler" className="drop-item">
                 Regler
               </Link>
-              <Link
-                to="/faq"
-                className="drop-item"
-              >
+              <Link to="/faq" className="drop-item">
                 FAQ
               </Link>
-              <Link
-                to="/historien-om-aim"
-                className="drop-item"
-              >
+              <Link to="/historien-om-aim" className="drop-item">
                 Historien om AIM
               </Link>
             </div>
@@ -187,7 +154,7 @@ const Navbar = () => {
             <Link to="#">Kontakta oss</Link>
           </div>
           {/* Language Switcher */}
-          <div className="nav-button language-nav-button">
+          <div className="language-switcher-container">
             <LanguageSwitcher />
           </div>
 

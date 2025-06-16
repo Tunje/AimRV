@@ -180,6 +180,15 @@ body {
     min-width: 700px;
     max-width: 700px;
   }
+
+  .navbar {
+    padding: 2rem 1.5rem;
+  }
+
+  .nav-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -198,12 +207,54 @@ body {
   .navbar {
     justify-content: space-between !important;
     padding: 0 20px;
+    max-height: 80px;
+    min-height: 80px;
+  }
+
+  .navim {
+    max-height: 80px;
+    min-height: 80px;
+    min-width: 120px;
+    max-width: 120px;
   }
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    padding: 0 10px;
+    max-height: 70px;
+    min-height: 70px;
+  }
+
   .navim {
-    min-width: 120px;
-    max-width: 120px;
+    max-height: 70px;
+    min-height: 70px;
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .hamburger-menu {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobile-menu {
+    top: 70px;
+    max-height: calc(100vh - 70px);
+    padding: 15px 10px;
+  }
+
+  .mobile-menu-header {
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-link {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+
+  .mobile-submenu-item {
+    font-size: 0.85rem;
+    padding: 6px 0;
   }
 }

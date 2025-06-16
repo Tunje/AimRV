@@ -1,0 +1,296 @@
+// Responsive styles for informational pages (FAQ, Om Oss, Regler, etc.)
+
+/* Common styles for info pages */
+@media (max-width: 1200px) {
+  .info-page-container {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  .info-page-title {
+    font-size: 2.5rem;
+  }
+
+  .info-section {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .info-page-container {
+    padding: 1.8rem;
+    max-width: 95%;
+  }
+
+  .info-page-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .info-section-title {
+    font-size: 1.8rem;
+  }
+
+  .info-section {
+    margin-bottom: 2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-image-container {
+    height: 350px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-page-container {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .info-page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-text {
+    font-size: 0.95rem;
+  }
+
+  .info-image-container {
+    height: 300px;
+  }
+
+  .info-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .info-page-container {
+    padding: 1rem;
+  }
+
+  .info-page-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .info-section-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .info-text {
+    font-size: 0.9rem;
+  }
+
+  .info-image-container {
+    height: 200px;
+  }
+
+  .info-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .info-button {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+/* FAQ specific styles */
+@media (max-width: 992px) {
+  .faq-container {
+    padding: 1.8rem;
+  }
+
+  .faq-title {
+    font-size: 2.2rem;
+  }
+
+  .faq-category-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 1.5rem;
+  }
+
+  .faq-title {
+    font-size: 2rem;
+  }
+
+  .faq-category-title {
+    font-size: 1.6rem;
+  }
+
+  .faq-item {
+    margin-bottom: 1rem;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  }
+
+  .faq-answer {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .faq-container {
+    padding: 1rem;
+  }
+
+  .faq-title {
+    font-size: 1.8rem;
+  }
+
+  .faq-category-title {
+    font-size: 1.4rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+
+  .faq-answer {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Om Oss specific styles */
+@media (max-width: 992px) {
+  .om-oss-container {
+    padding: 1.8rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .team-member {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .om-oss-container {
+    padding: 1.5rem;
+  }
+
+  .team-member {
+    padding: 1rem;
+  }
+
+  .team-member-name {
+    font-size: 1.3rem;
+  }
+
+  .team-member-role {
+    font-size: 0.9rem;
+  }
+
+  .team-member-bio {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .om-oss-container {
+    padding: 1rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .team-member-name {
+    font-size: 1.2rem;
+  }
+
+  .team-member-bio {
+    font-size: 0.9rem;
+  }
+}
+
+/* Regler specific styles */
+@media (max-width: 992px) {
+  .regler-container {
+    padding: 1.8rem;
+  }
+
+  .rule-section {
+    margin-bottom: 2rem;
+  }
+
+  .rule-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .regler-container {
+    padding: 1.5rem;
+  }
+
+  .rule-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .rule-title {
+    font-size: 1.6rem;
+  }
+
+  .rule-text {
+    font-size: 0.95rem;
+  }
+
+  .rule-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .regler-container {
+    padding: 1rem;
+  }
+
+  .rule-section {
+    margin-bottom: 1.2rem;
+  }
+
+  .rule-title {
+    font-size: 1.4rem;
+  }
+
+  .rule-text {
+    font-size: 0.9rem;
+  }
+
+  .rule-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+}
