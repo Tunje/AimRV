@@ -2,7 +2,7 @@
   &-title {
     margin-bottom: 20px;
     text-align: center;
-    color: #2D4F60; /* Primary dark blue */
+    color: #2d4f60; /* Primary dark blue */
   }
 
   &-description {
@@ -11,12 +11,12 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    color: #FFFFFF; /* White text */
+    color: #ffffff; /* White text */
   }
 
   &-news-section {
     padding: 50px 0;
-    background-color: #2D4F60; /* Primary dark blue */
+    background-color: #ffffff; /* White background */
   }
 
   &-container {
@@ -31,23 +31,25 @@
     font-size: 2rem;
     margin-bottom: 30px;
     text-align: center;
-    color: #F5F5F5; /* Light gray secondary */
+    color: #f5f5f5; /* Light gray secondary */
   }
 
   &-news-grid {
-    gap: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
   }
 
   &-news-card {
-    width: calc(50% - 15px);
+    width: 100%;
     margin-bottom: 30px;
-    background-color: #6A9FB5; /* Primary light blue */
+    background-color: #6a9fb5; /* Primary light blue */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -79,7 +81,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    
+
     &--empty {
       display: flex;
       justify-content: center;
@@ -90,7 +92,7 @@
       height: 250px;
     }
   }
-  
+
   &-news-image-alt {
     position: absolute;
     top: 0;
@@ -117,29 +119,34 @@
 
   &-news-card-title {
     margin-bottom: 5px;
-    color: #F5F5F5; /* Light gray secondary */
+    color: #f5f5f5; /* Light gray secondary */
   }
 
   &-news-date {
-    color: #E87722; /* Orange secondary */
+    color: #e87722; /* Orange secondary */
     margin-bottom: 15px;
   }
 
   &-read-more {
     margin-top: 15px;
-    
+
     &-text {
       font-weight: bold;
-      color: #E87722; /* Orange secondary */
+      color: #e87722; /* Orange secondary */
     }
   }
 
   &-card-actions {
     padding: 1rem 1.5rem;
-    background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
+    background-color: rgba(
+      245,
+      245,
+      245,
+      0.1
+    ); /* Light gray secondary with opacity */
     .action-button {
-      background-color: #2D4F60; /* Primary dark blue */
-      color: #F5F5F5; /* Light gray secondary */
+      background-color: #2d4f60; /* Primary dark blue */
+      color: #f5f5f5; /* Light gray secondary */
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 4px;
@@ -147,22 +154,27 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #6A9FB5; /* Primary light blue */
+        background-color: #6a9fb5; /* Primary light blue */
       }
 
       &.secondary {
         background-color: transparent;
-        border: 1px solid #F5F5F5; /* Light gray secondary */
+        border: 1px solid #f5f5f5; /* Light gray secondary */
 
         &:hover {
-          background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
+          background-color: rgba(
+            245,
+            245,
+            245,
+            0.1
+          ); /* Light gray secondary with opacity */
         }
       }
     }
   }
 
   &-news-filters {
-    background-color: #6A9FB5; /* Primary light blue */
+    background-color: #6a9fb5; /* Primary light blue */
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -172,21 +184,22 @@
       margin-bottom: 1rem;
 
       label {
-        color: #F5F5F5; /* Light gray secondary */
+        color: #f5f5f5; /* Light gray secondary */
         min-width: 100px;
       }
 
-      select, input {
-        background-color: #F5F5F5; /* Light gray secondary */
-        color: #2D4F60; /* Primary dark blue */
-        border: 1px solid #A0A0A0; /* Dark gray secondary */
+      select,
+      input {
+        background-color: #f5f5f5; /* Light gray secondary */
+        color: #2d4f60; /* Primary dark blue */
+        border: 1px solid #a0a0a0; /* Dark gray secondary */
         padding: 0.5rem;
         border-radius: 4px;
         flex: 1;
 
         &:focus {
           outline: none;
-          border-color: #E87722; /* Orange secondary */
+          border-color: #e87722; /* Orange secondary */
         }
       }
     }
@@ -195,8 +208,8 @@
       margin-top: 1rem;
 
       button {
-        background-color: #2D4F60; /* Primary dark blue */
-        color: #F5F5F5; /* Light gray secondary */
+        background-color: #2d4f60; /* Primary dark blue */
+        color: #f5f5f5; /* Light gray secondary */
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 4px;
@@ -204,15 +217,20 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #6A9FB5; /* Primary light blue */
+          background-color: #6a9fb5; /* Primary light blue */
         }
 
         &.reset {
           background-color: transparent;
-          border: 1px solid #F5F5F5; /* Light gray secondary */
+          border: 1px solid #f5f5f5; /* Light gray secondary */
 
           &:hover {
-            background-color: rgba(245, 245, 245, 0.1); /* Light gray secondary with opacity */
+            background-color: rgba(
+              245,
+              245,
+              245,
+              0.1
+            ); /* Light gray secondary with opacity */
           }
         }
       }
@@ -224,8 +242,8 @@
   }
 
   &-create-post-button {
-    background-color: #2D4F60; /* Primary dark blue */
-    color: #F5F5F5; /* Light gray secondary */
+    background-color: #2d4f60; /* Primary dark blue */
+    color: #f5f5f5; /* Light gray secondary */
     border: none;
     border-radius: 4px;
     padding: 40px 20px;
@@ -236,15 +254,15 @@
     min-width: 120px;
     text-align: center;
     transition: background-color 0.3s ease;
-    
+
     &:hover {
-      background-color: #6A9FB5; /* Primary light blue */
+      background-color: #6a9fb5; /* Primary light blue */
     }
   }
 
   &-delete-post-button {
-    background-color: #2D4F60; /* Primary dark blue */
-    color: #F5F5F5; /* Light gray secondary */
+    background-color: #2d4f60; /* Primary dark blue */
+    color: #f5f5f5; /* Light gray secondary */
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
@@ -253,20 +271,20 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
-    
+
     &:hover {
-      background-color: #6A9FB5; /* Primary light blue */
+      background-color: #6a9fb5; /* Primary light blue */
     }
   }
 
   &-subscribe-section {
-    background-color: #2D4F60; /* Primary dark blue */
+    background-color: #2d4f60; /* Primary dark blue */
   }
 
   &-subscribe-description {
     text-align: center;
     margin-bottom: 20px;
-    color: #FFFFFF; /* White text */
+    color: #ffffff; /* White text */
   }
 
   &-form {
@@ -276,14 +294,14 @@
 
     label {
       font-weight: bold;
-      color: #F5F5F5; /* Light gray secondary */
+      color: #f5f5f5; /* Light gray secondary */
     }
 
     input,
     textarea {
       width: 100%;
       padding: 8px;
-      border: 1px solid #A0A0A0; /* Dark gray secondary */
+      border: 1px solid #a0a0a0; /* Dark gray secondary */
       border-radius: 4px;
     }
 
@@ -291,15 +309,15 @@
       cursor: pointer;
       padding: 15px 60px;
       font-size: 18px;
-      background-color: #2D4F60; /* Primary dark blue */
-      color: #F5F5F5; /* Light gray secondary */
+      background-color: #2d4f60; /* Primary dark blue */
+      color: #f5f5f5; /* Light gray secondary */
       border: none;
       border-radius: 4px;
       min-width: 200px;
       text-align: center;
-      
+
       &:hover {
-        background-color: #6A9FB5; /* Primary light blue */
+        background-color: #6a9fb5; /* Primary light blue */
       }
     }
 
@@ -341,24 +359,24 @@
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #f5f5f5;
-    
+
     h4 {
       margin-top: 0;
       margin-bottom: 10px;
     }
-    
+
     p {
       margin: 5px 0;
       word-break: break-all;
     }
   }
-  
+
   &-debug-image-container {
     max-width: 100%;
     overflow: hidden;
     margin-top: 10px;
   }
-  
+
   &-debug-image {
     max-width: 100%;
     height: auto;
@@ -386,22 +404,22 @@
 .senaste-nytt-subscribe-description {
   text-align: center;
   margin-bottom: 20px;
-  color: #F5F5F5; /* Light gray secondary */
+  color: #f5f5f5; /* Light gray secondary */
 }
 
 // Subscribe button
 .senaste-nytt-subscribe-button {
-  background-color: #2D4F60; /* Primary dark blue */
-  color: #F5F5F5; /* Light gray secondary */
+  background-color: #2d4f60; /* Primary dark blue */
+  color: #f5f5f5; /* Light gray secondary */
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s ease;
-  
+
   &:hover {
-    background-color: #6A9FB5; /* Primary light blue */
+    background-color: #6a9fb5; /* Primary light blue */
   }
 }
 
@@ -412,16 +430,17 @@
 }
 
 // Add this to center titles in Senaste Nytt component
-.senaste-nytt-title, .news-title {
-    text-align: center;
+.senaste-nytt-title,
+.news-title {
+  text-align: center;
 }
 
 // Main title with dark blue color that overrides parent styles
 .senaste-nytt-main-title {
-  color: #2D4F60 !important; /* Primary dark blue */
+  color: #2d4f60 !important; /* Primary dark blue */
 }
 
 // Keep news content left-aligned
 .news-content {
-    text-align: left;
+  text-align: left;
 }

@@ -1,0 +1,308 @@
+// Responsive styles for all competition pages
+
+/* Common responsive styles for all competition pages */
+@media (max-width: 1200px) {
+  .hero-image-container {
+    height: 450px;
+  }
+
+  .program-content-box {
+    padding: 30px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  /* Competitions grid responsive styles */
+  .competitions {
+    width: 100%;
+    overflow-x: hidden;
+
+    &-container {
+      max-width: 90%;
+      padding: 1.5rem;
+      width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    &-grid {
+      gap: 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &-title {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-image-container {
+    height: 400px;
+  }
+
+  .location-title {
+    font-size: 2.5rem;
+  }
+
+  .location-date {
+    font-size: 1.8rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .action-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .program-row {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  .program-image,
+  .program-info {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Competitions grid responsive styles */
+  .competitions {
+    &-container {
+      max-width: 95%;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    &-grid {
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    &-card {
+      height: 450px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &-title {
+      font-size: 2rem;
+    }
+
+    &-date {
+      font-size: 1.1rem;
+    }
+
+    &-button-container {
+      margin-top: 40px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 350px;
+  }
+
+  .location-title {
+    font-size: 2.2rem;
+    padding: 0 15px;
+  }
+
+  .location-date {
+    font-size: 1.5rem;
+  }
+
+  .program-content-box {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .program-image {
+    height: 250px;
+  }
+
+  .program-time {
+    font-size: 1.2rem;
+  }
+
+  .program-title {
+    font-size: 1.5rem;
+  }
+
+  /* Competitions grid responsive styles */
+  .competitions {
+    &-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    &-card {
+      height: 400px;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    &-header {
+      min-height: 70px;
+      max-height: 100px;
+      padding: 5px 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &-date {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &-button-container {
+      padding: 15px 0 30px;
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    &-spacer {
+      height: 80px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-image-container {
+    height: 300px;
+  }
+
+  .location-title {
+    font-size: 1.8rem;
+  }
+
+  .location-date {
+    font-size: 1.2rem;
+  }
+
+  .program-content-box {
+    padding: 15px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .program-time {
+    font-size: 1rem;
+  }
+
+  .program-title {
+    font-size: 1.2rem;
+  }
+
+  .program-description {
+    font-size: 0.9rem;
+  }
+
+  /* Competitions grid responsive styles */
+  .competitions {
+    &-container {
+      padding: 0.8rem;
+      width: 100%;
+    }
+
+    &-card {
+      height: 350px;
+      width: 100%;
+    }
+
+    &-header {
+      min-height: 60px;
+      max-height: 90px;
+      width: 100%;
+    }
+
+    &-title {
+      font-size: 1.5rem;
+      width: 100%;
+    }
+
+    &-date {
+      font-size: 0.9rem;
+    }
+
+    &-button-container {
+      padding: 10px 0 20px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    &-spacer {
+      height: 60px;
+    }
+  }
+}
+
+/* Specific adjustments for individual competition pages */
+/* Ulricehamn */
+@media (max-width: 768px) {
+  .ulricehamn-container {
+    padding: 0;
+  }
+}
+
+/* Sälen */
+@media (max-width: 768px) {
+  .salen-container {
+    padding: 0;
+  }
+}
+
+/* Hemsedal */
+@media (max-width: 768px) {
+  .hemsedal-container {
+    padding: 0;
+  }
+}
+
+/* Kolmården */
+@media (max-width: 768px) {
+  .kolmarden-container {
+    padding: 0;
+  }
+}
+
+/* Trippeln */
+@media (max-width: 768px) {
+  .trippeln-container {
+    padding: 0;
+  }
+
+  .trippeln-stages {
+    flex-direction: column;
+  }
+
+  .trippeln-stage {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
