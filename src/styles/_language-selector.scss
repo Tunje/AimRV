@@ -38,6 +38,69 @@
       }
     }
   }
+
+  // New navbar-specific language buttons
+  &.navbar-language {
+    margin: 0;
+    
+    .navbar-lang-options {
+      display: flex;
+      gap: 0.15rem;
+      width: 130px; /* Approximately 1/3 of standard button container width */
+      max-width: 130px;
+    }
+    
+    .navbar-lang-button {
+      height: 30px; // Same height as other navbar buttons
+      width: 40px; // Approximately 1/3 of standard button width
+      max-width: 40px;
+      min-width: 40px;
+      padding: 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #f8f9fa;
+      color: #333;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      
+      &:hover {
+        background-color: #e9ecef;
+        color: #0056b3;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      }
+      
+      &--active {
+        background-color: #0056b3;
+        color: white;
+        font-weight: 700;
+        
+        &:hover {
+          background-color: #004494;
+          color: white;
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 4px;
+          background-color: #0056b3;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
   
   &__translation-status {
     margin-top: 0.5rem;

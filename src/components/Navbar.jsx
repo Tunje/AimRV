@@ -187,8 +187,8 @@ const Navbar = () => {
             <Link to="#">Kontakta oss</Link>
           </div>
           {/* Language Switcher */}
-          <div className="nav-button language-nav-button">
-            <LanguageSwitcher />
+          <div className="language-nav-container">
+            <LanguageSwitcher className="" />
           </div>
 
           {/* Content Manager and Logout Buttons - Only visible when logged in */}

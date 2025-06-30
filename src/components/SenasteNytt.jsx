@@ -12,7 +12,24 @@ const SenasteNytt = () => {
     const [email, setEmail] = useState('');
     const [subscribed, setSubscribed] = useState(false);
     const [showCreateModal, setShowCreateModal] = useState(false);
-    const { isAdmin } = useText();
+    const { isAdmin, currentLanguage } = useText();
+    const [readMoreText, setReadMoreText] = useState('');
+    
+    // Update button text when language changes
+    useEffect(() => {
+        // For English
+        if (currentLanguage === 'en') {
+            setReadMoreText('Read more');
+        }
+        // For Norwegian
+        else if (currentLanguage === 'no') {
+            setReadMoreText('Les mer');
+        }
+        // Default to Swedish
+        else {
+            setReadMoreText('Läs mer');
+        }
+    }, [currentLanguage]);
     const [newsPosts, setNewsPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -273,7 +290,7 @@ const SenasteNytt = () => {
                                     <p className="senaste-nytt-news-date">{post.date}</p>
                                     <p className="senaste-nytt-news-text">{post.content}</p>
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">
-                                        Läs mer
+                                        {readMoreText}
                                     </Link>
                                     {isAdmin && (
                                         <button

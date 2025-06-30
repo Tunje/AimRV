@@ -1,12 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
 import NewsCarousel from "./NewsCarousel";
 import SponsorEditor from "./SponsorEditor";
 import "../styles/index.css";
+import { useText } from "../context/TextContext";
 
 const Ulricehamn = () => {
+  const { currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  const [registerButtonText, setRegisterButtonText] = useState('');
+  const [latestNewsText, setLatestNewsText] = useState('');
+  const [usefulLinksText, setUsefulLinksText] = useState('');
+  const [localSponsorsText, setLocalSponsorsText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('Read more');
+      setRegisterButtonText('TAKE ME TO REGISTRATION');
+      setLatestNewsText('LATEST NEWS ULRICEHAMN');
+      setUsefulLinksText('USEFUL LINKS');
+      setLocalSponsorsText('LOCAL SPONSORS');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('Les mer');
+      setRegisterButtonText('TA MEG TIL PÅMELDING');
+      setLatestNewsText('SISTE NYTT ULRICEHAMN');
+      setUsefulLinksText('NYTTIGE LENKER');
+      setLocalSponsorsText('LOKALE SPONSORER');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('Läs mer');
+      setRegisterButtonText('TA MIG TILL ANMÄLAN');
+      setLatestNewsText('SENASTE NYTT ULRICEHAMN');
+      setUsefulLinksText('NYTTIGA LÄNKAR');
+      setLocalSponsorsText('LOKALA SPONSORER');
+    }
+  }, [currentLanguage]);
+
   return (
     <>
       <BackgroundEditor key="ulricehamn-background-editor" />
@@ -50,7 +88,7 @@ const Ulricehamn = () => {
             rel="noopener noreferrer"
             className="anmalan-button"
           >
-            <p>TA MIG TILL ANMÄLAN</p>
+            <p>{registerButtonText}</p>
           </a>
         </div>
       </section>
@@ -286,7 +324,7 @@ const Ulricehamn = () => {
                     rel="noopener noreferrer"
                     className="price-anmalan-button"
                   >
-                    <p>TA MIG TILL ANMÄLAN</p>
+                    <p>{registerButtonText}</p>
                   </a>
                 </div>
               </div>
@@ -297,7 +335,7 @@ const Ulricehamn = () => {
 
       {/* Latest News section */}
       <section id="latest-news" className="latest-news-section">
-        <h2 className="latest-news-title">SENASTE NYTT ULRICEHAMN</h2>
+        <h2 className="latest-news-title">{latestNewsText}</h2>
         <div style={{ width: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
           <NewsCarousel instanceId="ulricehamn-news" defaultCategory="Ulricehamn" />
         </div>
@@ -308,7 +346,7 @@ const Ulricehamn = () => {
         <div className="useful-links-container">
           <EditableText
             textKey="ulricehamn-useful-links-title"
-            defaultText="NYTTIGA LÄNKAR"
+            defaultText={usefulLinksText}
             tag="h2"
             className="useful-links-title"
           />
@@ -364,7 +402,7 @@ const Ulricehamn = () => {
       <section className="sponsors-section">
         <EditableText
           textKey="ulricehamn-sponsors-title"
-          defaultText="LOKALA SPONSORER"
+          defaultText={localSponsorsText}
           tag="h2"
           className="sponsors-title"
         />

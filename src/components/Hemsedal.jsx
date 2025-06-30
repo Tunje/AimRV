@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
 import NewsCarousel from "./NewsCarousel";
 import "../styles/index.css";
+import { useText } from "../context/TextContext";
 
 const Hemsedal = () => {
+  const { currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('Read more');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('Les mer');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('Läs mer');
+    }
+  }, [currentLanguage]);
+  
   return (
     <>
       <BackgroundEditor key="hemsedal-background-editor" />

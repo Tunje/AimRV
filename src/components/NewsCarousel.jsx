@@ -11,7 +11,26 @@ const NewsCarousel = ({ instanceId, defaultCategory = 'Alla' }) => {
   const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
   const [categories, setCategories] = useState([defaultCategory]);
   const [showCategorySelector, setShowCategorySelector] = useState(false);
-  const { isAdmin } = useText();
+  const { isAdmin, currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('READ MORE');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('LES MER');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('LÄS MER');
+    }
+  }, [currentLanguage]);
   
   // Fetch all available categories from posts and add location categories
   useEffect(() => {
@@ -204,7 +223,7 @@ const NewsCarousel = ({ instanceId, defaultCategory = 'Alla' }) => {
                 </p>
                 <div className="news-button">
                   <Link to={`/news/${post.id}`} className="button-2">
-                    <span>LÄS MER</span>
+                    <span>{readMoreText}</span>
                   </Link>
                 </div>
               </div>
