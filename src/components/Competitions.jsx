@@ -1,9 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
+import { useText } from "../context/TextContext";
 
 const Competitions = () => {
+  const { currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('Read more');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('Les mer');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('Läs mer');
+    }
+  }, [currentLanguage]);
+  
   // Add BackgroundEditor to the component
   return (
     <>
@@ -34,7 +56,7 @@ const Competitions = () => {
               to="/ulricehamn"
               className="location button-2 competitions-button"
             >
-              <span>Läs mer</span>
+              <span>{readMoreText}</span>
             </Link>
           </div>
         </div>
@@ -58,7 +80,7 @@ const Competitions = () => {
           </div>
           <div className="competitions-button-container flex flex_col flex_j_SA flex_a_C MaxWH Button" style={{ position: 'relative', zIndex: 30 }}>
             <Link to="/salen" className="location button-2 competitions-button">
-              <span>Läs mer</span>
+              <span>{readMoreText}</span>
             </Link>
           </div>
         </div>
@@ -86,7 +108,7 @@ const Competitions = () => {
               to="/hemsedal"
               className="location button-2 competitions-button"
             >
-              <span>Läs mer</span>
+              <span>{readMoreText}</span>
             </Link>
           </div>
         </div>
@@ -113,7 +135,7 @@ const Competitions = () => {
               to="/kolmarden"
               className="location button-2 competitions-button"
             >
-              <span>Läs mer</span>
+              <span>{readMoreText}</span>
             </Link>
           </div>
         </div>
@@ -145,7 +167,7 @@ const Competitions = () => {
               to="/trippeln"
               className="location button-2 competitions-button"
             >
-              <span>Läs mer</span>
+              <span>{readMoreText}</span>
             </Link>
           </div>
         </div>

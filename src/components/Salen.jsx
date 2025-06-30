@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
 import NewsCarousel from "./NewsCarousel";
 import "../styles/index.css";
+import { useText } from "../context/TextContext";
 
 const Salen = () => {
+  const { currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  const [registerButtonText, setRegisterButtonText] = useState('');
+  const [latestNewsText, setLatestNewsText] = useState('');
+  const [usefulLinksText, setUsefulLinksText] = useState('');
+  const [localSponsorsText, setLocalSponsorsText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('Read more');
+      setRegisterButtonText('TAKE ME TO REGISTRATION');
+      setLatestNewsText('LATEST NEWS SÄLEN');
+      setUsefulLinksText('USEFUL LINKS');
+      setLocalSponsorsText('LOCAL SPONSORS');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('Les mer');
+      setRegisterButtonText('TA MEG TIL PÅMELDING');
+      setLatestNewsText('SISTE NYTT SÄLEN');
+      setUsefulLinksText('NYTTIGE LENKER');
+      setLocalSponsorsText('LOKALE SPONSORER');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('Läs mer');
+      setRegisterButtonText('TA MIG TILL ANMÄLAN');
+      setLatestNewsText('SENASTE NYTT SÄLEN');
+      setUsefulLinksText('NYTTIGA LÄNKAR');
+      setLocalSponsorsText('LOKALA SPONSORER');
+    }
+  }, [currentLanguage]);
+  
   // Include the BackgroundEditor component to enable image editing
   return (
     <>
@@ -50,7 +88,7 @@ const Salen = () => {
             rel="noopener noreferrer"
             className="anmalan-button"
           >
-            <p>TA MIG TILL ANMÄLAN</p>
+            <p>{registerButtonText}</p>
           </a>
         </div>
       </section>
@@ -286,7 +324,7 @@ const Salen = () => {
                     rel="noopener noreferrer"
                     className="price-anmalan-button"
                   >
-                    <p>TA MIG TILL ANMÄLAN</p>
+                    <p>{registerButtonText}</p>
                   </a>
                 </div>
               </div>
@@ -297,7 +335,7 @@ const Salen = () => {
 
       {/* Latest News section */}
       <section id="latest-news" className="latest-news-section">
-        <h2 className="latest-news-title">SENASTE NYTT SÄLEN</h2>
+        <h2 className="latest-news-title">{latestNewsText}</h2>
         <div style={{ width: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
           <NewsCarousel instanceId="salen-news" defaultCategory="Sälen" />
         </div>
@@ -308,7 +346,7 @@ const Salen = () => {
         <div className="useful-links-container">
           <EditableText
             textKey="salen-useful-links-title"
-            defaultText="NYTTIGA LÄNKAR"
+            defaultText={usefulLinksText}
             tag="h2"
             className="useful-links-title"
           />
@@ -362,7 +400,7 @@ const Salen = () => {
 
       {/* Sponsors Section */}
       <section className="sponsors-section">
-        <h2 className="sponsors-title">LOKALA SPONSORER</h2>
+        <h2 className="sponsors-title">{localSponsorsText}</h2>
         <div className="sponsors-container">
           {/* Local sponsors will be loaded dynamically by the SponsorEditor component */}
         </div>

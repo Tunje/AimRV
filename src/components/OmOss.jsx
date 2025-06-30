@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
+import { useText } from "../context/TextContext";
 
 const OmOss = () => {
+  const { currentLanguage } = useText();
+  
+  // State for button text
+  const [readMoreText, setReadMoreText] = useState('');
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setReadMoreText('READ MORE');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setReadMoreText('LES MER');
+    }
+    // Default to Swedish
+    else {
+      setReadMoreText('LÄS MER');
+    }
+  }, [currentLanguage]);
+  
   return (
     <>
       <BackgroundEditor key="om-oss-background-editor" />
@@ -163,7 +185,7 @@ const OmOss = () => {
           </div>
           <div className="om-oss-card-button">
             <Link to="/page2" className="location">
-              LÄS MER
+              {readMoreText}
             </Link>
           </div>
         </div>
@@ -186,7 +208,7 @@ const OmOss = () => {
           </div>
           <div className="om-oss-card-button">
             <Link to="/page3" className="location">
-              LÄS MER
+              {readMoreText}
             </Link>
           </div>
         </div>
@@ -209,7 +231,7 @@ const OmOss = () => {
           </div>
           <div className="om-oss-card-button">
             <Link to="/page3" className="location">
-              LÄS MER
+              {readMoreText}
             </Link>
           </div>
         </div>

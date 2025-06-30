@@ -54,7 +54,7 @@ export const checkAndTranslateContent = async (key, textContent, targetLanguage,
 };
 
 /**
- * Automatically translates all missing content for a given language
+ * Automatically translates all missing content for a given language using batch processing
  * @param {Object} textContent - The current text content
  * @param {string} targetLanguage - The language to translate to
  * @param {Function} translateFn - The translation function to use
@@ -63,15 +63,35 @@ export const checkAndTranslateContent = async (key, textContent, targetLanguage,
 export const translateAllMissingContent = async (textContent, targetLanguage, translateFn) => {
   if (targetLanguage === 'sv') return 0; // No need to translate Swedish content
   
+  // Find keys that need translation
+  const keysToTranslate = Object.keys(textContent).filter(key => {
+    // Skip internal properties
+    if (key.startsWith('_')) return false;
+    
+    // Check if content needs translation
+    if (typeof textContent[key] === 'object' && textContent[key]._isMultilingual) {
+      // Needs translation if target language content is missing but Swedish content exists
+      return !textContent[key][targetLanguage] && textContent[key].sv;
+    } else {
+      // Legacy content (not multilingual) needs translation if it exists
+      return !!textContent[key];
+    }
+  });
+  
+  // Process translations in batches of 10 for better performance
+  const batchSize = 10;
   let translatedCount = 0;
   
-  // Process each content key
-  for (const key of Object.keys(textContent)) {
-    // Skip internal properties
-    if (key.startsWith('_')) continue;
+  for (let i = 0; i < keysToTranslate.length; i += batchSize) {
+    const batch = keysToTranslate.slice(i, i + batchSize);
     
-    const wasTranslated = await checkAndTranslateContent(key, textContent, targetLanguage, translateFn);
-    if (wasTranslated) translatedCount++;
+    // Process batch in parallel
+    const results = await Promise.all(
+      batch.map(key => checkAndTranslateContent(key, textContent, targetLanguage, translateFn))
+    );
+    
+    // Count successful translations
+    translatedCount += results.filter(result => result).length;
   }
   
   return translatedCount;
