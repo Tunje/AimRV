@@ -3452,6 +3452,12 @@ a.button-2,
   padding: 0;
   box-sizing: border-box;
 }
+@media (max-width: 768px) {
+  .om-oss-cards-container {
+    flex-direction: column;
+    width: 100vw;
+  }
+}
 
 .om-oss-card {
   flex: 1;
@@ -3462,6 +3468,13 @@ a.button-2,
   flex-direction: column;
   justify-content: space-between;
   background-color: #6A9FB5; /* Light blue primary */
+}
+@media (max-width: 768px) {
+  .om-oss-card {
+    min-height: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 .om-oss-card-content {
