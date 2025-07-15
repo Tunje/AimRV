@@ -17,7 +17,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-const SponsorEditor = ({ location }) => {
+const SponsorEditor = ({ location, targetId }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedElement, setSelectedElement] = useState(null);
   const [sponsors, setSponsors] = useState([]);
@@ -42,6 +42,47 @@ const SponsorEditor = ({ location }) => {
     : "";
 
   useEffect(() => {
+    // Load sponsors from Firestore and ensure all images are properly loaded
+    const loadSponsors = async () => {
+      try {
+        console.log("Loading sponsors from Firestore...");
+        const sponsorsSnapshot = await getDocs(sponsorsCollection);
+        let sponsorsData = sponsorsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        console.log("All sponsors loaded from Firestore:", sponsorsData.length);
+
+        // Filter sponsors based on whether we're showing local partners or global sponsors
+        if (isLocalPartners && currentLocationName) {
+          // Show only sponsors for this specific location
+          sponsorsData = sponsorsData.filter(
+            (sponsor) => sponsor.location === currentLocationName
+          );
+          console.log(`Filtered to ${sponsorsData.length} local sponsors for ${currentLocationName}`);
+        } else {
+          // Show only global sponsors (those with no location)
+          sponsorsData = sponsorsData.filter((sponsor) => !sponsor.location);
+          console.log(`Filtered to ${sponsorsData.length} global sponsors`);
+        }
+
+        // Log all sponsor URLs for debugging
+        sponsorsData.forEach((sponsor, index) => {
+          console.log(`Sponsor ${index + 1}:`, {
+            id: sponsor.id,
+            url: sponsor.imageUrl,
+            isSVG: sponsor.imageUrl && sponsor.imageUrl.toLowerCase().includes('.svg')
+          });
+        });
+
+        // Update state with the filtered sponsors
+        setSponsors(sponsorsData);
+      } catch (error) {
+        console.error("Error loading sponsors:", error);
+      }
+    };
+
     loadSponsors();
   }, [currentLocationName, isLocalPartners]);
 
@@ -140,6 +181,7 @@ const SponsorEditor = ({ location }) => {
     };
   }, [isAdmin, currentLocationName]);
 
+  // Effect for handling clicks outside the modal
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -147,6 +189,9 @@ const SponsorEditor = ({ location }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  
+  // We're not going to use useEffect to render sponsors anymore
+  // Instead, we'll modify the main render function to use the exact same approach as the modal
 
   const handleClickOutside = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -160,94 +205,9 @@ const SponsorEditor = ({ location }) => {
     setNewSponsor({ imageUrl: "", link: "" });
   };
 
-  const loadSponsors = async () => {
-    try {
-      const sponsorsSnapshot = await getDocs(sponsorsCollection);
-      let sponsorsData = sponsorsSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+  // loadSponsors is now defined inside the useEffect
 
-      // Filter sponsors based on whether we're showing local partners or global sponsors
-      if (isLocalPartners && currentLocationName) {
-        // Show only sponsors for this specific location
-        sponsorsData = sponsorsData.filter(
-          (sponsor) => sponsor.location === currentLocationName
-        );
-      } else {
-        // Show only global sponsors (those with no location)
-        sponsorsData = sponsorsData.filter((sponsor) => !sponsor.location);
-      }
-
-      setSponsors(sponsorsData);
-      displaySponsors(sponsorsData);
-    } catch (error) {
-      console.error("Error loading sponsors:", error);
-    }
-  };
-
-  const displaySponsors = (sponsorsData) => {
-    // Determine which container to use based on whether we're showing local partners or global sponsors
-    let container;
-
-    if (isLocalPartners && currentLocationName) {
-      // For local partners, look for the sponsors container in the location page
-      container = document.querySelector(
-        ".sponsors-section .sponsors-container"
-      );
-    } else {
-      // For global sponsors, use the sponsors grid in the footer
-      container = document.querySelector(".sponsors-grid");
-    }
-
-    if (!container) return;
-
-    // Clear existing sponsors
-    container.innerHTML = "";
-
-    // Add each sponsor to the container
-    sponsorsData.forEach((sponsor) => {
-      if (!sponsor.imageUrl) return;
-
-      // Create sponsor item
-      const sponsorItem = document.createElement("div");
-
-      // Use appropriate class based on container type
-      if (isLocalPartners) {
-        sponsorItem.className = "s-sponsor-logo side-logo";
-      } else {
-        sponsorItem.className = "sponsor-item";
-      }
-
-      // Create image element
-      const imgElement = document.createElement("img");
-      imgElement.src = sponsor.imageUrl;
-      imgElement.alt = sponsor.name || "Sponsor";
-
-      if (isLocalPartners) {
-        // No specific class for local partner images
-      } else {
-        imgElement.className = "sponsor-logo";
-      }
-
-      // If there's a link, wrap the image in an anchor tag
-      if (sponsor.link) {
-        const linkElement = document.createElement("a");
-        linkElement.href = sponsor.link.startsWith("http")
-          ? sponsor.link
-          : `https://${sponsor.link}`;
-        linkElement.target = "_blank";
-        linkElement.rel = "noopener noreferrer";
-        linkElement.appendChild(imgElement);
-        sponsorItem.appendChild(linkElement);
-      } else {
-        sponsorItem.appendChild(imgElement);
-      }
-
-      // Add to container
-      container.appendChild(sponsorItem);
-    });
-  };
+  // We no longer need the displaySponsors function as we'll render sponsors using React
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -261,28 +221,42 @@ const SponsorEditor = ({ location }) => {
     setUploading(true);
 
     try {
+      // Log file information for debugging
+      console.log("File being uploaded:", {
+        name: file.name,
+        type: file.type,
+        size: file.size
+      });
+
       // Generate a completely new filename without using the original name at all
       const timestamp = Date.now();
-      const fileExtension = file.name ? file.name.split(".").pop() : "jpg";
+      const fileExtension = file.name ? file.name.split(".").pop().toLowerCase() : "jpg";
       const newFileName = `sponsor_${timestamp}.${fileExtension}`;
+      
+      console.log("File extension detected:", fileExtension);
+      console.log("New filename created:", newFileName);
+      
       // Use the exact same path format that works in AdEditor
       const storageRef = ref(
         storage,
         `gs://aimchallange-67039.firebasestorage.app/background-images/${newFileName}`
       );
 
-      console.log("Uploading sponsor image with new filename:", newFileName);
+      console.log("Uploading sponsor image with path:", storageRef.fullPath);
 
       // Upload the image
-      await uploadBytes(storageRef, file);
+      const uploadResult = await uploadBytes(storageRef, file);
+      console.log("Upload completed:", uploadResult);
 
       // Get the download URL
       const downloadURL = await getDownloadURL(storageRef);
+      console.log("Download URL received:", downloadURL);
 
       // Update state with the new image URL
       setNewSponsor((prev) => ({ ...prev, imageUrl: downloadURL }));
     } catch (error) {
       console.error("Error uploading image:", error);
+      console.error("Error details:", error.code, error.message);
     } finally {
       setUploading(false);
     }
@@ -317,8 +291,7 @@ const SponsorEditor = ({ location }) => {
       ];
       setSponsors(updatedSponsors);
 
-      // Display updated sponsors
-      displaySponsors(updatedSponsors);
+      // No need to call displaySponsors, React will handle rendering
 
       // Reset form
       setNewSponsor({
@@ -379,10 +352,7 @@ const SponsorEditor = ({ location }) => {
         updatedSponsors.splice(index, 1);
         setSponsors(updatedSponsors);
 
-        // Immediately update the display to remove the sponsor
-        setTimeout(() => {
-          displaySponsors(updatedSponsors);
-        }, 100);
+        // No need to call displaySponsors, React will handle rendering
       } else {
         console.log("Sponsor document not found");
       }
@@ -426,10 +396,76 @@ const SponsorEditor = ({ location }) => {
     }
   };
 
-  if (!isAdmin) return null;
+  // Render sponsors for the page - with clickability and SVG support
+  const renderSponsors = () => {
+    if (sponsors.length === 0) return null;
+    
+    return sponsors.map((sponsor, index) => {
+      if (!sponsor.imageUrl) return null;
+      
+      // Force image reload by adding a cache-busting parameter
+      const imageUrl = sponsor.imageUrl ? 
+        `${sponsor.imageUrl}${sponsor.imageUrl.includes('?') ? '&' : '?'}cache=${Date.now()}` : 
+        '';
+      
+      // Create the image with the critical class for SVG support
+      const image = (
+        <img
+          src={imageUrl}
+          alt={sponsor.name || `Sponsor ${index + 1}`}
+          className="background-editor-modal__ad-image"
+          onError={(e) => {
+            console.error("Error loading image:", sponsor.imageUrl);
+            e.target.onerror = null;
+            e.target.src = '/images/placeholder-logo.png'; // Fallback image
+          }}
+        />
+      );
+      
+      // Wrap in a clickable link if URL is provided
+      const content = sponsor.link ? (
+        <a 
+          href={sponsor.link.startsWith("http") ? sponsor.link : `https://${sponsor.link}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sponsor-link"
+        >
+          {image}
+        </a>
+      ) : image;
+      
+      // Return with the critical container class for SVG support
+      return (
+        <div
+          key={index}
+          className="background-editor-modal__ad-item"
+        >
+          {content}
+        </div>
+      );
+    });
+  };
+  
+  // Debug logging to see what's happening
+  console.log('SponsorEditor rendering with:', {
+    location,
+    targetId,
+    isAdmin,
+    sponsorsCount: sponsors.length,
+    isLocalPartners,
+    currentLocationName
+  });
 
+  // We want to render sponsors for all users, but only show edit functionality for admins
   return (
     <>
+      {/* When not in modal mode, render sponsors in the appropriate container */}
+      {!showModal && (
+        <div className={isLocalPartners ? "sponsors-section sponsors-container" : "sponsors-grid"}>
+          {renderSponsors()}
+        </div>
+      )}
+      
       {showModal && (
         <div
           className="background-editor-overlay"

@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './styles/index.css';
+import './styles/sponsors-fix.css';
 
 // Handle GitHub Pages redirect for SPA
 // This script checks if we've been redirected to /?/path
