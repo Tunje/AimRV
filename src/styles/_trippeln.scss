@@ -128,17 +128,18 @@
 .trippeln-cta-button {
   display: inline-block;
   padding: 15px 30px;
-  background-color: #f58220;
+  background-color: #2d4f60;
   color: white;
   text-decoration: none;
   font-family: "AFCarplets Bold", sans-serif;
   font-size: 18px;
-  border-radius: 5px;
+  border-radius: 30px;
   text-transform: uppercase;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    background-color: darken(#f58220, 10%);
+    background-color: white;
+    color: #2d4f60;
   }
 }
 

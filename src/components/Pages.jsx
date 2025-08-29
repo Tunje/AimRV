@@ -6,30 +6,32 @@ import NewsCarousel from "./NewsCarousel";
 
 const Pages = () => {
   const { isAdmin, getText, currentLanguage } = useText();
-  
+
   // State for button text
-  const [readMoreText, setReadMoreText] = useState('');
-  
+  const [readMoreText, setReadMoreText] = useState("");
+
   // Update button text when language changes
   useEffect(() => {
     // For English
-    if (currentLanguage === 'en') {
-      setReadMoreText('Read more');
+    if (currentLanguage === "en") {
+      setReadMoreText("Read more");
     }
     // For Norwegian
-    else if (currentLanguage === 'no') {
-      setReadMoreText('Les mer');
+    else if (currentLanguage === "no") {
+      setReadMoreText("Les mer");
     }
     // Default to Swedish
     else {
-      setReadMoreText('Läs mer');
+      setReadMoreText("Läs mer");
     }
   }, [currentLanguage]);
-  
 
   return (
     <div className="flex flex_col MaxWH location">
-      <section id="page_01" className="page_01 dynamic-background background-editable">
+      <section
+        id="page_01"
+        className="page_01 dynamic-background background-editable"
+      >
         <div className=" page_01box flex flex_col flex_j_SA MaxWH">
           <EditableText
             textKey="main-multisport-sedan"
@@ -148,8 +150,7 @@ const Pages = () => {
             id="page_02-kolmarden-image"
             className="page_02-image background-editable"
             style={{
-              backgroundImage:
-                "url('/images/kolmarden.jpg')",
+              backgroundImage: "url('/images/kolmarden.jpg')",
             }}
           ></div>
           <div className="page_02-content">
@@ -198,23 +199,24 @@ const Pages = () => {
               className="font_white"
             />
             <div className="page_03-button">
-              <Link to="/about" className="button-2">
+              <Link to="/om-oss" className="button-2">
                 <span>{readMoreText.toUpperCase()}</span>
               </Link>
             </div>
           </div>
           <div className="page_03-image">
-            <div 
-              id="page_03-aim-image" 
-              className="background-editable" 
+            <div
+              id="page_03-aim-image"
+              className="background-editable"
               data-editable="true"
               style={{
                 width: "90%",
                 height: "90%",
-                backgroundImage: "url('images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
+                backgroundImage:
+                  "url('images/AIM_lindvallen_2024_AnkiGrothe_highres_155.jpg')",
                 backgroundSize: "contain",
                 backgroundPosition: "center",
-                backgroundRepeat: "no-repeat"
+                backgroundRepeat: "no-repeat",
               }}
             ></div>
           </div>
