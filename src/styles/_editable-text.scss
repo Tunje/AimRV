@@ -240,6 +240,30 @@
     border-radius: 4px;
     margin-bottom: 15px;
   }
+  
+  &__language-checkboxes {
+    margin: 15px 0;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  &__checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    
+    &:hover {
+      color: #6A9FB5;
+    }
+  }
+  
+  &__checkbox {
+    margin-right: 5px;
+    cursor: pointer;
+  }
 
   &__form-group {
     margin-bottom: 10px;

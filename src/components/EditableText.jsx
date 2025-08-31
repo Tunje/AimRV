@@ -25,7 +25,16 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         no: ''
     });
     const [isTranslating, setIsTranslating] = useState(false);
-    const textareaRef = useRef(null);
+    const [selectedLanguages, setSelectedLanguages] = useState({
+        sv: true,
+        en: false,
+        no: false
+    });
+    const textareaRefs = useRef({
+        sv: null,
+        en: null,
+        no: null
+    });
     const linkTextRef = useRef(null);
     const linkUrlRef = useRef(null);
 
@@ -101,6 +110,12 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
         setShowLinkTools(!showLinkTools);
         setLinkText('');
         setLinkUrl('');
+        // Reset language selection to current active language
+        setSelectedLanguages({
+            sv: activeLanguageTab === 'sv',
+            en: activeLanguageTab === 'en',
+            no: activeLanguageTab === 'no'
+        });
     };
 
     const insertLink = () => {
@@ -113,21 +128,32 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
             
             // Use target="_blank" to open in a new window/tab
             const linkHtml = `<a href="${formattedUrl}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
-            const textarea = textareaRef.current;
-            const cursorPos = textarea.selectionStart;
-            const textBefore = text.substring(0, cursorPos);
-            const textAfter = text.substring(textarea.selectionEnd);
             
-            setText(textBefore + linkHtml + textAfter);
+            // Insert the link into each selected language's textarea
+            Object.entries(selectedLanguages).forEach(([lang, isSelected]) => {
+                if (isSelected && textareaRefs.current[lang]) {
+                    const textarea = textareaRefs.current[lang];
+                    const cursorPos = textarea.selectionStart;
+                    const currentText = translations[lang];
+                    const textBefore = currentText.substring(0, cursorPos);
+                    const textAfter = currentText.substring(textarea.selectionEnd);
+                    
+                    const newText = textBefore + linkHtml + textAfter;
+                    
+                    // Update the translations state
+                    updateLanguageText(lang, newText);
+                    
+                    // Focus back on textarea and set cursor position
+                    setTimeout(() => {
+                        textarea.focus();
+                        const newCursorPos = cursorPos + linkHtml.length;
+                        textarea.setSelectionRange(newCursorPos, newCursorPos);
+                    }, 0);
+                }
+            });
+            
             setLinkText('');
             setLinkUrl('');
-            
-            // Focus back on textarea
-            setTimeout(() => {
-                textarea.focus();
-                const newCursorPos = cursorPos + linkHtml.length;
-                textarea.setSelectionRange(newCursorPos, newCursorPos);
-            }, 0);
         }
     };
 
@@ -137,6 +163,13 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
 
     const handleLinkUrlChange = (e) => {
         setLinkUrl(e.target.value);
+    };
+    
+    const handleLanguageCheckboxChange = (lang) => {
+        setSelectedLanguages(prev => ({
+            ...prev,
+            [lang]: !prev[lang]
+        }));
     };
 
     const handleKeyDown = (e) => {
@@ -237,6 +270,7 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                                     onKeyDown={handleKeyDown}
                                     className="edit-modal__textarea"
                                     autoFocus={lang === currentLanguage}
+                                    ref={el => textareaRefs.current[lang] = el}
                                 />
                             </div>
                         ))}
@@ -278,10 +312,25 @@ const EditableText = ({ textKey, defaultText, tag = 'p', className = '', style =
                                 />
                             </div>
                             
+                            <div className="edit-modal__language-checkboxes">
+                                <p className="edit-modal__label">Infoga länk i:</p>
+                                {Object.values(LANGUAGES).map((lang) => (
+                                    <label key={`link-lang-${lang}`} className="edit-modal__checkbox-label">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedLanguages[lang]}
+                                            onChange={() => handleLanguageCheckboxChange(lang)}
+                                            className="edit-modal__checkbox"
+                                        />
+                                        {LANGUAGE_NAMES[lang]}
+                                    </label>
+                                ))}
+                            </div>
+                            
                             <button 
                                 type="button" 
                                 onClick={insertLink} 
-                                disabled={!linkText || !linkUrl}
+                                disabled={!linkText || !linkUrl || !Object.values(selectedLanguages).some(v => v)}
                                 className="modal-action-button modal-action-button--primary"
                             >
                                 Infoga länk
