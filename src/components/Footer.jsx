@@ -7,27 +7,25 @@ import SponsorEditor from "./SponsorEditor";
 const Footer = () => {
   const { isAdmin } = useText();
   const location = useLocation();
-  
+
   // Define which pages should show sponsors
   const showSponsors = () => {
     const path = location.pathname;
     const sponsorPages = [
-      '/', // Front page
-      '/competitions', // Competitions page
-      '/ulricehamn', // Competition pages
-      '/salen',
-      '/hemsedal',
-      '/kolmarden',
-      '/trippeln' // Trippeln page
+      "/", // Front page
+      "/competitions", // Competitions page
+      "/ulricehamn", // Competition pages
+      "/salen",
+      "/hemsedal",
+      "/kolmarden",
+      "/trippeln", // Trippeln page
     ];
-    
+
     return sponsorPages.includes(path);
   };
 
   return (
     <>
-      {/* Include SponsorEditor component */}
-      <SponsorEditor />
       {/* Sponsors Section - Only shown on specific pages */}
       {showSponsors() && (
         <div className="footer-wrapper">
@@ -37,99 +35,8 @@ const Footer = () => {
                 <h1 className="footer-heading" id="sponsors-section">
                   Sponsorer & Partners
                 </h1>
-                <div className="sponsors-grid">
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Artboard 1@4x.png"
-                      alt="Artboard"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Camelbak_vit.svg"
-                      alt="Camelbak"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Hedghog_vit.svg"
-                      alt="Hedghog"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Kona_vit.png"
-                      alt="Kona"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Mareld_svart.svg"
-                      alt="Mareld"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/ODD_white_RGB.png"
-                      alt="ODD"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Oofos.png"
-                      alt="Oofos"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Ortovox_svart.svg"
-                      alt="Ortovox"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/UD Logo.png"
-                      alt="UD"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/Upplev.png"
-                      alt="Upplev Norrköping"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/holdut_logo_sort_1.png"
-                      alt="Hold ut"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/h%C3%A4llmark logga sv_v.svg"
-                      alt="Hällmark"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <div className="sponsor-item">
-                    <img
-                      src="/images/injinji_black.svg"
-                      alt="Injinji"
-                      className="sponsor-logo"
-                    />
-                  </div>
-                </div>
+                {/* SponsorEditor will render sponsors inside this container */}
+                <SponsorEditor targetId="sponsors-section" />
               </div>
             </div>
           </div>
@@ -149,7 +56,7 @@ const Footer = () => {
               </div>
 
               <div className="footer-info">
-                <p>Loftsdalian 108, 30129 Halmstad</p>
+                <p>Slottsmöllan 10b, 30231 Halmstad</p>
                 <p>
                   <a href="mailto:info@aimchallenge.com">
                     info@aimchallenge.com
@@ -159,14 +66,29 @@ const Footer = () => {
               </div>
 
               <div className="footer-social">
-                <a href="#" className="social-icon">
+                <a
+                  href="https://www.instagram.com/aimchallenge/"
+                  className="social-icon"
+                >
                   <i className="fa fa-instagram"></i>
                 </a>
-                <a href="#" className="social-icon">
+                <a
+                  href="https://www.facebook.com/aimchallenge/"
+                  className="social-icon"
+                >
                   <i className="fa fa-facebook"></i>
                 </a>
-                <a href="#" className="social-icon">
-                  <i className="fa fa-twitter"></i>
+                <a
+                  href="https://youtube.com/@aimchallenge9800?si=ggWHNbfGv0h18mes"
+                  className="social-icon"
+                >
+                  <i className="fa fa-youtube"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/aim-higher-ab/"
+                  className="social-icon"
+                >
+                  <i className="fa fa-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -190,17 +112,20 @@ const Footer = () => {
               <div className="footer-column footer-column-right">
                 <h3 className="footer-title">NYHETSBREV</h3>
                 <p className="footer-newsletter-text">
-                  Åtext om nyhetsbrev, samt en optin ruta för att fylla i
-                  sin epostadress. Integration mot mailchimp.
+                  Åtext om nyhetsbrev, samt en optin ruta för att fylla i sin
+                  epostadress. Integration mot mailchimp.
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Footer Copyright - Full Width */}
           <div className="footer-copyright-wrapper">
             <div className="footer-copyright">
-              <p>© 2023 Copyright AIM Challenge.</p>
+              <p>
+                &copy; {new Date().getFullYear()} AIM Challenge. All rights
+                reserved.
+              </p>
             </div>
           </div>
         </div>

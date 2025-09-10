@@ -13,7 +13,7 @@ const BackgroundEditor = () => {
   const [backgroundType, setBackgroundType] = useState('simple');
   const [previousImageUrl, setPreviousImageUrl] = useState(null);
   const { isAdmin } = useText();
-  console.log('BackgroundEditor - isAdmin:', isAdmin);
+  // isAdmin status tracked internally
   const fileInputRef = useRef(null);
   const modalRef = useRef(null);
   const location = useLocation();
@@ -28,9 +28,7 @@ const BackgroundEditor = () => {
     }
     
     e.stopPropagation(); // Stop event propagation
-    console.log('Background element clicked:', e.currentTarget.id);
     if (isAdmin) {
-      console.log('User is admin, showing modal');
       setSelectedElement(e.currentTarget);
       setShowModal(true);
       
@@ -38,18 +36,14 @@ const BackgroundEditor = () => {
       if (elementId) {
         loadBackgroundSettings(elementId);
       }
-    } else {
-      console.log('User is not admin, click ignored');
     }
   }, [isAdmin]);
 
   // Function to attach click listeners to editable elements
   const attachClickListeners = () => {
     const backgroundElements = document.querySelectorAll('.background-editable');
-    console.log('Found background elements:', backgroundElements.length);
     
     backgroundElements.forEach(element => {
-      console.log('Adding click listener to element:', element.id);
       // Remove any existing listeners first to prevent duplicates
       element.removeEventListener('click', handleElementClick);
       
@@ -87,7 +81,6 @@ const BackgroundEditor = () => {
   };
 
   useEffect(() => {
-    console.log('BackgroundEditor useEffect - path:', location.pathname);
     
     // Use a small delay to ensure DOM is fully loaded
     const initTimer = setTimeout(() => {
@@ -125,7 +118,6 @@ const BackgroundEditor = () => {
       });
       
       if (shouldUpdate) {
-        console.log('New editable elements detected, attaching listeners');
         // Use a small delay to ensure DOM is stable
         setTimeout(() => {
           attachClickListeners();
@@ -145,7 +137,6 @@ const BackgroundEditor = () => {
     const periodicCheck = setInterval(() => {
       const elements = document.querySelectorAll('.background-editable');
       if (elements.length > 0) {
-        console.log('Periodic check found', elements.length, 'editable elements');
         attachClickListeners();
       }
     }, 2000); // Check every 2 seconds
@@ -186,53 +177,45 @@ const BackgroundEditor = () => {
 
   const loadAllBackgroundSettings = async () => {
     try {
-      console.log('Loading all background settings');
       const backgroundsCollection = collection(db, 'backgrounds');
       const backgroundsSnapshot = await getDocs(backgroundsCollection);
       
-      console.log(`Found ${backgroundsSnapshot.size} background settings`);
+
       
       backgroundsSnapshot.forEach(doc => {
         const data = doc.data();
         const element = document.getElementById(doc.id);
         
-        console.log(`Background for element ${doc.id}:`, data);
+
         
         if (element) {
-          console.log(`Applying background to element ${doc.id}`);
           applyBackgroundToElement(element, data.imageUrl, data.backgroundType);
-        } else {
-          console.log(`Element with ID ${doc.id} not found in the DOM`);
         }
       });
     } catch (error) {
-      console.error('Error loading background settings:', error);
+      // Error handling for loading background settings
     }
   };
   
   const loadBackgroundSettings = async (elementId) => {
     try {
-      console.log(`Loading background settings for element: ${elementId}`);
       const backgroundsCollection = collection(db, 'backgrounds');
       const backgroundDoc = doc(backgroundsCollection, elementId);
       const docSnap = await getDoc(backgroundDoc);
       
       if (docSnap.exists()) {
         const data = docSnap.data();
-        console.log(`Found background settings:`, data);
         setBackgroundType(data.backgroundType || 'simple');
         setImagePreview(data.imageUrl);
         setPreviousImageUrl(data.imageUrl);
-        console.log(`Set previousImageUrl to: ${data.imageUrl}`);
       } else {
-        console.log(`No background settings found for element: ${elementId}`);
         setBackgroundType('simple');
         setImagePreview(null);
         setImage(null);
         setPreviousImageUrl(null);
       }
     } catch (error) {
-      console.error('Error loading background settings:', error);
+      // Error handling for loading background settings
     }
   };
   
@@ -255,8 +238,6 @@ const BackgroundEditor = () => {
   const extractFilenameFromUrl = (url) => {
     if (!url) return null;
     
-    console.log('Extracting filename from URL:', url);
-    
     try {
       // For Firebase Storage URLs, the filename is after the last %2F and before the ?
       if (url.includes('firebasestorage.googleapis.com')) {
@@ -266,7 +247,6 @@ const BackgroundEditor = () => {
           const lastMatch = match[match.length - 1];
           // Remove the %2F prefix and any query parameters
           const filename = lastMatch.replace('%2F', '').split('?')[0];
-          console.log('Extracted filename from Firebase URL:', filename);
           return filename;
         }
       }
@@ -275,7 +255,6 @@ const BackgroundEditor = () => {
       if (url.includes('background-images')) {
         const parts = url.split('/');
         const filename = parts[parts.length - 1];
-        console.log('Extracted filename from direct path:', filename);
         return filename;
       }
       
@@ -283,10 +262,8 @@ const BackgroundEditor = () => {
       const urlParts = url.split('/');
       const filenameWithParams = urlParts[urlParts.length - 1];
       const filename = filenameWithParams.split('?')[0];
-      console.log('Extracted filename using fallback method:', filename);
       return filename;
     } catch (error) {
-      console.error('Error extracting filename:', error);
       return null;
     }
   };
@@ -295,19 +272,15 @@ const BackgroundEditor = () => {
     if (!imageUrl) return;
     
     try {
-      console.log('Attempting to delete old image with URL:', imageUrl);
-      
       // Extract the filename from the URL
       const filename = extractFilenameFromUrl(imageUrl);
       if (filename) {
-        console.log('Deleting file with filename:', filename);
         // Use the same path format as in the upload function
         const oldImageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/background-images/${filename}`);
         await deleteObject(oldImageRef);
-        console.log('Successfully deleted old image');
       }
     } catch (error) {
-      console.error("Error deleting old image:", error);
+      // Error handling for image deletion
     }
   };
   
@@ -327,27 +300,15 @@ const BackgroundEditor = () => {
         const newFileName = `background_${timestamp}.${fileExtension}`;
         const storageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/background-images/${newFileName}`);
         
-        console.log("Uploading image with new filename:", newFileName);
-        
         // Upload the image
         await uploadBytes(storageRef, image);
         
         // Get the download URL
         imageUrl = await getDownloadURL(storageRef);
-        console.log("Image URL after upload:", imageUrl);
-        console.log("Image URL format check:", {
-          includesFirebaseStorage: imageUrl.includes('firebasestorage.googleapis.com'),
-          includesBackgroundImages: imageUrl.includes('background-images'),
-          urlParts: imageUrl.split('/'),
-          containsPercent2F: imageUrl.includes('%2F')
-        });
         
-        console.log("Previous image URL:", previousImageUrl);
+        // Delete the old image if it exists and is different from the current one
         if (previousImageUrl && previousImageUrl !== imageUrl) {
-          console.log("Deleting previous image:", previousImageUrl);
           await deleteOldImage(previousImageUrl);
-        } else {
-          console.log("No previous image to delete or same image URL");
         }
       }
       
@@ -366,7 +327,6 @@ const BackgroundEditor = () => {
       
       setShowModal(false);
     } catch (error) {
-      console.error('Error saving background:', error);
       alert('Error saving background. Please try again.');
     }
   };
@@ -401,17 +361,13 @@ const BackgroundEditor = () => {
       setImage(null);
       setImagePreview(null);
       setPreviousImageUrl(null);
-      
-      console.log('Background image removed successfully');
     } catch (error) {
-      console.error('Error removing background image:', error);
+      // Error handling for removing background image
     }
   };
   
   const applyBackgroundToElement = (element, imageUrl, type) => {
     if (!element || !imageUrl) return;
-    
-    console.log(`Applying background to element ${element.id} with image ${imageUrl}`);
     
     element.classList.remove('simple-background', 'fixed-background');
     element.classList.add('has-background');
@@ -436,7 +392,18 @@ const BackgroundEditor = () => {
       element.style.backgroundAttachment = 'scroll';
     }
     
-    console.log(`Background applied to element ${element.id}`);
+    // Special case for the Om AIM page - remove blue background when an image is applied
+    if (element.id === 'historien-om-aim-background-image') {
+      // Find the content section with the blue background
+      const contentSection = document.querySelector('.historien-om-aim-content-section');
+      if (contentSection) {
+        // Remove the blue background by setting a transparent background
+        contentSection.style.backgroundImage = 'none';
+        contentSection.style.backgroundColor = 'transparent';
+      }
+    }
+    
+    // Background applied to element
   };
   
   const handleClose = () => {

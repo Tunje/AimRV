@@ -1,0 +1,64 @@
+/* Fix for sponsor grid layout and SVG display */
+.sponsors-grid {
+  display: grid;
+  /* Exactly 6 columns per row */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/* This class is critical for SVG display but make it invisible */
+.background-editor-modal__ad-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* This class is critical for SVG display */
+.background-editor-modal__ad-image {
+  max-width: 150px;
+  max-height: 90px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Make links take up the full space of their container */
+.sponsor-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

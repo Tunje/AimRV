@@ -10,7 +10,7 @@
         </div>
 
         <div className="footer-info">
-          <p>Loftsdalian 108, 30129 Halmstad</p>
+          <p>Slottsmöllan 10b, 30231 Halmstad</p>
           <p>
             <a href="mailto:info@aimchallenge.com">info@aimchallenge.com</a>
           </p>
@@ -18,14 +18,29 @@
         </div>
 
         <div className="footer-social">
-          <a href="#" className="social-icon">
+          <a
+            href="https://www.instagram.com/aimchallenge/"
+            className="social-icon"
+          >
             <i className="fa fa-instagram"></i>
           </a>
-          <a href="#" className="social-icon">
+          <a
+            href="https://www.facebook.com/aimchallenge/"
+            className="social-icon"
+          >
             <i className="fa fa-facebook"></i>
           </a>
-          <a href="#" className="social-icon">
-            <i className="fa fa-twitter"></i>
+          <a
+            href="https://youtube.com/@aimchallenge9800?si=ggWHNbfGv0h18mes"
+            className="social-icon"
+          >
+            <i className="fa fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/aim-higher-ab/"
+            className="social-icon"
+          >
+            <i className="fa fa-linkedin"></i>
           </a>
         </div>
       </div>

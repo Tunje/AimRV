@@ -48,6 +48,9 @@
   position: relative;
   @extend button;
   transition: all 0.3s ease;
+  
+  /* Removed language-nav-button style */
+  
 
   &:hover {
     background-color: #f58220; /* Orange accent color */
@@ -77,6 +80,15 @@
       color: inherit;
     }
   }
+}
+
+/* Language Nav Container */
+.language-nav-container {
+  height: 40px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Hamburger Menu Styles */
