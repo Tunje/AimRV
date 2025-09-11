@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db, storage } from '../firebase/config';
 import { doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ResultUploadModal = ({ 
   onClose, 
@@ -10,7 +10,7 @@ const ResultUploadModal = ({
   years = ['2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015'], 
   categories = ['Herrar', 'Damer', 'Mixed'], 
   durations = ['3 timmar', '6 timmar', '12 timmar', '24 timmar'], 
-  locations = ['Ulricehamn', 'Borås', 'Göteborg', 'Jönköping', 'Stockholm'],
+  locations = ['Ulricehamn', 'Sälen', 'Hemsedal', 'Kolmården'],
   year 
 }) => {
   const { currentUser } = useAuth();
@@ -41,16 +41,19 @@ const ResultUploadModal = ({
     setError('');
 
     try {
-      const storageRef = ref(storage, `results/${file.name}`);
-      const uploadResult = await uploadBytes(storageRef, file);
-      const fileUrl = `https://firebasestorage.googleapis.com/v0/b/${uploadResult.ref.bucket}/o/${encodeURIComponent(uploadResult.ref.fullPath)}?alt=media`;
+      const timestamp = Date.now();
+      const fileExtension = file.name ? file.name.split('.').pop() : 'txt';
+      const newFileName = `result_${timestamp}.${fileExtension}`;
+      const storageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/results/${newFileName}`);
+      await uploadBytes(storageRef, file);
+      const fileUrl = await getDownloadURL(storageRef);
 
       const resultData = {
         year: parseInt(yearState),
         location,
         category,
         duration,
-        fileName: file.name,
+        fileName: newFileName,
         fileUrl: fileUrl,
         uploadedAt: new Date().toISOString(),
         uploadedBy: currentUser.uid

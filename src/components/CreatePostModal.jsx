@@ -95,7 +95,7 @@ const CreatePostModal = ({ isOpen, onClose }) => {
         const timestamp = Date.now();
         const fileExtension = image.name ? image.name.split('.').pop() : 'jpg';
         const newFileName = `image_${timestamp}.${fileExtension}`;
-        const storageRef = ref(storage, `post-images/${newFileName}`);
+        const storageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/post-images/${newFileName}`);
         
         console.log("Uploading image with new filename:", newFileName);
         
