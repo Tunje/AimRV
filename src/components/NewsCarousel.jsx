@@ -254,11 +254,14 @@ const NewsCarousel = ({ instanceId, defaultCategory = "Alla" }) => {
               </div>
               <div className="news-content">
                 <h3 className="news-location">{post.title}</h3>
-                <p className="news-description">
-                  {post.content.length > 100
-                    ? `${post.content.substring(0, 100)}...`
-                    : post.content}
-                </p>
+                <div 
+                  className="news-description"
+                  dangerouslySetInnerHTML={{
+                    __html: post.content.length > 120
+                      ? `${post.content.substring(0, 120)}...`
+                      : post.content
+                  }}
+                />
                 <div className="news-button">
                   <Link to={`/news/${post.id}`} className="button-2">
                     <span>{readMoreText}</span>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
@@ -15,6 +16,7 @@ const AdEditor = () => {
   const fileInputRef = useRef(null);
   const modalRef = useRef(null);
   const adsCollection = collection(db, 'ads');
+  const location = useLocation();
 
   useEffect(() => {
     loadAds();
@@ -50,35 +52,31 @@ const AdEditor = () => {
     };
   }, [isAdmin]);
   
+  // Effect to load ads when component mounts
   useEffect(() => {
-    const loadAndDisplayAds = async () => {
-      try {
-        const adsSnapshot = await getDocs(adsCollection);
-        const adsData = adsSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        
-        setAds(adsData);
-        
-        // Directly call displayAds without waiting for state update
-        displayAds(adsData);
-      } catch (error) {
-      }
-    };
-    
-    loadAndDisplayAds();
+    loadAds();
     
     // Set up an interval to refresh ads periodically (every 5 minutes)
     const refreshInterval = setInterval(() => {
       console.log('Refreshing ads from database');
-      loadAndDisplayAds();
+      loadAds();
     }, 5 * 60 * 1000); // 5 minutes
     
     return () => {
       clearInterval(refreshInterval);
     };
   }, []);
+  
+  // Effect to reload ads when route changes
+  useEffect(() => {
+    console.log('Route changed, reloading ads');
+    // Use a timeout to ensure DOM is ready after route change
+    const timer = setTimeout(() => {
+      loadAds();
+    }, 500); // Wait 500ms after route change
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -111,11 +109,12 @@ const AdEditor = () => {
       
       setAds(adsData);
       
-      // Use a small timeout to ensure DOM is ready
+      // Use a longer timeout to ensure DOM is fully ready, especially after route changes
       setTimeout(() => {
         displayAds(adsData);
-      }, 100);
+      }, 300);
     } catch (error) {
+      console.error('Error loading ads:', error);
     }
   };
 

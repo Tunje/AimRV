@@ -4,7 +4,7 @@ import '../styles/index.css';
 import CreatePostModal from './CreatePostModal';
 import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
-import { collection, getDocs, doc, deleteDoc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import EditableText from './EditableText';
 
@@ -12,6 +12,7 @@ const SenasteNytt = () => {
     const [email, setEmail] = useState('');
     const [subscribed, setSubscribed] = useState(false);
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const [editingPost, setEditingPost] = useState(null);
     const { isAdmin, currentLanguage } = useText();
     const [readMoreText, setReadMoreText] = useState('');
     
@@ -43,6 +44,7 @@ const SenasteNytt = () => {
                 const postsSnapshot = await getDocs(postsCollection);
                 const postsData = postsSnapshot.docs.map(doc => ({
                     id: doc.id,
+                    published: doc.data().published !== false, // Default to published if field doesn't exist
                     ...doc.data()
                 }));
                 
@@ -103,19 +105,22 @@ const SenasteNytt = () => {
     const handleSavePost = async (newPost) => {
         try {
             setLoading(true);
-            let imageUrl = null;
+            let imageUrl = newPost.imagePreview || null;
             
-            if (newPost.image) {
+            // Only upload a new image if one was selected
+            if (newPost.image && typeof newPost.image !== 'string') {
                 // Generate a unique filename with timestamp and original name
-                const filename = `post-images/${Date.now()}_${newPost.image.name}`;
-                console.log("Uploading image with filename:", filename);
+                const timestamp = Date.now();
+                const fileExtension = newPost.image.name ? newPost.image.name.split('.').pop() : 'jpg';
+                const newFileName = `image_${timestamp}.${fileExtension}`;
+                const storageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/post-images/${newFileName}`);
                 
-                const storageRef = ref(storage, filename);
+                console.log("Uploading image with filename:", newFileName);
                 
                 // Upload the file
                 await uploadBytes(storageRef, newPost.image);
                 
-                // Get the download URL - this is the critical part
+                // Get the download URL
                 imageUrl = await getDownloadURL(storageRef);
                 console.log("Image URL after upload:", imageUrl);
                 
@@ -128,26 +133,54 @@ const SenasteNytt = () => {
                 }
             }
             
-            // Create the post document in Firestore
             const postData = {
                 title: newPost.title,
                 content: newPost.content,
-                image: imageUrl, // Store the direct URL
-                date: new Date().toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' }),
-                createdAt: new Date().toISOString()
+                category: newPost.category || 'Alla',
+                published: newPost.published !== false, // Default to true if not specified
+                updatedAt: new Date().toISOString()
             };
             
-            console.log("Saving post with data:", postData);
-            const docRef = await addDoc(collection(db, 'posts'), postData);
-            console.log("Post saved with ID:", docRef.id);
-
-            // Create the post object for the UI with the same data
-            const post = {
-                id: docRef.id,
-                ...postData
-            };
+            // Only update the image if we have one
+            if (imageUrl) {
+                postData.image = imageUrl;
+            }
             
-            setNewsPosts(current => [post, ...current]);
+            if (editingPost && newPost.id) {
+                // Update existing post
+                const postRef = doc(db, 'posts', newPost.id);
+                await updateDoc(postRef, postData);
+                console.log("Post updated with ID:", newPost.id);
+                
+                // Update local state
+                setNewsPosts(current => current.map(post => {
+                    if (post.id === newPost.id) {
+                        return { ...post, ...postData };
+                    }
+                    return post;
+                }));
+            } else {
+                // Create new post
+                postData.date = new Date().toLocaleDateString('sv-SE', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                });
+                postData.createdAt = new Date().toISOString();
+                
+                const docRef = await addDoc(collection(db, 'posts'), postData);
+                console.log("Post saved with ID:", docRef.id);
+                
+                // Create the post object for the UI with the same data
+                const post = {
+                    id: docRef.id,
+                    ...postData
+                };
+                
+                setNewsPosts(current => [post, ...current]);
+            }
+            
+            setEditingPost(null);
             setShowCreateModal(false);
             setError(null);
         } catch (err) {
@@ -155,6 +188,31 @@ const SenasteNytt = () => {
             setError('Failed to save post');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleEditPost = (post) => {
+        console.log('Edit post clicked:', post);
+        setEditingPost(post);
+        setShowCreateModal(true);
+    };
+
+    const handleTogglePublish = async (postId, currentStatus) => {
+        try {
+            const postRef = doc(db, 'posts', String(postId));
+            await updateDoc(postRef, {
+                published: !currentStatus
+            });
+            
+            // Update local state
+            setNewsPosts(posts => posts.map(post => {
+                if (String(post.id) === String(postId)) {
+                    return { ...post, published: !currentStatus };
+                }
+                return post;
+            }));
+        } catch (error) {
+            console.error('Failed to toggle publish status:', error);
         }
     };
 
@@ -270,7 +328,9 @@ const SenasteNytt = () => {
                     )}
                     
                     <div className="senaste-nytt-news-grid">
-                        {newsPosts.map((post) => (
+                        {newsPosts
+                            .filter(post => isAdmin || post.published !== false) // Only show published posts to non-admins
+                            .map((post) => (
                             <div key={post.id} className="senaste-nytt-news-card">
                                 <div className="senaste-nytt-news-image-wrapper">
                                     {post.image ? (
@@ -288,23 +348,41 @@ const SenasteNytt = () => {
                                 <div className="senaste-nytt-news-content">
                                     <h3 className="senaste-nytt-news-card-title">{post.title}</h3>
                                     <p className="senaste-nytt-news-date">{post.date}</p>
-                                    <p className="senaste-nytt-news-text">{post.content}</p>
+                                    {!post.published && isAdmin && (
+                                        <p className="senaste-nytt-unpublished-notice">Opublicerad</p>
+                                    )}
+                                    <div 
+                                        className="senaste-nytt-news-text"
+                                        dangerouslySetInnerHTML={{ 
+                                            __html: post.content.length > 200 
+                                                ? post.content.substring(0, 200) + '...' 
+                                                : post.content 
+                                        }}
+                                    />
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">
                                         {readMoreText}
                                     </Link>
                                     {isAdmin && (
-                                        <button
-                                            className="senaste-nytt-delete-post-button"
-                                            onClick={() => {
-                                                console.log('Post:', post);
-                                                console.log('Post ID:', post.id);
-                                                console.log('Post ID type:', typeof post.id);
-                                                console.log('Post ID value:', String(post.id));
-                                                handleDeletePost(String(post.id));
-                                            }}
-                                        >
-                                            Ta bort
-                                        </button>
+                                        <div className="senaste-nytt-admin-buttons">
+                                            <button
+                                                className="senaste-nytt-edit-post-button"
+                                                onClick={() => handleEditPost(post)}
+                                            >
+                                                Redigera
+                                            </button>
+                                            <button
+                                                className={`senaste-nytt-publish-post-button ${post.published ? 'published' : 'unpublished'}`}
+                                                onClick={() => handleTogglePublish(String(post.id), post.published)}
+                                            >
+                                                {post.published ? 'Avpublicera' : 'Publicera'}
+                                            </button>
+                                            <button
+                                                className="senaste-nytt-delete-post-button"
+                                                onClick={() => handleDeletePost(String(post.id))}
+                                            >
+                                                Ta bort
+                                            </button>
+                                        </div>
                                     )}
                                 </div>
                             </div>
@@ -316,8 +394,12 @@ const SenasteNytt = () => {
             {isAdmin && (
                 <CreatePostModal
                     isOpen={showCreateModal}
-                    onClose={() => setShowCreateModal(false)}
+                    onClose={() => {
+                        setShowCreateModal(false);
+                        setEditingPost(null);
+                    }}
                     addPost={handleSavePost}
+                    editingPost={editingPost}
                 />
             )}
 

@@ -126,11 +126,11 @@ const NewsDetail = () => {
                         <div style={{ padding: '30px' }}>
                             <h1 className="fonts_large font_blue" style={{ marginBottom: '10px' }}>{newsItem.title}</h1>
                             <p className="fonts_small" style={{ color: '#666', marginBottom: '30px' }}>{newsItem.date}</p>
-                            {newsItem.content.split('\n').map((paragraph, index) => (
-                                <p key={index} className="fonts_small" style={{ marginBottom: '20px' }}>
-                                    {paragraph}
-                                </p>
-                            ))}
+                            <div 
+                                className="fonts_small news-detail-content"
+                                dangerouslySetInnerHTML={{ __html: newsItem.content }}
+                                style={{ marginBottom: '20px' }}
+                            />
                         </div>
                     </div>
                     
