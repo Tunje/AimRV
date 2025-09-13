@@ -37,6 +37,17 @@
 @import "./_news-detail";
 @import "./_article-content";
 
+// Add global link styling for article previews
+.news-description a, .senaste-nytt-news-text a {
+  color: #0073e6;
+  text-decoration: underline;
+  font-weight: 500;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 // Import responsive styles last to ensure they override base styles
 @import "./_competitions-responsive";
 @import "./_news-responsive";
