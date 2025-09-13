@@ -254,16 +254,17 @@ const NewsCarousel = ({ instanceId, defaultCategory = "Alla" }) => {
               </div>
               <div className="news-content">
                 <h3 className="news-location">{post.title}</h3>
-                <div className="news-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.content.length > 120
-                        ? `${post.content.substring(0, 120)}...`
-                        : post.content
-                    }}
-                    style={{ width: '100%' }}
-                  />
-                </div>
+                <div 
+                  className="news-description"
+                  dangerouslySetInnerHTML={{ 
+                    __html: post.content
+                  }}
+                  style={{ 
+                    maxHeight: '100px',
+                    overflow: 'hidden',
+                    position: 'relative'
+                  }}
+                />
                 <div className="news-button">
                   <Link to={`/news/${post.id}`} className="button-2">
                     <span>{readMoreText}</span>

@@ -35,7 +35,6 @@ const CreatePostModal = ({ isOpen, onClose, editingPost = null, addPost }) => {
   };
 
   const handleContentChange = (html) => {
-    // Preserve embedded styles by not stripping any HTML
     setContent(html);
   };
 

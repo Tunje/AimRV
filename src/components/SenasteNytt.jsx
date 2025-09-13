@@ -315,17 +315,15 @@ const SenasteNytt = () => {
                                     )}
                                     <div 
                                         className="senaste-nytt-news-text"
+                                        dangerouslySetInnerHTML={{ 
+                                            __html: post.content
+                                        }}
                                         style={{ 
                                             maxHeight: '150px',
                                             overflow: 'hidden',
                                             position: 'relative'
                                         }}
-                                    >
-                                        <div 
-                                            dangerouslySetInnerHTML={{ __html: post.content }}
-                                            style={{ width: '100%' }}
-                                        />
-                                    </div>
+                                    />
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">
                                         {readMoreText}
                                     </Link>
