@@ -321,19 +321,11 @@ const SenasteNytt = () => {
                                             position: 'relative'
                                         }}
                                     >
-                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                                        <div 
+                                            dangerouslySetInnerHTML={{ __html: post.content }}
+                                            style={{ width: '100%' }}
+                                        />
                                     </div>
-                                    <div 
-                                        style={{
-                                            position: 'absolute',
-                                            bottom: '60px',
-                                            left: 0,
-                                            right: 0,
-                                            height: '40px',
-                                            background: 'linear-gradient(transparent, #6a9fb5)',
-                                            pointerEvents: 'none'
-                                        }}
-                                    />
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">
                                         {readMoreText}
                                     </Link>

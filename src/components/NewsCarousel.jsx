@@ -126,7 +126,7 @@ const NewsCarousel = ({ instanceId, defaultCategory = "Alla" }) => {
       setFilteredPosts(posts);
     } else {
       const filtered = posts.filter(
-        (post) => post.category === selectedCategory
+        (post) => post.category === selectedCategory || post.category === "Alla"
       );
       setFilteredPosts(filtered);
     }
@@ -254,29 +254,16 @@ const NewsCarousel = ({ instanceId, defaultCategory = "Alla" }) => {
               </div>
               <div className="news-content">
                 <h3 className="news-location">{post.title}</h3>
-                <div 
-                  className="news-description"
-                  dangerouslySetInnerHTML={{
-                    __html: post.content
-                  }}
-                  style={{
-                    maxHeight: '100px',
-                    overflow: 'hidden',
-                    position: 'relative'
-                  }}
-                />
-                <div 
-                  style={{
-                    position: 'absolute',
-                    bottom: '80px',
-                    left: '15px',
-                    right: '15px',
-                    height: '30px',
-                    background: 'linear-gradient(transparent, white)',
-                    pointerEvents: 'none',
-                    zIndex: 1
-                  }}
-                />
+                <div className="news-description">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.content.length > 120
+                        ? `${post.content.substring(0, 120)}...`
+                        : post.content
+                    }}
+                    style={{ width: '100%' }}
+                  />
+                </div>
                 <div className="news-button">
                   <Link to={`/news/${post.id}`} className="button-2">
                     <span>{readMoreText}</span>
