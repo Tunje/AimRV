@@ -127,9 +127,9 @@ const NewsDetail = () => {
                             <h1 className="fonts_large font_blue" style={{ marginBottom: '10px' }}>{newsItem.title}</h1>
                             <p className="fonts_small" style={{ color: '#666', marginBottom: '30px' }}>{newsItem.date}</p>
                             <div 
-                                className="fonts_small news-detail-content"
-                                dangerouslySetInnerHTML={{ __html: newsItem.content }}
+                                className="news-detail-content"
                                 style={{ marginBottom: '20px' }}
+                                dangerouslySetInnerHTML={{ __html: newsItem.content }}
                             />
                         </div>
                     </div>

@@ -35,6 +35,7 @@ const CreatePostModal = ({ isOpen, onClose, editingPost = null, addPost }) => {
   };
 
   const handleContentChange = (html) => {
+    // Preserve embedded styles by not stripping any HTML
     setContent(html);
   };
 
@@ -121,13 +122,25 @@ const CreatePostModal = ({ isOpen, onClose, editingPost = null, addPost }) => {
       
       // If addPost function is provided, use it (for better state management)
       if (typeof addPost === 'function') {
-        addPost({
-          title,
-          content,
-          image: imageUrl,
-          category,
-          published
-        });
+        // When editing, make sure to include the post ID
+        if (isEditing && editingPost) {
+          addPost({
+            id: editingPost.id,
+            title,
+            content,
+            image: imageUrl,
+            category,
+            published
+          });
+        } else {
+          addPost({
+            title,
+            content,
+            image: imageUrl,
+            category,
+            published
+          });
+        }
       }
       
       resetForm();

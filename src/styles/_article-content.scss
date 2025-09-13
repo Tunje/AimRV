@@ -1,37 +1,22 @@
-.news-detail-content {
-  line-height: 1.6;
+.article-content-wrapper {
+  /* Reset to ensure embedded styles work */
+  display: block;
+  width: 100%;
   
   /* Allow embedded styles to work */
   & style {
     display: block !important;
   }
   
-  /* Preserve all embedded classes and styles */
-  & * {
-    max-width: 100%;
-  }
-  
-  /* Default styling for elements without embedded styles */
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    color: #2d4f60;
-  }
-  
-  h1 {
-    font-size: 1.8em;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-  }
-  
-  h3 {
-    font-size: 1.3em;
-  }
-  
+  /* Add some basic styling for articles without embedded styles */
   p {
     margin-bottom: 1em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #2d4f60;
   }
   
   ul, ol {
@@ -41,14 +26,6 @@
   
   li {
     margin-bottom: 0.5em;
-  }
-  
-  strong, b {
-    font-weight: bold;
-  }
-  
-  em, i {
-    font-style: italic;
   }
   
   a {

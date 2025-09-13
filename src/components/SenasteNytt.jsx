@@ -4,7 +4,7 @@ import '../styles/index.css';
 import CreatePostModal from './CreatePostModal';
 import { useText } from '../context/TextContext';
 import { db, storage } from '../firebase/config';
-import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query, orderBy, limit } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import EditableText from './EditableText';
 
@@ -105,79 +105,41 @@ const SenasteNytt = () => {
     const handleSavePost = async (newPost) => {
         try {
             setLoading(true);
-            let imageUrl = newPost.imagePreview || null;
             
-            // Only upload a new image if one was selected
-            if (newPost.image && typeof newPost.image !== 'string') {
-                // Generate a unique filename with timestamp and original name
-                const timestamp = Date.now();
-                const fileExtension = newPost.image.name ? newPost.image.name.split('.').pop() : 'jpg';
-                const newFileName = `image_${timestamp}.${fileExtension}`;
-                const storageRef = ref(storage, `gs://aimchallange-67039.firebasestorage.app/post-images/${newFileName}`);
-                
-                console.log("Uploading image with filename:", newFileName);
-                
-                // Upload the file
-                await uploadBytes(storageRef, newPost.image);
-                
-                // Get the download URL
-                imageUrl = await getDownloadURL(storageRef);
-                console.log("Image URL after upload:", imageUrl);
-                
-                // Test the URL with a fetch to ensure it's accessible
-                try {
-                    const response = await fetch(imageUrl, { method: 'HEAD' });
-                    console.log("Image URL test response:", response.status, response.ok);
-                } catch (fetchError) {
-                    console.error("Error testing image URL:", fetchError);
-                }
-            }
-            
-            const postData = {
-                title: newPost.title,
-                content: newPost.content,
-                category: newPost.category || 'Alla',
-                published: newPost.published !== false, // Default to true if not specified
-                updatedAt: new Date().toISOString()
-            };
-            
-            // Only update the image if we have one
-            if (imageUrl) {
-                postData.image = imageUrl;
-            }
+            // The post has already been saved in CreatePostModal
+            // Just update the UI state here
             
             if (editingPost && newPost.id) {
-                // Update existing post
-                const postRef = doc(db, 'posts', newPost.id);
-                await updateDoc(postRef, postData);
-                console.log("Post updated with ID:", newPost.id);
-                
-                // Update local state
+                // For edited posts, update the local state
                 setNewsPosts(current => current.map(post => {
                     if (post.id === newPost.id) {
-                        return { ...post, ...postData };
+                        return { 
+                            ...post, 
+                            title: newPost.title,
+                            content: newPost.content,
+                            category: newPost.category || 'Alla',
+                            published: newPost.published !== false,
+                            image: newPost.image || post.image
+                        };
                     }
                     return post;
                 }));
             } else {
-                // Create new post
-                postData.date = new Date().toLocaleDateString('sv-SE', { 
-                    day: 'numeric', 
-                    month: 'long', 
-                    year: 'numeric' 
+                // For new posts, we need to fetch the latest posts
+                // to get the newly created post with its ID
+                const postsRef = collection(db, 'posts');
+                const q = query(postsRef, orderBy('createdAt', 'desc'), limit(10));
+                const querySnapshot = await getDocs(q);
+                
+                const fetchedPosts = [];
+                querySnapshot.forEach((doc) => {
+                    fetchedPosts.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
                 });
-                postData.createdAt = new Date().toISOString();
                 
-                const docRef = await addDoc(collection(db, 'posts'), postData);
-                console.log("Post saved with ID:", docRef.id);
-                
-                // Create the post object for the UI with the same data
-                const post = {
-                    id: docRef.id,
-                    ...postData
-                };
-                
-                setNewsPosts(current => [post, ...current]);
+                setNewsPosts(fetchedPosts);
             }
             
             setEditingPost(null);
@@ -353,10 +315,23 @@ const SenasteNytt = () => {
                                     )}
                                     <div 
                                         className="senaste-nytt-news-text"
-                                        dangerouslySetInnerHTML={{ 
-                                            __html: post.content.length > 200 
-                                                ? post.content.substring(0, 200) + '...' 
-                                                : post.content 
+                                        style={{ 
+                                            maxHeight: '150px',
+                                            overflow: 'hidden',
+                                            position: 'relative'
+                                        }}
+                                    >
+                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                                    </div>
+                                    <div 
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: '60px',
+                                            left: 0,
+                                            right: 0,
+                                            height: '40px',
+                                            background: 'linear-gradient(transparent, #6a9fb5)',
+                                            pointerEvents: 'none'
                                         }}
                                     />
                                     <Link to={`/news/${post.id}`} className="senaste-nytt-read-more">

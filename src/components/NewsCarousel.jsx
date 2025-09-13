@@ -257,9 +257,24 @@ const NewsCarousel = ({ instanceId, defaultCategory = "Alla" }) => {
                 <div 
                   className="news-description"
                   dangerouslySetInnerHTML={{
-                    __html: post.content.length > 120
-                      ? `${post.content.substring(0, 120)}...`
-                      : post.content
+                    __html: post.content
+                  }}
+                  style={{
+                    maxHeight: '100px',
+                    overflow: 'hidden',
+                    position: 'relative'
+                  }}
+                />
+                <div 
+                  style={{
+                    position: 'absolute',
+                    bottom: '80px',
+                    left: '15px',
+                    right: '15px',
+                    height: '30px',
+                    background: 'linear-gradient(transparent, white)',
+                    pointerEvents: 'none',
+                    zIndex: 1
                   }}
                 />
                 <div className="news-button">
