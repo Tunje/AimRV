@@ -1,22 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useText } from '../context/TextContext';
 import '../styles/index.css';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage, db } from '../firebase/config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
+import SimpleRichEditor from './SimpleRichEditor';
 
-const CreatePostModal = ({ isOpen, onClose }) => {
+const CreatePostModal = ({ isOpen, onClose, editingPost = null, addPost }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
-  const [showLinkTools, setShowLinkTools] = useState(false);
-  const [linkUrl, setLinkUrl] = useState('');
-  const [linkText, setLinkText] = useState('');
-  const [selectionStart, setSelectionStart] = useState(0);
-  const [selectionEnd, setSelectionEnd] = useState(0);
   const [category, setCategory] = useState('Alla');
-  const contentRef = useRef(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [published, setPublished] = useState(true);
   const fileInputRef = useRef(null);
   const { isAdmin } = useText();
 
@@ -37,50 +34,32 @@ const CreatePostModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
+  const handleContentChange = (html) => {
+    setContent(html);
   };
 
-  const handleContentSelect = () => {
-    if (contentRef.current) {
-      setSelectionStart(contentRef.current.selectionStart);
-      setSelectionEnd(contentRef.current.selectionEnd);
-    }
-  };
-
-  const toggleLinkTools = () => {
-    setShowLinkTools(!showLinkTools);
-    if (!showLinkTools) {
-      // Get the selected text when opening link tools
-      if (contentRef.current) {
-        const selectedText = content.substring(
-          contentRef.current.selectionStart,
-          contentRef.current.selectionEnd
-        );
-        setLinkText(selectedText);
-        setSelectionStart(contentRef.current.selectionStart);
-        setSelectionEnd(contentRef.current.selectionEnd);
+  
+  // Load post data when editing an existing post
+  useEffect(() => {
+    console.log('EditingPost in CreatePostModal:', editingPost);
+    if (editingPost) {
+      console.log('Setting form data from editingPost');
+      setTitle(editingPost.title || '');
+      setContent(editingPost.content || '');
+      setCategory(editingPost.category || 'Alla');
+      setPublished(editingPost.published !== false); // Default to true if not specified
+      setIsEditing(true);
+      
+      // Set image preview if there's an existing image
+      if (editingPost.image) {
+        setImagePreview(editingPost.image);
       }
+    } else {
+      console.log('No editingPost, resetting form');
+      resetForm();
+      setIsEditing(false);
     }
-  };
-
-  const insertLink = () => {
-    if (!linkUrl.trim()) {
-      alert('Please enter a URL');
-      return;
-    }
-
-    const linkMarkdown = `[${linkText || linkUrl}](${linkUrl})`;
-    const newContent = 
-      content.substring(0, selectionStart) + 
-      linkMarkdown + 
-      content.substring(selectionEnd);
-    
-    setContent(newContent);
-    setShowLinkTools(false);
-    setLinkUrl('');
-    setLinkText('');
-  };
+  }, [editingPost]);
 
   const handleSave = async () => {
     if (!title.trim() || !content.trim()) {
@@ -89,7 +68,9 @@ const CreatePostModal = ({ isOpen, onClose }) => {
     }
     
     try {
-      let imageUrl = null;
+      let imageUrl = imagePreview;
+      
+      // Only upload a new image if one was selected
       if (image) {
         // Generate a completely new filename without using the original name at all
         const timestamp = Date.now();
@@ -107,27 +88,52 @@ const CreatePostModal = ({ isOpen, onClose }) => {
         console.log("Image URL after upload:", imageUrl);
       }
       
-      const newPost = {
+      const postData = {
         title,
         content,
-        image: imageUrl,
-        date: new Date().toLocaleDateString('sv-SE', { 
+        category,
+        published,
+        updatedAt: new Date().toISOString()
+      };
+      
+      // Only update the image if we have one
+      if (imageUrl) {
+        postData.image = imageUrl;
+      }
+      
+      if (isEditing && editingPost) {
+        // Update existing post
+        const postRef = doc(db, 'posts', editingPost.id);
+        await updateDoc(postRef, postData);
+        console.log("Post updated with ID:", editingPost.id);
+      } else {
+        // Create new post
+        postData.date = new Date().toLocaleDateString('sv-SE', { 
           year: 'numeric', 
           month: 'long', 
           day: 'numeric' 
-        }),
-        category,
-        createdAt: new Date().toISOString()
-      };
-
-      // Save directly to Firestore
-      const docRef = await addDoc(collection(db, 'posts'), newPost);
-      console.log("Post saved with ID:", docRef.id);
+        });
+        postData.createdAt = new Date().toISOString();
+        
+        const docRef = await addDoc(collection(db, 'posts'), postData);
+        console.log("Post saved with ID:", docRef.id);
+      }
+      
+      // If addPost function is provided, use it (for better state management)
+      if (typeof addPost === 'function') {
+        addPost({
+          title,
+          content,
+          image: imageUrl,
+          category,
+          published
+        });
+      }
       
       resetForm();
       onClose();
       
-      // Reload the page to show the new post
+      // Reload the page to show the updated posts
       window.location.reload();
     } catch (error) {
       console.error('Error saving post:', error);
@@ -140,10 +146,9 @@ const CreatePostModal = ({ isOpen, onClose }) => {
     setContent('');
     setImage(null);
     setImagePreview('');
-    setShowLinkTools(false);
-    setLinkUrl('');
-    setLinkText('');
     setCategory('Alla');
+    setPublished(true);
+    setIsEditing(false);
   };
 
   const handleClose = () => {
@@ -166,7 +171,7 @@ const CreatePostModal = ({ isOpen, onClose }) => {
         onClick={handleClickOutside}
       ></div>
       <div className="create-post-modal__content">
-        <h2 className="create-post-modal__title">Skapa nytt inlägg</h2>
+        <h2 className="create-post-modal__title">{isEditing ? 'Redigera inlägg' : 'Skapa nytt inlägg'}</h2>
         
         <div className="create-post-modal__form">
           <div className="create-post-modal__form-group">
@@ -227,59 +232,24 @@ const CreatePostModal = ({ isOpen, onClose }) => {
           <div className="create-post-modal__form-group">
             <label className="create-post-modal__label">Innehåll</label>
             <div>
-              <textarea 
-                className="create-post-modal__textarea" 
+              <SimpleRichEditor
                 value={content}
                 onChange={handleContentChange}
-                onSelect={handleContentSelect}
-                ref={contentRef}
                 placeholder="Ange innehåll"
-              ></textarea>
-              
-              <button 
-                type="button" 
-                onClick={toggleLinkTools}
-                className="create-post-modal__button create-post-modal__button--secondary"
-                style={{ marginTop: '10px' }}
-              >
-                Lägg till länk
-              </button>
-              
-              {showLinkTools && (
-                <div className="create-post-modal__link-tools">
-                  <div>
-                    <label>Länktext:</label>
-                    <input 
-                      type="text" 
-                      value={linkText} 
-                      onChange={(e) => setLinkText(e.target.value)}
-                      className="create-post-modal__input"
-                      style={{ marginTop: '5px', width: '100%' }}
-                    />
-                  </div>
-                  
-                  <div>
-                    <label>URL:</label>
-                    <input 
-                      type="text" 
-                      value={linkUrl} 
-                      onChange={(e) => setLinkUrl(e.target.value)}
-                      className="create-post-modal__input"
-                      style={{ marginTop: '5px', width: '100%' }}
-                    />
-                  </div>
-                  
-                  <div style={{ marginTop: '10px' }}>
-                    <button 
-                      onClick={insertLink}
-                      className="create-post-modal__button create-post-modal__button--primary"
-                    >
-                      Infoga länk
-                    </button>
-                  </div>
-                </div>
-              )}
+              />
             </div>
+          </div>
+          
+          <div className="create-post-modal__form-group">
+            <label className="create-post-modal__checkbox-label">
+              <input
+                type="checkbox"
+                checked={published}
+                onChange={() => setPublished(!published)}
+                className="create-post-modal__checkbox"
+              />
+              Publicerad
+            </label>
           </div>
           
           <div className="create-post-modal__actions">
@@ -294,7 +264,7 @@ const CreatePostModal = ({ isOpen, onClose }) => {
               className="create-post-modal__button create-post-modal__button--primary"
               disabled={!title.trim() || !content.trim()}
             >
-              Spara
+              {isEditing ? 'Uppdatera' : 'Spara'}
             </button>
           </div>
         </div>

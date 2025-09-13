@@ -232,7 +232,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -656,7 +657,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -834,7 +836,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -1239,7 +1242,8 @@ a.button-2,
 .background-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .ulric-section {
@@ -1446,7 +1450,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .ulricehamn-title-section {
@@ -1561,7 +1566,8 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .info-card {
@@ -1629,7 +1635,8 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 
@@ -1718,7 +1725,8 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .price-button-container {
@@ -1815,7 +1823,8 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -2273,7 +2282,8 @@ a.button-2,
 .salen-hero-section .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .salen-title-section {
@@ -2412,7 +2422,8 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -2503,7 +2514,8 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 
@@ -2591,7 +2603,8 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .price-button-container {
@@ -3054,7 +3067,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .hemsedal-title-section {
@@ -3169,7 +3183,8 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .info-card {
@@ -3237,7 +3252,8 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 
@@ -3326,7 +3342,8 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .price-button-container {
@@ -3423,7 +3440,8 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -3882,7 +3900,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .kolmarden-title-section {
@@ -3997,7 +4016,8 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .info-card {
@@ -4065,7 +4085,8 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 
@@ -4154,7 +4175,8 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .price-button-container {
@@ -4251,7 +4273,8 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -4711,8 +4734,10 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .trippeln-title-section {
@@ -4982,7 +5007,8 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  clip-path: none;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -5263,7 +5289,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .title-container {
@@ -5412,8 +5439,10 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .regler-title-section {
@@ -5603,8 +5632,10 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .faq-title-section {
@@ -5985,8 +6016,10 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .historien-om-aim-title-section {
@@ -6603,7 +6636,8 @@ a.button-2,
 .sponsor-logo {
   max-width: 80%;
   max-height: 80px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transition: transform 0.3s ease;
   margin: 15px 0;
 }
@@ -6616,7 +6650,8 @@ a.button-2,
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transition: transform 0.2s ease-in-out;
   margin: 0 auto;
 }
@@ -6885,7 +6920,8 @@ a.button-2,
   max-height: 60px;
   width: auto;
   height: auto;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 4px;
   margin: 0 auto;
 }
@@ -6902,7 +6938,8 @@ a.button-2,
   max-height: 60px;
   width: auto;
   height: auto;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 4px;
   display: block;
   margin: 0 auto;
@@ -6968,7 +7005,8 @@ a.button-2,
   width: 100px;
   height: auto;
   margin-right: 15px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .modal-body .current-ads .ad-item .ad-details {
   flex: 1;
@@ -7008,7 +7046,8 @@ a.button-2,
 .modal-body .add-ad-form .form-group .image-preview img {
   max-width: 200px;
   max-height: 200px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .modal-body .add-ad-form button, .modal-body .add-ad-form .nav-button, .modal-body .add-ad-form .dropdown-button, .modal-body .add-ad-form .filter-select {
   background-color: rgb(56, 76, 135);
@@ -7106,7 +7145,8 @@ a.button-2,
 .ad-item-preview img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 4px;
   margin-right: 15px;
 }
@@ -7478,7 +7518,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .page_03-image img {
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border: 1px solid white;
 }
 .page_03-image #page_03-aim-image {
@@ -7582,7 +7623,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .ad-content .ad-carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /*----- Latest News Section -----*/
@@ -7632,7 +7674,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news-content {
@@ -8135,6 +8178,26 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   border-radius: 4px;
   margin-bottom: 15px;
 }
+.edit-modal__language-checkboxes {
+  margin: 15px 0;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.edit-modal__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.edit-modal__checkbox-label:hover {
+  color: #6A9FB5;
+}
+.edit-modal__checkbox {
+  margin-right: 5px;
+  cursor: pointer;
+}
 .edit-modal__form-group {
   margin-bottom: 10px;
 }
@@ -8281,7 +8344,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 .senaste-nytt-news-image-fallback {
@@ -8290,7 +8354,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
 }
 .senaste-nytt-news-content {
@@ -8302,7 +8367,17 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 }
 .senaste-nytt-news-date {
   color: #e87722; /* Orange secondary */
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+}
+.senaste-nytt-unpublished-notice {
+  background-color: #e74c3c; /* Red background */
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 .senaste-nytt-read-more {
   margin-top: 15px;
@@ -8387,6 +8462,12 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .senaste-nytt-admin-actions {
   margin-bottom: 20px;
 }
+.senaste-nytt-admin-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
 .senaste-nytt-create-post-button {
   background-color: #2d4f60; /* Primary dark blue */
   color: #f5f5f5; /* Light gray secondary */
@@ -8404,20 +8485,56 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .senaste-nytt-create-post-button:hover {
   background-color: #6a9fb5; /* Primary light blue */
 }
-.senaste-nytt-delete-post-button {
+.senaste-nytt-edit-post-button {
   background-color: #2d4f60; /* Primary dark blue */
   color: #f5f5f5; /* Light gray secondary */
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
-  margin-left: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.senaste-nytt-edit-post-button:hover {
+  background-color: #6a9fb5; /* Primary light blue */
+}
+.senaste-nytt-publish-post-button {
+  background-color: #2d4f60; /* Primary dark blue */
+  color: #f5f5f5; /* Light gray secondary */
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.senaste-nytt-publish-post-button.published {
+  background-color: #2d4f60; /* Primary dark blue */
+}
+.senaste-nytt-publish-post-button.published:hover {
+  background-color: #c0392b; /* Red for unpublish hover */
+}
+.senaste-nytt-publish-post-button.unpublished {
+  background-color: #7f8c8d; /* Gray for unpublished */
+}
+.senaste-nytt-publish-post-button.unpublished:hover {
+  background-color: #27ae60; /* Green for publish hover */
+}
+.senaste-nytt-delete-post-button {
+  background-color: #c0392b; /* Red for delete */
+  color: #f5f5f5; /* Light gray secondary */
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
 }
 .senaste-nytt-delete-post-button:hover {
-  background-color: #6a9fb5; /* Primary light blue */
+  background-color: #e74c3c; /* Lighter red on hover */
 }
 .senaste-nytt-subscribe-section {
   background-color: #2d4f60; /* Primary dark blue */
@@ -8550,6 +8667,21 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   padding: 20px;
 }
 
+.create-post-modal__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.create-post-modal__checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
 .senaste-nytt-title,
 .news-title {
   text-align: center;
@@ -8660,7 +8792,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .create-post-modal__image-preview {
   max-width: 100%;
   max-height: 200px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .create-post-modal__file-input {
   display: none;
@@ -8854,7 +8987,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .background-editor-modal__image-preview {
   max-width: 100%;
   max-height: 200px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .background-editor-modal__image-remove {
   position: absolute;
@@ -9377,6 +9511,9 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   outline: none;
   border-color: #6A9FB5; /* Light blue primary */
 }
+.result-upload-modal-field input::-moz-placeholder, .result-upload-modal-field select::-moz-placeholder {
+  color: #A0A0A0; /* Dark gray secondary */
+}
 .result-upload-modal-field input::placeholder,
 .result-upload-modal-field select::placeholder {
   color: #A0A0A0; /* Dark gray secondary */
@@ -9776,7 +9913,8 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-card .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: transform 0.3s ease;
 }
 .news-card .news-image:hover img {
@@ -10047,6 +10185,105 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
     transform: rotate(360deg);
   }
 }
+.aim_rich_editor_container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.aim_rich_editor_toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2px;
+  padding: 4px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.aim_rich_editor_content {
+  min-height: 300px;
+  height: 300px;
+  padding: 15px;
+  background-color: white;
+  overflow-y: auto;
+  line-height: 1.5;
+  resize: vertical;
+  border-top: none;
+}
+.aim_rich_editor_content:focus {
+  outline: none;
+}
+.aim_rich_editor_content[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #999;
+  font-style: italic;
+}
+.aim_rich_editor_content h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.aim_rich_editor_content h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.aim_rich_editor_content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.aim_rich_editor_content ul, .aim_rich_editor_content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.aim_rich_editor_content p {
+  margin-bottom: 10px;
+}
+
+.aim_format_control {
+  padding: 1px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.aim_format_control:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+.aim_format_control:active {
+  background-color: #e0e0e0;
+  transform: translateY(1px);
+}
+.aim_format_control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.aim_format_divider {
+  display: inline-block;
+  width: 1px;
+  height: 42px;
+  background-color: #ddd;
+  margin: 0 3px;
+}
+
 /* Common responsive styles for all competition pages */
 @media (max-width: 1200px) {
   .hero-image-container {
@@ -10991,7 +11228,8 @@ p {
 .s-sponsor-logo img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   filter: brightness(1.1);
 }
 
@@ -11008,4 +11246,4 @@ p {
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-}
+}/*# sourceMappingURL=index.css.map */

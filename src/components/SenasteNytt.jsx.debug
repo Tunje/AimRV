@@ -1,0 +1,1 @@
+console.log('Debugging edit button click:', JSON.stringify(post)) 
