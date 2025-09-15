@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 // scripts.js import removed
 // Remove the local Font Awesome import and use CDN in index.html instead
@@ -38,6 +39,16 @@ import Background from "./components/Background";
 import MetaUpdater from "./components/MetaUpdater";
 import { initializeAdminUser } from "./firebase/auth";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
   useEffect(() => {
     // Initialize admin user when the app loads
@@ -51,6 +62,7 @@ const App = () => {
       <LanguageProvider>
         <TextProvider>
           <Router>
+            <ScrollToTop />
             <MetaUpdater />
             <div
               className="flex flex_col MaxWH location"

@@ -151,7 +151,7 @@ const Navbar = () => {
           </div>
           {/* Kontakta oss Button */}
           <div className="nav-button">
-            <Link to="#">Kontakta oss</Link>
+            <a href="mailto:info@aimchallenge.com">Kontakta oss</a>
           </div>
           {/* Language Switcher */}
           <div className="language-nav-container">
@@ -310,13 +310,13 @@ const Navbar = () => {
             </div>
 
             <div className="mobile-menu-item">
-              <Link
-                to="#"
+              <a
+                href="mailto:info@aimchallenge.com"
                 onClick={toggleMobileMenu}
                 className="mobile-menu-link"
               >
                 Kontakta oss
-              </Link>
+              </a>
             </div>
 
             <div className="mobile-menu-item mobile-language-switcher">

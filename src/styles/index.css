@@ -232,8 +232,7 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  -webkit-clip-path: none;
-          clip-path: none;
+  clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -657,8 +656,7 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  -webkit-clip-path: none;
-          clip-path: none;
+  clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -836,8 +834,7 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  -webkit-clip-path: none;
-          clip-path: none;
+  clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -1242,8 +1239,7 @@ a.button-2,
 .background-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .ulric-section {
@@ -1450,8 +1446,7 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .ulricehamn-title-section {
@@ -1566,8 +1561,7 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .info-card {
@@ -1635,8 +1629,7 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 
@@ -1725,8 +1718,7 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .price-button-container {
@@ -1823,8 +1815,7 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content {
@@ -2282,8 +2273,7 @@ a.button-2,
 .salen-hero-section .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .salen-title-section {
@@ -2422,8 +2412,7 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content {
@@ -2514,8 +2503,7 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 
@@ -2603,8 +2591,7 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .price-button-container {
@@ -3061,14 +3048,13 @@ a.button-2,
 .hero-image-container {
   width: 100vw;
   height: 500px;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
 }
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .hemsedal-title-section {
@@ -3183,8 +3169,7 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .info-card {
@@ -3252,8 +3237,7 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 
@@ -3342,8 +3326,7 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .price-button-container {
@@ -3440,8 +3423,7 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content {
@@ -3900,8 +3882,7 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .kolmarden-title-section {
@@ -4016,8 +3997,7 @@ a.button-2,
 .image-card img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .info-card {
@@ -4085,8 +4065,7 @@ a.button-2,
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 
@@ -4175,8 +4154,7 @@ a.button-2,
 .price-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .price-button-container {
@@ -4273,8 +4251,7 @@ a.button-2,
 .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content {
@@ -4734,10 +4711,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .trippeln-title-section {
@@ -5007,8 +4982,7 @@ a.button-2,
 .button-2,
 .location.button-2 {
   border-radius: 25px;
-  -webkit-clip-path: none;
-          clip-path: none;
+  clip-path: none;
 }
 
 /* Modal action buttons - taller variant for better clickability */
@@ -5289,8 +5263,7 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .title-container {
@@ -5439,10 +5412,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .regler-title-section {
@@ -5632,10 +5603,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .faq-title-section {
@@ -6016,10 +5985,8 @@ a.button-2,
 .hero-image-container img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .historien-om-aim-title-section {
@@ -6636,8 +6603,7 @@ a.button-2,
 .sponsor-logo {
   max-width: 80%;
   max-height: 80px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   transition: transform 0.3s ease;
   margin: 15px 0;
 }
@@ -6650,8 +6616,7 @@ a.button-2,
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   transition: transform 0.2s ease-in-out;
   margin: 0 auto;
 }
@@ -6920,8 +6885,7 @@ a.button-2,
   max-height: 60px;
   width: auto;
   height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border-radius: 4px;
   margin: 0 auto;
 }
@@ -6938,8 +6902,7 @@ a.button-2,
   max-height: 60px;
   width: auto;
   height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border-radius: 4px;
   display: block;
   margin: 0 auto;
@@ -7005,8 +6968,7 @@ a.button-2,
   width: 100px;
   height: auto;
   margin-right: 15px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .modal-body .current-ads .ad-item .ad-details {
   flex: 1;
@@ -7046,8 +7008,7 @@ a.button-2,
 .modal-body .add-ad-form .form-group .image-preview img {
   max-width: 200px;
   max-height: 200px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .modal-body .add-ad-form button, .modal-body .add-ad-form .nav-button, .modal-body .add-ad-form .dropdown-button, .modal-body .add-ad-form .filter-select {
   background-color: rgb(56, 76, 135);
@@ -7145,8 +7106,7 @@ a.button-2,
 .ad-item-preview img {
   width: 100px;
   height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 4px;
   margin-right: 15px;
 }
@@ -7217,7 +7177,7 @@ a.button-2,
 
 .page_01 {
   width: 100%;
-  min-height: 700px;
+  min-height: 500px;
   margin-bottom: 20px;
   max-width: 100vw;
   padding-top: 90px;
@@ -7518,8 +7478,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .page_03-image img {
   max-width: 90%;
   max-height: 90%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   border: 1px solid white;
 }
 .page_03-image #page_03-aim-image {
@@ -7623,8 +7582,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .ad-content .ad-carousel img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 /*----- Latest News Section -----*/
@@ -7674,8 +7632,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content {
@@ -8344,8 +8301,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 .senaste-nytt-news-image-fallback {
@@ -8354,8 +8310,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   left: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
 }
 .senaste-nytt-news-content {
@@ -8578,8 +8533,29 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   color: red;
   font-size: 14px;
 }
+.senaste-nytt-title-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 20px;
+}
+.senaste-nytt-title-section .title-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+.senaste-nytt-title-section .title-container h1 {
+  font-family: "AFCarplets Bold", sans-serif;
+  font-size: 48px;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+}
 .senaste-nytt-main-title {
-  color: rgb(56, 76, 135);
+  font-family: "AFCarplets Bold", sans-serif !important;
+  font-size: 48px !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
 }
 .senaste-nytt-image-debug {
   position: absolute;
@@ -8688,7 +8664,10 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 }
 
 .senaste-nytt-main-title {
-  color: #2d4f60 !important; /* Primary dark blue */
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 20px;
+  color: white !important; /* Primary dark blue */
 }
 
 .news-content {
@@ -8792,8 +8771,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .create-post-modal__image-preview {
   max-width: 100%;
   max-height: 200px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .create-post-modal__file-input {
   display: none;
@@ -8987,8 +8965,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .background-editor-modal__image-preview {
   max-width: 100%;
   max-height: 200px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .background-editor-modal__image-remove {
   position: absolute;
@@ -9075,12 +9052,14 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 }
 
 .results-header-banner {
-  width: 100%;
-  border-radius: 8px;
-  min-height: 700px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100vw;
+  border-radius: 0;
+  height: 500px;
+  max-width: none;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  left: 50%;
+  position: relative;
   margin-bottom: 2rem;
   background-image: url("../images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
   background-size: cover;
@@ -9511,9 +9490,6 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   outline: none;
   border-color: #6A9FB5; /* Light blue primary */
 }
-.result-upload-modal-field input::-moz-placeholder, .result-upload-modal-field select::-moz-placeholder {
-  color: #A0A0A0; /* Dark gray secondary */
-}
 .result-upload-modal-field input::placeholder,
 .result-upload-modal-field select::placeholder {
   color: #A0A0A0; /* Dark gray secondary */
@@ -9913,8 +9889,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .news-card .news-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 .news-card .news-image:hover img {
@@ -10259,9 +10234,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   cursor: pointer;
   font-size: 11px;
   transition: all 0.2s ease;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .aim_format_control:hover {
   background-color: #f0f0f0;
@@ -10282,6 +10255,91 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   height: 42px;
   background-color: #ddd;
   margin: 0 3px;
+}
+
+.aim_link_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.aim_link_modal_content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.aim_link_modal_content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.aim_link_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.aim_form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aim_form_group label {
+  font-size: 14px;
+  color: #555;
+}
+.aim_form_group input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.aim_form_group input:focus {
+  outline: none;
+  border-color: #0073e6;
+  box-shadow: 0 0 0 2px rgba(0, 115, 230, 0.25);
+}
+
+.aim_link_buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.aim_link_buttons button, .aim_link_buttons .nav-button, .aim_link_buttons .dropdown-button, .aim_link_buttons .filter-select {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.aim_link_buttons button.aim_cancel_button, .aim_link_buttons .aim_cancel_button.nav-button, .aim_link_buttons .aim_cancel_button.dropdown-button, .aim_link_buttons .aim_cancel_button.filter-select {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #333;
+}
+.aim_link_buttons button.aim_cancel_button:hover, .aim_link_buttons .aim_cancel_button.nav-button:hover, .aim_link_buttons .aim_cancel_button.dropdown-button:hover, .aim_link_buttons .aim_cancel_button.filter-select:hover {
+  background-color: #e0e0e0;
+}
+.aim_link_buttons button.aim_insert_button, .aim_link_buttons .aim_insert_button.nav-button, .aim_link_buttons .aim_insert_button.dropdown-button, .aim_link_buttons .aim_insert_button.filter-select {
+  background-color: #0073e6;
+  border: 1px solid #0073e6;
+  color: white;
+}
+.aim_link_buttons button.aim_insert_button:hover, .aim_link_buttons .aim_insert_button.nav-button:hover, .aim_link_buttons .aim_insert_button.dropdown-button:hover, .aim_link_buttons .aim_insert_button.filter-select:hover {
+  background-color: #005bb5;
 }
 
 .news-detail-content {
@@ -10385,6 +10443,15 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
 .article-content-wrapper section {
   display: block;
   width: 100%;
+}
+
+.news-description a, .senaste-nytt-news-text a {
+  color: #0073e6;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.news-description a:hover, .senaste-nytt-news-text a:hover {
+  text-decoration: none;
 }
 
 /* Common responsive styles for all competition pages */
@@ -11331,8 +11398,7 @@ p {
 .s-sponsor-logo img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   filter: brightness(1.1);
 }
 
@@ -11349,4 +11415,4 @@ p {
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-}/*# sourceMappingURL=index.css.map */
+}

@@ -31,12 +31,14 @@
 }
 
 .results-header-banner {
-  width: 100%;
-  border-radius: 8px;
-  min-height: 700px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100vw;
+  border-radius: 0;
+  height: 500px;
+  max-width: none;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  left: 50%;
+  position: relative;
   margin-bottom: 2rem;
   background-image: url("../images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
   background-size: cover;

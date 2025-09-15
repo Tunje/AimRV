@@ -188,13 +188,19 @@ const Pages = () => {
             />
             <EditableText
               textKey="aim-challenge-desc-1"
-              defaultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              defaultText="AIM Challenge är en multisporttävling i lag om två, där ni under tre eller sex timmar samlar så många kontroller som möjligt med hjälp av en karta som är hemlig fram till start. Ni tar er fram framför allt på cykel, men kommer också att springa kortare sträckor till fots för att nå vissa kontroller."
               tag="p"
               className="font_white"
             />
             <EditableText
               textKey="aim-challenge-desc-2"
-              defaultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              defaultText="På kartan finns 60 kontroller, flera av dem innehåller äventyrliga moment som klättring, paddling eller simning, och ofta dyker det upp en eller annan överraskning baserat på destinationens unika miljö. Andra kontroller handlar mer om att ta sig dit och stämpla. Ni väljer själva vilka ni vill ta, i vilken ordning och hur långt ni vill gå för att samla poäng."
+              tag="p"
+              className="font_white"
+            />
+            <EditableText
+              textKey="aim-challenge-desc-3"
+              defaultText="AIM Challenge passar både erfarna lag som vill jaga varje poäng och nybörjare som är ute efter ett roligt och minnesvärt äventyr tillsammans. En tävling på era villkor och för alla, precis som multisport ska vara!"
               tag="p"
               className="font_white"
             />
