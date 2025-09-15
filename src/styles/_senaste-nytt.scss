@@ -126,7 +126,7 @@
     color: #e87722; /* Orange secondary */
     margin-bottom: 5px;
   }
-  
+
   &-unpublished-notice {
     background-color: #e74c3c; /* Red background */
     color: white;
@@ -251,7 +251,7 @@
   &-admin-actions {
     margin-bottom: 20px;
   }
-  
+
   &-admin-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -293,7 +293,7 @@
       background-color: #6a9fb5; /* Primary light blue */
     }
   }
-  
+
   &-publish-post-button {
     background-color: #2d4f60; /* Primary dark blue */
     color: #f5f5f5; /* Light gray secondary */
@@ -304,18 +304,18 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
-    
+
     &.published {
       background-color: #2d4f60; /* Primary dark blue */
-      
+
       &:hover {
         background-color: #c0392b; /* Red for unpublish hover */
       }
     }
-    
+
     &.unpublished {
       background-color: #7f8c8d; /* Gray for unpublished */
-      
+
       &:hover {
         background-color: #27ae60; /* Green for publish hover */
       }
@@ -388,8 +388,32 @@
     }
   }
 
+  &-title-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 20px;
+
+    .title-container {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+
+      h1 {
+        font-family: "AFCarplets Bold", sans-serif;
+        font-size: 48px;
+        color: white;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+  }
+
   &-main-title {
-    color: rgb(56, 76, 135); // Dark blue per memory requirement
+    font-family: "AFCarplets Bold", sans-serif !important;
+    font-size: 48px !important;
+    color: white !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
   }
 
   &-image-debug {
@@ -514,7 +538,10 @@
 
 // Main title with dark blue color that overrides parent styles
 .senaste-nytt-main-title {
-  color: #2d4f60 !important; /* Primary dark blue */
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 20px;
+  color: white !important; /* Primary dark blue */
 }
 
 // Keep news content left-aligned

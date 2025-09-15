@@ -6,26 +6,26 @@ import { useText } from "../context/TextContext";
 
 const OmOss = () => {
   const { currentLanguage } = useText();
-  
+
   // State for button text
-  const [readMoreText, setReadMoreText] = useState('');
-  
+  const [readMoreText, setReadMoreText] = useState("");
+
   // Update button text when language changes
   useEffect(() => {
     // For English
-    if (currentLanguage === 'en') {
-      setReadMoreText('READ MORE');
+    if (currentLanguage === "en") {
+      setReadMoreText("READ MORE");
     }
     // For Norwegian
-    else if (currentLanguage === 'no') {
-      setReadMoreText('LES MER');
+    else if (currentLanguage === "no") {
+      setReadMoreText("LES MER");
     }
     // Default to Swedish
     else {
-      setReadMoreText('LÄS MER');
+      setReadMoreText("LÄS MER");
     }
   }, [currentLanguage]);
-  
+
   return (
     <>
       <BackgroundEditor key="om-oss-background-editor" />
@@ -76,7 +76,7 @@ const OmOss = () => {
               />
               <EditableText
                 textKey="om-oss-text-2"
-                defaultText="Med karta i handen och sex timmar på klockan gäller det att samla så många poäng som möjligt genom att ta kontroller som är utspridda i naturen. Ni tar er fram framför allt på cykel, men även till fots och ibland genom att klättra, paddla eller simma."
+                defaultText="Med karta i handen och tre eller sex timmar på klockan gäller det att samla så många poäng som möjligt genom att ta kontroller som är utspridda i naturen. Ni tar er fram framför allt på cykel, men även till fots och ibland genom att klättra, paddla eller simma."
                 tag="p"
                 className="fonts_small om-oss-text"
               />
@@ -102,7 +102,7 @@ const OmOss = () => {
               />
               <EditableText
                 textKey="om-oss-text-5"
-                defaultText="Ni samlar poäng baserat på kontrollernas svårighetsgrad. Många kontroller kan nås direkt med cykel, andra kräver att ni springer en bit eller vågar er ut i vattnet. På varje äventyrlig kontroll finns erfaren personal som ser till att allt sker på ett tryggt och säkert sätt. Inga förkunskaper krävs."
+                defaultText="Ni samlar poäng baserat på kontrollernas svårighetsgrad. Många kontroller kan nås direkt med cykel, andra kräver att ni springer en bit eller vågar er ut i vattnet. På de äventyrliga kontroll som kräver det, finns erfaren personal som ser till att allt sker på ett tryggt och säkert sätt. Inga förkunskaper krävs."
                 tag="p"
                 className="fonts_small om-oss-text"
               />
