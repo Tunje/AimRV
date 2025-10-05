@@ -336,7 +336,7 @@ const Salen = () => {
       {/* Latest News section */}
       <section id="latest-news" className="latest-news-section">
         <h2 className="latest-news-title">{latestNewsText}</h2>
-        <div style={{ width: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
+        <div className="latest-news-container">
           <NewsCarousel instanceId="salen-news" defaultCategory="Sälen" />
         </div>
       </section>

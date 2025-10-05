@@ -180,7 +180,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 20px;
+  padding: 0;
   border-radius: 0 0 8px 8px;
 
   &.open {
@@ -314,6 +314,8 @@
   }
 
   .faq-answer {
+    padding: 0;
+    
     &.open {
       padding: 15px;
     }

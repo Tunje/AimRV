@@ -92,6 +92,20 @@ const Results = () => {
         // Then filter by location
         filtered = filtered.filter(r => r.location === location);
         
+        // Sort by year (latest first), then by category, then by duration
+        filtered.sort((a, b) => {
+            // First sort by year (descending - latest first)
+            if (a.year !== b.year) {
+                return b.year - a.year;
+            }
+            // Then by category (alphabetical)
+            if (a.category !== b.category) {
+                return a.category.localeCompare(b.category);
+            }
+            // Finally by duration (alphabetical)
+            return a.duration.localeCompare(b.duration);
+        });
+        
         console.log('Filtered results for', location, ':', filtered);
         return filtered;
     };
