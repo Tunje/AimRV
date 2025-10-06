@@ -7,10 +7,14 @@ import "../styles/index.css";
 import { useText } from "../context/TextContext";
 
 const Hemsedal = () => {
-  const { currentLanguage } = useText();
+  const { currentLanguage, getText } = useText();
   
   // State for button text
   const [readMoreText, setReadMoreText] = useState('');
+  
+  // Get the registration URL from editable text
+  const rawUrl = getText('hemsedal-registration-url', 'https://raceid.com/no/races/12849/about');
+  const registrationUrl = rawUrl.startsWith('http://') || rawUrl.startsWith('https://') ? rawUrl : `https://${rawUrl}`;
   
   // Update button text when language changes
   useEffect(() => {
@@ -64,9 +68,16 @@ const Hemsedal = () => {
 
       {/* Button Section */}
       <section className="hemsedal-button-section">
+        <EditableText
+          textKey="hemsedal-registration-url"
+          defaultText="https://raceid.com/no/races/12849/about"
+          tag="span"
+          className="hidden-editable-url"
+          style={{ display: 'none' }}
+        />
         <div className="button-container">
           <a
-            href="https://raceid.com/sv/races/13015/about"
+            href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="anmalan-button"
@@ -302,7 +313,7 @@ const Hemsedal = () => {
 
                 <div className="price-button-container">
                   <a
-                    href="https://raceid.com/sv/races/13015/about"
+                    href={registrationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="price-anmalan-button"

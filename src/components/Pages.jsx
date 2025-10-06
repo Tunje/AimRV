@@ -49,6 +49,7 @@ const Pages = () => {
           tag="h2"
           className="page_02-title"
         />
+        <div className="page_02-title-spacer"></div>
         <div className="page_02box  flex flex_col MaxWH location">
           <div
             id="page_02-ulricehamn-image"

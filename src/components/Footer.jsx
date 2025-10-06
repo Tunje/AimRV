@@ -98,7 +98,7 @@ const Footer = () => {
                 <h3 className="footer-title">INFORMATION</h3>
                 <ul className="footer-links">
                   <li>
-                    <a href="#">Anmälningsvillkor</a>
+                    <a href="/Anmalningsvillkor  2024-08-27.pdf" download target="_blank">Anmälningsvillkor</a>
                   </li>
                   <li>
                     <a href="#">Integritetspolicy</a>

@@ -643,13 +643,27 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(
     height: 200px;
   }
 
-  .page_02-title {
+  .page_02 .page_02-title {
     font-size: 1.8rem;
-    margin-bottom: 20px;
     text-align: center;
     width: 100%;
+    position: relative;
+    top: 0;
   }
+  
+  .page_02-title-spacer {
+    height: 0;
+  }
+}
 
+@media (max-width: 768px) {
+  .page_02-title-spacer {
+    height: 50px;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+  }
+  
   .pad {
     padding: 30px;
   }

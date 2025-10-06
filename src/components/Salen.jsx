@@ -7,7 +7,7 @@ import "../styles/index.css";
 import { useText } from "../context/TextContext";
 
 const Salen = () => {
-  const { currentLanguage } = useText();
+  const { currentLanguage, getText } = useText();
   
   // State for button text
   const [readMoreText, setReadMoreText] = useState('');
@@ -15,6 +15,10 @@ const Salen = () => {
   const [latestNewsText, setLatestNewsText] = useState('');
   const [usefulLinksText, setUsefulLinksText] = useState('');
   const [localSponsorsText, setLocalSponsorsText] = useState('');
+  
+  // Get the registration URL from editable text
+  const rawUrl = getText('salen-registration-url', 'https://raceid.com/sv/races/12847/about');
+  const registrationUrl = rawUrl.startsWith('http://') || rawUrl.startsWith('https://') ? rawUrl : `https://${rawUrl}`;
   
   // Update button text when language changes
   useEffect(() => {
@@ -81,9 +85,16 @@ const Salen = () => {
 
       {/* Button Section */}
       <section className="ulricehamn-button-section">
+        <EditableText
+          textKey="salen-registration-url"
+          defaultText="https://raceid.com/sv/races/12847/about"
+          tag="span"
+          className="hidden-editable-url"
+          style={{ display: 'none' }}
+        />
         <div className="button-container">
           <a
-            href="https://raceid.com/sv/races/12846/about"
+            href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="anmalan-button"
@@ -319,7 +330,7 @@ const Salen = () => {
 
                 <div className="price-button-container">
                   <a
-                    href="https://raceid.com/sv/races/12846/about"
+                    href={registrationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="price-anmalan-button"

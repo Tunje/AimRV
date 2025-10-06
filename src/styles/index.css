@@ -1483,14 +1483,23 @@ a.button-2,
   padding: 15px 0 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .button-container {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.hidden-editable-url {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
 }
 
 .anmalan-button {
@@ -1505,9 +1514,8 @@ a.button-2,
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: "AFCarplets Bold", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1888,7 +1896,7 @@ a.button-2,
 }
 
 .useful-links-section {
-  width: 100%;
+  width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
   display: flex;
@@ -2187,6 +2195,15 @@ a.button-2,
   color: white;
 }
 
+@media (max-width: 1200px) {
+  .useful-links-section {
+    width: 95%;
+    padding: 30px 0;
+  }
+  .useful-links-container {
+    padding: 30px;
+  }
+}
 @media (max-width: 992px) {
   .program-row {
     flex-direction: column;
@@ -2226,6 +2243,24 @@ a.button-2,
   .price-subtitle {
     font-size: 1.5rem;
   }
+  .useful-links-section {
+    width: 100%;
+    padding: 20px 0;
+  }
+  .useful-links-container {
+    padding: 20px;
+    margin: 0 15px;
+  }
+  .useful-links-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .links-category-title {
+    font-size: 1.2rem;
+  }
+  .links-text {
+    font-size: 0.9rem;
+  }
 }
 @media (max-width: 576px) {
   .ulricehamn-title {
@@ -2233,6 +2268,28 @@ a.button-2,
   }
   .program-title {
     font-size: 1.5rem;
+  }
+  .useful-links-section {
+    padding: 15px 0;
+  }
+  .useful-links-container {
+    padding: 15px;
+    margin: 0 10px;
+  }
+  .useful-links-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .links-category {
+    margin-bottom: 20px;
+  }
+  .links-category-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .links-text {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
   .day-title {
     font-size: 1.1rem;
@@ -2313,14 +2370,23 @@ a.button-2,
   padding: 15px 0 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .salen-button-section .button-container,
 .salen-bottom-button-section .button-container {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.hidden-editable-url {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
 }
 .salen-button-section .anmalan-button,
 .salen-bottom-button-section .anmalan-button {
@@ -2335,9 +2401,8 @@ a.button-2,
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: "AFCarplets Bold", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
@@ -2639,7 +2704,7 @@ a.button-2,
 }
 
 .useful-links-section {
-  width: 100%;
+  width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
   display: flex;
@@ -3149,14 +3214,23 @@ a.button-2,
   padding: 15px 0 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .button-container {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.hidden-editable-url {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
 }
 
 .anmalan-button {
@@ -3171,9 +3245,8 @@ a.button-2,
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: "AFCarplets Bold", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
@@ -3554,7 +3627,7 @@ a.button-2,
 }
 
 .useful-links-section {
-  width: 100%;
+  width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
   display: flex;
@@ -3852,6 +3925,15 @@ a.button-2,
   color: white;
 }
 
+@media (max-width: 1200px) {
+  .useful-links-section {
+    width: 95%;
+    padding: 30px 0;
+  }
+  .useful-links-container {
+    padding: 30px;
+  }
+}
 @media (max-width: 992px) {
   .program-row {
     flex-direction: column;
@@ -3891,6 +3973,24 @@ a.button-2,
   .price-subtitle {
     font-size: 1.5rem;
   }
+  .useful-links-section {
+    width: 100%;
+    padding: 20px 0;
+  }
+  .useful-links-container {
+    padding: 20px;
+    margin: 0 15px;
+  }
+  .useful-links-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .links-category-title {
+    font-size: 1.2rem;
+  }
+  .links-text {
+    font-size: 0.9rem;
+  }
 }
 @media (max-width: 576px) {
   .ulricehamn-title {
@@ -3898,6 +3998,28 @@ a.button-2,
   }
   .program-title {
     font-size: 1.5rem;
+  }
+  .useful-links-section {
+    padding: 15px 0;
+  }
+  .useful-links-container {
+    padding: 15px;
+    margin: 0 10px;
+  }
+  .useful-links-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .links-category {
+    margin-bottom: 20px;
+  }
+  .links-category-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .links-text {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
   .day-title {
     font-size: 1.1rem;
@@ -3982,14 +4104,23 @@ a.button-2,
   padding: 15px 0 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .button-container {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.hidden-editable-url {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
 }
 
 .anmalan-button {
@@ -4004,9 +4135,8 @@ a.button-2,
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: "AFCarplets Bold", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
@@ -4387,7 +4517,7 @@ a.button-2,
 }
 
 .useful-links-section {
-  width: 100%;
+  width: 1200px;
   max-width: 1200px;
   padding: 40px 0;
   display: flex;
@@ -4685,6 +4815,15 @@ a.button-2,
   color: white;
 }
 
+@media (max-width: 1200px) {
+  .useful-links-section {
+    width: 95%;
+    padding: 30px 0;
+  }
+  .useful-links-container {
+    padding: 30px;
+  }
+}
 @media (max-width: 992px) {
   .program-row {
     flex-direction: column;
@@ -4724,6 +4863,24 @@ a.button-2,
   .price-subtitle {
     font-size: 1.5rem;
   }
+  .useful-links-section {
+    width: 100%;
+    padding: 20px 0;
+  }
+  .useful-links-container {
+    padding: 20px;
+    margin: 0 15px;
+  }
+  .useful-links-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .links-category-title {
+    font-size: 1.2rem;
+  }
+  .links-text {
+    font-size: 0.9rem;
+  }
 }
 @media (max-width: 576px) {
   .ulricehamn-title {
@@ -4731,6 +4888,28 @@ a.button-2,
   }
   .program-title {
     font-size: 1.5rem;
+  }
+  .useful-links-section {
+    padding: 15px 0;
+  }
+  .useful-links-container {
+    padding: 15px;
+    margin: 0 10px;
+  }
+  .useful-links-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .links-category {
+    margin-bottom: 20px;
+  }
+  .links-category-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .links-text {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
   .day-title {
     font-size: 1.1rem;
@@ -6247,16 +6426,6 @@ a.button-2,
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
-.competitions-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(45, 79, 96, 0.3); /* Primary dark blue with opacity */
-  z-index: 1;
-}
 .competitions-card-ulricehamn {
   background-image: url("/images/EE-AIMChallenge24-Uhamn-0171-high.jpg");
 }
@@ -6332,7 +6501,7 @@ a.button-2,
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: transparent;
   /* Add more space between the header and buttons */
   margin-top: 50px;
 }
@@ -6354,6 +6523,8 @@ a.button-2,
   text-transform: uppercase;
   font-size: 1rem;
   font-family: "AFCarplets Bold", sans-serif;
+  text-decoration: none;
+  margin: 0 auto;
 }
 .competitions-button span {
   color: white;
@@ -7848,12 +8019,25 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   .page_02-image {
     height: 200px;
   }
-  .page_02-title {
+  .page_02 .page_02-title {
     font-size: 1.8rem;
-    margin-bottom: 20px;
     text-align: center;
     width: 100%;
+    position: relative;
+    top: 0;
   }
+  .page_02-title-spacer {
+    height: 0;
+  }
+}
+@media (max-width: 768px) {
+  .page_02-title-spacer {
+    height: 50px;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+  }
+  
   .pad {
     padding: 30px;
   }
@@ -10027,7 +10211,7 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   text-align: center;
 }
 .news-card .news-content .news-button .button-2 {
-  background-color: rgb(56, 76, 135);
+  background-color: #2d4f60;
   color: white;
   border: 2px solid white;
   border-radius: 30px;
@@ -10038,14 +10222,17 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   font-size: 1rem;
   letter-spacing: 1px;
   font-family: "AFCarplets Bold", sans-serif;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   width: 80%;
   text-align: center;
 }
 .news-card .news-content .news-button .button-2:hover {
-  background-color: rgb(79, 99, 158);
-  transform: scale(1.05);
+  background-color: white;
+  color: #2d4f60;
+  transform: translateY(-2px);
 }
 .news-card .news-content .news-button .button-2 span {
   color: white;
@@ -10055,6 +10242,9 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   font-weight: bold;
   display: block;
   width: 100%;
+}
+.news-card .news-content .news-button .button-2:hover span {
+  color: #2d4f60;
 }
 
 .language-selector {
@@ -11312,89 +11502,93 @@ p:not(.fonts_huge):not(.fonts_large):not(.fonts_big):not(.page-title):not(.secti
   .news-carousel-container {
     width: 90%;
     margin: 0 auto;
-    flex-wrap: wrap;
   }
 }
 @media (max-width: 992px) {
   .news-carousel-container {
-    width: 95%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .news-carousel-controls {
-    margin-top: 20px;
-  }
-  .news-carousel-controls .carousel-control {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    background-color: rgba(45, 79, 96, 0.8);
-    color: white;
-  }
-  .news-carousel-controls .carousel-control:hover {
-    background-color: rgb(45, 79, 96);
+    gap: 20px;
   }
   .news-card {
     width: calc(50% - 15px);
-    margin-bottom: 30px;
   }
 }
 @media (max-width: 768px) {
+  .news-carousel-admin {
+    top: -40px;
+    right: 20px;
+  }
   .news-carousel-container {
-    width: 100%;
-    padding: 0 15px;
-    flex-direction: column;
-    align-items: center;
+    gap: 15px;
   }
   .news-carousel-controls {
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  .news-carousel-controls .carousel-control {
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .news-carousel-controls .carousel-control:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  .news-card {
-    width: 100%;
-    max-width: 450px;
-    margin-bottom: 20px;
-  }
-}
-@media (max-width: 576px) {
-  .news-carousel-container {
-    width: 95%;
-  }
-  .news-carousel-controls {
-    margin-top: 15px;
+    gap: 15px;
   }
   .news-carousel-controls .carousel-control {
     width: 40px;
     height: 40px;
     font-size: 18px;
   }
+  .news-card {
+    width: calc(50% - 10px);
+  }
+  .news-card .news-content {
+    padding: 15px;
+  }
   .news-card .news-content .news-location {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .news-card .news-content .news-description {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     min-height: 50px;
   }
   .news-card .news-content .news-button .button-2 {
     padding: 8px 20px;
     font-size: 0.9rem;
+    width: 90%;
+  }
+}
+@media (max-width: 576px) {
+  .news-carousel-admin {
+    top: -35px;
+    right: 15px;
+  }
+  .news-carousel-container {
+    gap: 0;
+    justify-content: center;
+  }
+  .news-carousel-controls {
+    margin-top: 15px;
+    gap: 10px;
+  }
+  .news-carousel-controls .carousel-control {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .news-card {
+    width: 100%;
+    max-width: 350px;
+  }
+  .news-card .news-image {
+    height: 180px;
+  }
+  .news-card .news-content {
+    padding: 12px;
+  }
+  .news-card .news-content .news-location {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .news-card .news-content .news-description {
+    font-size: 0.8rem;
+    min-height: 40px;
+    margin-bottom: 15px;
+  }
+  .news-card .news-content .news-button .button-2 {
+    padding: 6px 15px;
+    font-size: 0.85rem;
+    width: 100%;
   }
 }
 body {
@@ -11527,71 +11721,4 @@ p {
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-}
-
-/* Sponsors Section Responsive Styles */
-@media (max-width: 1200px) {
-  .sponsors-section {
-    width: 95%;
-    padding: 30px 0;
-  }
-  
-  .sponsors-container {
-    padding: 25px;
-    gap: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sponsors-section {
-    width: 100%;
-    padding: 20px 0;
-    margin: 15px auto 0;
-  }
-  
-  .sponsors-container {
-    padding: 20px;
-    gap: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .sponsors-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-  }
-  
-  .main-logo,
-  .side-logo {
-    width: 150px;
-    height: 75px;
-  }
-}
-
-@media (max-width: 576px) {
-  .sponsors-section {
-    padding: 15px 0;
-    margin: 10px auto 0;
-  }
-  
-  .sponsors-container {
-    padding: 15px;
-    gap: 15px;
-    margin: 0 10px;
-  }
-  
-  .sponsors-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .main-logo,
-  .side-logo {
-    width: 120px;
-    height: 60px;
-  }
-  
-  .side-logo img {
-    padding: 8px;
-  }
 }/*# sourceMappingURL=index.css.map */
