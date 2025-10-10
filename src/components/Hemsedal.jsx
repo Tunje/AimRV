@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
 import NewsCarousel from "./NewsCarousel";
+import SponsorEditor from "./SponsorEditor";
 import "../styles/index.css";
 import { useText } from "../context/TextContext";
 
@@ -11,6 +12,7 @@ const Hemsedal = () => {
   
   // State for button text
   const [readMoreText, setReadMoreText] = useState('');
+  const [localSponsorsText, setLocalSponsorsText] = useState('');
   
   // Get the registration URL from editable text
   const rawUrl = getText('hemsedal-registration-url', 'https://raceid.com/no/races/12849/about');
@@ -21,14 +23,17 @@ const Hemsedal = () => {
     // For English
     if (currentLanguage === 'en') {
       setReadMoreText('Read more');
+      setLocalSponsorsText('LOCAL SPONSORS');
     }
     // For Norwegian
     else if (currentLanguage === 'no') {
       setReadMoreText('Les mer');
+      setLocalSponsorsText('LOKALE SPONSORER');
     }
     // Default to Swedish
     else {
       setReadMoreText('Läs mer');
+      setLocalSponsorsText('LOKALA SPONSORER');
     }
   }, [currentLanguage]);
   
@@ -394,10 +399,14 @@ const Hemsedal = () => {
 
       {/* Sponsors Section */}
       <section className="sponsors-section">
-        <h2 className="sponsors-title">LOKALA SPONSORER</h2>
-        <div className="sponsors-container">
-          {/* Local sponsors will be loaded dynamically by the SponsorEditor component */}
-        </div>
+        <EditableText
+          textKey="hemsedal-sponsors-title"
+          defaultText={localSponsorsText}
+          tag="h2"
+          className="sponsors-title"
+        />
+        {/* SponsorEditor will load and display sponsors */}
+        <SponsorEditor location="hemsedal" targetId="hemsedal-sponsors" />
       </section>
 
       {/* No footer needed here - it's already included in App.jsx */}

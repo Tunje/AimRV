@@ -12,7 +12,7 @@ const ContentManager = () => {
   const { isAuthenticated } = useAuth();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const [mainTab, setMainTab] = useState("content");
+  const [mainTab, setMainTab] = useState("seo");
   const [activeTab, setActiveTab] = useState("all");
   const [faqItems, setFaqItems] = useState([]);
   const [backgroundItems, setBackgroundItems] = useState([]);
@@ -128,6 +128,11 @@ const ContentManager = () => {
 
     // Categorize text content
     Object.entries(textContent).forEach(([key, value]) => {
+      // Skip if value is not a string
+      if (typeof value !== 'string') {
+        return;
+      }
+      
       if (
         value.startsWith("data:image") ||
         value.startsWith("http") ||
@@ -214,7 +219,7 @@ const ContentManager = () => {
         <h1 className="font_blue fonts_huge">Innehållshanterare</h1>
       </div>
 
-      {/* Main Tabs */}
+      {/* Main Tabs - Only SEO */}
       <div
         style={{
           padding: "20px 40px 0",
@@ -227,379 +232,33 @@ const ContentManager = () => {
         }}
       >
         <button
-          onClick={() => setMainTab("content")}
-          style={{
-            padding: "12px 24px",
-            backgroundColor: mainTab === "content" ? "#2d4f60" : "#e0e0e0",
-            color: mainTab === "content" ? "white" : "#333",
-            border: "none",
-            borderRadius: "4px 4px 0 0",
-            cursor: "pointer",
-            fontSize: "16px",
-            fontWeight: "bold",
-            position: "relative",
-            bottom: mainTab === "content" ? "-2px" : "0",
-            borderBottom: mainTab === "content" ? "2px solid #2d4f60" : "none",
-          }}
-        >
-          Innehåll
-        </button>
-        <button
-          onClick={() => setMainTab("seo")}
           style={{
             padding: "14px 24px",
-            backgroundColor: mainTab === "seo" ? "#2d4f60" : "#e0e0e0",
-            color: mainTab === "seo" ? "white" : "#333",
+            backgroundColor: "#2d4f60",
+            color: "white",
             border: "none",
             borderRadius: "4px 4px 0 0",
-            cursor: "pointer",
+            cursor: "default",
             fontSize: "16px",
             fontWeight: "bold",
             position: "relative",
-            bottom: mainTab === "seo" ? "-2px" : "0",
-            borderBottom: mainTab === "seo" ? "2px solid #2d4f60" : "none",
+            bottom: "-2px",
+            borderBottom: "2px solid #2d4f60",
           }}
         >
           SEO&nbsp;&amp;&nbsp;Meta
         </button>
       </div>
 
-      {mainTab === "content" && (
-        <section
-          style={{ padding: "40px", maxWidth: "1200px", margin: "0 auto" }}
-        >
-          <div
-            style={{
-              marginBottom: "30px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: "20px",
-            }}
-          >
-            <h2 className="font_blue fonts_large">Alla redigerbara innehåll</h2>
-            <button
-              onClick={handleReset}
-              style={{
-                padding: "24px",
-                backgroundColor: "#ff4d4d",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                whiteSpace: "wrap",
-              }}
-            >
-              Återställ allt innehåll
-            </button>
-          </div>
-
-          {/* Tabs */}
-          <div
-            style={{
-              marginBottom: "30px",
-              display: "flex",
-              gap: "10px",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              onClick={() => setActiveTab("all")}
-              style={{
-                padding: "8px 16px",
-                backgroundColor: activeTab === "all" ? "#2d4f60" : "#e0e0e0",
-                color: activeTab === "all" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Alla
-            </button>
-            <button
-              onClick={() => setActiveTab("text")}
-              style={{
-                padding: "8px 16px",
-                backgroundColor: activeTab === "text" ? "#0984e3" : "#e0e0e0",
-                color: activeTab === "text" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Text
-            </button>
-            <button
-              onClick={() => setActiveTab("image")}
-              style={{
-                padding: "8px 16px",
-                backgroundColor: activeTab === "image" ? "#00b894" : "#e0e0e0",
-                color: activeTab === "image" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Bilder
-            </button>
-            <button
-              onClick={() => setActiveTab("background")}
-              style={{
-                padding: "8px 16px",
-                backgroundColor:
-                  activeTab === "background" ? "#6c5ce7" : "#e0e0e0",
-                color: activeTab === "background" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Bakgrundsbilder
-            </button>
-            <button
-              onClick={() => setActiveTab("faq")}
-              style={{
-                padding: "8px 16px",
-                backgroundColor: activeTab === "faq" ? "#e84393" : "#e0e0e0",
-                color: activeTab === "faq" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                marginRight: "20px",
-              }}
-            >
-              FAQ
-            </button>
-            <button
-              onClick={() => setActiveTab("backgroundSettings")}
-              style={{
-                padding: "8px 12px",
-                backgroundColor:
-                  activeTab === "backgroundSettings" ? "#fdcb6e" : "#e0e0e0",
-                color: activeTab === "backgroundSettings" ? "white" : "#333",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                minWidth: "180px",
-                textAlign: "center",
-              }}
-            >
-              Bakgrundsinställningar
-            </button>
-          </div>
-
-          {showConfirmation && (
-            <div
-              style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: "rgba(0,0,0,0.7)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                zIndex: 9999,
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: "white",
-                  padding: "30px",
-                  borderRadius: "8px",
-                  maxWidth: "500px",
-                  width: "90%",
-                  textAlign: "center",
-                }}
-              >
-                <h3 style={{ marginBottom: "20px", color: "#00a6fb" }}>
-                  Bekräfta åtgärd
-                </h3>
-                <p style={{ marginBottom: "30px" }}>
-                  {itemToDelete
-                    ? `Är du säker på att du vill ta bort innehållet med nyckeln "${itemToDelete}"?`
-                    : "Är du säker på att du vill återställa allt innehåll? Detta kan inte ångras."}
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "20px",
-                  }}
-                >
-                  <button
-                    onClick={confirmAction}
-                    style={{
-                      padding: "10px 20px",
-                      backgroundColor: "#ff4d4d",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {itemToDelete ? "Ta bort" : "Återställ allt"}
-                  </button>
-                  <button
-                    onClick={cancelAction}
-                    style={{
-                      padding: "10px 20px",
-                      backgroundColor: "#ccc",
-                      color: "black",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Avbryt
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {Object.keys(filteredContent).length === 0 ? (
-            <p>
-              Inga redigerade{" "}
-              {activeTab === "text"
-                ? "texter"
-                : activeTab === "image"
-                ? "bilder"
-                : activeTab === "background"
-                ? "bakgrundsbilder"
-                : "innehåll"}{" "}
-              ännu.
-            </p>
-          ) : (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              {Object.entries(filteredContent).map(([key, value]) => {
-                const isImage =
-                  value.startsWith("data:image") ||
-                  value.startsWith("http") ||
-                  value.startsWith("/");
-                const isBackground =
-                  key.includes("-bg") || key.includes("background");
-
-                return (
-                  <div
-                    key={key}
-                    style={{
-                      border: "1px solid #ddd",
-                      borderRadius: "8px",
-                      padding: "15px",
-                      backgroundColor: "white",
-                      boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      <h3
-                        className="font_blue fonts_medium"
-                        style={{
-                          wordBreak: "break-all",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {key}
-                      </h3>
-                      <span
-                        style={{
-                          padding: "3px 8px",
-                          borderRadius: "4px",
-                          fontSize: "12px",
-                          backgroundColor: isBackground
-                            ? "#6c5ce7"
-                            : isImage
-                            ? "#00b894"
-                            : "#0984e3",
-                          color: "white",
-                        }}
-                      >
-                        {isBackground ? "Bakgrund" : isImage ? "Bild" : "Text"}
-                      </span>
-                    </div>
-                    <div style={{ marginBottom: "10px" }}>
-                      {isImage ? (
-                        <div>
-                          <img
-                            src={value}
-                            alt={key}
-                            style={{
-                              width: "100%",
-                              height: isBackground ? "150px" : "auto",
-                              maxHeight: "150px",
-                              objectFit: isBackground ? "cover" : "contain",
-                              borderRadius: "4px",
-                              border: "1px solid #eee",
-                            }}
-                          />
-                          {isBackground && (
-                            <div
-                              style={{
-                                marginTop: "5px",
-                                fontSize: "12px",
-                                color: "#666",
-                                textAlign: "center",
-                              }}
-                            >
-                              Bakgrundsbild
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <p
-                          style={{
-                            maxHeight: "100px",
-                            overflow: "auto",
-                            backgroundColor: "#f5f5f5",
-                            padding: "10px",
-                            borderRadius: "4px",
-                            fontSize: "14px",
-                          }}
-                        >
-                          {value}
-                        </p>
-                      )}
-                    </div>
-                    <button
-                      onClick={() => handleRemoveItem(key)}
-                      style={{
-                        width: "100%",
-                        padding: "8px",
-                        backgroundColor: "#ff4d4d",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "4px",
-                        cursor: "pointer",
-                        fontSize: "14px",
-                      }}
-                    >
-                      Ta bort
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </section>
-      )}
-
-      {mainTab === "seo" && <SEOManager />}
+      {/* Content tab removed - only SEO & Meta Data */}
+      <div style={{ 
+        padding: "40px", 
+        maxWidth: "1200px", 
+        margin: "0 auto",
+        overflow: "hidden"
+      }}>
+        <SEOManager />
+      </div>
     </div>
   );
 };

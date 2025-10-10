@@ -417,10 +417,7 @@ const Ulricehamn = () => {
           tag="h2"
           className="sponsors-title"
         />
-        <div id="ulricehamn-sponsors" className="sponsors-container">
-          {/* SponsorEditor will load sponsors from Firebase */}
-        </div>
-        {/* Add SponsorEditor component with location prop */}
+        {/* SponsorEditor will load and display sponsors */}
         <SponsorEditor location="ulricehamn" targetId="ulricehamn-sponsors" />
       </section>
 

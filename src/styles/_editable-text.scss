@@ -302,8 +302,8 @@
 
 // Ensure links within editable text have proper styling
 .editable-text a {
-  color: #2D4F60;
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
   
   &:hover {
     text-decoration: underline;

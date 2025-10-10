@@ -26,6 +26,26 @@ const Pages = () => {
     }
   }, [currentLanguage]);
 
+  // Handle hash navigation on page load
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      // Wait longer for page to fully render including images
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 100;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 1000);
+    }
+  }, []);
+
   return (
     <div className="flex flex_col MaxWH location">
       <section
@@ -245,7 +265,12 @@ const Pages = () => {
       {/* Latest News section */}
 
       <section id="latest-news" className="latest-news-section">
-        <h2 className="latest-news-title">SENASTE NYTT</h2>
+        <EditableText
+          textKey="main-page-news-title"
+          defaultText="SENASTE NYTT"
+          tag="h2"
+          className="latest-news-title"
+        />
         <div className="latest-news-container">
           <NewsCarousel instanceId="main-page-carousel" />
         </div>

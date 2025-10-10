@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
 import NewsCarousel from "./NewsCarousel";
+import SponsorEditor from "./SponsorEditor";
 import "../styles/index.css";
 import { useText } from "../context/TextContext";
 
@@ -411,10 +412,14 @@ const Salen = () => {
 
       {/* Sponsors Section */}
       <section className="sponsors-section">
-        <h2 className="sponsors-title">{localSponsorsText}</h2>
-        <div className="sponsors-container">
-          {/* Local sponsors will be loaded dynamically by the SponsorEditor component */}
-        </div>
+        <EditableText
+          textKey="salen-sponsors-title"
+          defaultText={localSponsorsText}
+          tag="h2"
+          className="sponsors-title"
+        />
+        {/* SponsorEditor will load and display sponsors */}
+        <SponsorEditor location="salen" targetId="salen-sponsors" />
       </section>
       {/* No footer needed here - it's already included in App.jsx */}
     </div>

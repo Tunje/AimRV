@@ -131,19 +131,30 @@ const Navbar = () => {
           </div>
           {/* Sponsorer Button */}
           <div className="nav-button">
-            <a
-              href="#sponsors-section"
+            <Link
+              to="/#sponsors-section"
               onClick={(e) => {
                 e.preventDefault();
-                const sponsorsSection =
-                  document.getElementById("sponsors-section");
-                if (sponsorsSection) {
-                  sponsorsSection.scrollIntoView({ behavior: "smooth" });
+                // If already on home page, just scroll
+                if (window.location.pathname === '/') {
+                  const sponsorsSection = document.getElementById("sponsors-section");
+                  if (sponsorsSection) {
+                    const elementPosition = sponsorsSection.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - 100;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+                  }
+                } else {
+                  // Navigate to home page
+                  window.location.href = '/#sponsors-section';
                 }
               }}
             >
               Sponsorer
-            </a>
+            </Link>
           </div>
           {/* Senaste nytt Button */}
           <div className="nav-button">
@@ -282,21 +293,32 @@ const Navbar = () => {
             </div>
 
             <div className="mobile-menu-item">
-              <a
-                href="#sponsors-section"
+              <Link
+                to="/#sponsors-section"
                 onClick={(e) => {
                   e.preventDefault();
-                  const sponsorsSection =
-                    document.getElementById("sponsors-section");
-                  if (sponsorsSection) {
-                    sponsorsSection.scrollIntoView({ behavior: "smooth" });
-                  }
                   toggleMobileMenu();
+                  // If already on home page, just scroll
+                  if (window.location.pathname === '/') {
+                    const sponsorsSection = document.getElementById("sponsors-section");
+                    if (sponsorsSection) {
+                      const elementPosition = sponsorsSection.getBoundingClientRect().top + window.pageYOffset;
+                      const offsetPosition = elementPosition - 100;
+                      
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                      });
+                    }
+                  } else {
+                    // Navigate to home page
+                    window.location.href = '/#sponsors-section';
+                  }
                 }}
                 className="mobile-menu-link"
               >
                 Sponsorer
-              </a>
+              </Link>
             </div>
 
             <div className="mobile-menu-item">

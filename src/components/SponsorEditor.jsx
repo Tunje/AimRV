@@ -27,7 +27,6 @@ const SponsorEditor = ({ location, targetId }) => {
     location: "",
   });
   const [uploading, setUploading] = useState(false);
-  const [isLocalPartners, setIsLocalPartners] = useState(false);
   const { isAdmin } = useText();
   const currentLocation = useLocation();
   const fileInputRef = useRef(null);
@@ -35,17 +34,23 @@ const SponsorEditor = ({ location, targetId }) => {
   const sponsorsCollection = collection(db, "sponsors");
 
   // Determine if we're on a location page that should show local partners
+  // Use the location prop if provided, otherwise determine from URL
   const currentPage = currentLocation.pathname.split("/").pop();
   const locationPages = ["salen", "ulricehamn", "hemsedal", "kolmarden"];
-  const currentLocationName = locationPages.includes(currentPage)
-    ? currentPage
-    : "";
+  const currentLocationName = location || (locationPages.includes(currentPage) ? currentPage : "");
+  
+  // Determine if this is for local partners based on location prop
+  const isLocalPartners = !!location;
 
   useEffect(() => {
     // Load sponsors from Firestore and ensure all images are properly loaded
     const loadSponsors = async () => {
       try {
-        console.log("Loading sponsors from Firestore...");
+        console.log("=== LOADING SPONSORS ===");
+        console.log("isLocalPartners:", isLocalPartners);
+        console.log("currentLocationName:", currentLocationName);
+        console.log("location prop:", location);
+        
         const sponsorsSnapshot = await getDocs(sponsorsCollection);
         let sponsorsData = sponsorsSnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -53,19 +58,23 @@ const SponsorEditor = ({ location, targetId }) => {
         }));
 
         console.log("All sponsors loaded from Firestore:", sponsorsData.length);
+        console.log("All sponsors data:", sponsorsData);
 
         // Filter sponsors based on whether we're showing local partners or global sponsors
         if (isLocalPartners && currentLocationName) {
           // Show only sponsors for this specific location
+          console.log(`Filtering for local sponsors with location: ${currentLocationName}`);
           sponsorsData = sponsorsData.filter(
             (sponsor) => sponsor.location === currentLocationName
           );
           console.log(`Filtered to ${sponsorsData.length} local sponsors for ${currentLocationName}`);
         } else {
           // Show only global sponsors (those with no location)
+          console.log("Filtering for global sponsors (no location)");
           sponsorsData = sponsorsData.filter((sponsor) => !sponsor.location);
           console.log(`Filtered to ${sponsorsData.length} global sponsors`);
         }
+        console.log("Final filtered sponsors:", sponsorsData);
 
         // Log all sponsor URLs for debugging
         sponsorsData.forEach((sponsor, index) => {
@@ -87,15 +96,13 @@ const SponsorEditor = ({ location, targetId }) => {
   }, [currentLocationName, isLocalPartners]);
 
   useEffect(() => {
-    // Check if we're editing local partners based on the element clicked
-    if (selectedElement && selectedElement.closest(".sponsors-section")) {
-      setIsLocalPartners(true);
+    // Set the location in newSponsor based on whether this is local partners
+    if (isLocalPartners) {
       setNewSponsor((prev) => ({ ...prev, location: currentLocationName }));
     } else {
-      setIsLocalPartners(false);
       setNewSponsor((prev) => ({ ...prev, location: "" }));
     }
-  }, [selectedElement, currentLocationName]);
+  }, [isLocalPartners, currentLocationName]);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -136,7 +143,6 @@ const SponsorEditor = ({ location, targetId }) => {
 
       // Add click handler
       editButton.addEventListener("click", () => {
-        setIsLocalPartners(isLocal);
         if (isLocal) {
           setNewSponsor((prev) => ({ ...prev, location: currentLocationName }));
         } else {
@@ -159,12 +165,53 @@ const SponsorEditor = ({ location, targetId }) => {
 
     // Add edit button for local partners if we're on a location page
     if (currentLocationName) {
-      addEditButton(
-        ".sponsors-title",
-        "local-sponsor-edit-button",
-        "Edit Local Partners",
-        true
-      );
+      // Try to find the h2 inside the sponsors section (it might be wrapped by EditableText)
+      const sponsorsSection = document.querySelector('.sponsors-section');
+      if (sponsorsSection) {
+        const titleElement = sponsorsSection.querySelector('h2.sponsors-title') || 
+                            sponsorsSection.querySelector('.sponsors-title h2') ||
+                            sponsorsSection.querySelector('h2');
+        
+        if (titleElement) {
+          // Remove any existing edit button first
+          const existingButton = document.querySelector('#local-sponsor-edit-button');
+          if (existingButton) {
+            existingButton.remove();
+          }
+
+          // Create edit button
+          const editButton = document.createElement("button");
+          editButton.id = 'local-sponsor-edit-button';
+          editButton.className = "admin-edit-button";
+          editButton.textContent = 'Edit Local Partners';
+          editButton.style.marginLeft = "10px";
+          editButton.style.padding = "5px 10px";
+          editButton.style.backgroundColor = "#384c87";
+          editButton.style.color = "white";
+          editButton.style.border = "none";
+          editButton.style.borderRadius = "4px";
+          editButton.style.cursor = "pointer";
+          editButton.style.whiteSpace = "nowrap";
+
+          // Add hover effect
+          editButton.addEventListener("mouseenter", () => {
+            editButton.style.backgroundColor = "#4f639e";
+          });
+
+          editButton.addEventListener("mouseleave", () => {
+            editButton.style.backgroundColor = "#384c87";
+          });
+
+          // Add click handler
+          editButton.addEventListener("click", () => {
+            setNewSponsor((prev) => ({ ...prev, location: currentLocationName }));
+            setShowModal(true);
+          });
+
+          // Append button after the title
+          titleElement.parentElement.appendChild(editButton);
+        }
+      }
     }
 
     return () => {
@@ -284,14 +331,23 @@ const SponsorEditor = ({ location, targetId }) => {
       await setDoc(newSponsorRef, sponsorData);
       console.log("Sponsor added to Firestore with ID:", newSponsorRef.id);
 
-      // Update local state
-      const updatedSponsors = [
-        ...sponsors,
-        { id: newSponsorRef.id, ...sponsorData },
-      ];
-      setSponsors(updatedSponsors);
+      // Reload sponsors from Firebase to ensure proper filtering
+      const sponsorsSnapshot = await getDocs(sponsorsCollection);
+      let sponsorsData = sponsorsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-      // No need to call displaySponsors, React will handle rendering
+      // Filter based on current context
+      if (isLocalPartners && currentLocationName) {
+        sponsorsData = sponsorsData.filter(
+          (sponsor) => sponsor.location === currentLocationName
+        );
+      } else {
+        sponsorsData = sponsorsData.filter((sponsor) => !sponsor.location);
+      }
+
+      setSponsors(sponsorsData);
 
       // Reset form
       setNewSponsor({
@@ -461,7 +517,7 @@ const SponsorEditor = ({ location, targetId }) => {
     <>
       {/* When not in modal mode, render sponsors in the appropriate container */}
       {!showModal && (
-        <div className={isLocalPartners ? "sponsors-section sponsors-container" : "sponsors-grid"}>
+        <div className="sponsors-grid">
           {renderSponsors()}
         </div>
       )}

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useText } from "../context/TextContext";
 import "../styles/index.css";
 import SponsorEditor from "./SponsorEditor";
+import EditableText from "./EditableText";
 
 const Footer = () => {
   const { isAdmin } = useText();
@@ -28,13 +29,16 @@ const Footer = () => {
     <>
       {/* Sponsors Section - Only shown on specific pages */}
       {showSponsors() && (
-        <div className="footer-wrapper">
+        <div className="footer-wrapper" id="sponsors-section">
           <div className="container">
             <div className="footer-grid">
               <div className="grid-item sponsors">
-                <h1 className="footer-heading" id="sponsors-section">
-                  Sponsorer & Partners
-                </h1>
+                <EditableText
+                  textKey="footer-sponsors-title"
+                  defaultText="Sponsorer & Partners"
+                  tag="h1"
+                  className="footer-heading"
+                />
                 {/* SponsorEditor will render sponsors inside this container */}
                 <SponsorEditor targetId="sponsors-section" />
               </div>

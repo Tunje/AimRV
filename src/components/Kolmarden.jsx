@@ -411,10 +411,7 @@ const Kolmarden = () => {
           tag="h2"
           className="sponsors-title"
         />
-        <div id="kolmarden-sponsors" className="sponsors-container">
-          {/* SponsorEditor will load sponsors from Firebase */}
-        </div>
-        {/* Add SponsorEditor component with location prop */}
+        {/* SponsorEditor will load and display sponsors */}
         <SponsorEditor location="kolmarden" targetId="kolmarden-sponsors" />
       </section>
 

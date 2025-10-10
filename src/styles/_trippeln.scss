@@ -108,39 +108,16 @@
   text-align: center;
 }
 
-/*----- CTA Section -----*/
+/*----- Button Section -----*/
 
-.trippeln-cta-section {
+.trippeln-button-section,
+.trippeln-bottom-button-section {
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0 30px;
   display: flex;
   justify-content: center;
-  /*  background-color: #f5f5f5; */
-}
-
-.cta-container {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-}
-
-.trippeln-cta-button {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: #2d4f60;
-  color: white;
-  text-decoration: none;
-  font-family: "AFCarplets Bold", sans-serif;
-  font-size: 18px;
-  border-radius: 30px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: white;
-    color: #2d4f60;
-  }
+  align-items: center;
+  flex-direction: column;
 }
 
 .locked-background {

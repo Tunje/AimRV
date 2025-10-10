@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/index.css";
 import EditableText from "./EditableText";
 import BackgroundEditor from "./BackgroundEditor";
+import { useText } from "../context/TextContext";
 
 const Trippeln = () => {
+  const { currentLanguage, getText } = useText();
+  
+  // State for button text
+  const [registerButtonText, setRegisterButtonText] = useState('');
+  
+  // Get the registration URL from editable text
+  const rawUrl = getText('trippeln-registration-url', 'https://raceid.com/sv/races/13016/about');
+  const registrationUrl = rawUrl.startsWith('http://') || rawUrl.startsWith('https://') ? rawUrl : `https://${rawUrl}`;
+  
+  // Update button text when language changes
+  useEffect(() => {
+    // For English
+    if (currentLanguage === 'en') {
+      setRegisterButtonText('TAKE ME TO REGISTRATION');
+    }
+    // For Norwegian
+    else if (currentLanguage === 'no') {
+      setRegisterButtonText('TA MEG TIL PÅMELDING');
+    }
+    // For Swedish (default)
+    else {
+      setRegisterButtonText('TA MIG TILL ANMÄLAN');
+    }
+  }, [currentLanguage]);
+  
   return (
     <>
       <BackgroundEditor key="trippeln-background-editor" />
@@ -37,64 +63,78 @@ const Trippeln = () => {
         <div className="trippeln-content-container">
           <div className="trippeln-content">
             <EditableText
-              textKey="trippeln-text-1"
-              defaultText="Trippeln är en tävling i tävlingen där de som deltar i minst tre av årets deltävlingar är med och tävlar om den mycket hedervärda titeln Vinnare av AIM Challenge Trippeln!"
-              tag="p"
-              className="trippeln-text"
-            />
-
-            <EditableText
-              textKey="trippeln-text-2"
-              defaultText="AIM Challenge Trippeln ersätter Landskampen som sedan 2010 har varit en tävling i tävlingen för de som genomfört AIM Challenge både i Lindvallen och Hemsedal. En tävling där det tävlats för antingen Sverige eller Norge, där det vinnande landet har hyllats och den som bidragit mest till sitt land har prisats."
-              tag="p"
-              className="trippeln-text"
-            />
-
-            <EditableText
-              textKey="trippeln-text-3"
-              defaultText="Med AIM Challenge Trippeln lägger vi ner stridsyxan mellan Sverige och Norge och gör det därmed möjligt att även köra mixade lag mellan olika nationer utan att detta skapar en konflikt."
-              tag="p"
-              className="trippeln-text"
-            />
-
-            <EditableText
-              textKey="trippeln-subheading"
-              defaultText="Hur går AIM Challenge Trippeln till:"
+              textKey="trippeln-subtitle"
+              defaultText="Tre tävlingar, en titel, massa äventyr!"
               tag="h2"
               className="trippeln-subheading"
             />
 
             <EditableText
-              textKey="trippeln-text-4"
-              defaultText="AIM Challenge Trippeln är en tävling i tävlingen för de lag som deltar på minst tre deltävlingar under ett och samma år. Tävlingarna som ingår är Ulricehamn, Sälen, Hemsedal och Kolmården. Det är fritt för laget att välja om ni önskar att delta i 3- eller 6-timmars tävlingen i Ulricehamn och Kolmården, båda anses att vara likvärdiga för Trippeln."
+              textKey="trippeln-intro"
+              defaultText="AIM Challenge Trippeln är för er som vill ta äventyret ett steg längre. Genom att delta i minst tre deltävlingar under samma säsong är ni med i kampen om en av de mest prestigefyllda titlarna inom AIM Challenge, nämligen Trippeln."
               tag="p"
               className="trippeln-text"
             />
 
             <EditableText
-              textKey="trippeln-text-5"
-              defaultText="Vid anmälan till Trippeln blir man per automatik anmäld till alla fyra deltävlingar och väljer själv om man vill delta i tre eller fyra tävlingar. Priset för att anmäla sig till trippeln är rabatterat och blir billigare redan vid start i tre deltävlingar. Skulle ett lag delta i alla fyra deltävlingarna så räknas de tre bästa resultaten till Trippeln."
+              textKey="trippeln-intro-2"
+              defaultText="Det här är en chans att se och uppleva olika delar av Norden och utmana er själva på olika platser i varierande terräng med nya kartor och kontroller varje gång."
               tag="p"
               className="trippeln-text"
             />
 
             <EditableText
-              textKey="trippeln-text-6"
-              defaultText="Det gäller att samla så många poäng som möjligt under årets tävlingar där varje lag får räkna in sina tre bästa resultat från det gångna året. Vinnaren av AIM Challenge Trippeln kommer att utses genom ett poängsystem som bygger på hur många poäng laget fått procentuellt i förhållande till vinnarlaget i respektive deltävling. Varje lag kommer då få en poängsumma mellan 1 och 100 per tävling och efter alla deltävlingarna kommer dessa poäng att adderas och det lag med högst sammanlagda poäng kommer att stå på prispallen! Skulle två lag få samma sammanlagda poäng så kommer vi se på placeringar i de enskilda loppen för att utse en vinnare."
+              textKey="trippeln-heading-how"
+              defaultText="Så funkar det"
+              tag="h2"
+              className="trippeln-subheading"
+            />
+
+            <EditableText
+              textKey="trippeln-how-1"
+              defaultText="Trippeln gäller för lag som genomför minst tre av årets deltävlingar: Ulricehamn, Sälen, Hemsedal och Kolmården. I Ulricehamn och Kolmården väljer ni själva om ni kör 3- eller 6-timmarstävlingen. Båda räknas som fullvärdiga resultat."
               tag="p"
               className="trippeln-text"
             />
 
             <EditableText
-              textKey="trippeln-text-7"
-              defaultText="Vid anmälan till AIM Challenge Trippeln så anmäler sig laget till alla fyra deltävlingarna, varav minst tre måste genomföras för att få ett resultat i Trippeln. Ett lag består av två personer, men om någon i laget skulle få förhinder inför någon av tävlingarna så gäller följande: För att resultatet i Trippeln skall bli godkänt så måste minst en i laget delta i alla tre tävlingarna, samt att deltagare 2 deltar vid minst två deltävlingar. Det vill säga att det är möjligt att ta in en reserv under en av deltävlingarna och fortfarande tävla som lag om den hedervärda titeln! I det fall deltagare 1 tävlat med tre olika lagkompisar under året är det enbart den som deltagit vid alla tre tävlingarna som kommer att premieras."
+              textKey="trippeln-how-2"
+              defaultText="När ni anmäler er till Trippeln registreras ni automatiskt till alla fyra tävlingar. Ni väljer själv om ni vill delta i tre eller alla fyra tävlingarna. De tre bästa resultaten räknas i sammanställningen."
               tag="p"
               className="trippeln-text"
             />
 
             <EditableText
-              textKey="trippeln-text-8"
-              defaultText="Det är inte möjligt att sälja sin startplats i Trippeln vidare för den tävling som laget eventuellt inte deltar i."
+              textKey="trippeln-heading-points"
+              defaultText="Poäng och ranking"
+              tag="h2"
+              className="trippeln-subheading"
+            />
+
+            <EditableText
+              textKey="trippeln-points-1"
+              defaultText="Efter varje tävling får ni poäng baserat på hur nära ni varit segerpoängen i er klass. Varje tävling ger mellan 1 och 100 poäng. Lagets tre högsta poäng summeras och det lag som har flest poäng i slutet av säsongen vinner Trippeln."
+              tag="p"
+              className="trippeln-text"
+            />
+
+            <EditableText
+              textKey="trippeln-points-2"
+              defaultText="Om flera lag hamnar på samma poäng avgörs placeringen av bästa enskilda resultat under året."
+              tag="p"
+              className="trippeln-text"
+            />
+
+            <EditableText
+              textKey="trippeln-heading-team"
+              defaultText="Laguppställning"
+              tag="h2"
+              className="trippeln-subheading"
+            />
+
+            <EditableText
+              textKey="trippeln-team"
+              defaultText="Trippeln genomförs precis som de vanliga tävlingarna i lag om två. Minst en av deltagarna måste delta i alla tre tävlingar som räknas. Den andra kan bytas ut vid en av deltävlingarna om det behövs. Det ger er flexibilitet och möjlighet att fullfölja Trippeln även om planer ändras under säsongen."
               tag="p"
               className="trippeln-text"
             />
@@ -102,16 +142,23 @@ const Trippeln = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="trippeln-cta-section">
-        <div className="cta-container">
+      {/* Button Section */}
+      <section className="trippeln-button-section">
+        <EditableText
+          textKey="trippeln-registration-url"
+          defaultText="https://raceid.com/sv/races/13016/about"
+          tag="span"
+          className="hidden-editable-url"
+          style={{ display: 'none' }}
+        />
+        <div className="button-container">
           <a
-            href="https://raceid.com/sv/races/13016/about"
+            href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="trippeln-cta-button"
+            className="anmalan-button"
           >
-            TA MIG TILL ANMÄLAN
+            <p>{registerButtonText}</p>
           </a>
         </div>
       </section>

@@ -175,10 +175,14 @@
   font-size: 3rem;
   margin-bottom: 20px;
   text-align: center;
-  color: white;
+  color: white !important;
   font-family: "AFCarplets Bold", sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.footer-heading .editable-text {
+  color: white !important;
 }
 
 .grid {
@@ -212,7 +216,7 @@
 }
 
 .grid > div {
-  aspect-ratio: 2/1;
+  aspect-ratio: 3/2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,8 +225,8 @@
 }
 
 .sponsor-logo {
-  max-width: 80%;
-  max-height: 80px;
+  max-width: 90%;
+  max-height: 150px;
   object-fit: contain;
   transition: transform 0.3s ease;
   margin: 15px 0;
@@ -341,12 +345,12 @@
   }
 
   .grid > div {
-    aspect-ratio: 2/1;
+    aspect-ratio: 3/2;
   }
 
   .sponsor-logo,
   .partner-logo {
-    max-height: 100px;
+    max-height: 140px;
     padding: 8px;
   }
 
@@ -383,12 +387,12 @@
   }
 
   .grid > div {
-    aspect-ratio: 1.8/1;
+    aspect-ratio: 3/2;
   }
 
   .sponsor-logo,
   .partner-logo {
-    max-height: 80px;
+    max-height: 120px;
     padding: 5px;
   }
 
